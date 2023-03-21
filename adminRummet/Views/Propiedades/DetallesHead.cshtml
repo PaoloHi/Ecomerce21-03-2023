@@ -1,0 +1,77 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+    <div class="container-lg mt-3">
+        <div class="row">
+            <div class="col">
+                <div class="shadow  rounded mb-3">
+                    <div class="d-inline-flex mt-2">
+                        <h6 class="ms-3">Estatus</h6>
+                        @{
+                            var statuscolor = "";
+                            switch (@Model.StatusPropiedad)
+                            {
+                                case "En revisión":
+                                statuscolor = "redbgr";
+                                    break;
+                                case "Aprovada":
+                                statuscolor = "greenbgr";
+                                    break;
+                                case "En proceso de venta":
+                                    statuscolor = "yellowbgr";
+                                        break;
+                                    
+                            }
+                        }
+
+                        <h6 class="ms-2 status text-light @statuscolor w-auto text-center px-2  ">
+                        @Model.StatusPropiedad
+                        </h6>
+                    </div>
+                    <div class="d-flex mt-2">
+                        <h6 class="ms-3 ">Tipo de operacion</h6>
+                        <h6 class="ms-2 text-center px-1 color-tipo-oper-venta">
+                            @Model.Operacion
+                        </h6>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <!-- Button trigger modal -->
+                      <!--  <button type="button" class="btn backgr-cale" id="btn-modal" data-bs-toggle="modal" data-bs-target="#exampleModalcale">
+                            <h6 class=" size-text-cale"><i class="fa-solid fa-calendar-days"></i></h6>
+                        </button>-->
+
+                        <!-- Modal -->
+                        <div class="container-modal" id="cont-modal">
+
+                            <div class="header-modal">
+                                <label id="close-modal" for="evento-click">X</label>
+                            </div>
+
+                            <div class="body-modal">
+                                <h1 class="title-modal">Calendario</h1>
+                                <div id="calendar"></div>
+
+                            </div>
+
+                        </div>
+
+                      <!--  <button class="btn" onclick="downloadPDF()">
+                        <i class="fa-solid fa-file-pdf backgr-pdf"></i>
+                        </button>-->
+                        <a class="me-2 mb-2 " asp-controller="Propiedades" asp-action="EditarPropiedad" asp-route-PROPIEDADID="@Model.IDPropiedadG">
+                            <i class="fa-solid fa-pen-to-square backgr-edit text-center align-item-center"></i>
+                        </a>
+                                </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+}
+
+
+<script src="~/js/PDFDownload.js"></script>

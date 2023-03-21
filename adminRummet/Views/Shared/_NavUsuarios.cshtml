@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=1.0">
+    <title>@ViewData["Title"]- Proyecto_administracion</title>
+
+
+    <link rel="icon" type="image/png" sizes="16x16" href="~/img/imagen-logo/logo_oficial.png">
+
+
+
+    <!--estas son las hojas de estilo de la barra de navegacion -->
+
+    <!--Esta es la CDN de Booststrap, si ya esta en la barra de navegacion , no es necesario agregarla otra vez en las demas paginas-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+
+
+    <link rel="stylesheet" href="~/css/style_usuarios.css">
+    <link rel="stylesheet" href="~/css/StyleSheetMenuNav.css">
+
+    <script src="https://kit.fontawesome.com/e43b4d35fb.js" crossorigin="anonymous"></script>
+    <title>Usuarios</title>
+</head>
+
+<body id="body" onload="initialize()">
+    <div class="area">
+        
+        <header class="d-flex">
+
+            <div class=" d-inline-flex col-lg-10">
+                <a class=" ms-3" style="color:var(--menu-side);" asp-controller="Propiedades" asp-action="PropiedadesTab">
+                    <h6 class="my-2 size-letter-menu">Propiedades</h6>
+                </a>
+                <a class=" ms-3" style="color:var(--menu-side);" asp-controller="Administracion" asp-action="Brokers">
+                    <h6 class="my-2 size-letter-menu">Brokers</h6>
+                </a>
+                <a href="" class="ms-4" style="color:var(--menu-side);">
+                    <h6 class="my-2 size-letter-menu">Informes</h6>
+                </a>
+            </div>
+            <div class="col-lg-1 ">
+
+                <a href="" class=" home-user">
+                    <img src="~/img/Imagen-de-usuario/imagen-perfil-ejemplo.png alt="imagenLogo"
+                         class="back-image-header img-fluid m-1 my-2">
+                </a>
+            </div>
+
+
+
+        </header>
+
+        <div class="menu__side active" id="side_menu">
+
+            <div>
+                <div class="icon__menu mt-4 mb-0">
+                    <i class="fas fa-bars" id="btn_open"></i>
+                </div>
+                <a class=" mt-0" asp-controller="Administracion" asp-action="TabMesaControl">
+                    <div class="name__page">
+                        <i class="fa-solid fa-house " title="home"></i>
+                        <h6>Home</h6>
+                    </div>
+                </a>
+            </div>
+
+            <div class="options__menu pt-3 pb-3" id="options">
+
+                <a asp-controller="Administracion" asp-action="UsuariosTab" class="mt-0  option">
+                        <i class="fa-solid fa-user" title="Usuarios"></i>
+                        <h6>Usuarios</h6>
+                </a>
+
+                <a class="option" asp-controller="Administracion" asp-action="EditConfigPlanes">
+               
+                        <i class="fa-solid fa-cart-shopping" title="Planes"></i>
+                        <h6>Planes</h6>
+            
+                </a>
+
+                <a class="option" href="#">
+        
+                        <i class="fa-solid fa-box-archive" title="Catalogo"></i>
+                        <h6>Capacitación</h6>
+                   
+                </a>
+             
+                <a class="option"  href="#">
+                        <i class="fa-solid fa-file-lines" title="Documentos"></i>
+                        <h6>Formatos</h6>
+                </a>
+
+                <a class="option"  href="#">
+                        <i class="fa-solid fa-headset" title="Nosotros"></i>
+                        <h6>Soporte</h6>
+                </a>
+
+                
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+
+
+        <script src="~/js/script.js"></script>
+        @*Lamentablemente no he encontrado la forma de hacer que este sweet alertt se cargue desde 
+            el javascript utilizando AJAX o adicionandolo al documento mismo 
+            querido desarrollador , si lees esto y tienes tiempo libre (cosa que casi no pasa)
+            te pido que corrigas esta deuda tecnica 
+        *@
+
+    <script>
+     
+
+        $(function () {
+        
+            var successMessage = '@TempData["SuccessMessage"]';
+            console.log(successMessage)
+
+            if (successMessage) {
+                // Mostrar Sweet Alert si hay un mensaje de éxito
+                console.log("esta corriendo el sweet alert")
+                Swal.fire(
+                    'Felicidades',
+                    successMessage,
+                    'success'
+                );
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
+

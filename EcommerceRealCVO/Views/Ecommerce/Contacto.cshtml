@@ -1,0 +1,101 @@
+﻿@model ContactoModel;
+@{
+    Layout = "_OnlyNav";
+    ViewData["Title"] = "Contacto";
+}
+
+<main>
+
+    <div class="container mt-5 mb-3 text-white position-relative s-contain">
+
+
+        <div class=" d-lg-flex justify-content-end d-none">
+            <img src="~/img/Imagenes-pag-contacto/Recurso-imagen-mensaje.png" alt="" class="position-absolute img-messages">
+        </div>
+        <form asp-controller="Ecommerce" asp-action="GuardarContacto" method="POST">
+            <div class="row">
+                <div class="col">
+                    <div class="row mt-3 justify-content-center">
+                        <div class="mt-2">
+                            <h3 class="fw-bold text-center">Contacto</h3>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="d-flex justify-content-center">
+                                <h6 class="fw-bold">Nosotros te llamamos</h6>
+                            </div>
+                            <div class="d-flex justify-content-center mb-2 text-center">
+                                <input type="text" asp-for="Nombre" placeholder="Nombre" class="contact-border-r-s">
+                            </div>
+                            <div class="d-flex justify-content-center mb-2 text-center">
+                                <input type="text" asp-for="APaterno" placeholder="Apellido paterno" class="contact-border-r-s">
+                            </div>
+                            <div class="d-flex justify-content-center mb-2 text-center">
+                                <input type="text" asp-for="AMaterno" placeholder="Apellido materno" class="contact-border-r-s">
+                            </div>
+                            <div class="d-flex justify-content-center mb-2">
+                                <input type="email" asp-for="Email" placeholder="Correo" class="contact-border-r-s">
+                            </div>
+                            <div class="d-flex justify-content-center mb-2">
+                                <input type="tel" asp-for="Telefono" placeholder="Teléfono" class="contact-border-r-s">
+                            </div>
+                            <div class="d-flex justify-content-center mb-2">
+                                <input type="datetime-local" asp-for="FechaContacto" class="contact-border-r-s">
+                            </div>
+                            <div class="d-flex justify-content-center mb-2">
+                                <textarea class="border-r-t outtext-a" asp-for="Mensaje" cols="25" rows="3" placeholder="Mensaje"></textarea>
+                            </div>
+                            <div class="d-flex justify-content-center mb-2 ">
+                                <input type="submit" value="Enviar" class="contact-btn-r text-white">
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 d-lg-flex justify-content-center d-none">
+                            <img src="~/img/Imagenes-pag-contacto/Recurso-persona-1.png" alt="" class=" size-person me-4">
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="social d-flex mt-5 justify-content-center mb-3">
+                                <i class="fa-brands fa-whatsapp fa-2x me-3"></i>
+                                <i class="fa-brands fa-facebook fa-2x me-3"></i>
+                                <i class="fa-brands fa-linkedin-in fa-2x me-3"></i>
+                                <i class="fa-brands fa-instagram fa-2x"></i>
+                            </div>
+                            <div class="">
+                                <div class="d-flex justify-content-center">
+                                    <h5>Telefonos:</h5>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <p>55 4324 3344</p>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <p>55 1552 0314</p>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <h5>Correo:</h5>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <p>contacto@grupocvo</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-center">
+                    <h3>Visitanos</h3>
+                </div>
+                <div class="map d-flex justify-content-center mb-5">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.7900776606966!2d-99.2274776854705!3d19.421474046069775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d20185b96d04eb%3A0xe9a0c12773c39b5d!2sSierra%20Gorda%2C%20Lomas%20de%20Chapultepec%2C%2011000%20Ciudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses-419!2smx!4v1663865343007!5m2!1ses-419!2smx" width="95%" height="auto" style="border:0; border-radius: 3px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="position-relative d-lg-flex d-none justify-content-start">
+                <img src="~/img/Imagenes-pag-contacto/Recurso-bolitas.png" alt="" class="position-absolute img-circles">
+            </div>
+        </div>
+    </div>
+</main>
+
+
+

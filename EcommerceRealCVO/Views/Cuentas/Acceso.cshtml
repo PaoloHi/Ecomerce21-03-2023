@@ -1,0 +1,105 @@
+﻿@model AccesoVModel;
+@{
+    Layout = null;
+ }
+ 
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/StyleLogin.css">
+    <link rel="stylesheet" href="~/css/styless.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sesión</title>
+</head>
+
+<body>
+    <br>
+    <br>
+    <br>
+    
+    <div class="container main_backg my-4" >
+        <div class="row">
+            <div class="col">
+                <div class="text-center text-light ">
+                    <br>
+                    <br>
+                    
+                <h4 class="fw-bold text-center text-light mb-4 mt-4">Iniciar sesión</h4>
+            </div>
+             <!--Aqui Inicia el Formulario-->
+            
+             <form asp-controller="Cuentas" asp-action="Acceso" method="post" role="form" asp-route-returnurl="@ViewData["ReturnUrl"]">
+                <div class="mb-3">
+                  <input asp-for="Email" type="email" class="form-control border_radius  mx-auto" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Correo electrónico">
+                </div>
+                <div class="mb-3">
+                  <input asp-for="Password" type="password" class="form-control border_radius  mx-auto" id="exampleInputPassword1" placeholder="Contraseña">
+                  
+                </div>
+                <div class="mb-3 text-light d-inline-block w-100 text-center" >
+                    <a asp-action="OlvidoPassword" class=" modal-a">¿Olvidaste tu contraseña?</a>
+                
+                </div>
+                
+                <div class="d-grid">
+                    <a type="button" class="modal-a mx-auto" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        
+                        <h6>Aviso de privacidad</h6>
+                    </a>
+                    
+                    <br>
+                    <button type="submit" class="btn btn-light text-primary mb-3 btnn col-lg-4 mx-auto"><h6 class="my-auto fw-bold ">Iniciar sesión</h6></button>
+                </div>
+                <br>
+                
+                <div class="">
+                    <!-- Button trigger modal -->
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+
+                   <!-- Modal -->
+                   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                       aria-hidden="true">
+                       <div class="modal-dialog">
+                           <div class="modal-content">
+                               <div class="modal-header">
+                                   <h5 class="modal-title text-light"  id="exampleModalLabel">Aviso de privacidad</h5>
+                                   <button type="button" class="btn-close " data-bs-dismiss="modal"
+                                       aria-label="Close"></button>
+                               </div>
+                               <div class="modal-body">
+                                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam blanditiis magni earum excepturi in optio dolor, ab rerum corporis quis ipsam! Repellat non tenetur perspiciatis quasi iste, minima aut doloribus.
+                               </div>
+                               <div class="modal-footer">
+                                   <button type="button" class="btn btn-secondary btnn"
+                                       data-bs-dismiss="modal">Aceptar</button>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+
+              </form>
+            </div>
+            
+            <div class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl d-flex">
+                
+               
+
+
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+   <!--  <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
+</body>
+
+</html>

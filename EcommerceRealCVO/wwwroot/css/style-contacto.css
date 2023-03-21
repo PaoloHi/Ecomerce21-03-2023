@@ -1,0 +1,261 @@
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Gotham;
+}
+
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    background: linear-gradient(287deg, rgba(24,91,203,1) 13%, rgba(0,59,149,1) 32%, rgba(4,96,190,1) 94%) !important;
+    margin-bottom: 210px !important;
+}
+
+@font-face{
+    font-family:Gotham;
+    src: url("../fonts/GothamBook.ttf");
+}
+
+.navbar{
+    background-color: #012845 !important;
+    font-size: 15px;
+    position: sticky;
+}
+
+.navbar_2{
+    background-color: #ffff !important;
+}
+
+
+
+
+.backgr{
+    background-color: #012845;
+}
+
+.btn_2{
+    background-color: none;
+    border-radius: 100%;
+}
+
+.shadow_{
+    border: 5px;
+    box-shadow: 5px 3px 3px 3px #ccc solid !important; 
+}
+
+.icon{
+    color: #fff;
+}
+
+.border_radius_header{
+border-radius: 10px 15px 70px 70px;
+width: 130px;
+}
+
+
+/*Esta clase es para la imagen que va al centro de la navbar*/
+.image-size{
+    width: 50px;
+    height: 55px;
+  }
+/*Aqui termina la clase*/
+    .navbar-brand {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 25px 20px 10px;
+        text-align: center;
+        background: #012845;
+        border-radius: 0px 0px 30px 30px;
+        box-shadow: 0px 0px 25px 3px rgba(4, 35, 51, 0.25);
+        border-radius: 20px 10px 30px 30px; 
+        transition: all .5s;
+    
+}
+
+.scroll_navbar-brand {
+    position: absolute;
+    top: 5px;
+    left: 0%;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.4);
+    transition-duration: 0.6s;
+    background: #f8f9fa;
+}
+
+/*Estilos para el contenedor*/
+.s-contain{
+    background: #012845;
+    border-radius: 40px;
+}
+
+@media screen and (max-width: 2500px){
+    .s-contain{
+        width: 70% !important;
+    }
+}
+
+.img-messages{
+    bottom: 680px;
+    height: 130px;
+    right: -60px;
+}
+
+.img-circles{
+    bottom: -20px;
+    height: 200px;
+    left: -115px;
+}
+
+.size-person{
+    height: 70%;
+}
+
+  .contact-border-r-s{
+    border-radius: 12px;
+    outline: none;
+    border: none;
+    width: 100%;
+  }
+
+  .contact-btn-r{
+    border-radius: 3px;
+    background-color: rgb(235, 112, 41);
+    outline: none;
+    border: none;
+    width: 100%;
+  }
+
+  .border-r-t{
+    border-radius: 3px;
+  }
+
+  /*Modificar el placeholder*/
+
+  ::-webkit-input-placeholder{
+    font-size: 15px;
+    text-align: center;
+
+    }
+    :-moz-placeholder{ /* Firefox 18- */
+    font-size: 15px;
+    text-align: center;
+
+    }
+    ::-moz-placeholder{ /* Firefox 19+ */
+    font-size: 15px;
+    text-align: center;
+
+    }
+    :-ms-input-placeholder{
+    font-size: 15px;
+    text-align: center;
+
+    }
+
+    /*text area estilos pagina contacto*/
+.outtext-a{
+    outline: none;
+}
+
+/*Este estilo es para el background azul del footer*/
+
+.main_backg {
+    background-color: #132c45;
+}
+/*Estilos para border cirular*/
+.icon-background {
+    color: #012845;
+    background: #fff;
+    padding: 0 9px;
+    line-height: 30px;
+    border-radius: 20px;
+}
+
+/*Estilos de tamaño de los iconos*/
+
+.size-icons-footer {
+    font-size: 15px;
+}
+
+.size-icons-footer-2 {
+    font-size: 9px;
+}
+
+.size-icon-navbar {
+    font-size: 23px;
+}
+
+/*Estilos a links*/
+a:link {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #fff;
+}
+/*Fin de los estilos a links*/
+
+/*Tamaño de letra del footer*/
+.size-text-footer {
+    font-size: 12px;
+}
+
+.size-text-footer-copyr {
+    font-size: 10px;
+}
+
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.modal-backgr-orange {
+    background-color: #ff7f40 !important;
+    border: none !important;
+}
+
+.inputContacto{
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btnn {
+    border-radius: 25px !important;
+    border-color: rgb(235, 112, 41);
+    background-color: rgb(235, 112, 41);
+    color: white !important;
+}
+
+    .btnn:hover {
+        background-color: white;
+        color: rgb(235, 112, 41) !important;
+       
+    }

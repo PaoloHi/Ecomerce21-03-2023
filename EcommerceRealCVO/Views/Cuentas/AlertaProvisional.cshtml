@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "_EcommerceI";
+    ViewData["Title"] = "Home Page";
+}
+<br />
+<br />
+<p>
+
+</p>
+<p>
+
+</p>
+<p></p>
+<p></p>
+<h2>¡Hola bienvenido!, estás a un gran paso de formar parte de nuestro equipo.</h2>
+<p>Hemos enviado un correo electrónico con los pasos a seguir para continuar con tu registro. </p>
+<br />
+<p> Te invitamos a seguir en nuestra página</p> <a asp-controller="Home" asp-action="Index">ECOMMERCE</a>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    var strValue = "@((string)ViewBag.mssg)";
+
+    if (strValue !== null && strValue !== "") {
+
+        if (strValue == "Error") {
+            Swal.fire(
+                'Error',
+                'El correo introducido ha sido registrado previamente',
+                'warning'
+            )
+
+        } else {
+
+            Swal.fire(
+                'Registro exitoso',
+                strValue,
+                'success'
+            )
+        }
+
+
+    }
+
+</script>
+
+

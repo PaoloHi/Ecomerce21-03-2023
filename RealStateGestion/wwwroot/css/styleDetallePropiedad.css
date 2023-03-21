@@ -1,0 +1,993 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Gotham;
+    text-decoration: none !important;
+}
+a:visited {
+    color: #132c45;
+}
+
+body{
+    margin-left: 50.5px;
+    margin-top: 80px;
+    margin-bottom: 10px;
+    background-color: rgb(237, 236, 236);
+    transition: margin-left 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+@font-face {
+    font-family: Gotham;
+    src: url("../fonts/GothamBook.ttf");
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    background: rgb(255, 254, 254);
+    display: flex;
+    border-radius: 5px;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 200;
+}
+
+.icon__menu {
+    width: 30px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(10px);
+    color: #132c45;
+}
+
+    .icon__menu i {
+        font-size: 15px;
+        cursor: pointer;
+        position: absolute;
+    }
+
+.menu__side {
+    width: 50px;
+    height: 100%;
+    background: rgb(255, 254, 254);
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: #132c45;
+    font-size: 18px;
+    z-index: 300;
+    overflow: hidden;
+    overflow-y: scroll;
+    border-right: 2px solid rgb(255, 254, 254);
+    border-top-right-radius: 5px;
+    transition: all 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+/*Ocultar scroll para chrome, safari y opera*/
+.menu__side::-webkit-scrollbar{
+    display: none;
+}
+
+.size-sub-indice{
+    font-size: 90%;
+}
+
+/*Ocultar scroll para chrome, safari y opera*/
+.menu__side::-webkit-scrollbar {
+    display: none;
+}
+
+.size-sub-indice {
+    font-size: 90%;
+}
+
+/*Ocultar scroll para IE, Edge y Firefox*/
+.menu__side {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.name__page {
+    padding: 8px 15px;
+    display: flex;
+    align-items: left;
+    margin-top: 25px;
+}
+
+    .name__page i {
+        width: 20px;
+        margin-right: 22px;
+    }
+
+.options__menu {
+    padding: 20px 15px;
+    position: absolute;
+    top: 80px;
+}
+
+    .options__menu a {
+        color: #132c45;
+        cursor: default;
+        display: block;
+        position: relative;
+        transition: color 300ms;
+    }
+
+        .options__menu a:last-child {
+            top: 90px;
+            align-items: left;
+        }
+
+        .options__menu a:nth-child(7) {
+            top: 100px;
+            align-items: center;
+        }
+
+        .options__menu a:nth-child(6) {
+            top: 110px;
+            font-size: 20px;
+            align-items: center;
+        }
+
+        .options__menu a:hover {
+            color: #ccc;
+        }
+
+    .options__menu .option {
+        padding: 17.5px 0px;
+        display: flex;
+        align-items: left;
+        position: relative;
+    }
+
+        .options__menu .option i {
+            width: 20px;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        .options__menu .option h4 {
+            font-weight: 300;
+            cursor: pointer;
+        }
+
+a.selected {
+    color: #132c45;
+}
+
+.selected:before {
+    content: '';
+    width: 3px;
+    height: 80%;
+    background: #012845;
+    position: absolute;
+    top: 10%;
+    left: -15px;
+}
+
+/*Tamaños de los inconos que estan en la barra*/
+
+.size-icons-menu{
+    font-size:11.5px;
+    padding-top:5px;
+    padding-left:4px;
+
+}
+
+
+/*Clases para usar en JavaScript*/
+
+.body_move{
+    margin-left: 250px;
+}
+
+.menu__side_move{
+    width: 200px;
+}
+
+
+@media screen and (max-width: 760px){
+    .body_move{
+        margin-left: 0px;
+    }
+
+    .menu__side_move{
+        width: 80px;
+        left: -80px;
+    }
+}
+
+.back-image-header{
+    border-radius: 25px;
+    width: 50px;
+    height: 55px;
+    box-shadow: 2px 2px 3px 3px rgba(191, 190, 190, 0.868);
+}
+
+.size-letter-menu {
+    font-size: 85%;
+    font-weight: bold;
+}
+
+@media (min-width: 1000px) {
+    .container{
+        max-width: 700px;
+    }
+}
+
+@-webkit-keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+/*clases para el visualizador*/
+
+.fileContainer2 {
+    overflow: hidden;
+    position: relative;
+
+}
+
+.fileContainer2 [type=file] {
+    cursor: inherit;
+    display: block;
+    filter: alpha(opacity=0);
+    height: 100px;
+    width: 200px;
+    cursor: pointer;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+   
+    border-bottom: none !important;
+    
+}
+
+.fileContainer2 {
+    border-radius: 5px;
+  width: 100px;
+  height: 40px;
+  border-color: #f0f2f7;
+  border-bottom: none !important;
+  
+}
+
+/*tamaño de la fuente de los visualizadores*/
+
+.font-size-visualizador{
+    font-size: 13px;
+}
+
+/*Estilos de boton basura*/
+.fileContainer3 [type=button] {
+    cursor: inherit;
+    display: block;
+    filter: alpha(opacity=0);
+    height: 100px;
+    width: 200px;
+    cursor: pointer;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    border-bottom: none !important;
+    
+}
+
+.fileContainer3 {
+    border-radius: 5px;
+  width: 50px;
+  height: 40px;
+  border-color: #f0f2f7;
+  border-bottom: none !important;
+  
+}
+
+.fileContainer3 [type=button] {
+    cursor: pointer;
+    width: 30px;
+}
+.size-icon{
+    font-size: 17px;
+}
+
+.size-file{
+    width: 250px;
+    height: 400px;
+}
+
+
+.border-gray{
+    color: rgb(118, 118, 118);
+  }
+
+.table-height {
+    height: 100% !important;
+    overflow-y: hidden;
+}
+
+  /*Visualizador de varias imagenes*/
+  .image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.image-container img {
+    min-width: 100%;
+    object-fit: cover;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.button-container {
+    width: 100%;
+    text-align: center;
+}
+
+.button-container button {
+    padding: 7px 18px;
+    border: none;
+    border-radius: 3px;
+    background: #1976d2;
+    color: #fff;
+    transition: 0.3s all ease;
+    -webkit-transition: 0.3s all ease;
+    -moz-transition: 0.3s all ease;
+    -ms-transition: 0.3s all ease;
+    -o-transition: 0.3s all ease;
+}
+
+.button-container button:hover {
+    background: #2780da;
+}
+
+
+.size-text-area{
+    width: 92%;
+    margin-left: 30px !important;
+    border:1px rgb(235, 112, 41) solid;
+    outline: none;
+}
+
+
+/* ->Body */
+
+/* Imágenes */
+
+.images-cards figure {
+    position: relative;
+}
+
+.images-cards img {
+    height: 140px;
+}
+
+.images-cards figure figcaption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    color: rgb(252, 249, 249);
+    font-size: 44px;
+    cursor: pointer;
+    opacity: 0;
+    transition: 0.3s all ease;
+    -webkit-transition: 0.3s all ease;
+    -moz-transition: 0.3s all ease;
+    -ms-transition: 0.3s all ease;
+    -o-transition: 0.3s all ease;
+}
+
+.images-cards figure figcaption:hover {
+    opacity: 1;
+    background: rgba(202, 11, 11, 0.4);
+    color: rgb(255, 255, 255);
+}
+
+/* ->Imágenes */
+
+/* Selector de imágenes */
+
+.add-new-photo {
+    border: 4px dashed #132c45;
+    width: 150px;
+    height: 140px;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: #132c45;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s all ease;
+    -webkit-transition: 0.3s all ease;
+    -moz-transition: 0.3s all ease;
+    -ms-transition: 0.3s all ease;
+    -o-transition: 0.3s all ease;
+}
+
+.size-text-add-photo{
+    font-size: 10px;
+}
+
+#Images .add-new-photo.first:hover{
+    background: rgba(31, 26, 26, 0.17);
+  
+}
+
+#add-photo-container input {
+    display: none;
+}
+
+/* ->Selector de imágenes */
+
+/*Modal que manda alertas del visualizador de varias imagenes*/
+/* Modal */
+
+
+  
+  .modal .modal-main {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: fixed;
+    top: -100%;
+    left: 0;
+    padding: 0 5px;
+    transition: 0.3s all ease;
+  }
+  
+  .modal.show .modal-main {
+    top: 0;
+  }
+  
+  .modal .modal-main .row {
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-top: 50px !important;
+  }
+  
+  .modal .modal-main .row > div {
+    align-self: stretch !important;
+  }
+  
+  .modal .modal-main .modal-card {
+    padding: 15px;
+    display: none;
+    background: #fff;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,.08), 0 2px 4px 0 rgba(0,0,0,.12);
+    margin: 50px;
+  }
+  
+  /* Loader */
+  
+
+  @keyframes loading {
+  
+    0% {
+      transform: rotateZ(0);
+    }
+  
+    100% {
+      transform: rotateZ(360deg);
+    }
+  
+  }
+  
+  /* ->Loader */
+  
+  /* ->Modal */
+
+  /*Estilos para los input*/
+
+  .w-titulo{
+    width: 26em;
+    
+  }
+
+  .w-n-completo,.w-correo{
+    width: 17em;
+   
+  }
+
+
+  /*Estilos para los indicadores*/
+
+  .indicator-vistas{
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: #183fcbe6;
+    border: 3px #fff solid;
+    top: 92px !important;
+ }
+ .indicator-visitas{
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: #3e98ffde;
+    border: 3px #fff solid;
+    top: 92px !important;
+ }
+
+ .size-number-indicator{
+    font-size: 25px;
+ }
+ /*estilos para la clase de tipo de operacion*/
+
+
+
+
+ /*Estilos de los input*/
+ input[type="text"]{
+    
+    border: none ;
+    outline: none;
+    background-color: transparent;
+    border-bottom: 1px rgb(235, 112, 41) solid !important;
+    font-size: 13px;
+}
+
+/*Fin de los estilos de los input*/
+
+/*Estilos para la parte de superficie*/
+
+.label-orange{
+    background-color:#ff7f40;
+    color:#fff;
+    width:120px;
+    border-radius:5px 5px 0px 0px;
+} 
+
+.label-blue-2{
+    background-color:#132c45;
+    color:#fff;
+    width: 200px;
+    border-radius:5px 5px 0px 0px;
+} 
+
+.label-orange-3{
+    background-color:#ff7f40;
+    color:#fff;
+    width: 230px;
+    border-radius:5px 5px 0px 0px;
+} 
+
+.color_orange {
+    color: #ff7f40;
+}
+
+/*Clases para los botones de los modales*/
+
+.btn-modals {
+    color: #fff;
+    background-color: #132c45;
+    border-color: #132c45;
+  }
+  .btn-modals:hover {
+    color: #fff;
+    background-color: #1c3f61;
+    border-color: #1c3f61;
+  }
+
+  /*estilos para los indicadores*/
+
+  .caja-a-b{
+    width: 220px;
+    height: 100px;
+    background: #fff;
+    border-radius: 5px;
+}
+/*estilos para los botones de las etapas*/
+.caja-etapas{
+    width: 100%;
+    height: 40px;
+    background: #fff;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.size-letter-cards-first{
+    font-size:60%;
+    font-weight: bold;
+}
+
+/*contenido de las etapas*/
+.tabcontent2 {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+    
+  }
+
+/*Clases para los estatus*/
+
+.color-estatus-publi{
+    background-color: #18CB2A;
+    color: #fff;
+    border-radius: 5px;
+    width: 90px;
+    height: 22px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    
+}
+
+.color-estatus-no-publi{
+    background-color: #ff1f27;
+    color: #fff;
+    border-radius: 5px;
+    width: 120px;
+    height: 22px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    
+}
+
+.color-estatus-en-proceso{
+    background-color: #ffda1f;
+    color: #fff;
+    border-radius: 5px;
+    width: 120px;
+    height: 22px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    
+}
+
+
+/*Fin de los estilos para la clase de estatus*/
+
+.color-tipo-oper-venta{
+    background-color: #ff7f40;
+    color: #fff;
+    border-radius: 5px;
+    width: 55px;
+    height: 22px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+/*background para los botones de editar y pdf*/
+
+.backgr-edit{
+    background-color: #ff7f40;
+    color: #fff;
+    text-decoration: none;
+    width: 30px;
+    height: 30px;
+    padding-top: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.backgr-pdf{
+    background-color: #ff7f40;
+    color: #fff;
+    text-decoration: none;
+    width: 30px;
+    padding-top: 5px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.backgr-cale{
+    background-color: #ff7f40;
+    color: #fff;
+    text-decoration: none;
+    width: 30px;
+    margin-top: 7px;
+    height: 30px;
+    border-radius: 5px;
+   
+}
+
+.backgr-cale:hover{
+    background-color: #ff7f40;
+    color: #fff;
+    text-decoration: none;
+    width: 30px;
+    margin-top: 7px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.size-text-cale{
+    font-size: 16px;
+    margin-left: -5px;
+    font-weight: bold;
+}
+
+/*Full calendar*/
+
+#top {
+    background: #eee;
+    border-bottom: 1px solid #ddd;
+    padding: 0 10px;
+    line-height: 40px;
+    font-size: 12px;
+  }
+  
+  #calendar {
+    max-width: auto;
+    height: 380px;
+    padding: 20px 10px;
+  }
+
+  /*Clases para los titulos del tipo de propiedad*/
+
+
+  .t-de-inmueble-casa{
+    background-color: #012845;
+    width:70px;
+    height:25px;
+    position:absolute;
+    right:-8px;
+    top: 0px;
+    border-radius: 5px 0px 0px 5px;
+    color: #fff;
+ }
+
+
+  
+  .t-de-inmueble-depto {
+    width: 100px;
+    height: 20px;
+    position: absolute;
+    color: #F5F5F5;
+    right:-8px;
+    background-color:#b72727;
+    margin-top: auto;
+    border-radius: 5px 0px 0px 5px;
+    
+  }
+  .t-de-inmueble-lote{
+    width: 100px;
+    height: 20px;
+   right: -8px;
+    background-color:rgb(140, 89, 255);
+    position: absolute;
+    color: #F5F5F5;
+    margin-top: auto;
+    border-radius: 5px 0px 0px 5px;
+  
+  }
+  .t-de-inmueble-terreno {
+    width: 100px;
+    height: 20px;
+    right: -8px;
+    position: absolute;
+    color: #F5F5F5;
+    background-color: rgba(0, 186, 124, 0.788);
+    margin-top: auto;
+    border-radius: 5px 0px 0px 5px;
+    
+  }
+  .t-de-inmueble-edifcio{
+    width: 100px;
+    height: 20px;
+    right: -8px;
+    background-color: sienna;
+    position: absolute;
+    color: #F5F5F5;
+    margin-top: auto;
+    border-radius: 5px 0px 0px 5px;
+    
+  }
+  
+  .t-de-inmueble-terreno {
+    width: 100px;
+    height: 20px;
+    text-align: center;
+    right: -8px;
+    position: absolute;
+    color: #F5F5F5;
+    margin-top: auto;
+    background-color: salmon;
+    border-radius: 5px 0px 0px 5px;
+   
+  }
+
+
+  .icon-warning{
+    position: absolute;
+    margin-left: 110px;
+    margin-top:-75px;
+    animation: salto 0.8s infinite;
+  }
+  .icon-style-warning{
+    text-decoration: none;
+    color: rgb(235, 70, 5);
+  }
+  
+  .icon-style-warning :hover{
+    text-decoration: none;
+    color:rgb(235, 70, 5);
+  }
+
+  
+  .size-icon-warning{
+    font-size: 15px;
+  }
+
+  /*Animación para el icono de warning*/
+
+@keyframes salto{
+    0%, 100% {top: 75px ;}
+    30% {top: 68px;}
+  }
+
+  /*Estilos para los select de la parte de notaria*/
+
+  .notaria-select{
+    font-size: 70%;
+    width: 190px;
+    border: none;
+    border-bottom: 1px solid #ff7f40;
+    background-color: transparent;
+  }
+
+  /*Clases para los botones de etapas*/
+
+.btn-etapa-nego {
+    background-color: #0C1446;
+    color: #fff;
+}
+
+.btn-etapa-contrato-promesa {
+    background-color: #2B7C85;
+    color: #fff;
+}
+
+.btn-etapa-transferencia {
+    background-color: #055C9D;
+    color: #fff;
+}
+
+.btn-etapa-entrega {
+    background-color: #523A28;
+    color: #fff;
+}
+
+.backgr-no-check{
+    border-radius:25px;
+    background-color:#ccc;
+    width:23px;
+    height:23px;
+}
+
+.backgr-check{
+    border-radius:25px;
+    background-color:#23d900;
+    padding:1px;
+    font-size:21px;
+    color:#fff;
+    display:flex;
+    
+
+}
+/*Clases para los circulos que van a lado de los botones*/
+
+.progress-circle{
+    border-radius:25px;
+    width:10px;
+    height:10px;
+    background-color:#132c45;
+}
+
+.progress-position-ab{
+    position:absolute;
+    top:15px;
+    right:-70px;
+}
+
+/*Full calendar*/
+
+#top {
+    background: #eee;
+    border-bottom: 1px solid #ddd;
+    padding: 0 10px;
+    line-height: 40px;
+    font-size: 12px;
+}
+
+#calendar {
+    max-width: auto;
+    height: 357px;
+    padding: 20px 10px;
+}
+
+/*Estilos para el modal*/
+.container-modal {
+    width: 80%;
+    height: 70%;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: -10px 20px 30px -20px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    visibility: visible;
+    transition: all 300ms;
+    z-index: 10;
+    display: none;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+.active {
+    display: block;
+    visibility: visible;
+    overflow: visible;
+}
+
+
+.header-modal {
+    height: 40px;
+    padding: 10px;
+    background: #ff7f40;
+    border-radius: 10px 10px 0px 0px;
+}
+
+    .header-modal label {
+        font-size: 20px;
+        position: absolute;
+        right: -20px;
+        top: -16px;
+        background: white;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+.body-modal {
+    padding: 40px;
+}
+
+/*Secciones*/
+.seccion-propietario{
+    width:100%;
+}

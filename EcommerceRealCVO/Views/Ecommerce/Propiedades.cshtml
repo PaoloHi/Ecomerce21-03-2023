@@ -1,0 +1,1229 @@
+﻿@model PropiedadesModel;
+
+
+@{
+    Layout = "_NavAndFooter";
+    ViewData["Title"] = "Rummet Propiedades";
+}
+
+<!--Aquí termina el titulo principal-->
+<!--Aqui comienza la barra de busqueda con los filtros-->
+<form asp-controller="Ecommerce" asp-action="FiltroPropiedades" method="POST">
+
+    <div class="mb-2  d-lg-inline-flex  mt-3 ms-3">
+        <div class="d-flex">
+
+            <div class="">
+                <input asp-for="Operacion"
+                       type="radio" value="1" name="Operacion" class="btn-check"
+                       id="comprar" autocomplete="off" checked>
+
+                <label class="btn btn-outline-light bg-white "
+                       for="comprar">Comprar</label>
+
+                <input asp-for="Operacion" type="radio" value="2" name="Operacion" class="btn-check"
+                       id="renta" autocomplete="off">
+                <label class="btn btn-outline-light ms-1  bg-white"
+                       for="renta">Rentar</label>
+
+            </div>
+
+
+            <input class="form-control size_search d-inline-flex h-100 ms-2 " asp-for="BUbicacion" type="search" placeholder="Buscar"
+                   aria-label="Search">
+
+
+        </div>
+
+        <div class=" d-flex justify-content-lg-between h-25 mt-auto">
+            @Html.DropDownListFor(model => model.TPropiedadP, new
+            SelectList(Model.TPropiedadL,"IDtipoP","Tipo"), "Tipo",new
+            {@class="form-select size-select d-inline-flex ms-2 me-2", @id="TipoPropiedadID"})
+
+
+            <!--esto era lo que habia en el filtrado por precio
+            <select class="form-select size-select d-inline-flex ms-1 me-2" aria-label="Default select example">
+                <option disabled selected>Precio</option>
+                <option value="1">1000 < 5000 </option>
+                <option value="1">10000 < 50000 </option>
+                <option value="3">100000 < 500000 </option>
+            </select>
+            -->
+            <!-- Button trigger modal -->
+            <button type="button" class="btn bg-white size-select form-select" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Precio
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Precio</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-floating d-inline-flex mt-2">
+                                <div class="form-check">
+                                    <input class="form-check-input " type="radio" value="1" name="SuperficieCheck" id="flexRadioDefault1" checked="">
+                                    <label class="form-check-label " for="flexRadioDefault1">
+                                        Pesos MXN
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input ms-1" type="radio" value="" name="SuperficieCheck" id="flexRadioDefault2">
+                                    <label class="form-check-label ms-1" for="flexRadioDefault2">
+                                        USD
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="d-inline-flex mt-1 mb-2">
+                                <input placeholder="Desde" />
+                                <input placeholder="Hasta" />
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn_orange-modal" data-bs-dismiss="modal">Limpiar</button>
+                            <button type="button" class="btn btn_orange-modal">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Button trigger modal -->
+            <button type="button" class="form-select size-select d-inline-flex ms-1 me-2" data-bs-toggle="modal" data-bs-target="#MasFiltros">
+                Más filtros
+            </button>
+            <!-- Modal -->
+            <div class="modal " id="MasFiltros" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5 fw-bolder" id="staticBackdropLabel">Más filtros</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="content">
+                                <label class="subTextModal" for="">Superficie</label>
+                                <div class="input-group">
+                                    <div class="form-floating d-inline-flex mt-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input " type="radio" asp-for="SuperficieCheck" value="1" name="SuperficieCheck" id="flexRadioDefault1" checked>
+                                            <label class="form-check-label " for="flexRadioDefault1">
+                                                Construcción
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input ms-1" type="radio" asp-for="SuperficieCheck" value="" name="SuperficieCheck" id="flexRadioDefault2">
+                                            <label class="form-check-label ms-1" for="flexRadioDefault2">
+                                                Terreno
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input group ">
+                                    <div class="d-lg-inline-flex">
+
+
+                                        <input type="text" asp-for="SDesde" id="superficie" class="form-control ms-2"
+                                               placeholder="Desde" />
+                                        <input type="text" asp-for="SHasta" id="superficie" class="form-control ms-2"
+                                               placeholder="Hasta" />
+                                        @Html.DropDownListFor(model => model.SuperficieUMedida, new
+                                        SelectList(Model.UMedidaL,"IDUm","UnidadMedida"),new
+                                        {@class="size-select rounded text-center", @id="UnidadSuperficie"})
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content mt-2">
+                                <label for="">Recamaras</label>
+                                <div class="input-group">
+                                    <div class="btn-group" role="group" aria-label="group-recamaras">
+                                        <input asp-for="Recamaras" type="radio" value="1" class="btn-check" name="Recamaras" id="btnradioRecamara1" autocomplete="off">
+                                        <label class="btn btn-outline-primary btnFiltros" for="btnradioRecamara1"> 1</label>
+
+                                        <input asp-for="Recamaras" type="radio" value="2" class="btn-check" name="Recamaras" id="btnradioRecamara2" autocomplete="off">
+                                        <label class="btn btn-outline-primary btnFiltros" for="btnradioRecamara2">2</label>
+
+                                        <input asp-for="Recamaras" type="radio" value="3" class="btn-check" name="Recamaras" id="btnradioRecamara3" autocomplete="off">
+                                        <label class="btn btn-outline-primary btnFiltros" for="btnradioRecamara3">3</label>
+
+                                        <input asp-for="Recamaras" type="radio" value="4" class="btn-check" name="Recamaras" id="btnradioRecamara4" autocomplete="off">
+                                        <label class="btn btn-outline-primary btnFiltros" for="btnradioRecamara4">4</label>
+
+                                        <input asp-for="Recamaras" type="radio" value="5" class="btn-check" name="Recamaras" id="btnradioRecamara5" autocomplete="off">
+                                        <label class="btn btn-outline-primary " for="btnradioRecamara5">5+</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content mt-2">
+                                <label for="">Estacionamientos</label>
+                                <div class="input-group">
+                                    <div class="btn-group" role="group" aria-label="group-estacionamiento">
+                                        <input asp-for="Estacionamientos" type="radio" value="1" class="btn-check" name="Estacionamientos" id="btnradio6" autocomplete="off">
+                                        <label class="btn btn-outline-primary btnFiltros" for="btnradio6"> 1</label>
+
+                                        <input asp-for="Estacionamientos" type="radio" value="2" class="btn-check" name="Estacionamientos" id="btnradio7" autocomplete="off">
+                                        <label class="btn btn-outline-primary btnFiltros" for="btnradio7">2</label>
+
+                                        <input asp-for="Estacionamientos" type="radio" value="3" class="btn-check" name="Estacionamientos" id="btnradio8" autocomplete="off">
+                                        <label class="btn btn-outline-primary btnFiltros" for="btnradio8">3</label>
+
+                                        <input asp-for="Estacionamientos" type="radio" value="4" class="btn-check" name="Estacionamientos" id="btnradio9" autocomplete="off">
+                                        <label class="btn btn-outline-primary btnFiltros" for="btnradio9">4</label>
+
+                                        <input asp-for="Estacionamientos" type="radio" value="5" class="btn-check" name="Estacionamientos" id="btnradio10" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="btnradio10">5+</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-ba mt-2">
+                                <label for="">Baños</label>
+
+                                <div class=" ">
+                                    <div class="btn-group" role="group" aria-label="group-baños">
+                                        <input asp-for="Banos" type="radio" value="1" class="btn-check" name="Banos" id="btnradio11" autocomplete="off">
+                                        <label class="btn btn-outline-primary btnFiltros" for="btnradio11"> 1</label>
+
+                                        <input asp-for="Banos" type="radio" value="2" class="btn-check" name="Banos" id="btnradio12" autocomplete="off">
+                                        <label class="btn btn-outline-primary btnFiltros" for="btnradio12">2</label>
+
+                                        <input asp-for="Banos" type="radio" value="3" class="btn-check" name="Banos" id="btnradio13" autocomplete="off">
+                                        <label class="btn btn-outline-primary btnFiltros" for="btnradio13">3</label>
+
+                                        <input asp-for="Banos" type="radio" value="4" class="btn-check" name="Banos" id="btnradio14" autocomplete="off">
+                                        <label class="btn btn-outline-primary btnFiltros" for="btnradio14">4</label>
+
+                                        <input asp-for="Banos" type="radio" value="5" class="btn-check" name="Banos" id="btnradio15" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="btnradio15">5+</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="content mt-2">
+                                <label for="">Medios baños</label>
+                                <div class="input-group">
+                                    <div class="btn-group" role="group" aria-label="group-medios-baños">
+                                        <input asp-for="MBanos" type="radio" value="1" class="btn-check" name="MBanos" id="btnradio16" autocomplete="off">
+                                        <label class="btn btn-outline-primary btnFiltros" for="btnradio16">1</label>
+
+                                        <input asp-for="MBanos" type="radio" value="2" class="btn-check" name="MBanos" id="btnradio17" autocomplete="off">
+                                        <label class="btn btn-outline-primary btnFiltros" for="btnradio17">2</label>
+
+                                        <input asp-for="MBanos" type="radio" value="3" class="btn-check" name="MBanos" id="btnradio18" autocomplete="off">
+                                        <label class="btn btn-outline-primary btnFiltros" for="btnradio18">3</label>
+
+                                        <input asp-for="MBanos" type="radio" value="4" class="btn-check" name="MBanos" id="btnradio19" autocomplete="off">
+                                        <label class="btn btn-outline-primary btnFiltros" for="btnradio19">4</label>
+
+                                        <input asp-for="MBanos" type="radio" value="5" class="btn-check" name="MBanos" id="btnradio20" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="btnradio20">5+</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--accordion del modal de nueva propiedad -->
+                            <h6 class="masFiltros">Características</h6>
+                            <div class="content mt-2 ">
+                                <label for=""></label>
+                                <div class="">
+                                    <div class="form-floating mt-3">
+
+                                        <!--start from here  -->
+                                        <!--item 1 accorion-->
+                                        <div id="accordion" class="accordion">
+
+                                            <div class="accordion-item" id="panelsStayOpen-headingOne">
+
+                                                <div class="card-header collapsed collapsible2" data-toggle="collapse"
+                                                     data-patent="#accordion" href="#collapseOne">
+                                                    <a class="card-title">
+                                                        Generales
+                                                    </a>
+                                                </div>
+
+                                                <div class="card-block collapse text-aling-left fs-8" id="collapseOne">
+                                                    <div class="accordion-body ">
+                                                        <div class="container">
+
+                                                            <div class="row row-cols-2">
+                                                                @for (int i = 0; i < Model.CaracteristicasGL.Count; i++)
+                                                                {
+                                                                    <div class="card-deck">
+                                                                        @Html.CheckBoxFor(model => model.CaracteristicasGL[i].isSelected, new {@class = "size-adicionales", @id=@Model.CaracteristicasGL[i].IDCaracteristica})
+                                                                        @Html.HiddenFor(model => model.CaracteristicasGL[i].IDCaracteristica)
+                                                                        <label for="" class="ms-1 color_letter2">@Html.DisplayFor(model => model.CaracteristicasGL[i].Caracteristica)</label>
+
+                                                                    </div>
+                                                                }
+
+                                                            </div>
+
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <!--item 2 accordion-->
+                                        <div id="accordion" class="accordion">
+
+                                            <div class="card-header collapsed collapsible2" data-toggle="collapse" data-patent="#accordion" href="#collapseTwo">
+                                                <a class="card-title">
+                                                    Servicios
+                                                </a>
+                                            </div>
+
+                                            <div class="card-block collapse" id="collapseTwo">
+                                                <div class="accordion-body ">
+                                                    <div class="">
+
+                                                        <div class="row row-cols-2">
+                                                            @for (int i = 0; i < Model.CaracteristicasSL.Count; i++)
+                                                            {
+                                                                <div class="card-deck">
+                                                                    @Html.CheckBoxFor(model => model.CaracteristicasSL[i].isSelected, new {@class = "size-adicionales", @id=@Model.CaracteristicasSL[i].IDCaracteristica})
+
+                                                                    @Html.HiddenFor(model => model.CaracteristicasSL[i].IDCaracteristica)
+
+                                                                    <label for="" class="ms-1 color_letter2">@Html.DisplayFor(model => model.CaracteristicasSL[i].Caracteristica)</label>
+
+                                                                </div>
+                                                            }
+
+
+                                                        </div>
+                                                        <div clas="col">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <!--item 3 accordion-->
+                                        <div id="accordion" class="accordion">
+
+                                            <div class="card-header collapsed collapsible2 " data-toggle="collapse" data-patent="#accordion" href="#collapseThree">
+                                                <a class="card-title">
+                                                    Exteriores
+                                                </a>
+                                            </div>
+
+                                            <div class="card-block collapse fSizeDireciones" id="collapseThree">
+                                                <div class="accordion-body d-flex">
+                                                    <div class="row row-cols-2">
+                                                        @for (int i = 0; i < Model.CaracteristicasEL.Count; i++)
+                                                        {
+                                                            <div class="card-deck">
+                                                                @Html.CheckBoxFor(model => model.CaracteristicasEL[i].isSelected, new {@class = "size-adicionales", @id=@Model.CaracteristicasEL[i].IDCaracteristica})
+
+                                                                @Html.HiddenFor(model => model.CaracteristicasEL[i].IDCaracteristica)
+
+                                                                <label for="" class="ms-1 color_letter2">@Html.DisplayFor(model => model.CaracteristicasEL[i].Caracteristica)</label>
+
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <!--item 4 accordion-->
+                                        <div id="accordion" class="accordion">
+
+                                            <div class="card-header collapsed collapsible2" data-toggle="collapse" data-patent="#accordion" href="#collapseFour">
+                                                <a class="card-title">
+                                                    Ambientes
+                                                </a>
+                                            </div>
+
+                                            <div class="card-block collapse" id="collapseFour">
+                                                <div class="accordion-body">
+                                                    <div class="row row-cols-2">
+                                                        @for (int i = 0; i < Model.CaracteristicasAL.Count; i++)
+                                                        {
+                                                            <div class="card-deck">
+                                                                @Html.CheckBoxFor(model => model.CaracteristicasAL[i].isSelected, new {@class = "size-adicionales", @id=@Model.CaracteristicasAL[i].IDCaracteristica})
+
+                                                                @Html.HiddenFor(model => model.CaracteristicasAL[i].IDCaracteristica)
+
+                                                                <label for="" class="ms-1 color_letter2">@Html.DisplayFor(model => model.CaracteristicasAL[i].Caracteristica)</label>
+
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                    <div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <!--item 5 accordion-->
+                                        <div id="accordion" class="accordion">
+
+                                            <div class="card-header collapsed collapsible2" data-toggle="collapse" data-patent="#accordion" href="#collapseFive">
+                                                <a class="card-title">
+                                                    Adicionales
+                                                </a>
+                                            </div>
+
+                                            <div class="card-block collapse" id="collapseFive">
+                                                <div class="accordion-body d-flex">
+                                                    <div>
+                                                        <label for="">Bodega (s)</label>
+                                                        <div class="input-group">
+                                                            <div class="btn-group" role="group" aria-label="group-bodegas">
+                                                                <input asp-for="Bodegas" type="radio" value="1" class="btn-check" name="Bodegas" id="btnradio21" autocomplete="off">
+                                                                <label class="btn btn-outline-primary btnFiltros" for="btnradio21"> 1</label>
+
+                                                                <input asp-for="Bodegas" type="radio" value="2" class="btn-check" name="Bodegas" id="btnradio22" autocomplete="off">
+                                                                <label class="btn btn-outline-primary btnFiltros" for="btnradio22">2</label>
+
+                                                                <input asp-for="Bodegas" type="radio" value="3" class="btn-check" name="Bodegas" id="btnradio23" autocomplete="off">
+                                                                <label class="btn btn-outline-primary btnFiltros" for="btnradio23">3</label>
+
+                                                                <input asp-for="Bodegas" type="radio" value="4" class="btn-check" name="Bodegas" id="btnradio24" autocomplete="off">
+                                                                <label class="btn btn-outline-primary btnFiltros" for="btnradio24">4</label>
+
+                                                                <input asp-for="Bodegas" type="radio" value="5" class="btn-check" name="Bodegas" id="btnradio25" autocomplete="off">
+                                                                <label class="btn btn-outline-primary" for="btnradio25">5+</label>
+                                                            </div>
+                                                        </div>
+                                                        <label for="" class="">Closet</label>
+                                                        <div class="input-group">
+                                                            <div class="btn-group" role="group" aria-label="group-closet">
+                                                                <input asp-for="Closets" type="radio" value="1" class="btn-check" name="btnradioCloset" id="btnradio26" autocomplete="off">
+                                                                <label class="btn btn-outline-primary btnFiltros" for="btnradio26"> 1</label>
+
+                                                                <input asp-for="Closets" type="radio" value="2" class="btn-check" name="btnradioCloset" id="btnradio27" autocomplete="off">
+                                                                <label class="btn btn-outline-primary btnFiltros" for="btnradio27">2</label>
+
+                                                                <input asp-for="Closets" type="radio" value="3" class="btn-check" name="btnradioCloset" id="btnradio28" autocomplete="off">
+                                                                <label class="btn btn-outline-primary btnFiltros" for="btnradio28">3</label>
+
+                                                                <input asp-for="Closets" type="radio" value="4" class="btn-check" name="btnradioCloset" id="btnradio29" autocomplete="off">
+                                                                <label class="btn btn-outline-primary btnFiltros" for="btnradio29">4</label>
+
+                                                                <input asp-for="Closets" type="radio" value="5" class="btn-check" name="btnradioCloset" id="btnradio30" autocomplete="off">
+                                                                <label class="btn btn-outline-primary" for="btnradio30">5+</label>
+                                                            </div>
+                                                        </div>
+                                                        <label for="" class="">Elevadores</label>
+                                                        <div class="input-group">
+                                                            <div class="btn-group" role="group" aria-label="group-elevadores">
+                                                                <input asp-for="Elevadores" type="radio" value="1" class="btn-check" name="btnradioElevadores" id="btnradio31" autocomplete="off">
+                                                                <label class="btn btn-outline-primary btnFiltros" for="btnradio31"> 1</label>
+
+                                                                <input asp-for="Elevadores" type="radio" value="2" class="btn-check" name="btnradioElevadores" id="btnradio32" autocomplete="off">
+                                                                <label class="btn btn-outline-primary btnFiltros" for="btnradio32">2</label>
+
+                                                                <input asp-for="Elevadores" type="radio" value="3" class="btn-check" name="btnradioElevadores" id="btnradio33" autocomplete="off">
+                                                                <label class="btn btn-outline-primary btnFiltros" for="btnradio33">3</label>
+
+                                                                <input asp-for="Elevadores" type="radio" value="4" class="btn-check" name="btnradioElevadores" id="btnradio34" autocomplete="off">
+                                                                <label class="btn btn-outline-primary btnFiltros" for="btnradio34">4</label>
+
+                                                                <input asp-for="Elevadores" type="radio" value="5" class="btn-check" name="btnradioElevadores" id="btnradio35" autocomplete="off">
+                                                                <label class="btn btn-outline-primary" for="btnradio35">5+</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                        <!--end here-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2 modal-footer d-flex ">
+                                <button type="button" class="btn btn_orange-modal btn-newpropiedad">Limpiar filtros</button>
+
+                                <button type="button" class="btn btn_orange-modal btn-newpropiedad">Guardar filtros</button>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <button class="btn btn-backgr-orange h-25 mt-auto">Buscar</button>
+    </div>
+
+</form>
+<!--Aqui termina la barra principal-->
+<!--Contenido principal-->
+<main>
+    <div class="container-fluid">
+
+        <!--form start-->
+        <form action="">
+
+            <div class="row">
+
+                <!--Columna 1 en esta van todas las propiedades-->
+                <div class="col">
+                    <div class="scroll-container position-relative">
+                        <!--grid columns properties-->
+                        <div class="row row-cols-2 ">
+
+                            @*  @foreach (var propiedadesImg in Model.LImagenBase64)
+                            {
+                            <label>@propiedadesImg.RutaImagen </label>
+                            }*@
+
+                            @{
+                                var countA = 0;
+                                var idCarusel = "";
+                                var count = 0;
+                                var activa = "";
+                                foreach (var planes in Model.PropiedadesGL)
+                                {
+                                    countA = countA + 1;
+                                    idCarusel = "carouselExampleFade" + countA;
+                                    count = 0;
+
+                                            <!--Aquí empieza la primer tarjeta-->
+                                            <div class="caja-a-mp mb-3 mt-3  ms-lg-4 ms-md-4 ms-3">
+
+
+                                                <!--contenido de la tarjeta-->
+                                                <div class="card-main col-12  d-flex  ms-1">
+
+                                                    <!--carrusel/iconos/botones-->
+                                                    <div class="col-6 mt-4 ms-1">
+
+                                                        <!--carrusel images/ funtionaliti-->
+                                                        <div id="@idCarusel" class="carousel slide carousel-fade"
+                                                         data-bs-ride="carousel">
+                                                            <div class="carousel-inner">
+
+                                                                @foreach (var propiedadesImg in Model.LImagenBase64)
+                                                        {
+                                                            count = count + 1;
+
+                                                            if (count == 1)
+                                                            {
+                                                                activa = "carousel-item active";
+                                                            }
+                                                            else
+                                                            {
+
+                                                                activa = "carousel-item";
+                                                            }
+
+                                                            if (propiedadesImg.IDpropiedadBase64 == planes.IDPropiedad)
+                                                            {
+
+
+                                                                        <div class=" image-contain  adaptar-car @activa" style="background-image:url(@propiedadesImg.txtBase64);"></div>
+
+
+                                                            }
+                                                            if (propiedadesImg.IDpropiedadBase64 != planes.IDPropiedad)
+                                                            {
+                                                                count = 0;
+                                                            }
+
+                                                        }
+
+
+                                                            </div>
+                                                            <button class="carousel-control-prev" type="button"
+                                                                data-bs-target="#@idCarusel" data-bs-slide="prev">
+                                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                                <span class="visually-hidden">Previous</span>
+                                                            </button>
+
+                                                            <button class="carousel-control-next" type="button"
+                                                                data-bs-target="#@idCarusel" data-bs-slide="next">
+                                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                                <span class="visually-hidden">Next</span>
+                                                            </button>
+                                                        </div>
+
+
+                                                        <!--iconos-->
+
+                                                        <div class="d-flex justify-content-center mt-1 size-mp-name-main-house ">
+                                                            @foreach (var propiedadesCaract in Model.LCaracteristicas)
+                                                    {
+                                                        if (planes.IDPropiedad == propiedadesCaract.IDPropiedad)
+                                                        {
+
+                                                            if (propiedadesCaract.Caracteristica == "Baños")
+                                                            {
+
+                                                                        <div class="side-2-header d-inline-flex me-2">
+                                                                            <i class="fa-solid fa-toilet me-1 mt-1 text-orange size-mp-icons"></i>
+                                                                            <h6 for="" class=" me-1 size-mp-name-icons">@propiedadesCaract.NoElementos</h6>
+                                                                        </div>
+                                                            }
+
+                                                            if (propiedadesCaract.Caracteristica == "Estacionamientos")
+                                                            {
+                                                                        <div class="side-2-header d-inline-flex me-1">
+                                                                            <i class="fa-solid fa-car-side ms-1 mt-1 me-1 text-orange size-mp-icons"></i>
+                                                                            <h6 for="" class="ms-1 me-1 size-mp-name-icons">@propiedadesCaract.NoElementos</h6>
+                                                                        </div>
+                                                            }
+
+                                                            if (propiedadesCaract.Caracteristica == "Recamaras")
+                                                            {
+                                                                        <div class="side-2-header d-inline-flex">
+                                                                            <i class="fa-solid fa-bed ms-1 mt-1 me-1 text-orange size-mp-icons"></i>
+
+                                                                            <h6 for="" class="ms-1 me-1 size-mp-name-icons">@propiedadesCaract.NoElementos</h6>
+                                                                        </div>
+                                                            }
+                                                        }
+                                                    }
+
+                                                        </div>
+                                                        <!--fin iconos-->
+                                                        @{
+                                                    var Propiedad = @planes.IDPropiedadG;
+                                                        }
+
+                                                        <!--////////////////////////all modal stuff/////////////////////////////////////////////////////-->
+                                                        <div class=" d-flex  justify-content-center  size-mp-icons">
+                                                            <!--modal button-->
+                                                            <button type="button" onclick="validatePropiedad('@Propiedad')" class="btn btn_orange-mp me-1 mt-2 "
+                                                                data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
+                                                                <i class="fa-solid fa-calendar size-icons-footer-2"></i>
+                                                                <h6 class="mt-2 size-mp-text mx-auto ms-1">Agendar visita</h6>
+                                                            </button>
+
+
+
+
+                                                            <!--SUB MODALS-->
+                                                            <!-- Modal para aviso de privacidad-->
+                                                            <div class="modal " id="exampleModalToggle3" aria-hidden="true"
+                                                             aria-labelledby="exampleModalToggleLabel3" tabindex="-1">
+
+                                                                <div class="modal-dialog modal-dialog-centered">
+
+                                                                    <div class="modal-content">
+
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="exampleModalToggleLabel3">Aviso de privacidad</h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+
+                                                                        <div class="modal-body" style="font-size:15px;">
+                                                                            <p style="text-align:justify; padding:0 15px;">
+                                                                                El presente contrato describe los términos y condiciones aplicables al uso del contenido, productos y/o servicios del sitio web Rummet. Para hacer uso del contenido, productos y/o servicios del sitio web el usuario deberá sujetarse a los presentes términos y condiciones.
+
+                                                                                I. OBJETO.
+
+                                                                                El titular se reserva el derecho de realizar cualquier tipo de modificación en el sitio web en cualquier momento y sin previo aviso, el usuario acepta dichas modificaciones.
+
+                                                                                El acceso al sitio web por parte del usuario es libre y gratuito, la utilización del contenido, productos y/o servicios implica un costo de suscripción para el usuario.
+
+                                                                                El sitio web solo admite el acceso a personas mayores de edad y no se hace responsable por el incumplimiento de esto.
+
+                                                                                El sitio web está dirigido a usuarios residentes en México y cumple con la legislación establecida en dicho país, si el usuario reside en otro país y decide acceder al sitio web lo hará bajo su responsabilidad.
+                                                                            </p>
+                                                                        </div>
+
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-primary modal-backgr-orange"
+                                                                                data-bs-target="#exampleModalToggle" data-bs-toggle="modal">
+                                                                                Entendido
+                                                                            </button>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Modal para Terminos y condiciones-->
+                                                            <div class="modal fade" id="exampleModalToggle2" aria-hidden="true"
+                                                             aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="exampleModalToggleLabel2">Términos y condiciones</h5>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body" style="font-size:15px;">
+                                                                            <p style="text-align:justify; padding:0 15px;">
+                                                                                El 5 de Julio del 2010, se publica en el Diario oficial de la federación (DOF) la Ley Federal de Protección de Datos Personales en posesión de los particulares (LFPDPPP). Esta Ley regula a los particulares, sean personas físicas o morales de carácter privado, que lleven acabo el tratamiento de “Datos Personales” con fines comerciales o de divulgación, a efecto de que generen un “Aviso de Privacidad” que tutele la garantía constitucional de Privacidad, que fuera consignada por reforma al artículo 16 de nuestra Carta Magna publicada en el DOF el 1 de junio de 2009, y la consiguiente reforma al artículo 73 Constitucional en materia de datos personales, publicada en el DOF el 30 de abril de 2009, que faculta a la Federación para legislar en materia de datos personales en posesión de los particulares.
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-primary modal-backgr-orange"
+                                                                                data-bs-target="#exampleModalToggle" data-bs-toggle="modal">
+                                                                                Entendido
+                                                                            </button>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <!--////////////////////////all modal stuff/////////////////////////////////////////////////////-->
+                                                    @{
+                                                var classAbrev = "";
+                                                switch (@planes.Abrev)
+                                                {
+                                                    case "Depto":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Bodega":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Casa":
+                                                        classAbrev = "title-cards-mp-casa";
+                                                        break;
+                                                    case "Edif":
+                                                        classAbrev = "title-cards-mp-edificio";
+                                                        break;
+                                                    case "Huerta":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Local":
+                                                        classAbrev = "title-cards-mp-local";
+                                                        break;
+                                                    case "Nave":
+                                                        classAbrev = "title-cards-mp-nave";
+                                                        break;
+                                                    case "Ofic":
+                                                        classAbrev = "title-cards-mp-oficina";
+                                                        break;
+                                                    case "Quinta":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Rancho":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Terreno":
+                                                        classAbrev = "title-cards-mp-terreno";
+                                                        break;
+                                                    case "Villa":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Hosp.":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Esc.":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    default:
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                }
+                                                    }
+
+                                                    <!-- INORMACIÓN DE LA TARJETA DE PROPIEDADES -->
+                                                    <div class="col-5 text-cards ms-2 mt-2 position-relative">
+                                                        <div class="d-inline-flex justify-content-between @classAbrev">
+                                                            <h6 class=" size-mp-cards mt-1 ms-1"> @planes.Abrev </h6>
+
+                                                            <h6 class=" size-mp-cards me-1">
+                                                                <i class="fa-solid fa-maximize size-mp-cards mt-1 "></i> @planes.Superficie @planes.UM
+                                                            </h6>
+
+                                                        </div>
+                                                        <div class="mt-4 position-relative">
+                                                            <h6 class="fw-bold ms-2 text-orange ">
+                                                                @{
+                                                            double precio = Convert.ToDouble(@planes.Precio);
+                                                            var precioTotal = precio.ToString("N0", new System.Globalization.CultureInfo("en-US"));
+                                                                }
+                                                                @precioTotal @planes.ISO
+                                                            </h6>
+
+                                                            <h6 class="size-mp-name-main-house fw-bold ms-2 ">
+                                                                @planes.Titulo
+                                                            </h6>
+                                                            <h6 class="size-mp-name-house ms-2 mb-1">@planes.Direccion</h6>
+
+                                                        </div>
+
+                                                        <div class="d-flex pos-vermas ms-2 ">
+                                                            <button type="button" class="btn btn_white-mp mt-2 ">
+                                                                <a class="color-letter-links-vermas btn_white-mpA" asp-action="PropiedadesVerMas" asp-controller="Ecommerce" asp-route-Propiedad="@planes.IDPropiedadG">
+                                                                    <h6 class="my-auto  size-mp-text ">Ver más</h6>
+                                                                </a>
+                                                            </button>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="d-flex">
+                                                        <div class="modalTelefono" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Solicita más información">
+                                                            <!-- Button trigger modal -->
+
+
+                                                            <a class="btn-llamar" onclick="validatePropiedad('@Propiedad')" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                                <i class="fa-solid fa-circle-info"></i>
+                                                            </a>
+
+
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <!--modal para whatsapp-->
+                                                    <!--HASTA AQUI WHATASPA-->
+                                                    <!-- FIN DE LA INORMACIÓN DE LA TARJETA DE PROPIEDADES -->
+                                                </div>
+
+                                            </div>
+                                }
+                            }
+                            <!--Aqui termina la tarjeta-->
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <!--Columna 2 en esta columna va la api que en este caso esta el mapa-->
+                <div class="col mt-2 mb-lg-4">
+
+
+                    <div id="mapa" style="border:0; width: 100%; height: 100%;" class="shadow " allowfullscreen="" loading="lazy"></div>
+                    <!--  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6708.439719370215!2d-99.22262364927585!3d19.42666679779989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d201888824e2fd%3A0x77f099c8b8691e64!2sOfficeMax%20-%20Palmas!5e0!3m2!1ses-419!2smx!4v1662752586236!5m2!1ses-419!2smx"
+                              style="border:0; width: 100%; height: 100%;" class="shadow " allowfullscreen="" loading="lazy"
+                              referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="exampleModal" tabindex="-1"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <!-- <form asp-controller="Ecommerce" asp-action="MasInformacion" method="POST"> -->
+                <form id="masInformacion">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+                            Para solicitar más información
+                        </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="d-flex">
+                            <h6 class="d-flex ">Registra tus datos.....o comunícate via whatsapp 👉</h6>
+                            <div class=" d-flex whatsappIcon whatsappIcon btn">
+
+                                <a target="_blank" href="https://api.whatsapp.com/" class="style-whatsapp ">
+                                    <i class="fa-brands fa-whatsapp fa-2x  ms-1 mt-2 whatsappIconI"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="mb-3">
+                                <label for="" class="form-label text-black d-flex justify-content-start letter_size fw-normal">
+                                    <h6 class="letter_size ">
+                                        Nombre(s)
+                                    </h6>
+                                </label>
+                                <input type="text" asp-for="NombreMI" class="form-control" id="">
+                            </div>
+                            <div class="mb-2 d-inline-flex">
+                                <div class=" d-inline me-3">
+                                    <label for="" class="form-label text-black d-flex justify-content-start">
+                                        <h6 class="letter_size">
+                                            Apellido
+                                            paterno
+                                        </h6>
+                                    </label>
+                                    <input type="text" asp-for="ApellidoPMI" class="form-control size_input" id="" required="">
+                                </div>
+                                <div class=" d-inline">
+                                    <label for="" class="form-label text-black d-flex justify-content-start">
+                                        <h6 class="letter_size ">
+                                            Apellido
+                                            materno
+                                        </h6>
+                                    </label>
+                                    <input type="text" asp-for="ApellidoMMI" class="form-control size_input" id="" required="">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label text-black d-flex justify-content-start"><h6 class="letter_size fw-normal">Número telefónico</h6></label>
+                                <input type="tel" asp-for="NumeroTMI" class="form-control" id="" min="0" required="">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label text-black d-flex justify-content-start"><h6 class="letter_size fw-normal">Correo electrónico</h6></label>
+                                <input type="email" asp-for="CorreoMI" required="" class="form-control" id="">
+                            </div>
+                            <input type="hidden" asp-for="IDPropiedad" id="PropiedadID" value="">
+                           
+
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                     <button type="submit" class="btn btn_s btnEnviarContacto">
+                                Enviar
+                            </button>
+                        <button type="button" class="btn btn_s btnEnviarContacto"
+                                data-bs-dismiss="modal">
+                            Cerrar
+                        </button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+         aria-labelledby="#exampleModalToggleLabel" tabindex="-1">
+
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!-- <form asp-controller="Ecommerce" asp-action="AgendarVisita" method="POST"> -->
+                <form id="agendarVisita">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold" id="exampleModalToggleLabel">
+                            Agendar visita
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for=""
+                                   class="form-label text-black d-flex justify-content-start modal-subtitle">
+                                Por favor registra tus datos para agendar una visita
+                            </label>
+                            <label for=""
+                                   class="form-label text-black d-flex justify-content-start">
+                                <h6 class="letter_size ">
+                                    Nombre(s)
+                                </h6>
+                            </label>
+                            <input type="text" asp-for="NombreMI" class="form-control" id="">
+                        </div>
+                        <div class="mb-2 d-inline-flex">
+                            <div class=" d-inline me-3">
+                                <label for=""
+                                       class="form-label text-black d-flex justify-content-start">
+                                    <h6 class="letter_size">
+                                        Apellido
+                                        paterno
+                                    </h6>
+                                </label>
+                                <input type="text"
+                                       class="form-control size_input" asp-for="ApellidoPMI"
+                                       required>
+                            </div>
+                            <div class=" d-inline">
+                                <label for=""
+                                       class="form-label text-black d-flex justify-content-start">
+                                    <h6 class="letter_size ">
+                                        Apellido
+                                        materno
+                                    </h6>
+                                </label>
+                                <input type="text"
+                                       class="form-control size_input" asp-for="ApellidoMMI"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for=""
+                                   class="form-label text-black d-flex justify-content-start">
+                                <h6 class="letter_size ">
+                                    Número
+                                    telefónico
+                                </h6>
+                            </label>
+                            <input type="tel" class="form-control" asp-for="NumeroTMI"
+                                   min="0" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for=""
+                                   class="form-label text-black d-flex justify-content-start">
+                                <h6 class="letter_size ">
+                                    Correo
+                                    electrónico
+                                </h6>
+                            </label>
+                            <input type="email" required
+                                   class="form-control" asp-for="CorreoMI">
+                        </div>
+                        <div class="mb-3 calendar">
+                            <label for=""
+                                   class="form-label text-black ">
+                                <h6 class="letter_size">
+                                    Agendar visita
+                                </h6>
+                            </label>
+                            <input type="datetime-local" asp-for="FechaMI"
+                                   class="form-control">
+                        </div>
+
+                        <input type="hidden" asp-for="IDPropiedad" id="PropiedadID2" value="">
+
+
+                    </div>
+                    <div class="d-inline-flex justify-content-start ms-3 ">
+                        <input type="checkbox" id="checkaviso2" class="size-color-checkbox-modal" required>
+                        <button class="size-text-footer btn fs-6" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal">Aviso de privacidad</button>
+                        <br />
+                        <input type="checkbox" id="checkterminos2" class="size-color-checkbox-modal" required>
+                        <button class="btn size-text-footer fs-6" data-bs-toggle="modal"
+                                data-bs-target="#exampleModalToggle2">
+                            Términos y condiciones
+                        </button>
+
+
+                    </div>
+
+                    <div class="modal-footer d-flex justify-content-start">
+                     <button type="submit" class="btn btn_s btnEnviarContacto">
+                            Enviar
+                        </button>
+                        <button type="button"
+                                class="btn btn_orange-mp-modal" data-bs-dismiss="modal">
+                            Cerrar
+                        </button>
+                       
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+
+
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALRWuVx6gxkmUDTEJNiigxwGBgcYBX00Y&libraries=places&callback=initMap"></script>
+
+    <script>
+        function validatePropiedad(Propiedad) {
+            console.log(Propiedad);
+            document.getElementById("PropiedadID").value = Propiedad;
+            document.getElementById("PropiedadID2").value = Propiedad;
+        }
+    </script>
+
+    <script>
+
+
+        function initMap() {
+            var map;
+            var bounds = new google.maps.LatLngBounds();
+            var mapOptions = {
+                mapTypeId: 'roadmap'
+            };
+
+            map = new google.maps.Map(document.getElementById("mapa"), mapOptions);
+            map.setTilt(50);
+
+            // Aqui se declaran la lista de elementos que se deben de mostrar, Son los puntos o cordenadas
+            var markers = [
+                // datos del array [ 'Nombre de la Propiedad', latitud, longitud ]
+        @{
+            string text = "";
+        }
+
+        @foreach (var ubicacion in Model.PropiedadesGL)
+        {
+
+            <text>
+                    [' @ubicacion.Titulo ', @ubicacion.Latitud , @ubicacion.Longitud],
+            </text>
+        }
+
+                                                                                                                                                                                                            ];
+
+            // Contenido a mostrar cuando se da click en el punto
+            var infoWindowContent = [
+
+        @foreach (var txtUbicacion in Model.PropiedadesGL)
+        {
+            <text>
+                    ['<div class="info_content">' +
+                        '<h3> @txtUbicacion.Titulo </h3>' +
+                        '<p> @txtUbicacion.Direccion </p>' +
+                        '</div>'
+                    ],
+            </text>
+        }
+                                                                                                                                                                                                            ];
+
+            var infoWindow = new google.maps.InfoWindow(), marker, i;
+
+            for (i = 0; i < markers.length; i++) {
+                var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+                bounds.extend(position);
+                marker = new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    title: markers[i][0]
+                });
+
+                // funcion para mostrar el contenido del punto (al dar click)
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                        infoWindow.setContent(infoWindowContent[i][0]);
+                        infoWindow.open(map, marker);
+                    }
+                })(marker, i));
+                map.fitBounds(bounds);
+            }
+
+            // funcion para mostrar el mapa
+            var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+                this.setZoom(10);
+                google.maps.event.removeListener(boundsListener);
+            });
+
+        }
+
+
+
+    </script>
+
+
+
+
+
+</main>
+
+
+<!--Aqui termina el contenido principal-->
+
+
+<script>
+    $('#masInformacion').submit(function(event) {
+        event.preventDefault(); // Detiene la recarga de la página
+        var modelo = {};
+        $.each($('#masInformacion').serializeArray(), function(i, campo) {
+            modelo[campo.name] = campo.value;
+        });
+        console.log("Estoy aquí");
+        console.log(modelo);
+        $.ajax({
+            url: '/Ecommerce/MasInformacion',
+            type: 'POST',
+            contentType: 'application/json',
+
+            //contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // when we use .serialize() this generates the data in query string format. this needs the default contentType (default content type is: contentType: 'application/x-www-form-urlencoded; charset=UTF-8') so it is optional, you can remove it
+            data: JSON.stringify(modelo),
+            success: function(result) {
+
+                Swal.fire(
+                    'Registro exitoso',
+                    'Se ha enviado su registro con éxito',
+                    'success'
+                );
+
+
+            },
+            error: function() {
+                alert('Failed to receive the Data');
+                console.log('Failed ');
+            }
+        });
+    });
+
+    $('#agendarVisita').submit(function(event) {
+        event.preventDefault(); // Detiene la recarga de la página
+        var modelo = {};
+        $.each($('#agendarVisita').serializeArray(), function(i, campo) {
+            modelo[campo.name] = campo.value;
+        });
+        console.log("Estoy aquí");
+        console.log(modelo);
+        $.ajax({
+            url: '/Ecommerce/AgendarVisita',
+            type: 'POST',
+            contentType: 'application/json',
+            //contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // when we use .serialize() this generates the data in query string format. this needs the default contentType (default content type is: contentType: 'application/x-www-form-urlencoded; charset=UTF-8') so it is optional, you can remove it
+            data: JSON.stringify(modelo),
+            success: function(result) {
+                     Swal.fire(
+                    'Registro exitoso',
+                    'Se ha enviado su registro con éxito',
+                    'success'
+                );
+
+            },
+            error: function() {
+                alert('Failed to receive the Data');
+                console.log('Failed ');
+            }
+        });
+    });
+</script>
+
+
+
+<script>
+    var strValue = "@((string)ViewBag.mssg)";
+    var strValueE = "@((string)ViewBag.mssgE)";
+
+
+    if (strValue !== null && strValue !== "") {
+
+        Swal.fire(
+            'Registro exitoso',
+            strValue,
+            'success'
+        )
+
+    }
+
+    if (strValueE !== null && strValueE !== "") {
+
+        Swal.fire(
+            'Error',
+            strValueE,
+            'error'
+        )
+
+    }
+</script>
+
+

@@ -1,0 +1,177 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&display=swap');
+    esta era la antigua fuente que se era utilizada en inicio de seccion 
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+@font-face {
+    font-family: Gotham;
+    src: url("../fonts/Gotham-Light.otf");
+    font-weight: bold;
+}
+
+html{
+    -webkit-text-size-adjust: 100%;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Gotham; 
+    font-weight: bold;
+}
+
+body {
+    background-image: url("../img/Login/Recurso\ 11.png");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family:'Times New Roman', Times, serif !important;
+
+}
+
+.border_radius{
+    border-radius:25px !important;
+    height: 37px !important;
+    width: 250px !important;
+}
+
+.bg{
+    background-image: url("../img/Login/Recurso\ 31.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+background-position: center;
+}
+
+
+
+#exampleModalLabel {
+color:black !important;
+}
+
+
+
+/*boton del inicio de seccion avisos de privacidad*/
+.btnn {
+    box-shadow: 6px 6px 6px rgb(10 8 66);
+    border-radius: 25px !important;
+    border-color: rgb(235, 112, 41);
+    background-color: rgb(235, 112, 41);
+    color: white !important;
+}
+
+.btnnVariant {
+    box-shadow: 6px 6px 6px darkgray;
+    border-radius: 25px !important;
+    border-color: rgb(235, 112, 41);
+    background-color: rgb(235, 112, 41);
+    color: white !important;
+}
+
+.btnn:hover {
+    background-color: white;
+    color: rgb(235, 112, 41) !important;
+    border: 1px solid rgb(235, 112, 41);
+}
+
+.btnnVariant:hover {
+    background-color: white;
+    color: rgb(235, 112, 41) !important;
+    border: 1px solid rgb(235, 112, 41);
+}
+
+.btn-iniciar {
+    width: 200px !important;
+    height: 50px !important;
+    text-align: center;
+}
+
+
+
+@media (min-width: 1210px) and (max-width: 1400px) {
+    .main_backg{
+        background: url(../img/Login/Recurso\ 30.png) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: 1250px 567px ;
+        border-radius: 60px;
+    }
+
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .main_backg {
+        background: url(../img/Login/Recurso\ 30.png) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: 1080px 675px;
+        border-radius: 60px;
+    }
+
+}
+@media (min-width: 1400px) and (max-width: 1699px) {
+    .main_backg {
+        background: url(../img/Login/Recurso\ 30.png) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: 1500px 682px;
+        border-radius: 60px;
+    }
+
+}
+
+@media (min-width: 1700px) and (max-width: 2500px) {
+    .main_backg {
+        background: url(../img/Login/Recurso\ 30.png) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: 90%;
+        border-radius: 60px;
+    }
+
+}
+
+h6{
+    font-size: 15px !important;
+}
+ 
+
+ .modal-a{
+    color: #fff;  
+ }
+
+ .modal-a:hover{
+    color: #fff;
+    text-decoration: none;
+ }
+
+
+
+@font-face {
+    font-family: Gotham;
+    src: url("../fonts/Gotham-Light.otf");
+}
+
+
+/*modal del inicio de seccion****************************************************************************/
+.modal-body {
+    font-family: Gotham;
+    font-size:15px;
+}
+.titleIniSecion {
+    font-weight: 800;
+    text-shadow: 2px 2px 3px black;
+}
+
+.modalesInit {
+text-decoration:none;
+}
+
+    .modalesInit:hover {
+        text-decoration: underline !important;
+    }

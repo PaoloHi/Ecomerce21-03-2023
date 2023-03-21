@@ -1,0 +1,1084 @@
+﻿@model PropiedadesModelTablero
+@{
+    Layout = "_NavTabPropiedades";
+}
+<!--Indicadores -->
+
+<div class="container-lg ">
+    <div class="row">
+        <div class="col">
+            <div class="tab margin-tablinks">
+                <button type="button" class="border-0 d-flex mx-auto tablinks2 " onclick="vertablas(event, 'Tabla2')" id="defaultOpen2">
+                    <div class="caja-a-b mb-2 mb-xl-0  ">
+                        <div class="card-main col-12 d-flex align-items-center">
+                            <div class="col-6 mt-3 d-flex justify-content-center">
+
+
+                                <div class=" d-flex justify-content-center">
+                                    <p class="size-letter-cards-first ms-2 my-auto">No publicadas</p>
+                                </div>
+                            </div>
+                            <div class="col-6 d-flex justify-content-center">
+                                <div class="text-cards d-flex mt-3  indicator-nopublicadas">
+                                    <h6 class="mx-auto text-white my-auto size-number-indicator">10</h6>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                </button>
+
+
+                <div class="col">
+                    <button type="button" class="border-0 d-flex mx-auto tablinks2" onclick="vertablas(event, 'Tablapubli')">
+                        <div class="caja-a-b mb-xl-0">
+                            <div class="card-main col-12 d-flex align-items-center mt-2">
+                                <div class="col-6 mt-3 justify-content-center d-flex">
+
+
+                                    <div class=" d-flex justify-content-center ">
+                                        <p class="size-letter-cards-first ms-2 my-auto">Publicadas</p>
+                                    </div>
+                                </div>
+                                <div class="col-6 d-flex justify-content-center">
+                                    <div class="text-cards d-flex mt-3  indicator-publicadas">
+                                        <h6 class="mx-auto text-white my-auto size-number-indicator">1,000</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+                <div class="col">
+                    <button type="button" class="border-0 d-flex mx-auto tablinks2" onclick="vertablas(event, 'TablaprocesoEntrega')">
+                        <div class="caja-a-b mx-auto mb-2 mb-xl-0">
+                            <div class="card-main col-12 d-flex align-items-center">
+                                <div class="col-6 mt-3 justify-content-center d-flex ">
+
+
+                                    <div class=" d-flex justify-content-center">
+                                        <p class="size-letter-cards-first ms-2 my-auto">En proceso de entrega</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center col-6">
+                                    <div class="text-cards d-flex mt-3 indicator-enproceso">
+                                        <h6 class="mx-auto text-white my-auto size-number-indicator">30</h6>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </button>
+                </div>
+                <div class="col">
+                    <button type="button" class="border-0 d-flex mx-auto tablinks2" onclick="vertablas(event, 'Tabla6')">
+                        <div class="caja-a-b mx-auto mb-2 mb-xl-0">
+                            <div class="card-main col-12 d-flex align-items-center">
+                                <div class="col-6 mt-4 justify-content-center d-flex ">
+
+
+
+                                    <div class=" d-flex d-block justify-content-center">
+                                        <p class="size-letter-cards-first ms-2 mt-2">Cerradas</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center col-6">
+                                    <div class="text-cards d-flex mt-3 indicator-cerradas">
+                                        <h6 class="mx-auto text-white my-auto size-number-indicator">5000</h6>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Final de prueba-->
+<!--Aqui empieza la barra de busqueda-->
+<form action="">
+    <div class="container-lg">
+        <div class="row">
+            <div class="col">
+
+                <div class="d-flex justify-content-end me-4 mt-3">
+                    <div class="  rounded d-lg-inline-flex p-1 mt-3">
+                        <input class="form-control size-search d-inline-flex " type="search"
+                               placeholder="Buscar" aria-label="Search">
+
+                        <button class="btn-s  text-light d-inline-flex justify-content-center align-items-center  size-icons-t-b ms-lg-1"
+                                type="submit">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                        <select class="form-select size-select d-inline-flex  ms-lg-1 "
+                                aria-label="Default select example">
+                            <option disabled selected>Filtros</option>
+                            <option value="1">Zonas</option>
+                            <option value="2">Antigüedad</option>
+                        </select>
+
+
+                        <button class="btn-s text-light d-inline-flex justify-content-center align-items-center  size-icons-t-b ms-lg-1">
+                            <i class="fa-solid  fa-file-excel"></i>
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+                <div class="d-flex position-relative">
+                    <a class="btn-nueva-prop position-absolute   text-light d-flex justify-content-center align-items-center  size-icons-t-b" asp-controller="Propiedades" asp-action="NuevaPropiedad"><i class="fa-solid fa-plus"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!--Aqui termina la barra de busqueda-->
+<!--Contenedor principal donde se en encuentras las tarjetas y la tabla-->
+<div class="container-fluid  tabcontent2" id="Tabla2">
+    <div class="row">
+        <div class="col">
+            <!--Botones de visualización para ver las tarjetas o la tabla-->
+            <div class="tab margin-tablinks rounded">
+                <button class="tablinks" onclick="openCity(event, 'Tarjetas')" id="defaultOpen"><svg class="size-icons-table" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg></button>
+                <button class="tablinks" onclick="openCity(event, 'Tabla')"><i class="fa-solid fa-table mt-1" style="font-size:20px; color: rgb(71, 71, 71);"></i></button>
+
+            </div>
+
+
+            <!--Aqui termina los botones de visualización-->
+            <!--Tarjetas de propiedades No publicadas-->
+            <div id="Tarjetas" class="tabcontent">
+
+                <div class="container-fluid">
+                    <div class="row  mt-2 mb-5 ">
+
+                        @{
+                            var countA1 = 0;
+                            var idCarusel1 = "";
+                            var count1 = 0;
+                            var activa1 = "";
+                            foreach (var NP in Model.PropiedadesNL)
+                            {
+
+                                countA1 = countA1 + 1;
+                                idCarusel1 = "carouselExampleFade" + countA1;
+                                count1 = 0;
+
+                                    <div class="col-lg-4 col">
+                                        <div class="caja-a-propie mb-2  mx-auto shadow position-relative  ">
+                                            <div class="d-flex justify-content-center position-absolute pos-fecha">
+                                                <h6 class=" fw-bold size-text-publi">Fecha de publicación</h6>
+                                                <h6 class=" ms-2  size-text-publi">@NP.FPublicacion</h6>
+                                            </div>
+
+                                            <a class=" pa-vermas style-vermas" asp-controller="Propiedades" asp-action="DetallesPropiedadNP">
+
+                                                <ion-icon name="ellipsis-horizontal-circle" class="size-mp-icons-vermas position-icon"></ion-icon>
+                                            </a>
+                                            <div class="card-main col-12  d-flex  ms-1">
+                                                <div class="col-5 mt-4 ms-1 ">
+                                                    <div id="@idCarusel1" class="carousel slide carousel-fade "
+                                                     data-bs-ride="carousel">
+                                                        <div class="carousel-inner">
+
+                                                           @foreach (var IPN in Model.PropNLImagenBase64)
+                                                        {
+                                                            count1 = count1 + 1;
+
+                                                            if (count1 == 1)
+                                                            {
+                                                                activa1 = "carousel-item active";
+                                                            }
+                                                            else
+                                                            {
+
+                                                                activa1 = "carousel-item";
+                                                            }
+
+                                                            if (IPN.IDpropiedadBase64 == NP.IDPropiedad)
+                                                            {
+                                                                    <div class=" @activa1 image-contain carousel-adaptar" style="background-image:url(@IPN.txtBase64)"></div>
+                                                            }
+
+                                                            if (IPN.IDpropiedadBase64 != NP.IDPropiedad)
+                                                            {
+                                                                count1 = 0;
+                                                            }
+                                                        }
+                                                           </div>
+                                                        <button class="carousel-control-prev" type="button"
+                                                            data-bs-target="#@idCarusel1" data-bs-slide="prev">
+                                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                            <span class="visually-hidden">Previous</span>
+                                                        </button>
+                                                        <button class="carousel-control-next" type="button"
+                                                            data-bs-target="#@idCarusel1" data-bs-slide="next">
+                                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                            <span class="visually-hidden">Next</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                @{
+                                                var classAbrev = "";
+                                                switch (@NP.Abrev)
+                                                {
+                                                    case "Depto":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Bodega":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Casa":
+                                                        classAbrev = "title-cards-mp-casa";
+                                                        break;
+                                                    case "Edif":
+                                                        classAbrev = "title-cards-mp-edificio";
+                                                        break;
+                                                    case "Huerta":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Local":
+                                                        classAbrev = "title-cards-mp-local";
+                                                        break;
+                                                    case "Nave":
+                                                        classAbrev = "title-cards-mp-nave";
+                                                        break;
+                                                    case "Ofic":
+                                                        classAbrev = "title-cards-mp-oficina";
+                                                        break;
+                                                    case "Quinta":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Rancho":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Terreno":
+                                                        classAbrev = "title-cards-mp-terreno";
+                                                        break;
+                                                    case "Villa":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Hosp.":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Esc.":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    default:
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                }
+                                                }
+
+                                                <div class="col-6 text-cards ms-2 mt-2 position-relative ">
+                                                    <div class="d-inline-flex justify-content-between @classAbrev">
+                                                        <h6 class=" size-mp-cards my-auto ms-1"> @NP.Abrev</h6>
+
+                                                        <h6 class=" size-mp-cards me-1 my-auto">
+                                                            <i class="fa-solid fa-maximize size-mp-cards  ms-3 "></i> @NP.Superficie m2
+                                                        </h6>
+
+                                                    </div>
+                                                    <div class="mt-4 ">
+                                                        <h6 class="fw-bold ms-2 text-orange ">
+                                                            1 @{
+                                                            double precio = Convert.ToDouble(@NP.Precio);
+                                                            var precioTotalP = precio.ToString("N0", new System.Globalization.CultureInfo("en-US"));
+                                                            }
+
+                                                            @precioTotalP @NP.ISO
+                                                        </h6>
+                                                    </div>
+
+                                                    <div class="size-mp-name-main-house fw-bold ms-2  ">
+                                                        <h6 class="size-mp-name-main-house fw-bold">@NP.Titulo</h6>
+                                                    </div>
+
+                                                    <div class="size-mp-name-house fw-bold ms-2 "><h6 class="size-mp-name-house ">@NP.Direccion</h6></div>
+
+
+                                                    <div class="icon-warning">
+                                                        <a class="icon-style-warning" asp-controller="Propiedades" asp-action="DetallesPropiedadNP">
+                                                            <i class="fa-solid fa-triangle-exclamation size-icon-warning"></i>
+                                                        </a>
+
+                                                    </div>
+
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                            }
+
+                        }
+                        <footer class=" d-flex justify-content-center">
+                            <nav aria-label="" class="mt-4  w-50 ">
+                                <ul class="pagination d-flex justify-content-lg-center justify-content-center">
+                                    <li class="page-item disabled">
+                                        <a class="page-link me-1" href="#" tabindex="-1" aria-disabled="true">Regresar</a>
+                                    </li>
+                                    <li class="page-item active me-1" aria-current="page"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item me-1">
+                                        <a class="page-link" href="#">2</a>
+                                    </li>
+                                    <li class="page-item me-1"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Siguiente</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </footer>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="Tabla" class="tabcontent  bg-light mt-3">
+                <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive mt-2 bg-light rounded ">
+                    <table class="table table-hover ">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col" class="text-center">Nombre</th>
+                            <th scope="col" class="text-center">Dirección</th>
+                            <th scope="col" class="text-center">Fecha de publicación</th>
+                            <th scope="col" class="text-center">Estatus</th>
+                            <th scope="col" class="text-center">Acciones</th>
+                        </tr>
+                        <tbody>
+                            @foreach (var NPT in Model.PropiedadesNL)
+                            {
+                                <tr>
+                                    <td scope="row">@NPT.IDPropiedadG</td>
+                                    <td class="fw-lighter text-center limitado"> @NPT.Titulo </td>
+                                    <td class="fw-light text-center limitado">@NPT.Direccion</td>
+                                    <td class="fw-light text-center">@NPT.FPublicacion</td>
+                                    <td class="fw-light text-center"><h6 class="backgr-estatus-aprobado">Aprobado</h6></td>
+                                    <td>
+                                        <div class=" d-flex justify-content-between">
+                                            <a class="style-vermas2" asp-controller="Propiedades" asp-action="DetallesPropiedadNP"><ion-icon name="ellipsis-horizontal-circle" class="size-mp-icons-vermas mt-2 position-icon"></ion-icon></a>
+                                            <button class="border-0 bg-transparent"><i class="fa-solid fa-pen-to-square style-vermas2"></i></button>
+                                            <button class="border-0 bg-transparent"><i class="fa-solid fa-trash-can style-vermas2"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        </thead>
+                    </table>
+                </div>
+                <footer>
+                    <nav aria-label="" class="mt-4">
+                        <ul class="pagination justify-content-lg-center justify-content-center">
+                            <li class="page-item2 disabled">
+                                <a class="page-link2 me-1" href="#" tabindex="-1" aria-disabled="true">Regresar</a>
+                            </li>
+                            <li class="page-item2 active me-1" aria-current="page"><a class="page-link2" href="#">1</a></li>
+                            <li class="page-item2 me-1">
+                                <a class="page-link2" href="#">2</a>
+                            </li>
+                            <li class="page-item2 me-1"><a class="page-link2" href="#">3</a></li>
+                            <li class="page-item2">
+                                <a class="page-link2" href="#">Siguiente</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </footer>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<!--Tablero y tarjetas para publicadas-->
+<!--Contenedor principal donde se en encuentras las tarjetas y la tabla-->
+<div class="container-fluid   tabcontent2" id="Tablapubli">
+    <div class="row">
+        <div class="col">
+            <!--Botones de visualización para ver las tarjetas o la tabla-->
+            <div class="tab margin-tablinks rounded">
+                <button class="tablinks4" onclick="vercontenedor2(event, 'Tarjetaspubli')" id="defaultOpen4"><svg class="size-icons-table" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg></button>
+                <button class="tablinks4" onclick="vercontenedor2(event, 'Tablapublicadas')"><i class="fa-solid fa-table mt-1" style="font-size:20px; color: rgb(71, 71, 71);"></i></button>
+            </div>
+
+            <!--Aqui termina los botones de visualización-->
+            <div id="Tarjetaspubli" class="tabcontent4">
+
+
+                <div class="container-fluid">
+                    <div class="row  mt-2 ">
+                        @{
+                            var countA = 0;
+                            var idCarusel = "";
+                            var count = 0;
+                            var activa = "";
+
+
+
+
+                            foreach (var PP in Model.PropiedadesL)
+                            {
+                                countA = countA + 1;
+                                idCarusel = "carouselExampleFadeP" + countA;
+                                count = 0;
+
+                                    <div class="col-lg-4 col">
+                                        <div class="caja-a-propie-publi mb-2  mx-auto shadow position-relative ">
+                                            <div class="d-flex justify-content-center position-absolute pos-t-publicada">
+                                                <h6 class=" ms-2 my-auto fw-bold size-text-publi ">Tiempo publicada</h6>
+                                                <h6 class=" ms-2 my-auto size-text-publi">200 días</h6>
+                                            </div>
+                                            <div class="d-inline-flex  size-mp-name-main-house position-absolute pos-indicadores-vv">
+
+                                                <div class="side-2-header d-inline-flex">
+                                                    <i class="fa-solid fa-eye ms-1 me-1 text-orange size-icons-indicators "></i>
+                                                    <h6 for="" class="ms-1 me-4 size-text-indicators">@PP.Vistas Vistas </h6>
+                                                </div>
+                                                <div class="side-2-header d-inline-flex">
+                                                    <i class="fa-solid fa-address-book ms-1 me-1 text-orange size-icons-indicators"></i>
+                                                    <h6 for="" class="ms-1 me-1 size-text-indicators">@PP.Visitas Visitas</h6>
+                                                </div>
+
+                                            </div>
+                                            <a class=" pa-vermas-publi style-vermas" asp-controller="Propiedades" asp-action="DetallesPropiedad">
+
+                                                <ion-icon name="ellipsis-horizontal-circle" class="size-mp-icons-vermas position-icon "></ion-icon>
+                                            </a>
+
+                                            <div class="card-main col-12  d-flex  ms-1">
+                                                <div class="col-5 mt-4 ms-1 ">
+                                                    <div id="@idCarusel" class="carousel slide carousel-fade"
+                                                     data-bs-ride="carousel-1">
+                                                        <div class="carousel-inner">
+                                                            @foreach (var IPP in Model.PropLImagenBase64)
+                                                        {
+                                                            count = count + 1;
+
+                                                            if (count == 1)
+                                                            {
+                                                                activa = "carousel-item active";
+                                                            }
+                                                            else
+                                                            {
+
+                                                                activa = "carousel-item";
+                                                            }
+
+                                                            if (IPP.IDpropiedadBase64 == PP.IDPropiedad)
+                                                            {
+                                                                    <div class=" @activa image-contain carousel-adaptar" style="background-image:url(@IPP.txtBase64)"></div>
+                                                                <label>@count</label>
+                                                            }
+
+                                                            if (IPP.IDpropiedadBase64 != PP.IDPropiedad)
+                                                            {
+                                                                count = 0;
+                                                            }
+                                                        }
+
+                                                        </div>
+                                                        <button class="carousel-control-prev" type="button"
+                                                            data-bs-target="#@idCarusel" data-bs-slide="prev">
+                                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                            <span class="visually-hidden">Previous</span>
+                                                        </button>
+                                                        <button class="carousel-control-next" type="button"
+                                                            data-bs-target="#@idCarusel" data-bs-slide="next">
+                                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                            <span class="visually-hidden">Next</span>
+                                                        </button>
+                                                    </div>
+
+
+
+                                                </div>
+
+                                                @{
+                                                var classAbrev = "";
+                                                switch (@PP.Abrev)
+                                                {
+                                                    case "Depto":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Bodega":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Casa":
+                                                        classAbrev = "title-cards-mp-casa";
+                                                        break;
+                                                    case "Edif":
+                                                        classAbrev = "title-cards-mp-edificio";
+                                                        break;
+                                                    case "Huerta":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Local":
+                                                        classAbrev = "title-cards-mp-local";
+                                                        break;
+                                                    case "Nave":
+                                                        classAbrev = "title-cards-mp-nave";
+                                                        break;
+                                                    case "Ofic":
+                                                        classAbrev = "title-cards-mp-oficina";
+                                                        break;
+                                                    case "Quinta":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Rancho":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Terreno":
+                                                        classAbrev = "title-cards-mp-terreno";
+                                                        break;
+                                                    case "Villa":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Hosp.":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Esc.":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    default:
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                }
+                                                }
+
+                                                <div class="col-6 text-cards ms-2 mt-2 position-relative">
+                                                    <div class="d-inline-flex justify-content-between  @classAbrev">
+                                                        <h6 class=" size-mp-cards my-auto ms-1"> @PP.Abrev</h6>
+
+                                                        <h6 class=" size-mp-cards my-auto me-1">
+                                                            <i class="fa-solid fa-maximize size-mp-cards  ms-3 "></i> @PP.Superficie @PP.UM
+                                                        </h6>
+
+                                                    </div>
+                                                    <div class="mt-4">
+                                                        <h6 class="fw-bold ms-2 text-orange ">
+                                                            @{
+                                                            double precio = Convert.ToDouble(@PP.Precio);
+                                                            var precioTotalP = precio.ToString("N0", new System.Globalization.CultureInfo("en-US"));
+                                                            }
+
+                                                            @precioTotalP @PP.ISO
+                                                        </h6>
+                                                    </div>
+                                                    <div class="size-mp-name-main-house ms-2">
+                                                        @{
+                                                        var descripcion = (PP.Descripcion).Substring(0, 100);
+                                                        }
+                                                        <h6 class="size-mp-name-main-house fw-bold  ">
+                                                            @descripcion...
+                                                        </h6>
+                                                    </div>
+                                                    <div class="size-mp-name-house ms-2"><h6 class="size-mp-name-house  mb-1">@PP.Direccion </h6></div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col mt-3">
+                                            </div>
+                                            <div class="indicators d-flex justify-content-center mt-2">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                            }
+                        }
+                        <footer>
+                            <nav aria-label="" class="mt-4">
+                                <ul class="pagination justify-content-lg-center justify-content-center">
+                                    <li class="page-item disabled">
+                                        <a class="page-link me-1" href="#" tabindex="-1" aria-disabled="true">Regresar</a>
+                                    </li>
+                                    <li class="page-item active me-1" aria-current="page"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item me-1">
+                                        <a class="page-link" href="#">2</a>
+                                    </li>
+                                    <li class="page-item me-1"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Siguiente</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </footer>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="Tablapublicadas" class="tabcontent4 bg-light mt-3">
+                <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive mt-2 bg-light rounded">
+                    <table class="table table-hover ">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col" class="text-center">Nombre</th>
+                            <th scope="col" class="text-center">Dirección</th>
+                            <th scope="col" class="text-center">Tiempo publicada</th>
+                            <th scope="col" class="text-center"><i class="fa-solid fa-eye me-1"></i>Vistas</th>
+                            <th scope="col" class="text-center"><i class="fa-solid fa-address-book me-1"></i>Visitas</td>
+                            <th scope="col" class="text-center">Acciones</th>
+                        </tr>
+                        <tbody>
+                            @foreach (var PPT in Model.PropiedadesL)
+                            {
+                                <tr>
+                                    <td scope="row">@PPT.IDPropiedadG</td>
+                                    <td class="fw-lighter text-center">@PPT.Titulo</td>
+                                    <td class="fw-light text-center">@PPT.Direccion</td>
+                                    <td class="fw-light text-center">34 días</td>
+                                    <td class="fw-light text-center">@PPT.Vistas</td>
+                                    <td class="fw-light text-center">@PPT.Visitas</td>
+                                    <td>
+                                        <div class=" d-flex justify-content-between">
+                                            <a class="style-vermas2" asp-controller="Propiedades" asp-action="DetallesPropiedad"><ion-icon name="ellipsis-horizontal-circle" class="size-mp-icons-vermas mt-2 position-icon"></ion-icon></a>
+                                            <button class="border-0 bg-transparent"><i class="fa-solid fa-pen-to-square style-vermas2"></i></button>
+                                            <button class="border-0 bg-transparent"><i class="fa-solid fa-trash-can style-vermas2"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        </thead>
+                    </table>
+                </div>
+                <footer>
+                    <nav aria-label="" class="mt-4">
+                        <ul class="pagination justify-content-lg-center justify-content-center">
+                            <li class="page-item2 disabled">
+                                <a class="page-link2 me-1" href="#" tabindex="-1" aria-disabled="true">Regresar</a>
+                            </li>
+                            <li class="page-item2 active me-1" aria-current="page"><a class="page-link2" href="#">1</a></li>
+                            <li class="page-item2 me-1">
+                                <a class="page-link2" href="#">2</a>
+                            </li>
+                            <li class="page-item2 me-1"><a class="page-link2" href="#">3</a></li>
+                            <li class="page-item2">
+                                <a class="page-link2" href="#">Siguiente</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </footer>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<!--Aqui termina el tablero y las tarjetas de las  publicadas-->
+<!--Tablero y tarjetas para proceso de entrega-->
+<!--Contenedor principal donde se en encuentras las tarjetas y la tabla-->
+<div class="container-fluid  tabcontent2" id="TablaprocesoEntrega">
+    <div class="row">
+        <div class="col">
+            <!--Botones de visualización para ver las tarjetas o la tabla-->
+            <div class="tab margin-tablinks rounded mb-1 ">
+                <button class="tablinks5" onclick="vercontenedor3(event, 'Tarjetasproceso')" id="defaultOpen5"><svg class="size-icons-table" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg></button>
+                <button class="tablinks5" onclick="vercontenedor3(event, 'Tablaproceso')"><i class="fa-solid fa-table mt-1" style="font-size:20px; color: rgb(71, 71, 71);"></i></button>
+            </div>
+
+            <!--Aqui termina los botones de visualización-->
+            <div id="Tarjetasproceso" class="tabcontent5 ">
+
+                <div class="container-fluid">
+                    <div class="row  mt-2  ">
+                        @{
+                            var countAV = 0;
+                            var idCaruselV = "";
+                            var countV = 0;
+                            var activaV = "";
+
+                            foreach (var PV in Model.PropiedadesPL)
+                        {
+                            countAV = countAV + 1;
+                                idCaruselV = "carouselExampleFadeV" + countAV;
+                                countV = 0;
+                            <div class="col-lg-4 col">
+                                <div class="caja-a-propie mb-2  mx-auto shadow position-relative">
+                                    <div class="d-flex justify-content-between backgr-etapa-negociacion position-absolute pos-etapa">
+                                        <h6 class=" ms-1 my-auto fw-bold size-text-etapa">Etapa</h6>
+                                        <h6 class=" ms-2 my-auto size-text-etapa me-1">Negociación</h6>
+                                    </div>
+                                    <div class="d-flex justify-content-center mt-3 position-absolute  pos-tipo-opera">
+                                        <h6 class=" ms-1 my-auto fw-bold size-text-publi">Tipo de operación</h6>
+                                        <h6 class=" ms-2 my-auto size-text-publi">Venta</h6>
+                                    </div>
+                                    <a class=" pa-vermas style-vermas" asp-controller="Propiedades" asp-action="DetallesPropiedadPP">
+
+                                        <ion-icon name="ellipsis-horizontal-circle" class="size-mp-icons-vermas position-icon"></ion-icon>
+                                    </a>
+                                    <div class="card-main col-12  d-flex  ms-1">
+                                        <div class="col-5 mt-4 ms-1 ">
+                                            <div id="@idCaruselV" class="carousel slide carousel-fade"
+                                             data-bs-ride="carousel">
+                                                <div class="carousel-inner">
+                                                 @foreach (var IPV in Model.PropPLImagenBase64)
+                                                        {
+                                                            countV = countV + 1;
+
+                                                            if (countV == 1)
+                                                            {
+                                                                activaV = "carousel-item active";
+                                                            }
+                                                            else
+                                                            {
+
+                                                                activaV = "carousel-item";
+                                                            }
+
+                                                            if (IPV.IDpropiedadBase64 == PV.IDPropiedad)
+                                                            {
+                                                                    <div class=" @activaV image-contain carousel-adaptar" style="background-image:url(@IPV.txtBase64)"></div>
+                                                                <label>@count</label>
+                                                            }
+
+                                                            if (IPV.IDpropiedadBase64 != PV.IDPropiedad)
+                                                            {
+                                                                count = 0;
+                                                            }
+                                                        }
+                                                
+                                                </div>
+                                                <button class="carousel-control-prev" type="button"
+                                                    data-bs-target="#@idCaruselV" data-bs-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="visually-hidden">Previous</span>
+                                                </button>
+                                                <button class="carousel-control-next" type="button"
+                                                    data-bs-target="#@idCaruselV" data-bs-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="visually-hidden">Next</span>
+                                                </button>
+                                            </div>
+
+
+
+                                        </div>
+
+                                             @{
+                                                var classAbrev = "";
+                                                switch (@PV.Abrev)
+                                                {
+                                                    case "Depto":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Bodega":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Casa":
+                                                        classAbrev = "title-cards-mp-casa";
+                                                        break;
+                                                    case "Edif":
+                                                        classAbrev = "title-cards-mp-edificio";
+                                                        break;
+                                                    case "Huerta":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Local":
+                                                        classAbrev = "title-cards-mp-local";
+                                                        break;
+                                                    case "Nave":
+                                                        classAbrev = "title-cards-mp-nave";
+                                                        break;
+                                                    case "Ofic":
+                                                        classAbrev = "title-cards-mp-oficina";
+                                                        break;
+                                                    case "Quinta":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Rancho":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Terreno":
+                                                        classAbrev = "title-cards-mp-terreno";
+                                                        break;
+                                                    case "Villa":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Hosp.":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Esc.":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    default:
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                }
+                                                }
+
+                                        <div class="col-6 text-cards ms-2 mt-2 position-relative">
+                                                    <div class="d-inline-flex justify-content-between @classAbrev">
+                                                        <h6 class=" size-mp-cards my-auto ms-1"> @PV.Abrev</h6>
+
+                                                        <h6 class=" size-mp-cards my-auto me-1">
+                                                            <i class="fa-solid fa-maximize size-mp-cards  ms-3 "></i> @PV.Superficie @PV.UM
+                                                        </h6>
+
+                                                    </div>
+                                                    <div class="mt-4">
+                                                        <h6 class="fw-bold ms-2 text-orange ">
+                                                            @{
+                                                            double precio = Convert.ToDouble(@PV.Precio);
+                                                            var precioTotalP = precio.ToString("N0", new System.Globalization.CultureInfo("en-US"));
+                                                            }
+
+                                                            @precioTotalP @PV.ISO
+                                                        </h6>
+                                                    </div>
+                                                    <div class="size-mp-name-main-house ms-2">
+                                                        @{
+                                                        var descripcion = (PV.Descripcion).Substring(0, 100);
+                                                        }
+                                                        <h6 class="size-mp-name-main-house fw-bold  ">
+                                                            @descripcion...
+                                                        </h6>
+                                                    </div>
+                                                    <div class="size-mp-name-house ms-2"><h6 class="size-mp-name-house  mb-1">@PV.Direccion </h6></div>
+                                                </div>
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        }
+                        }
+                        <footer>
+                            <nav aria-label="" class="mt-4">
+                                <ul class="pagination justify-content-lg-center justify-content-center">
+                                    <li class="page-item disabled">
+                                        <a class="page-link me-1" href="#" tabindex="-1" aria-disabled="true">Regresar</a>
+                                    </li>
+                                    <li class="page-item active me-1" aria-current="page"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item me-1">
+                                        <a class="page-link" href="#">2</a>
+                                    </li>
+                                    <li class="page-item me-1"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Siguiente</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </footer>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="Tablaproceso" class="tabcontent5 bg-light mt-3">
+                <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive mt-2 bg-light rounded">
+                    <table class="table table-hover ">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center">#</th>
+                                <th scope="col" class="text-center">Nombre</th>
+                                <th scope="col" class="text-center">Dirección</th>
+                                <th scope="col" class="text-center">Tipo de operación</th>
+                                <th scope="col" class="text-center">Etapa</th>
+                                <th scope="col" class="text-center">Acciones</th>
+
+                            </tr>
+                        <tbody>
+                                @foreach (var PVT in Model.PropiedadesPL)
+                                {
+                                <tr>
+                                    <td scope="row">1</td>
+                                    <td class="fw-lighter text-center">@PVT.Titulo</td>
+                                    <td class="fw-light text-center">@PVT.Direccion</td>
+                                    <td class="fw-light text-center">Venta</td>
+                                    <td class="fw-light text-center"><h6 class="backgr-etapa-entrega-t">Entrega</h6></td>
+                                    <td>
+                                        <div class=" d-flex justify-content-between">
+                                            <a class="style-vermas2" asp-controller="Propiedades" asp-action="DetallesPropiedadPP"><ion-icon name="ellipsis-horizontal-circle" class="size-mp-icons-vermas mt-2 position-icon"></ion-icon></a>
+                                            <button class="border-0 bg-transparent"><i class="fa-solid fa-pen-to-square style-vermas2"></i></button>
+                                            <button class="border-0 bg-transparent"><i class="fa-solid fa-trash-can style-vermas2"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                }
+                        </tbody>
+                        </thead>
+                    </table>
+                </div>
+                <footer>
+                    <nav aria-label="" class="mt-4">
+                        <ul class="pagination justify-content-lg-center justify-content-center">
+                            <li class="page-item2 disabled">
+                                <a class="page-link2 me-1" href="#" tabindex="-1" aria-disabled="true">Regresar</a>
+                            </li>
+                            <li class="page-item2 active me-1" aria-current="page"><a class="page-link2" href="#">1</a></li>
+                            <li class="page-item2 me-1">
+                                <a class="page-link2" href="#">2</a>
+                            </li>
+                            <li class="page-item2 me-1"><a class="page-link2" href="#">3</a></li>
+                            <li class="page-item2">
+                                <a class="page-link2" href="#">Siguiente</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </footer>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<!--Aqui termina el tablero y las tarjetas de las de proceso de entrega->
+                   <!--Contenedor principal donde se en encuentras las tarjetas y la tabla-->
+<div class="container-fluid tabcontent2 " id="Tabla6">
+    <div class="row">
+        <div class="col">
+            <!--Botones de visualización para ver las tarjetas o la tabla-->
+            <div class="tab  rounded">
+                <button class="tablinks3" onclick="vercontenedor(event, 'Tabla4')" id="defaultOpen3">Vendidas</button>
+                <button class="tablinks3" onclick="vercontenedor(event, 'Tabla5')">Rentadas</button>
+            </div>
+
+
+
+
+
+
+
+            <!--Aqui termina los botones de visualización-->
+
+            <div id="Tabla4" class="tabcontent3 mt-3 bg-light">
+                <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive mt-2 bg-light rounded">
+                    <table class="table table-hover ">
+                        <thead>
+                        <th scope="col">#</th>
+                        <th scope="col" class="text-center">Fecha cierre</th>
+                        <th scope="col" class="text-center">Propiedad</th>
+                        <th scope="col" class="text-center">Precio</th>
+                        <th scope="col" class="text-center">Cliente</th>
+                        <th scope="col" class="text-center">Acciones</th>
+                        </thead>
+                        </tr>
+                        <tbody>
+                            @foreach (var PC in Model.PropiedadesCL)
+                            {
+                                <tr>
+                                    <td scope="row">1</td>
+                                    <td class="text-center"></td>
+                                    <td class="text-center"></td>
+                                    <td class="text-center"></td>
+                                    <td class="text-center">Rogelio Funes Mori</td>
+                                    <td>
+                                        <div class=" d-flex justify-content-between">
+                                            <a class="style-vermas2" asp-controller="Propiedades" asp-action="DetallesPropiedadNP"><ion-icon name="ellipsis-horizontal-circle" class="size-mp-icons-vermas mt-2 position-icon"></ion-icon></a>
+                                            <button class="border-0 bg-transparent"><i class="fa-solid fa-pen-to-square style-vermas2"></i></button>
+                                            <button class="border-0 bg-transparent"><i class="fa-solid fa-trash-can style-vermas2"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        </thead>
+                    </table>
+                </div>
+                <footer>
+                    <nav aria-label="" class="mt-4">
+                        <ul class="pagination justify-content-lg-center justify-content-center">
+                            <li class="page-item2 disabled">
+                                <a class="page-link2 me-1" href="#" tabindex="-1" aria-disabled="true">Regresar</a>
+                            </li>
+                            <li class="page-item2 active me-1" aria-current="page"><a class="page-link2" href="#">1</a></li>
+                            <li class="page-item2 me-1">
+                                <a class="page-link2" href="#">2</a>
+                            </li>
+                            <li class="page-item2 me-1"><a class="page-link2" href="#">3</a></li>
+                            <li class="page-item2">
+                                <a class="page-link2" href="#">Siguiente</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </footer>
+            </div>
+
+            <div id="Tabla5" class="tabcontent3 mt-3 bg-light">
+                <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive mt-2 bg-light rounded">
+                    <table class="table table-hover ">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col" class="text-center">Fecha cierre</th>
+                            <th scope="col" class="text-center">Propiedad</th>
+                            <th scope="col" class="text-center">Precio</th>
+                            <th scope="col" class="text-center">Periodo</th>
+                            <th scope="col" class="text-center">Cliente</th>
+                            <th scope="col" class="text-center">Acciones</th>
+
+                        </tr>
+                        <tbody>
+                            @foreach (var PC in Model.PropiedadesCL)
+                            {
+                                <tr>
+                                    <td scope="row">1</td>
+                                    <td class="text-center"></td>
+                                    <td class="text-center limitado"></td>
+                                    <td class="text-center"></td>
+                                    <td class="text-center"></td>
+                                    <td class="text-center"></td>
+                                    <td>
+                                        <div class=" d-flex justify-content-between">
+                                            <a class="style-vermas2" asp-controller="Propiedades" asp-action="DetallesPropiedadNP"><ion-icon name="ellipsis-horizontal-circle" class="size-mp-icons-vermas mt-2 position-icon"></ion-icon></a>
+                                            <button class="border-0 bg-transparent"><i class="fa-solid fa-pen-to-square style-vermas2"></i></button>
+                                            <button class="border-0 bg-transparent"><i class="fa-solid fa-trash-can style-vermas2"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+                <footer>
+                    <nav aria-label="" class="mt-4">
+                        <ul class="pagination justify-content-lg-center justify-content-center">
+                            <li class="page-item2 disabled">
+                                <a class="page-link2 me-1" href="#" tabindex="-1" aria-disabled="true">Regresar</a>
+                            </li>
+                            <li class="page-item2 active me-1" aria-current="page"><a class="page-link2" href="#">1</a></li>
+                            <li class="page-item2 me-1">
+                                <a class="page-link2" href="#">2</a>
+                            </li>
+                            <li class="page-item2 me-1"><a class="page-link2" href="#">3</a></li>
+                            <li class="page-item2">
+                                <a class="page-link2" href="#">Siguiente</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </footer>
+            </div>
+
+
+        </div>
+    </div>
+</div>

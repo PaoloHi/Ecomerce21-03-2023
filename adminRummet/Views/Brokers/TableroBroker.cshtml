@@ -1,0 +1,698 @@
+﻿@model PropiedadesModelTablero
+
+
+@{
+    Layout = "_NavUsuarios";
+}
+
+
+<head>
+    <title>@ViewData["Title"] - Proyecto_administracion</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="~/img/imagen-logo/logo_oficial.png">
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/styles-tablero-contact-center.css">
+    <script src="https://kit.fontawesome.com/e43b4d35fb.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+
+    <script src="~/js/locales-all.js"></script>
+    <title>Detalle Propiedad</title>
+</head>
+
+<!--animacion-->
+<ul class="circles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<!--contenido de la pagina-->
+<section class="">
+    <div class=" container-fluid row shadow contenedorGeneralBlanco">
+        <!--heading page-->
+        <div class="col-12">
+            <div class="message-user">
+                <div class="name-user">Bienvenid&#64; Thaliz</div>
+                <div class="message-default">
+                    Es un gusto tenerte de vuelta, aquí tienes un resumen...
+                </div>
+            </div>
+        </div>
+       
+        <div class="col-12 col-md-12 col-lg-12 col-xl-8">
+            
+            <div class="btn-option shadow">
+                <div class="message-btn-option">
+                    <h5>¿Qué deseas hacer?</h5>
+                </div>
+
+                    <!--botones de renderizacion-->
+                <div class="btn-option-cards mt-2  d-flex justify-content-center">
+                    <div class="col-3 border-0 active2 option-card bg-card-1" id="btnOnboarding">
+                        <span class="cart-count" id="cart-count">+1</span>
+                        <div class="title">Inventario de producto</div>
+                    </div>
+                    <div class="col-3 option-card bg-card-2" id="btnVenta">
+                        <span class="cart-count" id="cart-count">+1</span>
+                        <div class="title">Venta</div>
+                    </div>
+                    <div class="col-3 option-card bg-card-3" id="btnEntrega">
+                        <span class="cart-count" id="cart-count">+3</span>
+                        <div class="title">Entrega</div>
+                    </div>
+                    <div class="col-3 option-card bg-card-4" id="btnPostventa">
+                        <span class="cart-count" id="cart-count">+1</span>
+                        <div class="title">Lealtad</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!--VISTA 1 -->
+            <div class="data-table active border shadow" id="tblOnboarding">
+                <div class="message-btn-option">
+                    No publicadas:
+                    <p>&nbsp 10</p>
+                </div>
+                <br />
+                <!-- <div class="message-default">
+                          Aquí viven los leads que se encuentran en una etapa de seguimiento.
+                      </div> -->
+                <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive mt-2 shadow ">
+                    <table class="table table-hover">
+                        <tr>
+                            <th style="border-radius: 5px 0px 0px 0px">Fecha</th>
+                            <th>Propiedad</th>
+                            <th>Documento</th>
+                            <th>Estatus</th>
+                            <th>Acciones</th>
+                        </tr>
+                        <tr class="tabla-hover">
+                            <td>03/10/2022</td>
+                            <td>Coyoacán 15</td>
+                            <td>Documento</td>
+                            <td>
+                                <p class="bg-status-red">Rechazado</p>
+                            </td>
+                            <td>
+                                <a class="bg-status-blue-btns-gnrl btn" asp-controller="Propiedades" asp-action="DetallesPropiedadNP">
+                                  Ver más
+                                </a>
+                            </td>
+                        </tr>
+
+
+
+
+
+                        <tbody>
+                            @foreach (var NPT in Model.PropiedadesNL)
+                            {
+                                <tr class="tabla-hover">
+                                    <td class="fw-light text-center">@NPT.FPublicacion</td>
+                                    <td class="fw-lighter text-center limitado"> @NPT.Titulo </td>
+                                    <td class="fw-light text-center limitado">@NPT.Direccion</td>
+                                    <td class="fw-light text-center"><h6 class="backgr-estatus-aprobado">Aprobado</h6></td>
+                                    <td>
+                                        <div class="d-flex justify-content-between">
+                                            <a class="bg-status-blue-btns-gnrl btn" asp-controller="Propiedades" asp-action="DetallesPropiedadNP" asp-route-PROPIEDADID=@NPT.IDPropiedadG>
+                                                Ver más
+                                            </a>
+                                            
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="view-all mt-3">
+                    <nav aria-label="" class="mt-4">
+                        <ul class="pagination justify-content-lg-center justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link me-1" href="#" tabindex="-1" aria-disabled="true">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </a>
+                            </li>
+                            <li class="page-item active me-1" aria-current="page"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item me-1">
+                                <a class="page-link" href="#">2</a>
+                            </li>
+                            <li class="page-item me-1"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!--VISTA 2 -->
+            <div class="data-table shadow" id="tblVenta">
+                <div class="message-btn-option">
+                    Nuevos:
+                    <p>&nbsp; 5</p>
+                </div>
+                <br />
+                <!-- <div class="message-default">
+                          Aquí viven los leads que se encuentran en una etapa de seguimiento.
+                      </div> -->
+                <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive mt-2 shadow ">
+                    <table class="table table-hover">
+                        <tr>
+                            <th style="border-radius: 5px 0px 0px 0px">Fecha</th>
+                            <th>Cliente</th>
+                            <th>Propiedad</th>
+                            <th>Visita</th>
+                            <th>Acciones</th>
+                        </tr>
+                        <tr>
+                            <td>03/10/2022</td>
+                            <td>Ricardo Estreda</td>
+                            <td>Coyoacán 15</td>
+                            <td>21/07/2022</td>
+                            <td>
+                                <a class="bg-status-blue-btns-gnrl btn">
+                                    Ver más
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>03/10/2022</td>
+                            <td>Omar González</td>
+                            <td>Coyoacán 15</td>
+                            <td>21/07/2022</td>
+                            <td>
+                                <a class="bg-status-blue-btns-gnrl btn">
+                                    Ver más
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>03/10/2022</td>
+                            <td>Juan Barerra</td>
+                            <td>Coyoacán 19</td>
+                            <td>30/09/2022</td>
+                            <td>
+                                <a class="bg-status-blue-btns-gnrl btn">
+                                    Ver más
+                                </a>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+
+                <div class="view-all mt-3">
+                    <nav aria-label="" class="mt-4">
+                        <ul class="pagination justify-content-lg-center justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link me-1" href="#" tabindex="-1" aria-disabled="true">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </a>
+                            </li>
+                            <li class="page-item active me-1" aria-current="page"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item me-1">
+                                <a class="page-link" href="#">2</a>
+                            </li>
+                            <li class="page-item me-1"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!--VISTA 3 -->
+            <div class="data-table" id="tblEntrega">
+                <div class="message-btn-option">
+                   Procesos de entrega:
+                    <p>&nbsp; 5</p>
+                </div>
+                <br />
+                <!-- <div class="message-default">
+                          Aquí viven los leads que se encuentran en una etapa de seguimiento.
+                      </div> -->
+                <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive mt-2 shadow">
+                    <table class="table table-hover">
+                        <tr>
+                            <th style="border-radius: 5px 0px 0px 0px">Fecha</th>
+                            <th>Cliente</th>
+                            <th>Propiedad</th>
+                            <th>Etapa</th>
+                            <th>Propietario / Aliado</th>
+                            <th>Acciones</th>
+                        </tr>
+                        <tr class="tabla-hover">
+                            <td>07/11/2022</td>
+                            <td>Miguel Bernal</td>
+                            <td>Coyoacán 15</td>
+                            <td>
+                                @{
+                                    var etapaProceso = "";
+                                    var colorEtapa = "";
+
+                                    if (etapaProceso == "oportunidad")
+                                    {
+                                        colorEtapa = "backgr-etapa-oportunidad-t";
+                                    }
+                                    else if (etapaProceso == "entrega")
+                                    {
+                                        colorEtapa = "backgr-etapa-entrega";
+
+                                    }
+                                    else { colorEtapa = "backgr-etapa-cierre-t"; }
+
+                                }
+
+
+
+                                <p class="@colorEtapa">Oportunidad</p>
+                                </td>
+                            <td>Peter Parker</td>
+                            <td>
+                                <a class="bg-status-blue-btns-gnrl btn" asp-controller="Propiedades" asp-action="DetallesPropiedadPP">
+                                    Ver más
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="tabla-hover">
+                            <td>09/11/2022</td>
+                            <td>Julia Cervantes</td>
+                            <td>Coyoacán 15</td>
+                            <td><p class="@colorEtapa">Entrega</p></td>
+                            <td>Jhon Wick</td>
+                            <td>
+                                <a class="bg-status-blue-btns-gnrl btn" asp-controller="Propiedades" asp-action="DetallesPropiedadPP">
+                                    Ver más
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="tabla-hover">
+                            <td>13/11/2022</td>
+                            <td>Mario Varela</td>
+                            <td>Coyoacán 16</td>
+                            <td><p class="@colorEtapa">Cierre</p></td>
+                            <td>Bruce Wayne</td>
+                            <td>
+                                <a class="bg-status-blue-btns-gnrl btn" asp-controller="Propiedades" asp-action="DetallesPropiedadPP">
+                                    Ver más
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="tabla-hover">
+                            <td>22/11/2022</td>
+                            <td>Marco Verratti</td>
+                            <td>Coyoacán 16</td>
+                            <td><p class="@colorEtapa">Cierre</p></td>
+                            <td>Jhon Wick</td>
+                            <td>
+                                <a class="bg-status-blue-btns-gnrl btn" asp-controller="Propiedades" asp-action="DetallesPropiedadPP">
+                                    Ver más
+                                </a>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+                <div class="view-all mt-3">
+                    <nav aria-label="" class="mt-4">
+                        <ul class="pagination justify-content-lg-center justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link me-1" href="#" tabindex="-1" aria-disabled="true">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </a>
+                            </li>
+                            <li class="page-item active me-1" aria-current="page"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item me-1">
+                                <a class="page-link" href="#">2</a>
+                            </li>
+                            <li class="page-item me-1"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"><i class="fa-solid fa-chevron-right"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!--VISTA 4 -->
+            <div class="data-table" id="tblPostventa">
+                <div class="message-btn-option">
+                   Nuevos:
+                    <p>&nbsp; 5</p>
+                </div>
+                <br />
+             
+                <div class=" table-responsive mt-2 shadow">
+                    <table>
+                        <tr>
+                            <th style="border-radius: 5px 0px 0px 0px">Fecha</th>
+                            <th>Tipo encuesta</th>
+                            <th style="border-radius: 0px 5px 0px 0px">Acciones</th>
+                            <!--<th>Propiedad</th>
+                            <th>Visita</th>
+                            <th>Bróker</th>
+                            <th>Correo</th>
+                         <th>Teléfono</th>
+                            <th>Estatus</th>-->
+                        </tr>
+                        <tr class="tabla-hover">
+                            <td>03/10/2022</td>
+                            <td>Capacitación</td>
+                            <td>
+                                <a class=" bg-status-blue-btns-gnrl btn">
+                                Responder</a></td>
+                            <!--<td>Real del encanto</td>
+                            <td> - </td>-->
+                           <!-- <td>Héctor Guajardo</td>
+                            <td>paola.1@gmail.com</td>
+                            <td>5533553355</td>
+                           <td>
+                                <p class="bg-status-pink">Informes</p>
+                            </td>-->
+                        </tr>
+                        <tr class="tabla-hover">
+                            <td>03/10/2022</td>
+                            <td>Servicio</td>
+                            <td>
+                                <a class="bg-status-blue-btns-gnrl btn">Responder</a>
+                            </td>
+                           <!-- <td>Real del encanto</td>
+                            <td> - </td>-->
+                            <!--
+                            <td>paola.1@gmail.com</td>
+                            <td>5533553355</td>
+                           <td>Héctor Guajardo</td>
+                           <td>
+                                <p class="bg-status-pink">Informes</p>
+                            </td>-->
+                        </tr>
+                        <tr class="tabla-hover">
+                            <td>03/10/2022</td>
+                            <td>Otra</td>
+                            <td><a class="bg-status-blue-btns-gnrl btn">Responder</a></td>
+                           <!-- <td>Real del encanto</td>
+                            <td> - </td>-->
+                           <!---<td>paola.1@gmail.com</td>
+                            <td>5533553355</td>
+                            <td>Héctor Guajardo</td>
+                            <td>
+                                <p class="bg-status-pink">Informes</p>
+                            </td>-->
+                        </tr>
+
+                    </table>
+                </div>
+              
+                <div class="view-all mt-3">
+                    <nav aria-label="" class="mt-4">
+                        <ul class="pagination justify-content-lg-center justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link me-1" href="#" tabindex="-1" aria-disabled="true">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </a>
+                            </li>
+                            <li class="page-item active me-1" aria-current="page"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item me-1">
+                                <a class="page-link" href="#">2</a>
+                            </li>
+                            <li class="page-item me-1"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="col col-md-12 col-lg-12 col-xl-4 ">
+            <div class="more-options d-cards ">
+             <!--calendario , y agenda de actvidades-->
+                <!--  <div class="col-3 col-md-4 col-lg-4 col-xl-12">
+                    <div class="calendar scrollhost">
+                        <div class="calendarioo" id="calendar"></div>
+                    </div>
+                </div>
+                <div class="col col-md-4 col-lg-4 col-xl-12 ">
+                    <div class="activities">
+                        <div class="title-activities">Actividades para hoy</div>
+                        <div class="content-activities">
+                            <div class="list-activities bg-activity-3">
+                                <div class="col-8 info-general">
+                                    <div class="title-activity">
+                                        Propiedad: Coyoacán 10, CDMX
+                                    </div>
+                                    <div>Cliente: Alexandra Vega</div>
+                                </div>
+                                <div class="col-4 info-time">
+                                    <div class="type-activitie">Visita</div>
+                                    <div class="hour-activitie">13:00 am</div>
+                                </div>
+                            </div>
+                            <div class="list-activities bg-activity-5">
+                                <div class="col-8 info-general">
+                                    <div class="title-activity">
+                                        Propiedad: Polanco 11, 11600 CDMX
+                                    </div>
+                                    <div>Tipo: Llamada</div>
+                                </div>
+                                <div class="col-4 info-time">
+                                    <div class="type-activitie">Seguimiento</div>
+                                    <div class="hour-activitie">10:00 am</div>
+                                </div>
+                            </div>
+                            <div class="list-activities bg-activity-4">
+                                <div class="col-8 info-general">
+                                    <div class="title-activity">
+                                        Asesoria: Legal
+                                    </div>
+                                    <div>Leer: Escritura</div>
+                                </div>
+                                <div class="col-4 info-time">
+                                    <div class="type-activity">Asesoria</div>
+                                    <div class="hour-activity">11:00 am</div>
+                                </div>
+                            </div>
+                            <div class="view-all mt-1">
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="col col-md-4 col-lg-4 col-xl-12 ">
+                    <div class="enterate shadow">
+                        <div class="title-enterate">Entérate</div>
+                        <div class="img-enterate">
+                            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="~/img/imagenes-mesa-de-control/enterate.png" alt="" class="img-fluid d-block size-image rounded w-100" />
+
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="~/img/imagenes-mesa-de-control/enterate2.jpg" alt="" class="img-fluid d-block size-image rounded  w-100" />
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="~/img/imagenes-mesa-de-control/enterate3.jpg" alt="" class="img-fluid d-block size-image rounded w-100" />
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<!--Scripts-->
+<script>
+    // Script para tab de tablero de brokers
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+
+    //Función 2
+    function openCity2(evt, cityName2) {
+        var i, tabcontent2, tablinks2;
+        tabcontent2 = document.getElementsByClassName("tabcontent2");
+        for (i = 0; i < tabcontent2.length; i++) {
+            tabcontent2[i].style.display = "none";
+        }
+        tablinks2 = document.getElementsByClassName("tablinks2");
+        for (i = 0; i < tablinks2.length; i++) {
+            tablinks2[i].className = tablinks2[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName2).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen2").click();
+
+    // Función 3
+    function openCity3(evt, cityName3) {
+        var i, tabcontent3, tablinks3;
+        tabcontent3 = document.getElementsByClassName("tabcontent3");
+        for (i = 0; i < tabcontent3.length; i++) {
+            tabcontent3[i].style.display = "none";
+        }
+        tablinks3 = document.getElementsByClassName("tablinks3");
+        for (i = 0; i < tablinks3.length; i++) {
+            tablinks3[i].className = tablinks3[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName3).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen3").click();
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var initialLocaleCode = 'es';
+        var localeSelectorEl = document.getElementById('locale-selector');
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,listMonth'
+            },
+            locale: 'es',
+            initialDate: '2022-09-12',
+            locale: initialLocaleCode,
+            theme: true,
+            editable: false,
+            buttonIcons: false, // show the prev/next text
+            // weekNumbers: true,
+            navLinks: false, // can click day/week names to navigate views
+            editable: true,
+            dayMaxEvents: true, // allow "more" link when too many events
+            events: [
+                {
+                    title: 'All Day Event',
+                    start: '2022-09-01'
+                },
+                {
+                    title: 'Long Event',
+                    start: '2020-09-07',
+                    end: '2020-09-10'
+                },
+                {
+                    groupId: 999,
+                    title: 'Repeating Event',
+                    start: '2020-09-09T16:00:00'
+                },
+                {
+                    groupId: 999,
+                    title: 'Repeating Event',
+                    start: '2020-09-16T16:00:00'
+                },
+                {
+                    title: 'Conference',
+                    start: '2020-09-11',
+                    end: '2020-09-13'
+                },
+                {
+                    title: 'Meeting',
+                    start: '2020-09-12T10:30:00',
+                    end: '2020-09-12T12:30:00'
+                },
+                {
+                    title: 'Lunch',
+                    start: '2020-09-12T12:00:00'
+                },
+                {
+                    title: 'Meeting',
+                    start: '2020-09-12T14:30:00'
+                },
+                {
+                    title: 'Happy Hour',
+                    start: '2020-09-12T17:30:00'
+                },
+                {
+                    title: 'Dinner',
+                    start: '2020-09-12T20:00:00'
+                },
+                {
+                    title: 'Birthday Party',
+                    start: '2020-09-13T07:00:00'
+                },
+                {
+                    title: 'Click for Google',
+                    url: 'http://google.com/',
+                    start: '2020-09-28'
+                }
+            ]
+        });
+
+        calendar.render();
+
+        // build the locale selector's options
+        calendar.getAvailableLocaleCodes().forEach(function (localeCode) {
+            var optionEl = document.createElement('option');
+            optionEl.value = localeCode;
+            optionEl.selected = localeCode == initialLocaleCode;
+            optionEl.innerText = localeCode;
+            localeSelectorEl.appendChild(optionEl);
+        });
+
+        // when the selected option changes, dynamically change the calendar option
+        localeSelectorEl.addEventListener('change', function () {
+            if (this.value) {
+                calendar.setOption('locale', this.value);
+            }
+        });
+
+    });
+
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="~/js/script.js"></script>
+<script src="~/js/effects.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>

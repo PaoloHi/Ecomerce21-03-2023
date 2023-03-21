@@ -1,0 +1,1275 @@
+﻿@model BrokersModel;
+@{
+    Layout = "_NavUsuarios";
+}
+
+
+<!--NUEVO BROKER-->
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] Nuevo Broker</title>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" />
+    <link href="~/assets/css/material-bootstrap-wizard.css" rel="stylesheet">
+  
+
+    <link rel="stylesheet" href="~/css/style_form_nuevo_usuario.css">
+    <link rel="stylesheet" href="~/css/Style_form.css" />
+
+    <link rel="icon" type="image/png" sizes="16x16" href="~/img/imagen-logo/logo_oficial.png">
+    <link rel="stylesheet" href="~/css/styleGeneral.css"/>
+    <link rel="stylesheet" href="~/css/estilosGenerales.css" />
+    <script src="https://kit.fontawesome.com/e43b4d35fb.js" crossorigin="anonymous"></script>
+
+</head>
+
+
+<!--animacion-->
+<ul class="circles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+
+<!--container -->
+<div class="container-lg ">
+    <div class="row">
+        <div class="col">
+            <!--      Wizard container        -->
+
+            <div class="wizard-container">
+                <h3 class="">Nuevo Broker</h3>
+                <div class="card wizard-card contenedorGeneralBlanco" data-color="orange" id="wizardProfile">
+                    <form action="" method="">
+
+                        <div class="wizard-navigation">
+                            <ul>
+                                <li><a href="#generales" data-toggle="tab">Generales</a></li>
+                                <li><a href="#personales" data-toggle="tab">Personales</a></li>
+                                <li><a href="#documentacion" data-toggle="tab">Documentación</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="tab-content">
+
+                             <!--pestaña de generales-->
+                            <div class="tab-pane" id="generales">
+                                <div class="row ">
+                                    <label for="" class="">
+                                        <h5 class="ms-1 color_letter text-black">Datos del broker</h5>
+                                    </label>
+                                    
+                                   
+                                    <div class="row">
+                                        <!--columna izquierda-->
+                                        <div class="col">
+                                            <!--tipo de usuario-->
+                                            <div class="d-flex justify-content-center mt-4">
+                                                <label for="t_operacion" class="fw-bold color_letter2 mb-3 text-black-50">
+                                                    Tipo de
+                                                    usuario
+                                                </label>
+                                                <select class="border-labels size-select2 rounded text-center d-flex justify-content-end  text-black-50" aria-label="Default select example">
+                                                    <option disabled="" selected="">Roles</option>
+                                                    <option value="1">Admin ROOT</option>
+                                                    <option value="2">Admin general</option>
+                                                    <option value="3">Admin TI</option>
+                                                    <option value="4">Admin propiedades</option>
+                                                    <option value="4">Admin propiedades</option>
+                                                    <option value="5">Admin brokers</option>
+
+                                                </select>
+                                            </div>
+
+                                            <div class="col d-flex flex-column flex-wrap mt-4 align-items-center">
+                                                <label for="t_operacion" class=" align-content-start fw-normal fs-6  color_letter mb-3" >
+                                                    Selecciona tu imagen
+                                                    de perfil
+                                                </label>
+                                                <div class="input-group mt-3 fileContainer text-center">
+                                                    <input type="file" id="archivo" name="archivo" class="">
+                                                    <img src="/img/image-form-usuario/Recurso_usuario.png" id="preview" alt="" class="profile_picture rounded-circle">
+                                                    <label for="" class="text-center btn-orange text-light mt-1 size_text_profile">
+                                                        Dale click
+                                                        aquí
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--columna derecha-->
+                                        <div class="col-7 row row-cols-1 d-flex ">
+                                            <!-- Nombre-->
+                                            <div class="row d-flex p-1 col-6">
+                                                <div class="d-inline form-group label-floating is-empty">
+                                                    <div class="d-flex  ">
+                                                        <label for="nombres" class=" color_letter2 size-text control-label">Nombre(s)</label>
+                                                    </div>
+                                                    <input type="text" asp-for="Nombre" class="mt-2 form-control" aria-required="true">
+                                                    <span class="material-input"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row row-cols-2 d-inline-flex">
+                                                <!--Apellido Materno-->
+
+                                                <div class=" d-inline-flex p-1 col">
+                                                    <div class="d-inline form-group label-floating is-empty">
+                                                        <div class="d-flex">
+                                                            <label for="" class=" color_letter2 size-text control-label">Apellido paterno</label>
+                                                        </div>
+                                                        <input type="text" asp-for="ApellidoP" class="mt-2 form-control" aria-required="true">
+                                                        <span class="material-input"></span>
+                                                    </div>
+                                                </div>
+
+                                                <!--Apellido Paterno-->
+                                                <div class="d-inline-flex p-1 col">
+                                                    <div class="d-inline form-group label-floating  is-empty">
+                                                        <div class="d-flex">
+                                                            <label for="" class=" color_letter2 size-text control-label">Apellido materno</label>
+                                                        </div>
+                                                        <input type="text" asp-for="ApellidoM" class=" form-control mt-2" aria-required="true">
+                                                        <span class="material-input"></span>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+
+
+                                            <!--fcha de cumpleaños-->
+                                            <div class="row d-flex p-1 col-8">
+                                                <div class="d-inline form-group label-floating is-empty">
+                                                    <div class="d-flex  ">
+                                                        <label for="nombres" class=" color_letter2 size-text control-label">Fecha de cumpleaños</label>
+                                                    </div>
+                                                    <input type="datetime" asp-for="FecCump" class="mt-2 form-control" aria-required="true">
+                                                    <span class="material-input"></span>
+                                                </div>
+                                            </div>
+
+                                          
+                                        </div>
+
+                                        <hr>
+
+                                    </div>
+                                    <br>
+
+
+
+                                    <h5 class="ms-1 color_letter text-black">Contacto</h5>
+                                    <div class="input-group d-lg-inline-flex justify-content-end mt-lg-3 mb-lg-2 ms-lg-2 align-content-between ">
+                                        <div class=" d-lg-inline-block me-lg-5 form-group label-floating mt-1 p-1 ">
+                                            <label for="correo_elec" class="control-label color_letter2 size-text">Correo electrónico <small> *</small></label>
+                                            <input type="text" asp-for="Correo" class=" form-control mt-2" />
+                                        </div>
+                                        <div class=" d-lg-inline-block ms-lg-5 me-lg-5 form-group mt-1 label-floating p-1 ">
+                                            <label for="tel" class=" color_letter2 size-text control-label ">Teléfono</label>
+                                           
+                                            <div class="d-inline-flex">
+
+                                            <select class="d-flex form-control" style="width: 100px;" asp-for="Lada">
+                                                            <option value="+52" class="flag-icon flag-icon-mx">+52 (MX)</option>
+                                                            <option value="+54" class="flag-icon flag-icon-mx">+54 (ARG)</option>
+                                                            <option value="+57" class="flag-icon flag-icon-gb">+57 (COL)</option>
+                                                             <option value="+53" class="flag-icon flag-icon-gb">+53 (CUB)</option>
+                                                            <option value="+1" class="flag-icon flag-icon-us">+1 (EE.UU)</option>
+                                                                <option value="+48" class="flag-icon flag-icon-us">+48 (PL)</option>
+                                                            <option value="+44" class="flag-icon flag-icon-gb">+44 (UK)</option>
+                                                           
+                                                        </select>
+                                            <input type="tel" asp-for="Tel" name="tel"  min="0" maxlength="10" class="mt-2 ms-1 form-control NobtnNumber" />
+                                            </div>  
+                                        </div>
+
+                                        <div class=" d-lg-inline-block ms-lg-5 me-lg-2 p-1 form-group mt-1 label-floating p-1 ">
+                                            <label for="n_propiedad" class=" color_letter2 size-text control-label">Teléfono 2</label>
+                                             <div class="d-inline-flex">
+
+                                            <select class="d-flex form-control" style="width: 100px;" asp-for="Lada2">
+                                                            <option value="+52" class="flag-icon flag-icon-mx">+52 (MX)</option>
+                                                            <option value="+54" class="flag-icon flag-icon-mx">+54 (ARG)</option>
+                                                            <option value="+57" class="flag-icon flag-icon-gb">+57 (COL)</option>
+                                                             <option value="+53" class="flag-icon flag-icon-gb">+53 (CUB)</option>
+                                                            <option value="+1" class="flag-icon flag-icon-us">+1 (EE.UU)</option>
+                                                                <option value="+48" class="flag-icon flag-icon-us">+48 (PL)</option>
+                                                            <option value="+44" class="flag-icon flag-icon-gb">+44 (UK)</option>
+                                                           
+                                                        </select>
+                                            <input type="tel" asp-for="Tel2" name="tel" min="0" maxlength="10" class="mt-2 ms-1 form-control NobtnNumber" />
+                                            </div>  
+                                           
+                                        </div>
+
+                                    </div>
+                                    <hr>
+
+                                    <!--seccion de direccion-->
+                                       <div class="row">
+                                                <label for="direccion">
+                                                    <h5 class="ms-1 color_letter text-black">Dirección</h5>
+                                                </label>
+                                                <div class=" d-flex justify-content-center row row-cols-4">
+                                                    <div class="d-inline-flex col ">
+                                                        <d class="d-inline form-group ">
+                                                            <label for="c.p" class=" control-label color_letter2">
+                                                                <h6>C.P.</h6>
+                                                            </label>
+                                                            <input type="number" name="c.p" min="0" id="codigo_postal"
+                                                                   class="form-control NobtnNumber" />
+                                                        </d iv>
+                                                    </div>
+                                                    <div class="d-inline-flex col size-nombre-calle ">
+                                                        <div class="d-inline form-group ">
+                                                            <label for="n_calle" class=" control-label color_letter2">
+                                                                <h6>Nombre de la calle</h6>
+                                                            </label>
+                                                            <input type="text" name="n_calle" id="n_calle"
+                                                                   class="form-control" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-inline-flex col ">
+                                                        <div class="d-inline form-group ">
+                                                            <label for="n_exterior" class=" control-label color_letter2">
+                                                                <h6>No. exterior</h6>
+                                                            </label>
+                                                            <input type="number" name="n_exterior" id="n_exterior"
+                                                                   class="form-control NobtnNumber size-numeros-ext" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-inline-flex col">
+                                                        <div class="d-inline form-group ">
+                                                            <label for="n_interior" class=" control-label color_letter2">
+                                                                <h6>No. interior</h6>
+                                                            </label>
+                                                            <input type="number" name="n_interior" id="n_interior"
+                                                                   class="form-control NobtnNumber size-numeros-ext" />
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class=" mt-4 d-flex justify-content-center row row-cols-4">
+
+                                                    <div class="d-inline-flex size-nombre-calle col ">
+                                                        <div class="d-inline form-group ">
+                                                            <label for="colonia" class=" control-label color_letter2">
+                                                                <h6>Colonia</h6>
+                                                            </label>
+                                                            <input type="text" name="colonia" id="n_calle"
+                                                                   class="form-control" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="d-inline-flex size-nombre-calle col">
+                                                        <div class="d-inline form-group ">
+                                                            <label for="municipio" class=" control-label color_letter2">
+                                                                <h6>Alcaldía o municipio</h6>
+                                                            </label>
+                                                            <input type="text" name="n_municipio" id="n_calle"
+                                                                   class="form-control" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="d-inline-flex size-nombre-calle col">
+                                                        <div class="d-inline form-group ">
+                                                            <label for="estado" class=" control-label color_letter2">
+                                                                <h6>Estado</h6>
+                                                            </label>
+                                                            <input type="text" name="n_estado" id="n_calle"
+                                                                   class="form-control" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="d-inline-flex size-nombre-calle col">
+                                                        <div class="d-inline form-group ">
+                                                            <label for="pais" class=" control-label color_letter2">
+                                                                <h6>País</h6>
+                                                            </label>
+                                                            <input type="text" name="n_pais" id="n_calle"
+                                                                   class="form-control" />
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            
+                                            <label class="mt-3"><input type="checkbox" id="cbox1" value="first_checkbox"> Esta direccion es la misma que la de facturacion</label><br>
+
+<hr />
+
+                                    <label for="">
+                                        <h5 class="color_letter text-black">Zona</h5>
+                                    </label>
+
+
+
+                                    <div class="input-group justify-content-between d-lg-inline-flex mt-2">
+                                        <div class="mt-1 ms-2 col">
+                                            <label for="t_operacion" class=" align-content-start fw-bold color_letter mb-3">Selecciona tus zonas</label>
+                                            <ul class="lista-estados row row-cols-lg-4 row-cols-md-2 row-cols-sm-1">
+                                                <li><input name="checks[]" type="checkbox" value="Aguascalientes" class="form-check-input" /> Aguascalientes</li>
+                                                <li><input name="checks[]" type="checkbox" value="Baja California" class="form-check-input" /> Baja California</li>
+                                                <li><input name="checks[]" type="checkbox" value="Baja California Sur" class="form-check-input" /> Baja California Sur </li>
+                                                <li><input name="checks[]" type="checkbox" value="Campeche" class="form-check-input" /> Campeche</li>
+                                                <li><input name="checks[]" type="checkbox" value="Chiapas" class="form-check-input" /> Chiapas</li>
+                                                <li><input name="checks[]" type="checkbox" value="Chihuahua" class="form-check-input" /> Chihuahua</li>
+                                                <li><input name="checks[]" type="checkbox" value="Ciudad de México" class="form-check-input" /> Ciudad de México</li>
+                                                <li><input name="checks[]" type="checkbox" value="Coahuila" class="form-check-input" /> Coahuila</li>
+                                                
+                                                <li><input name="checks[]" type="checkbox" value="Colima" class="form-check-input" /> Colima</li>
+                                                <li><input name="checks[]" type="checkbox" value="Durango" class="form-check-input" /> Durango</li>
+                                                <li><input name="checks[]" type="checkbox" value="Estado de México" class="form-check-input" /> Estado de México</li>
+                                                <li><input name="checks[]" type="checkbox" value="Guanajuato" class="form-check-input" /> Guanajuato</li>
+                                                <li><input name="checks[]" type="checkbox" value="Guerrero" class="form-check-input" /> Guerrero</li>
+                                                <li><input name="checks[]" type="checkbox" value="Hidalgo" class="form-check-input" /> Hidalgo</li>
+                                                <li><input name="checks[]" type="checkbox" value="Jalisco" class="form-check-input" /> Jalisco</li>
+                                                <li><input name="checks[]" type="checkbox" value="Michoacan" class="form-check-input" /> Michoacan</li>
+                                              
+                                                <li><input name="checks[]" type="checkbox" value="Morelos" class="form-check-input" /> Morelos</li>
+                                                <li><input name="checks[]" type="checkbox" value="Nayarit" class="form-check-input" /> Nayarit</li>
+                                                <li><input name="checks[]" type="checkbox" value="Nuevo_León" class="form-check-input" /> Nuevo León</li>
+                                                <li><input name="checks[]" type="checkbox" value="Oaxaca" class="form-check-input" /> Oaxaca</li>
+                                                <li><input name="checks[]" type="checkbox" value="Puebla" class="form-check-input" /> Puebla</li>
+                                                <li><input name="checks[]" type="checkbox" value="Queretaro" class="form-check-input" /> Queretaro</li>
+                                                <li><input name="checks[]" type="checkbox" value="Quintana_Roo" class="form-check-input" /> Quintana Roo</li>
+                                                <li><input name="checks[]" type="checkbox" value="San_Luis_Potosi" class="form-check-input" /> San Luis Potosi</li>
+                                             
+                                                <li><input name="checks[]" type="checkbox" value="Sinaloa" class="form-check-input" /> Sinaloa</li>
+                                                <li><input name="checks[]" type="checkbox" value="Sonora" class="form-check-input" /> Sonora</li>
+                                                <li><input name="checks[]" type="checkbox" value="Tabasco" class="form-check-input" /> Tabasco</li>
+                                                <li><input name="checks[]" type="checkbox" value="Tamaulipas" class="form-check-input" /> Tamaulipas</li>
+                                                <li><input name="checks[]" type="checkbox" value="Tlaxcala" class="form-check-input" /> Tlaxcala</li>
+                                                <li><input name="checks[]" type="checkbox" value="Veracruz" class="form-check-input" /> Veracruz</li>
+                                                <li><input name="checks[]" type="checkbox" value="Yucatán" class="form-check-input" /> Yucatán</li>
+                                                <li><input name="checks[]" type="checkbox" value="Zacatecas" class="form-check-input" /> Zacatecas</li>
+                                            </ul>
+                                        </div>
+                                      
+                                      
+                                       
+                                    </div>
+                                    <div class="mb-2">Zonas seleccionadas: <span id="str"></span></div>
+
+                                   
+
+                                   
+                                </div>
+                            </div>
+
+                            <!--pestaña de personales-->
+                            <div class="tab-pane" id="personales">
+                                <div class="row">
+                                    <div class="col-sm-10 col-sm-offset-1">
+
+
+                                        <label for="datos_personales" class="fw-bold ms-lg-2">
+                                            <h5 class="color_letter text-black">Datos personales</h5>
+                                        </label>
+                                        <div class=" row row-cols-2 d-flex justify-content-center">
+                                           
+                                            <!--columna del RFC Y EL CURP -->
+                                            <div class="col d-flex mt-5 align-items-end">
+                                                <div class="d-lg-inline-block form-group label-floating ">
+                                                    <label for="rfc" class="color_letter2 size-text control-label">RFC</label>
+                                                    <input type="text" asp-for="Rfc" class=" form-control" /><!--required-->
+                                                </div>
+                                                <div class="d-lg-inline-block form-group label-floating">
+                                                    <label for="curp" class=" color_letter2 control-label size-text">CURP</label>
+                                                    <input type="text" asp-for="Curp" class=" form-control" /><!--required-->
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <hr style=" width: 84vw;">
+                                        <div class=" d-lg-inline-flex mt-2 d-flex justify-content-center">
+                                            <div class="mt-1 ms-2 me-3">
+                                                <label for="d_bancarios" class=" align-content-start fw-bold  pe-lg-5 mb-3 size-text">
+                                                    <h5 class="color_letter text-black">Datos bancarios</h5>
+                                                </label>
+
+                                            </div>
+                                            <div class=" d-lg-inline-block  mt-5 me-4  form-group label-floating">
+                                                <label for="clabe_inter" class=" control-label  color_letter2 size-text">
+                                                    Clabe
+                                                    interbancaria
+                                                </label>
+                                                <input type="number" min="0" asp-for="clabe"  class="mt-2 form-control NobtnNumber" />
+                                            </div>
+                                            <div class=" d-lg-inline-block  p-1 me-lg-5" style="margin-top:52px;">
+                                                <label for="banco" class=" color_letter2 size-text">Banco</label>
+                                                <select class="border-labels rounded text-center size-select2 " aria-label="Default select example">
+                                                    <option disabled selected>Banco</option>
+                                                    <option value="Banamex">Banamex</option>
+                                                    <option value="Bancomer">Bancomer</option>
+                                                    <option value="Santander">Santander</option>
+                                                    <option value="Banbajio">Banbajio</option>
+                                                    <option value="Banmifel">Banmifel</option>
+
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!--pestaña de documentacion-->
+                            <div class="tab-pane" id="documentacion">
+                                <div class="row">
+
+
+                                    <label for="documentos" class="">
+                                        <h5 class="ms-1 color_letter text-black">Documentos</h5>
+                                    </label>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-lg-8">
+                                            <div class=" my-custom-scrollbar  table-height table-responsive">
+                                                <table class="table table-hover border-gray h-100 border">
+                                                    <thead>
+                                                      <tbody>
+                                                        <tr class="tabla-hover">
+                                                            <th scope="row">1</th>
+                                                            <td colspan="2">identificacion oficial vigente (INE ,Pasaporte , FM3)</td>
+                                                            <td>
+                                                                <div class="fileContainer2 input-group btn" style="background-color:transparent;">
+                                                                    <input type="file" name="s_archivo" id="archivoInput" class=" me-5"
+                                                                           onchange="return validarExt()">
+                                                                    <i class="fa-solid fa-file-arrow-up size-icon ms-3 "></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3  input-group btn" style="background-color:transparent;">
+                                                                    <input type="button" name="d_archivo" id="archivoInput_delete" class="eliminarprueba me-3">
+                                                                    <i class="fa-solid fa-trash-can size-icon me-5"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group btn" style="background-color:transparent;">
+                                                                    <input type="button" name="v_archivo4" id="" onclick="visorExt()" class=" me-3">
+                                                                    <i class="fa-solid fa-eye size-icon me-5"></i></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+
+                                                                    @{
+                                                                        var Thaliz = "En proceso";
+                                                                    }
+
+                                                                    @if (@Thaliz == "En proceso")
+
+                                                                    {
+                                                                    <div class="fileContainer3 input-group me-4">
+
+                                                                        <input type="button" name="p_archivo1" id=""
+                                                                           class="ms-3">
+                                                                        <a class="btn botonProceso" href="#openModal">
+                                                                            <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                            <h6 class="font-size-visualizador">
+                                                                                proceso
+                                                                            </h6>
+                                                                        </a>
+
+
+                                                                        <!-- Modal -->
+                                                                        <div id="openModal" class="modalDialog">
+                                                                            <div>
+                                                                                <a href="#close" title="Close" class="close" onclick="resetModal()">X</a>
+                                                                                <div>
+                                                                                    <div class="modal-header" id="modal-header">
+                                                                                        <h1 class="modal-title fs-5">¿Que deseas hacer con este documento?</h1>
+
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <div class="d-flex d-inline-flex">
+                                                                                            <button class="btn btn-success mr-1" id="aprbarBtn" onclick="aprovar()">Aprobar</button>
+
+                                                                                            <button class="btn btn-danger ms-1" id="rechazrBtn" onclick="rechazar()">Rechazar</button>
+                                                                                        </div>
+
+                                                                                        <div class=" " id="motivoRechazo" style="display:none;">
+                                                                                            <h4 class="text-danger ">Motivo de rechazo </h4>
+                                                                                            <div class="form-floating">
+                                                                                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                                                                                <label for="floatingTextarea">¿Por que rechazas el documento?</label>
+                                                                                            </div>
+                                                                                            <a class="btn btn-danger " href="#close">Guardar cambios</a>
+                                                                                        </div>
+                                                                                        <div class="mt-2 text-success" id="motivoAprovado" style="display:none;">
+                                                                                            <h6>¿Estas seguro que deseas aprovar este documentos?</h6>
+
+                                                                                            <button class="btn btn-success " href="#close">
+                                                                                                Guardar cambios
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+
+
+                                                                    }
+                                                                    else if (@Thaliz == "Aprobado")
+                                                                    {
+                                                                    <div class="fileContainer3  input-group me-4">
+                                                                        <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                        <button class="border-0">
+
+                                                                            <i class="fa-solid fa-circle-check"></i>
+                                                                            <h6 class="font-size-visualizador">Aprobado</h6>
+                                                                        </button>
+                                                                    </div>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        /** RECHAZADO **/
+                                                                    <div class="fileContainer3 input-group me-4">
+                                                                        <input type="button" name="a_archivo2" id="" class="ms-3">
+                                                                        <button class="border-0">
+                                                                            <i class="fa-solid fa-circle-xmark"></i>
+                                                                            <h6 class="font-size-visualizador">Rechazado</h6>
+                                                                        </button>
+
+                                                                    </div>
+                                                                    }
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="tabla-hover">
+                                                            <th scope="row">2</th>
+                                                            <td colspan="2">RFC</td>
+                                                            <td>
+                                                                <div class="fileContainer2 input-group btn" style="background-color:transparent;">
+                                                                    <input type="file" name="s_archivo2" id="archivoInput2" class="me-5"
+                                                                           onchange="return validarExt2()">
+                                                                    <i class="fa-solid fa-file-arrow-up size-icon ms-3 size-icon "></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group btn" style="background-color:transparent;">
+                                                                    <input type="button" name="d_archivo2" id="archivoInput_delete2" class="eliminarprueba me-3">
+                                                                    <i class="fa-solid fa-trash-can me-5 size-icon"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group btn" style="background-color:transparent;">
+                                                                    <input type="button" name="v_archivo4" id="" onclick="visorExt2()" class=" me-3">
+                                                                    <i class="fa-solid fa-eye me-5 size-icon"></i></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+
+
+                                                                    @if (@Thaliz == "En proceso")
+
+                                                                    {
+                                                                    <div class="fileContainer3 input-group me-4">
+
+                                                                        <input type="button" name="p_archivo1" id=""
+                                                                           class="ms-3">
+                                                                        <a class="btn botonProceso" href="#openModal">
+                                                                            <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                            <h6 class="font-size-visualizador">
+                                                                                proceso
+                                                                            </h6>
+                                                                        </a>
+
+
+                                                                        <!-- Modal -->
+                                                                        <div id="openModal" class="modalDialog">
+                                                                            <div>
+                                                                                <a href="#close" title="Close" class="close" onclick="resetModal()">X</a>
+                                                                                <div>
+                                                                                    <div class="modal-header" id="modal-header">
+                                                                                        <h1 class="modal-title fs-5">¿Que deseas hacer con este documento?</h1>
+
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <div class="d-flex d-inline-flex">
+                                                                                            <button class="btn btn-success mr-1" id="aprbarBtn" onclick="aprovar()">Aprobar</button>
+
+                                                                                            <button class="btn btn-danger ms-1" id="rechazrBtn" onclick="rechazar()">Rechazar</button>
+                                                                                        </div>
+
+                                                                                        <div class=" " id="motivoRechazo" style="display:none;">
+                                                                                            <h4 class="text-danger ">Motivo de rechazo </h4>
+                                                                                            <div class="form-floating">
+                                                                                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                                                                                <label for="floatingTextarea">¿Por que rechazas el documento?</label>
+                                                                                            </div>
+                                                                                            <a class="btn btn-danger " href="#close">Guardar cambios</a>
+                                                                                        </div>
+                                                                                        <div class="mt-2 text-success" id="motivoAprovado" style="display:none;">
+                                                                                            <h6>¿Estas seguro que deseas aprovar este documentos?</h6>
+
+                                                                                            <button class="btn btn-success " href="#close">
+                                                                                                Guardar cambios
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+
+
+                                                                    }
+                                                                    else if (@Thaliz == "Aprobado")
+                                                                    {
+                                                                    <div class="fileContainer3  input-group me-4">
+                                                                        <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                        <button class="border-0">
+
+                                                                            <i class="fa-solid fa-circle-check"></i>
+                                                                            <h6 class="font-size-visualizador">Aprobado</h6>
+                                                                        </button>
+                                                                    </div>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        /** RECHAZADO **/
+                                                                    <div class="fileContainer3 input-group me-4">
+                                                                        <input type="button" name="a_archivo2" id="" class="ms-3">
+                                                                        <button class="border-0">
+                                                                            <i class="fa-solid fa-circle-xmark"></i>
+                                                                            <h6 class="font-size-visualizador">Rechazado</h6>
+                                                                        </button>
+
+                                                                    </div>
+                                                                    }
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="tabla-hover">
+                                                            <th scope="row">3</th>
+                                                            <td colspan="2">CURP</td>
+                                                            <td>
+                                                                <div class="fileContainer2 input-group btn" style="background-color:transparent;">
+                                                                    <input type="file" name="s_archivo" id="archivoInput3" class="me-5"
+                                                                           onchange="return validarExt3()">
+                                                                    <i class="fa-solid fa-file-arrow-up ms-3 size-icon"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group btn" style="background-color:transparent;">
+                                                                    <input type="button" name="d_archivo3" id="archivoInput_delete3" class="eliminarprueba me-3">
+                                                                    <i class="fa-solid fa-trash-can me-3 size-icon"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group btn" style="background-color:transparent;">
+                                                                    <input type="button" name="v_archivo4" id="" onclick="visorExt3()" class=" me-3">
+                                                                    <i class="fa-solid fa-eye me-5 size-icon"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+
+
+                                                                    @if (@Thaliz == "En proceso")
+
+                                                                    {
+                                                                    <div class="fileContainer3 input-group me-4">
+
+                                                                        <input type="button" name="p_archivo1" id=""
+                                                                           class="ms-3">
+                                                                        <a class="btn botonProceso" href="#openModal">
+                                                                            <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                            <h6 class="font-size-visualizador">
+                                                                                proceso
+                                                                            </h6>
+                                                                        </a>
+
+
+                                                                        <!-- Modal -->
+                                                                        <div id="openModal" class="modalDialog">
+                                                                            <div>
+                                                                                <a href="#close" title="Close" class="close" onclick="resetModal()">X</a>
+                                                                                <div>
+                                                                                    <div class="modal-header" id="modal-header">
+                                                                                        <h1 class="modal-title fs-5">¿Que deseas hacer con este documento?</h1>
+
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <div class="d-flex d-inline-flex">
+                                                                                            <button class="btn btn-success mr-1" id="aprbarBtn" onclick="aprovar()">Aprobar</button>
+
+                                                                                            <button class="btn btn-danger ms-1" id="rechazrBtn" onclick="rechazar()">Rechazar</button>
+                                                                                        </div>
+
+                                                                                        <div class=" " id="motivoRechazo" style="display:none;">
+                                                                                            <h4 class="text-danger ">Motivo de rechazo </h4>
+                                                                                            <div class="form-floating">
+                                                                                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                                                                                <label for="floatingTextarea">¿Por que rechazas el documento?</label>
+                                                                                            </div>
+                                                                                            <a class="btn btn-danger " href="#close">Guardar cambios</a>
+                                                                                        </div>
+                                                                                        <div class="mt-2 text-success" id="motivoAprovado" style="display:none;">
+                                                                                            <h6>¿Estas seguro que deseas aprovar este documentos?</h6>
+
+                                                                                            <button class="btn btn-success " href="#close">
+                                                                                                Guardar cambios
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+
+
+                                                                    }
+                                                                    else if (@Thaliz == "Aprobado")
+                                                                    {
+                                                                    <div class="fileContainer3  input-group me-4">
+                                                                        <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                        <button class="border-0">
+
+                                                                            <i class="fa-solid fa-circle-check"></i>
+                                                                            <h6 class="font-size-visualizador">Aprobado</h6>
+                                                                        </button>
+                                                                    </div>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        /** RECHAZADO **/
+                                                                    <div class="fileContainer3 input-group me-4">
+                                                                        <input type="button" name="a_archivo2" id="" class="ms-3">
+                                                                        <button class="border-0">
+                                                                            <i class="fa-solid fa-circle-xmark"></i>
+                                                                            <h6 class="font-size-visualizador">Rechazado</h6>
+                                                                        </button>
+
+                                                                    </div>
+                                                                    }
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="tabla-hover">
+                                                            <th scope="row">4</th>
+                                                            <td colspan="2">Acta de nacimiento</td>
+                                                            <td>
+                                                                <div class="fileContainer2 input-group btn" style="background-color:transparent;">
+                                                                    <input type="file" name="s_archivo" id="archivoInput4" class="me-5"
+                                                                           onchange="return validarExt4()">
+                                                                    <i class="fa-solid fa-file-arrow-up size-icon ms-3 "></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group btn" style="background-color:transparent;">
+                                                                    <input type="button" name="d_archivo4" id="archivoInput_delete4" class="eliminarprueba me-3">
+                                                                    <i class="fa-solid fa-trash-can size-icon me-5"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group btn" style="background-color:transparent;">
+                                                                    <input type="button" name="v_archivo4" id="" onclick="visorExt4()" class=" me-3">
+                                                                    <i class="fa-solid fa-eye size-icon me-5"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+
+
+                                                                    @if (@Thaliz == "En proceso")
+
+                                                                    {
+                                                                    <div class="fileContainer3 input-group me-4 ">
+
+                                                                        <input type="button" name="p_archivo1" id=""
+                                                                           class="ms-3">
+                                                                        <a class="botonProceso btn" href="#openModal">
+                                                                            <i class="fa-solid fa-arrow-rotate-right size-icon"></i>
+                                                                            <h6 class="font-size-visualizador">
+                                                                                proceso
+                                                                            </h6>
+                                                                        </a>
+
+
+                                                                        <!-- Modal -->
+                                                                        <div id="openModal" class="modalDialog">
+                                                                            <div>
+                                                                                <a href="#close" title="Close" class="close" onclick="resetModal()">X</a>
+                                                                                <div>
+                                                                                    <div class="modal-header" id="modal-header">
+                                                                                        <h1 class="modal-title fs-5">¿Que deseas hacer con este documento?</h1>
+
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <div class="d-flex d-inline-flex">
+                                                                                            <button class="btn btn-success mr-1" id="aprbarBtn" onclick="aprovar()">Aprobar</button>
+
+                                                                                            <button class="btn btn-danger ms-1" id="rechazrBtn" onclick="rechazar()">Rechazar</button>
+                                                                                        </div>
+
+                                                                                        <div class=" " id="motivoRechazo" style="display:none;">
+                                                                                            <h4 class="text-danger ">Motivo de rechazo </h4>
+                                                                                            <div class="form-floating">
+                                                                                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                                                                                <label for="floatingTextarea">¿Por que rechazas el documento?</label>
+                                                                                            </div>
+                                                                                            <a class="btn btn-danger " href="#close">Guardar cambios</a>
+                                                                                        </div>
+                                                                                        <div class="mt-2 text-success" id="motivoAprovado" style="display:none;">
+                                                                                            <h6>¿Estas seguro que deseas aprovar este documentos?</h6>
+
+                                                                                            <button class="btn btn-success " href="#close">
+                                                                                                Guardar cambios
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+
+
+                                                                    }
+                                                                    else if (@Thaliz == "Aprobado")
+                                                                    {
+                                                                    <div class="fileContainer3  input-group me-4">
+                                                                        <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                        <button class="border-0">
+
+                                                                            <i class="fa-solid fa-circle-check"></i>
+                                                                            <h6 class="font-size-visualizador">Aprobado</h6>
+                                                                        </button>
+                                                                    </div>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        /** RECHAZADO **/
+                                                                    <div class="fileContainer3 input-group me-4">
+                                                                        <input type="button" name="a_archivo2" id="" class="ms-3">
+                                                                        <button class="border-0">
+                                                                            <i class="fa-solid fa-circle-xmark"></i>
+                                                                            <h6 class="font-size-visualizador">Rechazado</h6>
+                                                                        </button>
+
+                                                                    </div>
+                                                                    }
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="tabla-hover">
+                                                            <th scope="row">5</th>
+                                                            <td colspan="2">Constancia de situación fiscal</td>
+                                                            <td>
+                                                                <div class="fileContainer2 input-group btn" style="background-color:transparent;">
+                                                                    <input type="file" name="s_archivo" id="archivoInput3" class="me-5"
+                                                                           onchange="return validarExt3()">
+                                                                    <i class="fa-solid fa-file-arrow-up ms-3 size-icon"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group btn" style="background-color:transparent;">
+                                                                    <input type="button" name="d_archivo3" id="archivoInput_delete3" class="eliminarprueba me-3">
+                                                                    <i class="fa-solid fa-trash-can me-3 size-icon"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group btn" style="background-color:transparent;">
+                                                                    <input type="button" name="v_archivo4" id="" onclick="visorExt3()" class=" me-3">
+                                                                    <i class="fa-solid fa-eye me-5 size-icon"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+
+
+                                                                    @if (@Thaliz == "En proceso")
+
+                                                                    {
+                                                                    <div class="fileContainer3 input-group me-4">
+
+                                                                        <input type="button" name="p_archivo1" id=""
+                                                                           class="ms-3">
+                                                                        <a class="btn botonProceso" href="#openModal">
+                                                                            <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                            <h6 class="font-size-visualizador">
+                                                                                proceso
+                                                                            </h6>
+                                                                        </a>
+
+
+                                                                        <!-- Modal -->
+                                                                        <div id="openModal" class="modalDialog">
+                                                                            <div>
+                                                                                <a href="#close" title="Close" class="close" onclick="resetModal()">X</a>
+                                                                                <div>
+                                                                                    <div class="modal-header" id="modal-header">
+                                                                                        <h1 class="modal-title fs-5">¿Que deseas hacer con este documento?</h1>
+
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <div class="d-flex d-inline-flex">
+                                                                                            <button class="btn btn-success mr-1" id="aprbarBtn" onclick="aprovar()">Aprobar</button>
+
+                                                                                            <button class="btn btn-danger ms-1" id="rechazrBtn" onclick="rechazar()">Rechazar</button>
+                                                                                        </div>
+
+                                                                                        <div class=" " id="motivoRechazo" style="display:none;">
+                                                                                            <h4 class="text-danger ">Motivo de rechazo </h4>
+                                                                                            <div class="form-floating">
+                                                                                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                                                                                <label for="floatingTextarea">¿Por que rechazas el documento?</label>
+                                                                                            </div>
+                                                                                            <a class="btn btn-danger " href="#close">Guardar cambios</a>
+                                                                                        </div>
+                                                                                        <div class="mt-2 text-success" id="motivoAprovado" style="display:none;">
+                                                                                            <h6>¿Estas seguro que deseas aprovar este documentos?</h6>
+
+                                                                                            <button class="btn btn-success " href="#close">
+                                                                                                Guardar cambios
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+
+
+                                                                    }
+                                                                    else if (@Thaliz == "Aprobado")
+                                                                    {
+                                                                    <div class="fileContainer3  input-group me-4">
+                                                                        <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                        <button class="border-0">
+
+                                                                            <i class="fa-solid fa-circle-check"></i>
+                                                                            <h6 class="font-size-visualizador">Aprobado</h6>
+                                                                        </button>
+                                                                    </div>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        /** RECHAZADO **/
+                                                                    <div class="fileContainer3 input-group me-4">
+                                                                        <input type="button" name="a_archivo2" id="" class="ms-3">
+                                                                        <button class="border-0">
+                                                                            <i class="fa-solid fa-circle-xmark"></i>
+                                                                            <h6 class="font-size-visualizador">Rechazado</h6>
+                                                                        </button>
+
+                                                                    </div>
+                                                                    }
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="tabla-hover">
+                                                            <th scope="row">6</th>
+                                                            <td colspan="2">Comprobante de domicilio</td>
+                                                            <td>
+                                                                <div class="fileContainer2 input-group btn" style="background-color:transparent;">
+                                                                    <input type="file" name="s_archivo" id="archivoInput3" class="me-5"
+                                                                           onchange="return validarExt3()">
+                                                                    <i class="fa-solid fa-file-arrow-up ms-3 size-icon"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group btn" style="background-color:transparent;">
+                                                                    <input type="button" name="d_archivo3" id="archivoInput_delete3" class="eliminarprueba me-3">
+                                                                    <i class="fa-solid fa-trash-can me-3 size-icon"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group btn" style="background-color:transparent;">
+                                                                    <input type="button" name="v_archivo4" id="" onclick="visorExt3()" class=" me-3">
+                                                                    <i class="fa-solid fa-eye me-5 size-icon"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+
+
+                                                                    @if (@Thaliz == "En proceso")
+
+                                                                    {
+                                                                    <div class="fileContainer3 input-group me-4">
+
+                                                                        <input type="button" name="p_archivo1" id=""
+                                                                           class="ms-3">
+                                                                        <a class="btn botonProceso" href="#openModal">
+                                                                            <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                            <h6 class="font-size-visualizador">
+                                                                                proceso
+                                                                            </h6>
+                                                                        </a>
+
+
+                                                                        <!-- Modal -->
+                                                                        <div id="openModal" class="modalDialog">
+                                                                            <div>
+                                                                                <a href="#close" title="Close" class="close" onclick="resetModal()">X</a>
+                                                                                <div>
+                                                                                    <div class="modal-header" id="modal-header">
+                                                                                        <h1 class="modal-title fs-5">¿Que deseas hacer con este documento?</h1>
+
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <div class="d-flex d-inline-flex">
+                                                                                            <button class="btn btn-success mr-1" id="aprbarBtn" onclick="aprovar()">Aprobar</button>
+
+                                                                                            <button class="btn btn-danger ms-1" id="rechazrBtn" onclick="rechazar()">Rechazar</button>
+                                                                                        </div>
+
+                                                                                        <div class=" " id="motivoRechazo" style="display:none;">
+                                                                                            <h4 class="text-danger ">Motivo de rechazo </h4>
+                                                                                            <div class="form-floating">
+                                                                                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                                                                                <label for="floatingTextarea">¿Por que rechazas el documento?</label>
+                                                                                            </div>
+                                                                                            <a class="btn btn-danger " href="#close">Guardar cambios</a>
+                                                                                        </div>
+                                                                                        <div class="mt-2 text-success" id="motivoAprovado" style="display:none;">
+                                                                                            <h6>¿Estas seguro que deseas aprovar este documentos?</h6>
+
+                                                                                            <button class="btn btn-success " href="#close">
+                                                                                                Guardar cambios
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+
+
+                                                                    }
+                                                                    else if (@Thaliz == "Aprobado")
+                                                                    {
+                                                                    <div class="fileContainer3  input-group me-4">
+                                                                        <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                        <button class="border-0">
+
+                                                                            <i class="fa-solid fa-circle-check"></i>
+                                                                            <h6 class="font-size-visualizador">Aprobado</h6>
+                                                                        </button>
+                                                                    </div>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        /** RECHAZADO **/
+                                                                    <div class="fileContainer3 input-group me-4">
+                                                                        <input type="button" name="a_archivo2" id="" class="ms-3">
+                                                                        <button class="border-0">
+                                                                            <i class="fa-solid fa-circle-xmark"></i>
+                                                                            <h6 class="font-size-visualizador">Rechazado</h6>
+                                                                        </button>
+
+                                                                    </div>
+                                                                    }
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="tabla-hover">
+                                                            <th scope="row">7</th>
+                                                            <td colspan="2">Estado de cuenta ( carátula)</td>
+                                                            <td>
+                                                                <div class="fileContainer2 input-group btn" style="background-color:transparent;">
+                                                                    <input type="file" name="s_archivo" id="archivoInput3" class="me-5"
+                                                                           onchange="return validarExt3()">
+                                                                    <i class="fa-solid fa-file-arrow-up ms-3 size-icon"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group btn" style="background-color:transparent;">
+                                                                    <input type="button" name="d_archivo3" id="archivoInput_delete3" class="eliminarprueba me-3">
+                                                                    <i class="fa-solid fa-trash-can me-3 size-icon"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group btn" style="background-color:transparent;">
+                                                                    <input type="button" name="v_archivo4" id="" onclick="visorExt3()" class=" me-3">
+                                                                    <i class="fa-solid fa-eye me-5 size-icon"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+
+
+                                                                    @if (@Thaliz == "En proceso")
+
+                                                                    {
+                                                                    <div class="fileContainer3 input-group me-4">
+
+                                                                        <input type="button" name="p_archivo1" id=""
+                                                                           class="ms-3">
+                                                                        <a class="btn botonProceso" href="#openModal">
+                                                                            <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                            <h6 class="font-size-visualizador">
+                                                                                proceso
+                                                                            </h6>
+                                                                        </a>
+
+
+                                                                        <!-- Modal -->
+                                                                        <div id="openModal" class="modalDialog">
+                                                                            <div>
+                                                                                <a href="#close" title="Close" class="close" onclick="resetModal()">X</a>
+                                                                                <div>
+                                                                                    <div class="modal-header" id="modal-header">
+                                                                                        <h1 class="modal-title fs-5">¿Que deseas hacer con este documento?</h1>
+
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <div class="d-flex d-inline-flex">
+                                                                                            <button class="btn btn-success mr-1" id="aprbarBtn" onclick="aprovar()">Aprobar</button>
+
+                                                                                            <button class="btn btn-danger ms-1" id="rechazrBtn" onclick="rechazar()">Rechazar</button>
+                                                                                        </div>
+
+                                                                                        <div class=" " id="motivoRechazo" style="display:none;">
+                                                                                            <h4 class="text-danger ">Motivo de rechazo </h4>
+                                                                                            <div class="form-floating">
+                                                                                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                                                                                <label for="floatingTextarea">¿Por que rechazas el documento?</label>
+                                                                                            </div>
+                                                                                            <a class="btn btn-danger " href="#close">Guardar cambios</a>
+                                                                                        </div>
+                                                                                        <div class="mt-2 text-success" id="motivoAprovado" style="display:none;">
+                                                                                            <h6>¿Estas seguro que deseas aprovar este documentos?</h6>
+
+                                                                                            <button class="btn btn-success " href="#close">
+                                                                                                Guardar cambios
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+
+
+                                                                    }
+                                                                    else if (@Thaliz == "Aprobado")
+                                                                    {
+                                                                    <div class="fileContainer3  input-group me-4">
+                                                                        <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                        <button class="border-0">
+
+                                                                            <i class="fa-solid fa-circle-check"></i>
+                                                                            <h6 class="font-size-visualizador">Aprobado</h6>
+                                                                        </button>
+                                                                    </div>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        /** RECHAZADO **/
+                                                                    <div class="fileContainer3 input-group me-4">
+                                                                        <input type="button" name="a_archivo2" id="" class="ms-3">
+                                                                        <button class="border-0">
+                                                                            <i class="fa-solid fa-circle-xmark"></i>
+                                                                            <h6 class="font-size-visualizador">Rechazado</h6>
+                                                                        </button>
+
+                                                                    </div>
+                                                                    }
+
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                            <div class="input-group d-flex justify-content-start">
+                                            </div>
+                                        </div>
+                                        <div class="col border">
+                                            <div class="input-group d-flex">
+                                                <div id="visorArchivo" class="size-file d-flex justify-content-end">
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wizard-footer">
+                            <div class="pull-right d-flex justify-content-between">
+                                <input type='button' class='btn btn-previous btn-fill btn-dark-blue text-white btn-wd' name='Regresar' value='Regresar' />
+                                <input type='button' class='btn btn-next btn-fill btn-warning  btn-wd' name='siguiente' value='Siguiente' />
+                                <input type='submit' class="btn btn-finish btn-fill btn-warning  btn-wd" name='finalizar' value='Finalizar' />
+                            </div>
+
+                            <div class="pull-right d-flex justify-content-end">
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </form>
+                </div>
+            </div> <!-- wizard container -->
+        </div>
+    </div><!-- fin del row -->
+</div>
+
+
+
+
+<!--SCRIPTS-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+<script src="~/js/script-step.js"></script>
+<script src="~/js/script.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="~/assets/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+
+
+
+
+<!--   Core JS Files   -->
+
+<script src="~/assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="~/assets/js/jquery.bootstrap.js" type="text/javascript"></script>
+
+
+<!--  Plugin for the Wizard -->
+<script src="~/assets/js/material-bootstrap-wizard.js"></script>
+
+<!--  More information about jquery.validate here: http://jqueryvalidation.org/	 -->
+<script src="~/assets/js/jquery.validate.min.js"></script>

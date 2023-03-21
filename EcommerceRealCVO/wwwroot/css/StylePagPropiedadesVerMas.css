@@ -1,0 +1,1181 @@
+﻿:root {
+    --enfacisColor: #EB7029;
+    --navbarColorItems:#FFFFFF8C;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Gotham;
+}
+
+
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    background-color: #F5F5F5 !important;
+    margin-bottom: 110px !important;
+}
+
+@font-face {
+    font-family: Gotham;
+    src: url("../fonts/Gotham-Light.otf");
+}
+
+.navbar {
+    background-color: #012845 !important;
+    font-size: 15px;
+    position: sticky;
+}
+
+
+
+.backgr_orange {
+    background-color: var(--enfacisColor);
+}
+
+
+.image-size {
+    width: 50px;
+    height: 55px;
+}
+
+
+
+.navbar-brand {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 25px 20px 10px;
+    text-align: center;
+    background: #012845;
+    border-radius: 0px 0px 30px 30px;
+    box-shadow: 0px 0px 25px 3px rgba(4, 35, 51, 0.25);
+    border-radius: 20px 10px 30px 30px;
+    transition: all .5s;
+}
+
+.backgr {
+    background-color: #012845;
+}
+
+.btn_2 {
+    background-color: none;
+    border-radius: 100%;
+}
+
+.shadow_ {
+    border: 5px;
+    box-shadow: 5px 3px 3px 3px #ccc solid !important;
+}
+
+.icon {
+    color: #fff;
+}
+
+.border_radius_header {
+    border-radius: 10px 15px 70px 70px;
+    width: 130px;
+}
+
+.backgr_orange {
+    background-color: rgb(235, 112, 41);
+}
+
+
+.body-cards {
+    box-shadow: 7px 10px 3px #ccc;
+}
+
+
+.card {
+    position: relative;
+    align-items: center;
+    color: black;
+    border: none !important;
+    overflow: hidden;
+    margin-left:-4px;
+
+}
+
+.border_radius_numbers {
+    border-radius: 25px;
+    background-color: rgb(235, 112, 41);
+    color: #fff;
+    height: 35px;
+}
+
+.bg {
+    background-image: url("../img/Recurso\ 49.png");
+    background-size: 105%;
+    background-repeat: no-repeat;
+    background-position-x: -50px;
+    background-position-y: -50px;
+    animation: fadeIn 3s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0%;
+        filter: blur(3px);
+    }
+}
+
+.main_backg {
+    background: url(../img/Recurso\ 40.png);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.backgr-first {
+    background: url(../img/Recurso\ 112.png) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 1270px 585px;
+}
+
+@media only screen and (max-width: 400px) {
+    .backgr-first {
+        background: url(../img/Recurso\ 113.png) no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: 375px 667px;
+    }
+}
+
+.backgr-second {
+    background: url(../img/Recurso\ 53.png) no-repeat center center;
+    background-size: 750px 160px;
+    /*
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;*/
+}
+
+.size-select {
+    width: 150px;
+    border-radius: 10px;
+}
+
+.size_search {
+    width: 350px;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+.image-size {
+    width: 50px;
+    height: 55px;
+}
+
+/*Tarjetas de propiedades*/
+
+.backgr-contain{
+    background-color:#fff;
+}
+
+/*Tarjetas de propiedades*/
+@media only screen and (max-width: 3000px) {
+    .caja-a-mp {
+        background: rgba(255, 255, 255, 0.861);
+        border-radius: 5px;
+        width: 377px;
+        height: 230px;
+    }
+
+}
+
+@media only screen and (max-width:5200) and (min-width:3000px) {
+    .caja-a-mp {
+        background: rgba(255, 255, 255, 0.861);
+        border-radius: 5px;
+        width: 577px;
+        height: 230px;
+    }
+
+    .title-cards-mp {
+        width: 85%;
+        height: 17px;
+        text-align: center;
+        margin-left: 35px;
+        position: absolute;
+        color: #F5F5F5;
+        margin-top: auto;
+        border-radius: 3px 0px 0px 3px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    }
+}
+
+
+@media only screen and (max-width: 992px) {
+
+    .caja-a-mp {
+        background: rgba(255, 255, 255, 0.861);
+        border-radius: 5px;
+        width: 357px;
+        height: 230px;
+    }
+
+     .title-cards-mp {
+        width: 85%;
+        height: 17px;
+        text-align: center;
+        margin-left: 35px;
+        position: absolute;
+        color: #F5F5F5;
+        margin-top: auto;
+        border-radius: 3px 0px 0px 3px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    }
+    .title-cards-mp-casa {
+        width: 85%;
+        height: 17px;
+        text-align: center;
+        margin-left: 39px;
+        position: absolute;
+        color: #F5F5F5;
+        background-color: #012845;
+        margin-top: auto;
+        border-radius: 3px 0px 0px 3px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    .title-cards-mp-depto {
+        width: 85%;
+        height: 17px;
+        text-align: center;
+        margin-left: 39px;
+        position: absolute;
+        color: #F5F5F5;
+        background-color: #b72727;
+        margin-top: auto;
+        border-radius: 3px 0px 0px 3px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    .title-cards-mp-lote {
+        width: 85%;
+        height: 17px;
+        text-align: center;
+        margin-left: 39px;
+        background-color: rgb(140, 89, 255);
+        position: absolute;
+        color: #F5F5F5;
+        margin-top: auto;
+        border-radius: 3px 0px 0px 3px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    .title-cards-mp-terreno {
+        width: 85%;
+        height: 17px;
+        text-align: center;
+        margin-left: 39px;
+        position: absolute;
+        color: #F5F5F5;
+        margin-top: auto;
+        border-radius: 3px 0px 0px 3px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    .title-cards-mp-edificio {
+        width: 85%;
+        height: 17px;
+        text-align: center;
+        margin-left: 39px;
+        position: absolute;
+        color: #F5F5F5;
+        margin-top: auto;
+        border-radius: 3px 0px 0px 3px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    }
+}
+    /*Clases para los titulos del tipo de propiedad*/
+
+.title-cards-mp {
+    width: 85%;
+    height: 18px;
+    text-align: center;
+    margin-left: 39px;
+    position: absolute;
+    color: #F5F5F5;
+    background-color: #012845;
+    margin-top: auto;
+    border-radius: 3px 0px 0px 3px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+
+.title-cards-mp-depto {
+    width: 85%;
+    height: 18px;
+    text-align: center;
+    margin-left: 39px;
+    position: absolute;
+    color: #F5F5F5;
+    background-color: #b72727;
+    margin-top: auto;
+    border-radius: 3px 0px 0px 3px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+.title-cards-mp-lote {
+    width: 85%;
+    height: 18px;
+    text-align: center;
+    margin-left: 39px;
+    background-color: rgb(140, 89, 255);
+    position: absolute;
+    color: #F5F5F5;
+    margin-top: auto;
+    border-radius: 3px 0px 0px 3px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+.title-cards-mp-terreno {
+    width: 85%;
+    height: 18px;
+    text-align: center;
+    margin-left: 39px;
+    position: absolute;
+    color: #F5F5F5;
+    margin-top: auto;
+    border-radius: 3px 0px 0px 3px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+.title-cards-mp-edificio {
+    width: 85%;
+    height: 18px;
+    text-align: center;
+    margin-left: 39px;
+    position: absolute;
+    color: #F5F5F5;
+    margin-top: auto;
+    border-radius: 3px 0px 0px 3px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+    /*Fin de los estilos de los titulos del tipo de propiedad*/
+
+
+
+/*Fin de los estilos de los tirulos de propiedad para celulares*/
+
+
+
+.bookmark-mp {
+    position: absolute;
+    color: #ff7f40;
+    left: 3px;
+}
+
+
+
+
+
+.img-size {
+    width: 52px;
+    height: 52px;
+    border-radius: 10px;
+}
+
+
+.text-cards {
+    font-size: 15px;
+    line-height: 5px;
+}
+
+.mar_t {
+    margin-top: 7px;
+}
+
+.size-mp-cards {
+    font-size: 10px;
+    
+}
+
+
+.size-mp-name-icons {
+    font-size: 13px;
+}
+
+
+.size-mp-name-house {
+    font-size: 11px;
+    margin: 0 auto;
+}
+
+.size-mp-icons {
+    font-size: 10px;
+    
+}
+.size-mp-icons-wa {
+    font-size: 23px;
+}
+
+.size-mp-text {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
+.size-mp-text2 {
+    font-size: 11px;
+    font-weight: bold;
+    color: #fff;
+}
+
+
+
+.size-mp-name-main-house {
+    font-size: 75%;
+}
+
+.border-r-columns {
+    border-radius: 18px;
+}
+
+.backgr_blue {
+    background-color: #012845;
+    color: #fff;
+}
+
+.backgr_orange {
+    background-color: #ff7f40;
+    border-radius: 20%;
+    height: 30px;
+    width: 30px;
+}
+
+.text-orange {
+    color: #ff7f40 !important;
+}
+
+.scroll-container {
+    display: block;
+    width: 830px;
+    height: 500px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+@media only screen and (max-width: 992px) {
+    .scroll-container {
+        display: block;
+        width: 750px;
+        height: 500px;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+    }
+}
+
+/*Botones de agendar cita y ver mas para las pantallitas*/
+.btn_orange-mp {
+    background-color: rgb(235, 112, 41) !important;
+    border-radius: 5px !important;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    color: #F5F5F5 !important;
+   
+}
+
+    .btn_orange-mp:hover {
+        background-color: white !important;
+        color: var(--enfacisColor) !important;
+        border: 1px solid var(--enfacisColor);
+    }
+
+
+
+.btn_orange-mp-modal {
+    background-color: rgb(235, 112, 41) !important;
+    border-radius: 5px !important;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    transition: 1s;
+    color: #F5F5F5 !important;
+    box-shadow: 0 2px 2px 0 rgb(153 153 153 / 14%), 0 3px 1px -2px rgb(153 153 153 / 20%), 0 1px 5px 0 rgb(153 153 153 / 12%);
+}
+
+.btn_white-mp {
+    background-color: #fff !important;
+    border-radius: 5px !important;
+    height: 20px;
+    display: flex;
+    color: var(--enfacisColor) !important;
+    border: 1px rgb(235, 112, 41) solid !important;
+    align-items: center;
+    margin-top:6px;
+}
+
+
+    .btn_white-mp:hover {
+    color:white;
+    background-color:var(--enfacisColor) !important;
+    }
+
+
+    .style-whatsapp {
+        text-decoration: none;
+        color:var(--enfacisColor);
+    }
+
+#calendar {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+}
+
+.vista-border-r {
+    border-radius: 5px;
+}
+
+.size-v-image {
+    width: 93%;
+    height:380px;
+}
+
+.size-v-second-image {
+    width: 46.5%;
+}
+
+.size-v-third-image {
+    width: 93%;
+    height: 22vh;
+    border-radius: 20px;
+}
+
+.card-v-image {
+    width: 100%;
+    height: 23vh;
+}
+
+.bg-dark_blue {
+    background-color: #023D82;
+    color: #fff;
+}
+
+.color_orange {
+    color: #ff7f40;
+}
+
+/*boton de ver mas sugerencias*/
+.btn_s {
+    background-color: var(--enfacisColor) !important;
+    border-radius: 5px !important;
+    height: 33px;
+    color: #F5F5F5 !important;
+    padding: 5px 5px;
+    box-shadow: 0 2px 2px 0 rgb(153 153 153 / 14%), 0 3px 1px -2px rgb(153 153 153 / 20%), 0 1px 5px 0 rgb(153 153 153 / 12%);
+}
+
+    .btn_s:hover {
+        background-color: white !important;
+        color: var(--enfacisColor) !important;
+        border: 2px solid var(--enfacisColor);
+        font-weight: 500;
+    }
+
+
+
+
+    @media only screen and (max-width: 2500px) {
+        .card-v-principal {
+        width: 350px;
+        height: 300px;
+        background: none;
+        border-radius: 25px;
+        box-shadow: 0px 0px 5px rgb(123, 122, 122);
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .card-v-principal {
+        width: 200px;
+        height: 450px;
+        border-radius: 50px;
+        box-shadow: 10px 10px 5px rgb(123, 122, 122);
+    }
+}
+
+
+
+/*Tamaño para la letra y los iconos de la tarjeta pequeña*/
+
+.size-text-icons {
+    font-size: 85%;
+}
+
+/*Botones de agendar cita y ver mas para las pantallitas*/
+.btn_orange-v {
+    background-color: rgb(235, 112, 41) !important;
+    border-radius: 50px !important;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    transition: 1s;
+    color: #F5F5F5 !important;
+}
+
+.btn_white-v {
+    background-color: #fff !important;
+    border-radius: 50px !important;
+    height: 20px;
+    display: flex;
+    color: rgb(235, 112, 41);
+    border: 1px rgb(235, 112, 41) solid;
+    align-items: center;
+    transition: 1s;
+}
+
+/*Botones para cambiar hacia adelante o hacia atras en el formulario*/
+
+.btn-orange {
+    background-color:var(--enfacisColor);
+}
+
+.circle-btn {
+    box-shadow: 0px 0px 1px 5px #faba7b !important;
+    border-radius: 50% !important;
+}
+
+/*Estilos para darle que la imgen del carrusel se ajuste*/
+.img-size-mp {
+    width: 200px;
+    height: 123px;
+    border-radius: 5px;
+    position: static;
+}
+
+/*Estilos para la primera sección de la carta de la derecha*/
+
+.price-indicator {
+    width: 235px;
+    height:35px;
+    border-radius: 5px 5px 0px 0px;
+    background-color: var(--enfacisColor);
+    color:#fff;
+}
+
+.indicator_house {
+    background-color: #012845;
+    width:135px;
+    height:25px;
+    position:absolute;
+    left:12px;
+    border-radius: 0px 5px 5px 0px;
+    color: #fff;
+}
+.indicator_depto {
+    width: 85%;
+    height: 18px;
+    text-align: center;
+    margin-left: 47px;
+    position: absolute;
+    color: #F5F5F5;
+    background-color: #b72727;
+    margin-top: auto;
+    border-radius: 3px 0px 0px 3px;
+    box-shadow: 0px 4px 10px rgb(0 0 0 / 25%);
+}
+
+/*Fin de los estilos de la primera sección de la carta de la derecha*/
+/*Esitlos para la seccion de superficie*/
+.label-orange{
+    background-color:#ff7f40;
+    color:#fff;
+    width:120px;
+    border-radius:5px 5px 0px 0px;
+}
+/*Fin de los estilos para la sección de superficie*/
+
+/*Estilos de icnos de wa*/
+.pa-whatsapp {
+    position: absolute;
+    margin-left: 130px;
+    margin-top: 155px;
+}
+
+/*Tamaño de icono calendario*/
+
+.size-icons-footer-2 {
+    font-size: 9px;
+}
+
+
+/*Estilos a links*/
+a:link {
+    text-decoration: none;
+    
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ff7f40;
+}
+/*Fin de los estilos a links*/
+
+/*margen top de la caja imagen grande*/
+
+.margin-t-imagen-s{
+   margin-top:70px;
+
+}
+
+
+/*Este estilo es para el background azul del footer*/
+
+.main_backg {
+    background-color: #132c45;
+}
+/*Estilos para border cirular*/
+.icon-background {
+    color: #012845;
+    background: #fff;
+    padding: 0 9px;
+    line-height: 30px;
+    border-radius: 20px;
+}
+
+/*Estilos de tamaño de los iconos*/
+
+.size-icons-footer {
+    font-size: 15px;
+}
+
+.size-icons-footer-2 {
+    font-size: 9px;
+}
+
+.size-icon-navbar {
+    font-size: 23px;
+}
+
+/*Estilos a links*/
+a:link {
+    text-decoration: none;  
+}
+
+a:visited {
+  /*  color: #fff;*/
+    text-decoration: none;
+}
+
+a:hover {
+    color: #fff;
+}
+/*Fin de los estilos a links*/
+
+/*Tamaño de letra del footer*/
+.size-text-footer {
+    font-size: 11px !important;
+}
+ 
+.size-text-footer-copyr {
+    font-size: 11px;
+}
+
+/*position de ver más*/
+.pos-vermas {
+    position: absolute;
+    top: 151px;
+  
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+}
+
+
+input {
+    padding: 4px;
+    border: none !important;
+    border-bottom: 1px solid rgb(235, 112, 41) !important;
+    outline: none;
+}
+
+.modal-subtitle {
+    font-size: 14px;
+    color: rgb(146, 146, 146) !important;
+}
+
+/*Clases para el arreglo del carousel */
+
+.carousel-arreglo {
+    height: 400px !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    width: 93% !important;
+    background-color: rgb(234, 232, 232) !important;
+}
+
+.adaptar-car {
+    height: 130px !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    width: 100% !important;
+    background-color: rgb(234, 232, 232) !important;
+}
+
+
+
+.image-contain {
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+}
+
+
+
+@media (max-width: 600px) {
+    .carousel-item {
+        height: 200px;
+    }
+}
+
+.carousel-control-next, .carousel-control-prev {
+    height: 90%;
+}
+
+
+/* estilos agregados por Thaliz************************************************************/
+.infoaddress {
+border-bottom: 1px solid black !important;
+}
+
+
+#modal-body-content {
+text-align:center !important;
+}
+
+/*textos del footer*/
+.footer_elements {
+    font-size: 11px !important;
+    color: white !important;
+}
+
+    .footer_elements:hover {
+        color: var(--enfacisColor) !important;
+        cursor: pointer !important;
+    }
+
+.collapsible2 {
+    color: black;
+    cursor: pointer;
+    padding: 10px;
+    width: 90%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    border-bottom: 1px rgb(235, 112, 41) solid;
+    margin-left: -56px;
+    display:flow-root;
+    background-color:white;
+}
+
+    
+
+    .collapsible2 > .card-title {
+        text-decoration: none;
+        color: black;
+    }
+
+    .collapsible2 > .card-title:hover {
+        color: var(--enfacisColor);
+    }
+
+    .collapsible2:after {
+        content: '\002B';
+        color: rgb(235, 112, 41);
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+    }
+
+.content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.accordion .card-header:after {
+    font-family: 'FontAwesome';
+    content: "\f068";
+    float: right;
+}
+
+.accordion .card-header.collapsed:after {
+    content:"\f067";
+
+}
+
+.accordion-Decription {
+font-size:14px;
+text-align:left;
+padding:1rem;
+margin-right: 52px;
+}
+
+.item1 {
+    margin: 0px 59px 0 -44px;
+}
+
+#mapa {
+    margin: 7px 38px 4px 5px;
+}
+
+
+/*boton d tarjetas de sugerencias*/
+.whatsappIcon {
+    font-size: 16px;
+    margin: -12px 0px 0 25px;
+    color:var(--enfacisColor)
+}
+
+/*este es el de sugerencias*/
+.modalTelefono {
+    margin: 158px 0 0 111px;
+    position: absolute;
+    font-size: 18px;
+}
+/*modal del telefono pero de ver mas*/
+.modalTelefonoVM {
+    margin: 8px 0 0 35px;
+    position: absolute;
+    font-size: 24px;
+
+}
+
+
+.btn-llamar {
+    border-radius: 100%;
+    border: 0px;
+    color: var(--enfacisColor);
+
+}
+
+    .btn-llamar:hover {
+        color: var(--enfacisColor);
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+      
+        transition: 0.3s;
+        font-size: 30px;
+    }
+
+
+    .contenedorDirecionAcordion {
+        width: 37vw;
+    }
+
+.fSizeDireciones {
+font-size:13px;
+}
+
+/*color del navbar del onlyNAv3 que es el qe se muestra n la vista de propiedades vermas*/
+.itemColor {
+color:var(--navbarColorItems) !important;
+}
+
+    .itemColor:hover {
+    color:white !important;
+    }
+
+
+    .btnAfiliarme {
+        background-color: var(--enfacisColor);
+        color: white;
+        height: 35px;
+    }
+
+    .btnAfiliarme:hover {
+        background-color: white;
+        color: var(--enfacisColor) !important;
+        border: 1px solid var(--enfacisColor);
+    }
+
+.btnAfiliarmeH6 {
+    color: white;
+}
+
+    .btnAfiliarmeH6:hover {
+        color: var(--enfacisColor);
+    }
+
+.btn_white-mpA {
+    color: var(--enfacis-color);
+}
+
+    .btn_white-mpA:hover {
+        color: white;
+    }
+
+.modal-backgr-orange {
+    background-color: var(--enfacisColor);
+    border: none;
+    color: white;
+}
+
+    .modal-backgr-orange:hover {
+        background-color: white;
+        border: 1px solid var(--enfacisColor);
+        color: var(--enfacisColor);
+    }
+
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}
+
+
+    .modal-backdrop.fade {
+        opacity: 0;
+    }
+
+
+    .modal-backdrop.show {
+        opacity: 0.2;
+    }
+
+.btn-wtsp:hover {
+    color: var(--enfacisColor);
+    transition: 0.3s;
+  /*  font-size: 30px;*/
+}
+
+
+/*CLASES PARA LOS DIFERENTES TIPOS DE PROPIEDAD*/
+
+/*CASA*/
+.title-cards-mp-casa {
+    width: 85%;
+    height: 18px;
+    text-align: center;
+    margin-left: 47px;
+    position: absolute;
+    color: #F5F5F5;
+    background-color: #012845;
+    margin-top: auto;
+    border-radius: 3px 0px 0px 3px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+/*DEPARTAMENTO*/
+.title-cards-mp-depto {
+    width: 85%;
+    height: 18px;
+    text-align: center;
+    margin-left: 47px;
+    position: absolute;
+    color: #F5F5F5;
+    background-color: #b72727;
+    margin-top: auto;
+    border-radius: 3px 0px 0px 3px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+/*LOTE*/
+.title-cards-mp-lote {
+    width: 85%;
+    height: 18px;
+    text-align: center;
+    margin-left: 47px;
+    background-color: rgb(140, 89, 255);
+    position: absolute;
+    color: #F5F5F5;
+    margin-top: auto;
+    border-radius: 3px 0px 0px 3px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+/*TERRRENO*/
+.title-cards-mp-terreno {
+    width: 85%;
+    height: 18px;
+    text-align: center;
+    margin-left: 47px;
+    position: absolute;
+    background-color: rgb(253, 171, 39);
+    color: #F5F5F5;
+    margin-top: auto;
+    border-radius: 3px 0px 0px 3px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+/*EDIFICIO*/
+.title-cards-mp-edificio {
+    width: 85%;
+    height: 18px;
+    text-align: center;
+    margin-left: 47px;
+    position: absolute;
+    color: #F5F5F5;
+    background-color: sienna;
+    margin-top: auto;
+    border-radius: 3px 0px 0px 3px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+/*NAVE*/
+.title-cards-mp-nave {
+    width: 85%;
+    height: 18px;
+    text-align: center;
+    margin-left: 47px;
+    position: absolute;
+    color: #F5F5F5;
+    background-color: #91bc2d;
+    margin-top: auto;
+    border-radius: 3px 0px 0px 3px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+/*LOCAL*/
+.title-cards-mp-local {
+    width: 85%;
+    height: 18px;
+    text-align: center;
+    margin-left: 47px;
+    position: absolute;
+    color: #F5F5F5;
+    background-color: salmon;
+    margin-top: auto;
+    border-radius: 3px 0px 0px 3px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+/*OFICINA*/
+.title-cards-mp-oficina {
+    width: 85%;
+    height: 18px;
+    text-align: center;
+    margin-left: 47px;
+    position: absolute;
+    background-color: #961a52;
+    color: #F5F5F5;
+    margin-top: auto;
+    border-radius: 3px 0px 0px 3px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+/*AQUI TERMINAN LAS CLASES DE LOS TIPOS DE PROPIEDADES*/

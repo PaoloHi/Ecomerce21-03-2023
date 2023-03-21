@@ -1,0 +1,2246 @@
+﻿@model PropiedadesModel;
+@{
+    Layout = "_NavOnlyWizard";
+}
+
+<div class="area">
+
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <!-- Progress bar -->
+    <!--<div class="modal">
+        <div class="modal-main">
+          <div class="row">
+            <div class="c-3-lg c-3-md c-1-sm close-modal"></div>
+            <div class="c-6-lg c-6-md c-10-sm c-12-xs close-modal">
+              <div class="modal-card" id="loading">
+                <div class="preloader"></div>
+                <span class="tag">Cargando...</span>
+              </div>
+              <div class="modal-card" id="Message">
+                <span class="tag"></span>
+              </div>
+            </div>
+            <div class="c-3-lg c-3-md c-1-sm close-modal"></div>
+          </div>
+        </div>
+      </div>
+    -->
+    <!-- Progress bar -->
+
+    <div class="container-lg ">
+        <div class="row">
+            <div class="col">
+                <!--      Wizard container        -->
+                <div class="wizard-container">
+                    <div class="card wizard-card" data-color="orange" id="wizardProfile">
+                        <form asp-controller="Propiedades" asp-action="GuardarPropiedad" enctype="multipart/form-data" method="post">
+                            <div class="wizard-navigation">
+                                <ul>
+                                    <li><a href="#generales" data-toggle="tab">Generales</a></li>
+                                    <li><a href="#direccion" data-toggle="tab">Dirección</a></li>
+                                    <li><a href="#superficie" data-toggle="tab">Superficie</a></li>
+                                    <li><a href="#caracteristicas" data-toggle="tab">Características</a></li>
+                                    <li><a href="#documentos" data-toggle="tab">Documentos</a></li>
+                                    <li><a href="#propietario" data-toggle="tab">Propietario</a></li>
+                                    <li><a href="#progr_agenda" data-toggle="tab">Programar agenda</a></li>
+                                    <li><a href="#vista_previa" data-toggle="tab">Vista previa</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="tab-content">
+                                <div class="tab-pane" id="generales">
+                                    <div class="row">
+
+                                        <!-- Steps -->
+                                        <label for="">
+                                            <h5 class="ms-1 color_letter">Datos generales</h5>
+                                        </label>
+                                        <div class="input-group justify-content-between  d-lg-inline-flex ">
+                                            <div class="mt-3">
+                                                <label class="color_letter2">
+                                                    <h6>Tipo de operación</h6>
+                                                </label>
+                                                <input asp-for="Operacion" type="radio" value="1" class="btn-check size-select " name="Operacion" id="Renta"
+                                                       autocomplete="off" checked onclick="Mostrar()" />
+                                                <label class="btn btn-outline-primary rounded " for="Renta">Renta</label>
+
+                                                <input asp-for="Operacion" type="radio" value="2" class="btn-check" name="Operacion" id="Venta" autocomplete="off"
+                                                       onclick="Ocultar()" />
+                                                <label class="btn btn-outline-primary rounded " for="Venta">Venta</label>
+                                            </div>
+                                            <div class=" d-lg-inline-block  mb-3  ps-3 width-n-propiedad">
+                                                <div class=" d-inline form-group label-floating  ">
+                                                    <label for="n_propiedad" class=" color_letter2  control-label">
+                                                        <h6>
+                                                            Nombre de la
+                                                            propiedad
+                                                        </h6>
+                                                    </label>
+                                                    <input type="text" asp-for="NombrePropiedad" name="NombrePropiedad" id="nombre_propiedad"
+                                                           class="form-control  w-100 margin-t-Npropiedad" />
+                                                </div>
+                                            </div>
+                                            <div class=" d-lg-inline-block col-lg-4  ms-5 ">
+                                                <label for="t_propiedad" class="text-start color_letter2  mt-2">
+                                                    <h6>Tipo de propiedad</h6>
+                                                </label>
+                                                @Html.DropDownListFor(model => model.TPropiedad, new
+                                                SelectList(Model.TPropiedadL,"IDtipoP","Tipo"), "Tipo",new
+                                                {@class="size-select2 rounded text-center", @id="TipoPropiedadID"})
+
+                                                @Html.DropDownListFor(model => model.SubPropiedad, new List<SelectListItem>(),
+                                                "Subtipo", new { @class = "size-select2 rounded text-center d-lg-inline-block mt-md-2", @id="SubTipoPropiedadID" })
+
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <label for="" class="mt-lg-2">
+                                            <h5 class="color_letter ms-1">Precio</h5>
+                                        </label>
+
+                                        <div class="input-group d-lg-inline-flex justify-content-between mt-lg-0 align-content-between ">
+                                            <div class="d-lg-inline-block">
+                                                <label for="" class=" text-start color_letter2   mt-lg-2">
+                                                    <h6>Tipo de moneda</h6>
+                                                </label>
+                                                @Html.DropDownListFor(model => model.Moneda, new
+                                                SelectList(Model.MonedaL,"IDMoneda","Moneda"), "Moneda",new
+                                                {@class="size-select2 rounded text-center", @id="IDMoneda"})
+                                            </div>
+                                            <div class="d-lg-inline-block">
+                                                <div class="d-inline form-group label-floating ">
+                                                    <label for="precio" class=" control-label color_letter2">
+                                                        <h6>Precio</h6>
+                                                    </label>
+                                                    <input type="number" asp-for="Precio" name="Precio" id="precioProp" class="form-control NobtnNumber"
+                                                           min="0" />
+                                                </div>
+                                            </div>
+                                            <div id="renta" class="display-a_r me-lg-5 me-5 mt-lg-2 ">
+                                                <label for="" class="me-3 color_letter2 ">
+                                                    <h6 class="color_letter2">Periodo</h6>
+                                                </label>
+                                                <label>
+                                                    <input asp-for="PeriodoRenta" type="radio" name="PeriodoRenta" value="1"
+                                                           class="d-inline-flex border-radio_buttons" />Mensual
+                                                </label>
+                                                <label>
+                                                    <input asp-for="PeriodoRenta" type="radio" name="PeriodoRenta" value="2"
+                                                           class="d-inline-flex border-radio_buttons" />Anual
+                                                </label>
+                                            </div>
+
+
+                                            <div class="d-lg-inline-block me-5 ">
+                                                <div class="d-inline form-group label-floating">
+                                                    <label for="n_propiedad" class=" control-label color_letter2">
+                                                        <h6>Mantenimiento</h6>
+                                                    </label>
+                                                    <input asp-for="MantenimientoPrecio" type="number" name="MantenimientoPrecio" id="mantenimiento"
+                                                           class="form-control NobtnNumber" />
+                                                </div>
+                                            </div>
+
+                                            <div id="renta2" class="display-a_r me-lg-5 me-5 mt-lg-2 ">
+                                                <label for="" class="me-3 color_letter2 ">
+                                                    <h6 class="color_letter2">Periodo</h6>
+                                                </label>
+                                                <label>
+                                                    <input asp-for="PeriodoMantenimiento" type="radio" name="PeriodoMantenimiento" value="1"
+                                                           class="d-inline-flex border-radio_buttons" />Mensual
+                                                </label>
+                                                <label>
+                                                    <input asp-for="PeriodoMantenimiento" type="radio" name="PeriodoMantenimiento" value="2"
+                                                           class="d-inline-flex border-radio_buttons" />Anual
+                                                </label>
+                                            </div>
+                                            </ hr>
+                                        </div>
+                                        <hr>
+                                        <label for="">
+                                            <h5 class="ms-1 color_letter">Descripción</h5>
+                                        </label>
+                                        <div class=" d-inline label-floating ms-1 ">
+
+                                            <textarea name="descripcion" id="descripcion" class="size-text-area2" asp-for="Descripcion"
+                                                      placeholder="Describe tu propiedad minimo con 250 caracteres"></textarea>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="tab-pane" id="direccion">
+                                    <div class="row">
+                                        <label for="direccion">
+                                            <h5 class="color_letter">Dirección</h5>
+                                        </label>
+                                        <div class="input-group d-flex justify-content-between">
+                                            <div class="d-lg-inline-block me-3 size-nombre-calle">
+                                                <div class="d-inline form-group label-floating">
+                                                    <label for="n_calle" class=" control-label color_letter2">
+                                                        <h6>Nombre de la calle</h6>
+                                                    </label>
+                                                    <input type="text" asp-for="Calle" name="Calle" id="n_calle" class="form-control"
+                                                           placeholder=" " />
+                                                </div>
+                                            </div>
+                                            <div class="d-lg-inline-block ">
+                                                <div class="d-inline form-group label-floating">
+                                                    <label for="n_interior" class=" control-label color_letter2">
+                                                        <h6>No. interior</h6>
+                                                    </label>
+                                                    <input type="number" asp-for="NoInt" name="NoInt" id="n_interior"
+                                                           class="form-control size-numeros-ext NobtnNumber" />
+                                                </div>
+                                            </div>
+
+                                            <div class="d-lg-inline-block me-3 ">
+                                                <div class="d-inline form-group label-floating">
+                                                    <label for="n_exterior" class=" control-label color_letter2">
+                                                        <h6>No. exterior</h6>
+                                                    </label>
+                                                    <input type="number" asp-for="NoExt" name="NoExt" id="n_exterior"
+                                                           class="form-control size-numeros-ext NobtnNumber" />
+                                                </div>
+                                            </div>
+                                            <div class="d-lg-inline-block me-3 ">
+                                                <div class="d-inline form-group label-floating">
+                                                    <label for="c.p" class=" control-label color_letter2">
+                                                        <h6>C.P</h6>
+                                                    </label>
+                                                    <input type="number" asp-for="CP" name="CP" min="0" id="c.p" class="form-control NobtnNumber" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="input-group d-flex justify-content-between ">
+                                            <div class="d-lg-inline-block me-3 size-nombre-calle">
+                                                <div class="d-inline form-group label-floating">
+                                                    <label for="colonia" class=" control-label color_letter2">
+                                                        <h6>Colonia</h6>
+                                                    </label>
+                                                    <input type="text" asp-for="Colonia" name="Colonia" id="colonia" class="form-control"
+                                                           placeholder=" " />
+                                                </div>
+                                            </div>
+                                            <div class="d-lg-inline-block me-3 ">
+                                                <div class="d-inline form-group label-floating">
+                                                    <label for="alc-muni" class=" control-label color_letter2">
+                                                        <h6>Alcandia o Municipio</h6>
+                                                    </label>
+                                                    <input type="text" asp-for="Municipio" name="Municipio" id="alc-muni" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="d-lg-inline-block me-3 ">
+                                                <div class="d-inline form-group label-floating">
+                                                    <label for="estado" class=" control-label color_letter2">
+                                                        <h6>Estado o Ciudad</h6>
+                                                    </label>
+                                                    <input type="text" asp-for="Estado" name="Estado" id="estado" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="d-lg-inline-block me-3 ">
+                                                <div class="d-inline form-group label-floating">
+                                                    <label for="pais" class=" control-label color_letter2">
+                                                        <h6>País</h6>
+                                                    </label>
+                                                    <input type="text" asp-for="Pais" name="Pais" id="pais" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="text" asp-for="txtLat" name="txtLat" id="txtLat" class="form-control" placeholder="latitude"
+                                                       style="visibility: hidden; overflow: hidden; display: none;">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="text" asp-for="txtLng" name="txtLng" id="txtLng" class="form-control" placeholder="longitud"
+                                                       style="visibility: hidden; overflow: hidden; display: none;">
+                                            </div>
+                                        </div>
+                                        <div class="input-group mt-3">
+                                            <label for="Direccion completa" class="color_letter2">
+                                                <h6>Dirección completa</h6>
+                                            </label>
+                                            <div class="me-2">
+
+                                                <input type="text" asp-for="DireccionC" name="DireccionC" id="direccion_completa" class="form-control me-2 w-50" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="input-group mt-3">
+                                            <div class="input-group mt-3" id="map" style="height:350px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="superficie">
+                                    <div class="row">
+
+                                        <label for="superficie" class="fw-bold  ms-2">
+                                            <h5 class="color_letter">Superficie</h5>
+                                        </label>
+                                        <br>
+                                        <div class="input-group d-flex justify-content-between">
+
+                                            <div class="me-1 mb-5 d-block">
+
+                                                <label for="n_interior" class=" control-label color_letter2">
+                                                    <h6>Terreno</h6>
+                                                </label>
+                                                <input type="text" asp-for="Superficie" name="Superficie" min="0" id="Superficieval"
+                                                       class="form-control NobtnNumber  me-3" placeholder="" />
+                                                @Html.DropDownListFor(model => model.SuperficieUMedida, new
+                                                SelectList(Model.UMedidaL,"IDUm","UnidadMedida"), "-- Unidad Medida --",new
+                                                {@class="size-select2 rounded text-center me-2", @id="UnidadSuperficie"})
+                                            </div>
+
+
+
+                                            <div class="d-block">
+                                                <label for="n_interior" class=" control-label color_letter2">
+                                                    <h6>Construcción</h6>
+                                                </label>
+                                                <input type="text" asp-for="SuperficieContruccion" name="SuperficieContruccion" min="0" id="SuperficieContruccion"
+                                                       class="form-control NobtnNumber ms-2" />
+                                                @Html.DropDownListFor(model => model.SuperficieContruccionUMedida, new
+                                                SelectList(Model.UMedidaL,"IDUm","UnidadMedida"), "-- Unidad Medida --",new
+                                                {@class="size-select2 rounded text-center ms-2",  @id="UnidadConstruccion"})
+                                            </div>
+
+
+                                            <div class=" d-block">
+                                                <label for="n_interior" class=" control-label color_letter2">
+                                                    <h6>Antigüedad (Años)</h6>
+                                                </label>
+                                                <input type="number" asp-for="Antiguedad" name="antiguedad" id="antiguedad" min="0"
+                                                       class=" form-control me-3 NobtnNumber">
+                                            </div>
+                                            <div class="d-block borderadio">
+                                                <label for="uso_de_suelo" class=" control-label color_letter2 ">
+                                                    <h6>Uso de suelo</h6>
+                                                </label>
+                                                @Html.DropDownListFor(model => model.UsoSuelo, new
+                                                SelectList(Model.SueloL,"IDSuelo","Suelo"), "-- Uso de suelo --",new
+                                                {@class="size-select2 margin-t-residencial  me-5 border rounded text-center top-select"})
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="caracteristicas">
+                                    <div class="row">
+                                        <label for="caracteristicas" class="fw-bold">
+                                            <h5 class="color_letter">Características</h5>
+                                        </label>
+
+
+                                        <a class="collapsible mb-2">Principales</a>
+                                        <div class="content">
+                                            <div class="input-group d-flex justify-content-between me-lg-2 ms-lg-4">
+                                                <div class="form-floating d-flex">
+                                                    <label for="" class="color_letter2">Recámaras</label>
+                                                    <input asp-for="Recamaras" type="number" min="0" class="form-control text-center ms-2 w-75 mt-1"
+                                                           name="recamaras" id="recamarasval">
+                                                </div>
+                                                <div class="form-floating d-flex">
+                                                    <label for="" class="label-floating color_letter2">Baños</label>
+                                                    <input asp-for="Banos" type="number" min="0" class="form-control text-center ms-2 w-50 mt-1"
+                                                           name="Banos" id="banosval">
+                                                </div>
+                                                <div class="form-floating d-flex">
+                                                    <label for="" class="label-floating color_letter2">Medios baños</label>
+                                                    <input asp-for="MediosBanos" type="number" min="0" class="form-control text-center  ms-2 w-75 mt-1"
+                                                           name="MediosBanos" id="">
+                                                </div>
+                                                <div class="form-floating d-flex me-2">
+                                                    <label for="" class="label-floating color_letter2">Estacionamientos</label>
+                                                    <input asp-for="Estacionamiento" type="number" min="0" class="form-control text-center ms-3 w-75 mt-1"
+                                                           name="Estacionamiento" id="estacionamientoval">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <a class="collapsible mb-2 mt-2 me-2">Generales</a>
+                                        <div class="content">
+                                            <div class="input-group d-flex  me-lg-2 ms-lg-3">
+                                                <div class="row">
+                                                    <div class="col mt-3">
+                                                        <div class="col justify-content-between d-flex">
+                                                            <div class="d-inline-flex me-3 ms-2">
+                                                                @Html.CheckBoxFor(model => model.CaracteristicasL[0].isSelected, new {@class = "size-adicionales", @id=@Model.CaracteristicasL[0].IDCaracteristica})
+                                                                @Html.HiddenFor(model => model.CaracteristicasL[0].IDCaracteristica)
+                                                                <label for="" class="ms-1 color_letter2">@Html.DisplayFor(model => model.CaracteristicasL[0].Caracteristica)</label>
+                                                            </div>
+                                                            <div class="d-inline-flex me-5">
+                                                                @Html.CheckBoxFor(model => model.CaracteristicasL[1].isSelected, new {@class = "size-adicionales ms-1", @id=@Model.CaracteristicasL[1].IDCaracteristica})
+                                                                @Html.HiddenFor(model => model.CaracteristicasL[1].IDCaracteristica)
+                                                                <label for="" class="ms-1 color_letter2">@Html.DisplayFor(model => model.CaracteristicasL[1].Caracteristica)</label>
+                                                            </div>
+                                                            <div class="d-inline-flex me-4">
+                                                                @Html.CheckBoxFor(model => model.CaracteristicasL[2].isSelected, new {@class = "size-adicionales", @id=@Model.CaracteristicasL[2].IDCaracteristica})
+                                                                @Html.HiddenFor(model => model.CaracteristicasL[2].IDCaracteristica)
+                                                                <label for="" class="ms-1 color_letter2">@Html.DisplayFor(model => model.CaracteristicasL[2].Caracteristica)</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col d-flex justify-content-between mt-2 ">
+                                                            <div class="d-inline-flex ms-2">
+                                                                @Html.CheckBoxFor(model => model.CaracteristicasL[3].isSelected, new {@class = "size-adicionales", @id=@Model.CaracteristicasL[3].IDCaracteristica})
+                                                                @Html.HiddenFor(model => model.CaracteristicasL[3].IDCaracteristica)
+                                                                <label for="" class="ms-1 color_letter2">@Html.DisplayFor(model => model.CaracteristicasL[3].Caracteristica)</label>
+                                                            </div>
+                                                            <div class="d-inline-flex ms-5">
+                                                                @Html.CheckBoxFor(model => model.CaracteristicasL[4].isSelected, new {@class = "size-adicionales", @id=@Model.CaracteristicasL[4].IDCaracteristica})
+                                                                @Html.HiddenFor(model => model.CaracteristicasL[4].IDCaracteristica)
+                                                                <label for="" class="ms-1 color_letter2">@Html.DisplayFor(model => model.CaracteristicasL[4].Caracteristica)</label>
+                                                            </div>
+                                                            <div class="d-inline-flex marr_a">
+                                                                @Html.CheckBoxFor(model => model.CaracteristicasL[5].isSelected, new {@class = "size-adicionales", @id=@Model.CaracteristicasL[5].IDCaracteristica})
+                                                                @Html.HiddenFor(model => model.CaracteristicasL[5].IDCaracteristica)
+                                                                <label for="" class="ms-1 color_letter2">@Html.DisplayFor(model => model.CaracteristicasL[5].Caracteristica)</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col mt-3 ">
+                                                        <div class="d-inline-flex me-lg-3 ms-lg-2">
+                                                            @Html.CheckBoxFor(model => model.CaracteristicasL[6].isSelected, new {@class = "size-adicionales", @id=@Model.CaracteristicasL[6].IDCaracteristica})
+                                                            @Html.HiddenFor(model => model.CaracteristicasL[6].IDCaracteristica)
+                                                            <label for="" class="ms-1 color_letter2">@Html.DisplayFor(model => model.CaracteristicasL[6].Caracteristica)</label>
+                                                        </div>
+                                                        <div class="d-inline-flex me-lg-3">
+                                                            @Html.CheckBoxFor(model => model.CaracteristicasL[7].isSelected, new {@class = "size-adicionales", @id=@Model.CaracteristicasL[7].IDCaracteristica})
+                                                            @Html.HiddenFor(model => model.CaracteristicasL[7].IDCaracteristica)
+                                                            <label for="" class="ms-1 color_letter2">@Html.DisplayFor(model => model.CaracteristicasL[7].Caracteristica)</label>
+                                                        </div>
+                                                        <div class="d-inline-flex me-lg-3">
+                                                            @Html.CheckBoxFor(model => model.CaracteristicasL[8].isSelected, new {@class = "size-adicionales", @id=@Model.CaracteristicasL[8].IDCaracteristica})
+                                                            @Html.HiddenFor(model => model.CaracteristicasL[8].IDCaracteristica)
+                                                            <label for="" class="ms-1 color_letter2">@Html.DisplayFor(model => model.CaracteristicasL[8].Caracteristica)</label>
+                                                        </div>
+                                                        <div class="d-inline-flex ms-lg-2">
+                                                            @Html.CheckBoxFor(model => model.CaracteristicasL[9].isSelected, new {@class = "size-adicionales", @id=@Model.CaracteristicasL[9].IDCaracteristica})
+                                                            @Html.HiddenFor(model => model.CaracteristicasL[9].IDCaracteristica)
+                                                            <label for="" class="ms-1 color_letter2">@Html.DisplayFor(model => model.CaracteristicasL[9].Caracteristica)</label>
+                                                        </div>
+                                                        <div class="d-inline-flex mt-2 mar-mascotas">
+                                                            @Html.CheckBoxFor(model => model.CaracteristicasL[10].isSelected, new {@class = "size-adicionales", @id=@Model.CaracteristicasL[10].IDCaracteristica})
+                                                            @Html.HiddenFor(model => model.CaracteristicasL[10].IDCaracteristica)
+                                                            <label for="" class="ms-1 color_letter2">@Html.DisplayFor(model => model.CaracteristicasL[10].Caracteristica)</label>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+
+                                        <a class="collapsible mt-2 me-2 mb-2">Servicios</a>
+                                        <div class="content d-flex justify-content-start mt-3 ">
+                                            @for (var i = 11; i <= 15; ++i)
+                                            {
+                                                <div class="d-inline-flex ms-4 me-4 mb-3 ">
+                                                    @Html.CheckBoxFor(model => model.CaracteristicasL[i].isSelected, new {@class = "size-adicionales", @id=@Model.CaracteristicasL[i].IDCaracteristica})
+                                                    @Html.HiddenFor(model => model.CaracteristicasL[i].IDCaracteristica)
+                                                    <label for="" class="ms-2 color_letter2">@Html.DisplayFor(model => model.CaracteristicasL[i].Caracteristica)</label>
+
+                                                </div>
+                                            }
+                                            @*<div class="d-inline-flex ms-4 me-4 mb-3 ">
+                                            <input type="checkbox" class="size-adicionales" name="a_acondicionado" id="">
+                                            <label for="" class="ms-2 color_letter2">Aire acondicionado</label>
+                                            </div>
+                                            <div class="d-inline-flex ms-4 me-4 mb-3">
+                                            <input type="checkbox" class="size-adicionales" name="area de juegos" id="">
+                                            <label for="" class="ms-2 color_letter2">Area de juegos infantiles</label>
+                                            </div>
+                                            <div class="d-inline-flex ms-4 me-4 mb-3">
+                                            <input type="checkbox" class="size-adicionales" name="calefaccion" id="">
+                                            <label for="" class="ms-2 color_letter2">Calefacción</label>
+                                            </div>
+                                            <div class="d-inline-flex ms-4 me-4 mb-3">
+                                            <input type="checkbox" class="size-adicionales" name="gimnasio" id="">
+                                            <label for="" class="ms-2 color_letter2">Gimnasio</label>
+                                            </div>
+                                            <div class="d-inline-flex ms-4 me-4 mb-4">
+                                            <input type="checkbox" class="size-adicionales" name="seguridad" id="">
+                                            <label for="" class="ms-2 color_letter2">Seguridad</label>
+                                            </div>*@
+                                        </div>
+                                        <br>
+
+                                        <a class="collapsible mb-2 mt-2 me-2">Exteriores</a>
+                                        <div class="content d-flex justify-content-start mt-4  ">
+                                            @for (var i = 16; i <= 19; ++i)
+                                            {
+                                                <div class="d-inline-flex ms-4 me-4 mb-4">
+                                                    @Html.CheckBoxFor(model => model.CaracteristicasL[i].isSelected, new {@class = "size-adicionales", @id=@Model.CaracteristicasL[i].IDCaracteristica})
+                                                    @Html.HiddenFor(model => model.CaracteristicasL[i].IDCaracteristica)
+                                                    <label for="" class="ms-2 color_letter2">@Html.DisplayFor(model => model.CaracteristicasL[i].Caracteristica)</label>
+                                                </div>
+                                            }
+                                            @*<div class="d-inline-flex ms-4 me-4 mb-4 ">
+                                            <input type="checkbox" class="size-adicionales" name="asador" id="">
+                                            <label for="" class="ms-2 color_letter2">Asador</label>
+                                            </div>
+                                            <div class="d-inline-flex ms-4 me-4 mb-3">
+                                            <input type="checkbox" class="size-adicionales" name="cancha_de_squash" id="">
+                                            <label for="" class="ms-2 color_letter2">Cancha de squash</label>
+                                            </div>
+                                            <div class="d-inline-flex ms-4 me-4 mb-3">
+                                            <input type="checkbox" class="size-adicionales" name="cancha_de_tenis" id="">
+                                            <label for="" class="ms-2 color_letter2">Cancha de tenis</label>
+                                            </div>
+                                            <div class="d-inline-flex ms-4 me-4 mb-3">
+                                            <input type="checkbox" class="size-adicionales" name="jardin" id="">
+                                            <label for="" class="ms-2 color_letter2">Jardín privado</label>
+                                            </div>*@
+                                        </div>
+                                        <br>
+
+                                        <a class="collapsible mt-2  me-2">Ambientes</a>
+                                        <div class="content d-flex mt-4">
+                                            @for (var i = 20; i <= 21; ++i)
+                                            {
+                                                <div class="d-inline-flex me-4 ms-4">
+                                                    @Html.CheckBoxFor(model => model.CaracteristicasL[i].isSelected, new {@class = "size-adicionales", @id=@Model.CaracteristicasL[i].IDCaracteristica})
+                                                    @Html.HiddenFor(model => model.CaracteristicasL[i].IDCaracteristica)
+                                                    <label for="" class="ms-2 color_letter2">@Html.DisplayFor(model => model.CaracteristicasL[i].Caracteristica)</label>
+                                                </div>
+                                            }
+                                            @*<div class="d-inline-flex me-4 ms-4 ">
+                                            <input type="checkbox" class="size-adicionales" name="cuarto_t.v" id="">
+                                            <label for="" class="ms-2 color_letter2">Cuarto de T.V</label>
+                                            </div>
+
+                                            <div class="d-inline-flex ms-4 me-4">
+                                            <input type="checkbox" class="size-adicionales" name="estudio" id="">
+                                            <label for="" class="ms-2 color_letter2">Estudio</label>
+                                            </div>*@
+                                        </div>
+                                        <br>
+
+                                        <a class="collapsible mt-2 me-2">Adicionales</a>
+                                        <div class="content d-flex justify-content-around mb-4">
+                                            <div class="d-inline-flex form-floating mt-2 ">
+                                                <label for="" class="label-floating color_letter2">Bodegas</label>
+                                                <input asp-for="Bodegas" name="Bodegas" id="valBodegas" class="form-control w-50  mt-1" min="0">
+                                            </div>
+                                            <div class="d-inline-flex form-floating mt-2">
+                                                <label for="" class="label-floating color_letter2">Elevadores</label>
+                                                <input asp-for="Elevadores" name="Elevadores" id="valElevadores" class="form-control w-75  mt-1" min="0">
+                                            </div>
+                                            <div class="d-inline-flex form-floating ms-5 mt-2">
+                                                <label for="" class="label-floating color_letter2">Closets</label>
+                                                <input asp-for="Closets" name="Closets" id="valClosets" class="form-control ms-2 mt-1 w-50" min="0">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="documentos">
+                                    <div class="row">
+                                        <label for="documentos" class=" ms-lg-2">
+                                            <h5 class="color_letter">Fotografías de la propiedad</h5>
+                                        </label>
+                                        <label for="documentos" class=" color_letter2 ms-lg-2">
+                                            <h6>Por favor adjunta hasta 15 fotografías</h6>
+                                        </label>
+                                        <div class="container-fluid d-flex justify-content-center">
+                                            <section id="Images" class="images-cards">
+                                                <div class="row">
+                                                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-xs-12 " id="add-photo-container">
+                                                        <div class="add-new-photo first" id="add-photo">
+                                                            <i class="fa-solid fa-file-image ms-5 mt-4"></i>
+
+                                                            <br>
+                                                            <div class="">
+                                                                <h6 class=" size-text-add-photo  text-center">Sube tus fotografías</h6>
+                                                            </div>
+
+                                                        </div>
+                                                        <input asp-for="Files" type="file" multiple id="add-new-photo" accept="image/jpeg,image/jpg,image/png">
+                                                        <br>
+                                                    </div>
+                                                </div>
+                                            </section>
+
+                                        </div>
+                                        <label for="documentos" class=" ms-lg-2">
+                                            <h5 class="color_letter">Documentos</h5>
+                                        </label>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-lg-8">
+                                                <div class=" my-custom-scrollbar table-responsive table-height">
+                                                    <table class="table table-hover border-gray h-100">
+                                                        <thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th scope="row">1</th>
+                                                                <td colspan="2">Pago de ultimo predial</td>
+                                                                <td>
+                                                                    <div class="fileContainer2 input-group">
+                                                                        <input type="file" name="s_archivo" id="archivoInput" class=" me-5"
+                                                                               onchange="return validarExt()">
+                                                                        <i class="fa-solid fa-file-arrow-up size-icon ms-3 "></i>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="fileContainer3  input-group">
+                                                                        <input type="button" name="d_archivo" id="archivoInput_delete"
+                                                                               class="eliminarprueba me-3">
+                                                                        <i class="fa-solid fa-trash-can size-icon me-5"></i>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="fileContainer3 input-group">
+                                                                        <input type="button" name="v_archivo4" id="" onclick="visorExt()" class=" me-3">
+                                                                        <i class="fa-solid fa-eye size-icon me-5"></i>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="fileContainer3 input-group me-4">
+                                                                        <input type="button" name="p_archivo1" id="" class="ms-3">
+                                                                        <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                        <h6 class="font-size-visualizador text-center">proceso</h6>
+                                                                    </div>
+                                                                    <div class="fileContainer3 d-none input-group me-4">
+                                                                        <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                        <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                        <h6 class="font-size-visualizador text-center">aprobado</h6>
+                                                                    </div>
+                                                                    <div class="fileContainer3 d-none input-group me-4">
+                                                                        <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                        <i class="fa-solid fa-xmark size-icon ms-3 text-center d-flex"></i>
+                                                                        <h6 class="font-size-visualizador text-center">rechazado</h6>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">2</th>
+                                                                <td colspan="2">Escritura</td>
+                                                                <td>
+                                                                    <div class="fileContainer2 input-group">
+                                                                        <input type="file" name="s_archivo2" id="archivoInput2" class="me-5"
+                                                                               onchange="return validarExt2()">
+                                                                        <i class="fa-solid fa-file-arrow-up size-icon ms-3 size-icon "></i>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="fileContainer3 input-group">
+                                                                        <input type="button" name="d_archivo2" id="archivoInput_delete2"
+                                                                               class="eliminarprueba me-3">
+                                                                        <i class="fa-solid fa-trash-can me-5 size-icon"></i>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="fileContainer3 input-group">
+                                                                        <input type="button" name="v_archivo4" id="" onclick="visorExt2()" class=" me-3">
+                                                                        <i class="fa-solid fa-eye me-5 size-icon"></i>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="fileContainer3 input-group me-4">
+                                                                        <input type="button" name="p_archivo1" id="" class="ms-3">
+                                                                        <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                        <h6 class="font-size-visualizador text-center">proceso</h6>
+                                                                    </div>
+                                                                    <div class="fileContainer3 d-none input-group me-4">
+                                                                        <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                        <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                        <h6 class="font-size-visualizador text-center">aprobado</h6>
+                                                                    </div>
+                                                                    <div class="fileContainer3 d-none input-group me-4">
+                                                                        <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                        <i class="fa-solid fa-xmark size-icon ms-3 text-center d-flex"></i>
+                                                                        <h6 class="font-size-visualizador text-center">rechazado</h6>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">3</th>
+                                                                <td colspan="2">Identificación del propietario</td>
+                                                                <td>
+                                                                    <div class="fileContainer2 input-group">
+                                                                        <input type="file" name="s_archivo" id="archivoInput3" class="me-5"
+                                                                               onchange="return validarExt3()">
+                                                                        <i class="fa-solid fa-file-arrow-up ms-3 size-icon"></i>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="fileContainer3 input-group">
+                                                                        <input type="button" name="d_archivo3" id="archivoInput_delete3"
+                                                                               class="eliminarprueba me-3">
+                                                                        <i class="fa-solid fa-trash-can me-3 size-icon"></i>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="fileContainer3 input-group ">
+                                                                        <input type="button" name="v_archivo4" id="" onclick="visorExt3()" class=" me-3">
+                                                                        <i class="fa-solid fa-eye me-5 size-icon"></i>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="fileContainer3 input-group me-4">
+                                                                        <input type="button" name="p_archivo1" id="" class="ms-3">
+                                                                        <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                        <h6 class="font-size-visualizador text-center">proceso</h6>
+                                                                    </div>
+                                                                    <div class="fileContainer3 d-none input-group me-4">
+                                                                        <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                        <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                        <h6 class="font-size-visualizador text-center">aprobado</h6>
+                                                                    </div>
+                                                                    <div class="fileContainer3 d-none input-group me-4">
+                                                                        <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                        <i class="fa-solid fa-xmark size-icon ms-3 text-center d-flex"></i>
+                                                                        <h6 class="font-size-visualizador text-center">rechazado</h6>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                                <div class="input-group d-flex justify-content-start">
+                                                </div>
+                                            </div>
+                                            <div class="col border">
+                                                <div class="input-group d-flex">
+                                                    <div id="visorArchivo" class="size-file d-flex justify-content-center">
+                                                        <h5>Visualizador</h5>
+
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="propietario">
+                                    <div class="row">
+                                        <label for="documentos" class=" ms-lg-1">
+                                            <h5 class="color_letter">Propietario</h5>
+                                        </label>
+
+                                        <div class="container-fluid d-flex justify-content-center mb-4">
+                                            <div class="input-group d-flex justify-content-lg-between justify-content-around">
+
+                                                <div class="d-lg-inline-block">
+                                                    <div class="d-inline form-group label-floating ">
+                                                        <label for="nombre_p" class=" control-label color_letter2">
+                                                            <h6>Nombre</h6>
+                                                        </label>
+                                                        <input type="text" name="precio" id="precio" required class="form-control" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-lg-inline-block">
+                                                    <div class="d-inline form-group label-floating ">
+                                                        <label for="a_paterno" class=" control-label color_letter2">
+                                                            <h6>Apellido paterno</h6>
+                                                        </label>
+                                                        <input type="text" name="a_paterno" id="a_paterno" required class="form-control" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-lg-inline-block">
+                                                    <div class="d-inline form-group label-floating ">
+                                                        <label for="a_materno" class=" control-label color_letter2">
+                                                            <h6>Apellido materno</h6>
+                                                        </label>
+                                                        <input type="text" name="a_materno" id="a_materno" required class="form-control" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-lg-inline-block">
+                                                    <div class="d-inline form-group label-floating ">
+                                                        <label for="telefono" class=" control-label color_letter2">
+                                                            <h6>Teléfono</h6>
+                                                        </label>
+                                                        <input type="text" name="telefono" id="telefono" required class="form-control" />
+                                                    </div>
+                                                </div>
+                                                <div class="d-lg-inline-block w-25">
+                                                    <div class="d-inline form-group label-floating  ">
+                                                        <label for="correo" class=" control-label color_letter2">
+                                                            <h6>Correo</h6>
+                                                        </label>
+                                                        <input type="text" name="correo" id="correo" required class="form-control" />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <label for="documentos" class=" ms-lg-2">
+                                            <h5 class="color_letter">Documentos</h5>
+                                        </label>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-lg-8">
+                                                <div class="my-custom-scrollbar table-responsive table-height">
+                                                    <table class="table table-hover border-gray">
+                                                        <thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th scope="row">1</th>
+                                                                <td colspan="2">INE</td>
+
+
+                                                                <td class="">
+                                                                    <div class="fileContainer3 input-group">
+                                                                        <input type="button" name="v_archivo5" id="" onclick="visorExt5()" class=" me-3">
+                                                                        <i class="fa-solid fa-eye size-icon me-5 mt-2"></i>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="fileContainer3 input-group me-4">
+                                                                        <input type="button" name="p_archivo1" id="" class="ms-3">
+                                                                        <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                        <h6 class="font-size-visualizador text-center">proceso</h6>
+                                                                    </div>
+                                                                    <div class="fileContainer3 d-none input-group me-4">
+                                                                        <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                        <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                        <h6 class="font-size-visualizador text-center">aprobado</h6>
+                                                                    </div>
+                                                                    <div class="fileContainer3 d-none input-group me-4">
+                                                                        <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                        <i class="fa-solid fa-xmark size-icon ms-3 text-center d-flex"></i>
+                                                                        <h6 class="font-size-visualizador text-center">rechazado</h6>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">2</th>
+                                                                <td colspan="2">Comprobante a domicilio</td>
+                                                                <td>
+                                                                    <div class="fileContainer3 input-group">
+                                                                        <input type="button" name="v_archivo6" id="" onclick="visorExt6()" class=" me-3">
+                                                                        <i class="fa-solid fa-eye me-5 size-icon mt-2"></i>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="fileContainer3 input-group me-4">
+                                                                        <input type="button" name="p_archivo1" id="" class="ms-3">
+                                                                        <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                        <h6 class="font-size-visualizador text-center">proceso</h6>
+                                                                    </div>
+                                                                    <div class="fileContainer3 d-none input-group me-4">
+                                                                        <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                        <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                        <h6 class="font-size-visualizador text-center">aprobado</h6>
+                                                                    </div>
+                                                                    <div class="fileContainer3 d-none input-group me-4">
+                                                                        <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                        <i class="fa-solid fa-xmark size-icon ms-3 text-center d-flex"></i>
+                                                                        <h6 class="font-size-visualizador text-center">rechazado</h6>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">3</th>
+                                                                <td colspan="2">RFC</td>
+                                                                <td>
+                                                                    <div class="fileContainer3 input-group ">
+                                                                        <input type="button" name="v_archivo4" id="" onclick="visorExt7()" class=" me-3">
+                                                                        <i class="fa-solid fa-eye me-5 size-icon mt-2"></i>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="fileContainer3 input-group me-4">
+                                                                        <input type="button" name="p_archivo1" id="" class="ms-3">
+                                                                        <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                        <h6 class="font-size-visualizador text-center">proceso</h6>
+                                                                    </div>
+                                                                    <div class="fileContainer3 d-none input-group me-4">
+                                                                        <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                        <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                        <h6 class="font-size-visualizador text-center">aprobado</h6>
+                                                                    </div>
+                                                                    <div class="fileContainer3 d-none input-group me-4">
+                                                                        <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                        <i class="fa-solid fa-xmark size-icon ms-3 text-center d-flex"></i>
+                                                                        <h6 class="font-size-visualizador text-center">rechazado</h6>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                                <div class="input-group d-flex justify-content-start">
+                                                </div>
+                                            </div>
+                                            <div class="col border">
+                                                <div class="input-group d-flex justify-content-center">
+                                                    <div id="visorArchivo2" class="size-file d-flex justify-content-center">
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane position-relative " id="progr_agenda">
+                                    <div class="row">
+                                        <label for="documentos" class=" ms-lg-1">
+                                            <h5 class="color_letter">Programar agenda</h5>
+                                        </label>
+                                        <!-- Button trigger modal -->
+                                        <i class="fa-solid fa-circle-info position-info" typeof="button" data-toggle="modal"
+                                           data-target="#exampleModalCenter" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                           title="Ayuda"></i>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title color_letter" id="exampleModalLongTitle">Ayuda</h5>
+
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="mb-2">
+                                                            <p class="fw-bold size-letter-manual-1">Apartir de:</p>
+                                                            <p class="size-letter-manual-2">
+                                                                Selecciona la fecha inicial del periodo que tienes
+                                                                disponible para recibir visitas en la propiedad.
+                                                            </p>
+                                                        </div>
+                                                        <div class="d-flex justify-content-center">
+                                                            <img class="img-size-help-modal ms-3 border-imagenes"
+                                                                 src="~/img/programar_propiedad/apartir-de.png" />
+                                                        </div>
+                                                        <br />
+
+                                                        <div class="mb-2">
+                                                            <p class="fw-bold size-letter-manual-1">Hasta el:</p>
+                                                            <p class="size-letter-manual-2">
+                                                                Selecciona la fecha fin para cerrar el periodo disponible
+                                                                para visitas.
+                                                            </p>
+                                                        </div>
+                                                        <div class="d-flex justify-content-center">
+                                                            <img class="img-size-help-modal ms-3 border-imagenes"
+                                                                 src="~/img/programar_propiedad/hasta-el.png" />
+
+                                                        </div>
+                                                        <br />
+                                                        <div class="mb-2">
+                                                            <p class="fw-bold size-letter-manual-1">Agregar (botón):</p>
+                                                            <p class="size-letter-manual-2">
+                                                                Da click para agregar las fechas anteriormente programadas y consulta en la tabla
+                                                                inferior.
+                                                                las podras visualizar en la tabla que se encuentra en la parte inferior.
+                                                            </p>
+                                                        </div>
+                                                        <div class="d-flex justify-content-center">
+                                                            <img class="img-size-help-modal-2 ms-3 border-2 border-imagenes"
+                                                                 src="~/img/programar_propiedad/boton-agregar.png" />
+
+                                                        </div>
+                                                        <br />
+                                                        <div class="mb-2">
+                                                            <p class="fw-bold size-letter-manual-1">Eliminar (botón):</p>
+                                                            <p class="size-letter-manual-2">
+                                                                Para eliminar un periodo programado, da click en el botón.
+                                                            </p>
+                                                        </div>
+                                                        <div class="d-flex justify-content-center ">
+                                                            <i class="fa-solid fa-trash-can border-imagenes"
+                                                               style="font-size:30px; padding:2px;"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Aquí termina el modal-->
+                                        <label for="documentos" class=" ms-lg-1">
+                                            <h6 class="color_letter2">Programa los días que tienes disponibles para visitar tu propiedad</h6>
+                                        </label>
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <article id="main">
+
+                                                    <section class="wrapper style5">
+                                                        <div class="inner">
+                                                            <section>
+                                                                <form method="post" action="#">
+                                                                    <div class="d-flex justify-content-center">
+                                                                        <div class="me-4">
+                                                                            <label class="color_letter2 control-label">
+                                                                                <h6>Apartir de:</h6>
+                                                                            </label>
+
+                                                                            <input type="date" name="numero"
+                                                                                   class="control-label color_letter2  border-b table-bordered  " id="numero" />
+                                                                        </div>
+
+                                                                        <div class="">
+                                                                            <label class="color_letter2 control-label">
+                                                                                <h6>Hasta el:</h6>
+                                                                            </label>
+                                                                            <input type="date" name="descripcion" class="control-label color_letter2 border-b"
+                                                                                   id="descripcion" />
+                                                                        </div>
+
+
+
+                                                                        <div class="margin-t-agregar ms-4">
+                                                                            <input type="reset" class="btn btn-orange-agenda border-r btn-wd" value="Agregar"
+                                                                                   id="add_row" />
+                                                                        </div>
+
+                                                                    </div>
+
+
+                                                                    <br>
+
+                                                                    <br>
+                                                                    <br>
+
+                                                                    <div class="table-wrapper table-bordered scroll-y-table mx-auto border">
+                                                                        <table class="table table-striped" id="tabla_factura">
+                                                                            <thead>
+                                                                                <tr>
+
+                                                                                    <th class="text-center border color_letter2">Apartir de:</th>
+                                                                                    <th class="text-center border color_letter2">Hasta el:</th>
+                                                                                    <th class="text-center color_letter2">Acción</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody id="content_table">
+                                                                                <tr>
+
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                </tr>
+                                                                            </tbody>
+
+                                                                        </table>
+                                                                    </div>
+                                                                </form>
+                                                            </section>
+                                                            <br>
+                                                            <br>
+                                                            <br>
+                                                        </div>
+                                                    </section>
+                                                </article>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="tab-pane" id="vista_previa">
+                                    <div class="row">
+                                        <label for="">
+                                            <h5 class="color_letter">Vista previa</h5>
+                                        </label>
+
+                                        <div class="container-fluid">
+                                            <div class="row">
+
+                                                <div class="col d-flex justify-content-end ">
+
+                                                    <div class="caja-calendar shadow mt-3 border">
+                                                        <div class="d-flex mx-auto justify-content-center mt-5">
+                                                            <label for="">
+                                                                <h6 class=" color_letter2">Programa tu publicación en el e-commerce</h6>
+                                                            </label>
+                                                        </div>
+
+                                                        <div class=" justify-content-center mt-2  d-flex">
+                                                            <input type="date" name="" id=""
+                                                                   class="w-75  border back_orange-calendar date-prog-agenda text-center">
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                                <div class="col d-flex justify-content-start">
+                                                    <div class="caja-a-mp mb-3 mt-3  ms-lg-4 ms-md-4 ms-3 shadow position-relative ">
+                                                        <a target="_blank" href="https://api.whatsapp.com/" class="style-whatsapp pa-whatsapp text-orange">
+                                                            <i class="fa-brands fa-whatsapp  size-mp-icons-wa pa-whatsapp"></i>
+                                                        </a>
+                                                        <div class="d-flex   ms-2 position-absolute pos-vermas ">
+                                                            <button type="button" class="btn btn_white-mp mt-1 ">
+                                                                <a class="" >
+                                                                    <h6 class="my-auto size-mp-text " style="color:#ff7f40;">Ver más</h6>
+                                                                </a>
+                                                            </button>
+                                                        </div>
+                                                        <div class="card-center-1 position-relative">
+
+                                                            <div class="bookmark-mp ">
+                                                                <i class="fa-regular fa-bookmark"></i>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="card-main col-12  d-flex  ms-1">
+                                                            <div class="col-6 mt-4 ms-1">
+                                                                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                                                    <div class="carousel-inner" id="lista_imgMini">
+                                                                        @*<div class="carousel-item image-contain active adaptar-car " data-lightbox="imagenes"
+                                                                        style="background-image:url(img/casas_de_prueba/pexels-pixabay-433989.jpg);"></div>
+                                                                        <div class="carousel-item image-contain adaptar-car" style="background-image: "></div>
+                                                                        <div class="carousel-item image-contain adaptar-car"
+                                                                        style="background-image:url(img/casas_de_prueba/casa-m-prueba-12.jpg);"></div>
+                                                                        <div class="carousel-item image-contain adaptar-car"
+                                                                        style="background-image:url(img/casas_de_prueba/casa-m-prueba-26.jpg);"></div>*@
+                                                                    </div>
+                                                                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                                        <span class="visually-hidden">Previous</span>
+                                                                    </a>
+                                                                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                                        <span class="visually-hidden">Next</span>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="d-flex justify-content-center mt-2 size-mp-name-main-house ">
+
+                                                                    <div class="side-2-header d-inline-flex me-2">
+                                                                        <i class="fa-solid fa-toilet me-1  text-orange size-mp-icons"></i>
+                                                                        @*<h6 for="" class=" me-1 size-mp-name-icons">1</h6>*@
+                                                                        <h6 for="" class=" ms-1 me-1 ssize-mp-name-icons" id="verBanos">@*1*@</h6>
+                                                                    </div>
+                                                                    <div class="side-2-header d-inline-flex me-1">
+                                                                        <i class="fa-solid fa-car-side ms-1  me-1 text-orange size-mp-icons"></i>
+                                                                        @*<h6 for="" class="ms-1 me-1 size-mp-name-icons">2</h6>*@
+                                                                        <h6 for="" class="ms-1 me-1 ssize-mp-name-icons" id="verEstacionamiento">@*2*@</h6>
+                                                                    </div>
+                                                                    <div class="side-2-header d-inline-flex">
+                                                                        <i class="fa-solid fa-bed ms-1  me-1 text-orange size-mp-icons"></i>
+
+                                                                        @*<h6 for="" class="ms-1 me-1 size-mp-name-icons">4</h6>*@
+                                                                        <h6 for="" class="ms-1 me-1 size-mp-name-icon" id="verRecamaras">@*4*@</h6>
+                                                                    </div>
+                                                                </div>
+                                                                <div class=" d-flex margin-agendar-visita justify-content-center  size-mp-icons">
+                                                                    <button type="button" class="btn btn_orange-mp me-1 mt-2 " data-bs-toggle="modal"
+                                                                            data-bs-target="#staticBackdrop">
+                                                                        <i class="fa-solid fa-calendar size-icons-footer-2 me-1"></i>
+                                                                        <h6 class="mt-2 size-mp-text mx-auto">Agendar visita</h6>
+                                                                    </button>
+
+
+
+                                                                    <!--Fin modal-->
+
+                                                                </div>
+
+                                                            </div>
+
+                                                            <!--Lo que hice para arreglar la etiqueta de arriba fue quitar los margenes laterales y dejar el
+                                                                                      justify content center
+                                                                                  -->
+                                                            <div class="col-5 text-cards ms-2 mt-2 position-relative">
+                                                                <div class="d-flex title-cards-mp-casa justify-content-between">
+                                                                    @* <h6 class=" size-mp-cards mt-1 ms-1"> Terreno</h6>*@
+                                                                    <h6 class=" size-mp-cards mt-1 ms-1" id="verTipoProp"> @*Depto*@</h6>
+
+                                                                    @*<h6 class=" size-mp-cards me-1 ">
+                                                                    <i class="fa-solid fa-maximize size-mp-cards mt-1  "></i> 20000
+                                                                    m2
+                                                                    </h6>*@
+                                                                    <h6 class=" size-mp-cards mt-1 me-2 d-flex justify-content-center">
+                                                                        <i class="fa-solid fa-maximize size-mp-cards mt-0 ms-4"></i> <p id="verSuperficie"></p>
+                                                                    </h6>
+
+                                                                </div>
+                                                                <div class="mt-4">
+                                                                    @*<h6 class="fw-bold ms-2 text-orange ">100,300,500 mxn</h6>*@
+                                                                    <h6 class="fw-bold ms-2 text-orange " id="verPrecio">@*970,300*@</h6>
+                                                                </div>
+                                                                <div class=" size-mp-name-main-house fw-bold ms-2 ">
+
+                                                                    @*<h6 class="size-mp-name-house fw-bold">
+                                                                    Departamento Remodelada en Renta y Venta, Lomas de
+                                                                    Chapultepec
+                                                                    </h6>*@
+                                                                    <h6 class="size-mp-name-house fw-bold " id="verNombre">
+                                                                        @*Real del encanto*@
+                                                                    </h6>
+
+                                                                </div>
+                                                                <div class="size-mp-name-main-house">
+                                                                    @*<h6 class="size-mp-name-house ms-2 mb-1">
+                                                                    Monte everest 800, Lomas de Chapultepec, Miguel Hidalgo,
+                                                                    Ciudad de México
+                                                                    </h6>*@
+                                                                    <h6 class="size-mp-name-house ms-2 mb-1" id="verUbicacion">@*Santa maria guadalupe la quebrada.*@</h6>
+                                                                </div>
+                                                                <div class="size-mp-name-house">
+                                                                    @* <h6 class="size-mp-name-house ms-2">Estado de méxico</h6>*@
+                                                                    <h6 class="size-mp-name-house ms-2" id="verEstado">@*Estado de méxico*@</h6>
+                                                                </div>
+
+                                                                <!--iconos-->
+                                                                <!--fin iconos-->
+
+
+
+
+
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" vista-border-r  mt-3 ">
+
+                                        <div class="container-fluid">
+                                            <div class="shadow vista-border-r mt-5 backgr-contain border">
+                                                <div class="row">
+                                                    <div class="col-lg-7 position-relative">
+                                                        <div class="shadow d-flex indicator_house-depto">
+                                                            <h6 class=" mx-auto my-auto" id="verTipoProp2">@*Departamento*@</h6>
+                                                        </div>
+                                                        <div id="carouselExampleFade" class="carousel slide-fade" data-ride="carousel">
+                                                            <div class="carousel-inner margin-t-imagen-s ms-3 mb-2" id="listaImagenes">
+                                                                @*<div class="carousel-item active">
+                                                                <img src="~/img/ImagenesPropiedades/casa-m-prueba-4.jpg"
+                                                                class="d-block  vista-border-r size-v-image " alt="Foto-v-1">
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                <img src="~/img/ImagenesPropiedades/casa-m-prueba-1.jpg"
+                                                                class="d-block  vista-border-r size-v-image" alt="Foto-v-2">
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                <img src="~/img/ImagenesPropiedades/casa-m-prueba-6.jpg"
+                                                                class="d-block  vista-border-r size-v-image" alt="Foto-v-3">
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                <img src="~/img/ImagenesPropiedades/casa-m-prueba-5.jpg"
+                                                                class="d-block  vista-border-r size-v-image" alt="Foto-v-4">
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                <img src="~/img/ImagenesPropiedades/casa-m-prueba-14.jpg"
+                                                                class="d-block  vista-border-r size-v-image" alt="Foto-v-5">
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                <img src="~/img/ImagenesPropiedades/casa-m-prueba-17.jpg"
+                                                                class="d-block  vista-border-r size-v-image" alt="Foto-v-6">
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                <img src="~/img/ImagenesPropiedades/casa-m-prueba-21.jpg"
+                                                                class="d-block  vista-border-r size-v-image" alt="Foto-v-7">
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                <img src="~/img/ImagenesPropiedades/casa-m-prueba-2jpg.jpg"
+                                                                class="d-block  vista-border-r size-v-image " alt="Foto-v-8">
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                <img src="~/img/ImagenesPropiedades/casa-m-prueba-4.jpg"
+                                                                class="d-block  vista-border-r size-v-image" alt="Foto-v-9">
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                <img src="~/img/ImagenesPropiedades/casa-m-prueba-6.jpg"
+                                                                class="d-block  vista-border-r size-v-image" alt="Foto-v-10">
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                <img src="~/img/ImagenesPropiedades/casa-m-prueba-18.jpg"
+                                                                class="d-block  vista-border-r size-v-image" alt="Foto-v-11">
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                <img src="~/img/ImagenesPropiedades/casa-m-prueba-13.jpg"
+                                                                class="d-block  vista-border-r size-v-image" alt="Foto-v-12">
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                <img src="~/img/ImagenesPropiedades/casa-m-prueba-28.jpg"
+                                                                class="d-block  vista-border-r size-v-image" alt="Foto-v-13">
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                <img src="~/img/ImagenesPropiedades/casa-m-prueba-12.jpg"
+                                                                class="d-block  vista-border-r size-v-image" alt="Foto-v-14">
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                <img src="~/img/ImagenesPropiedades/casa-m-prueba-7.jpg"
+                                                                class="d-block  vista-border-r size-v-image" alt="Foto-v-15">
+                                                                </div>*@
+                                                            </div>
+                                                            <a class="carousel-control-prev" href="#carouselExampleFade" role="button"
+                                                               data-slide="prev">
+                                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                                <span class="sr-only">Previous</span>
+                                                            </a>
+                                                            <a class="carousel-control-next" href="#carouselExampleFade" role="button"
+                                                               data-slide="next">
+                                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                                <span class="sr-only">Next</span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="d-inline-flex ms-3 mt-1">
+                                                            <img id="imgDespuesCarousel0" alt=""
+                                                                 class=" vista-border-r mt-1 size-v-second-image me-3 mb-3">
+                                                            <img id="imgDespuesCarousel1" alt=""
+                                                                 class=" vista-border-r size-v-second-image mt-1 mb-3">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class=" d-flex justify-content-end mt-3">
+
+                                                            <div class="d-flex price-indicator shadow">
+                                                                <h4 class="mx-auto my-auto fw-bold" id="verPrecio2">@*$1175,547,500 MXN*@</h4>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" d-flex color_orange">
+                                                            <div class="mt-3">
+                                                                <h4 class="" id="verNombre2">@*Espectacular casa en Fraccionamiento Maravillas*@</h4>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="d-inline-flex justify-content-between size-np-name-main-house ">
+
+                                                            <div class="side-2-header d-inline-flex">
+                                                                <i class="fa-solid fa-toilet color_orange ms-1  mt-1"></i>
+                                                                <h6 for="" class="ms-1 me-1" id="verBanos2"> @*1 Baño *@</h6>
+                                                            </div>
+                                                            <div class="d-inline-flex">
+                                                                <i class="fa-solid fa-car-side ms-2 me-1 color_orange mt-1"></i>
+                                                                <h6 for="" class="ms-1 me-1 " id="verEstacionamiento2"> @*2 Estacionamientos*@</h6>
+                                                            </div>
+                                                            <div class="d-inline-flex">
+                                                                <i class="fa-solid fa-bed ms-2 color_orange mt-1 "></i>
+                                                                <h6 for="" class="ms-1 me-1 " id="verRecamaras2"> @*4 Recamaras*@</h6>
+                                                            </div>
+                                                        </div>
+
+                                                        <hr>
+
+                                                        <br>
+                                                        <div class="row">
+                                                            <a class="collapsible2">Descripción</a>
+                                                            <div class="content mt-4 font-size-collapse  d-flex justify-content-center">
+                                                                <p id="verDescripcion">
+                                                                    @*Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque eum ipsum quos sequi
+                                                                    esse? Adipisci eligendi obcaecati quia animi omnis! Repellat consequuntur provident
+                                                                    inventore facere dicta iste veniam ipsam magni. Lorem ipsum dolor sit amet consectetur
+                                                                    adipisicing elit. Labore, voluptas adipisci? Sunt eos itaque fugit necessitatibus
+                                                                    facere voluptatem omnis provident voluptates dolores? Odit sint dolorum officia
+                                                                    aperiam molestiae fugiat autem!*@
+                                                                </p>
+                                                            </div>
+                                                            <br>
+
+                                                            <a class="collapsible2 mt-2 me-2">Dirección</a>
+                                                            <div class="content mt-4">
+                                                                <div class="d-inline-flex mb-2">
+                                                                    <h6 class="fw-bold font-size-collapse">Calle</h6>
+                                                                    <h6 class="ms-2 font-size-collapse border-collapse" id="verCalle">@*Cuatro milpas*@</h6>
+                                                                </div>
+                                                                <br />
+                                                                <div class="d-inline-flex justify-content-between mb-2">
+                                                                    <h6 class="fw-bold font-size-collapse">No. int</h6>
+                                                                    <h6 class="ms-2 border-collapse font-size-collapse" id="verNoInt">@*17*@</h6>
+                                                                    <h6 class="fw-bold ms-5 font-size-collapse">No. Ext</h6>
+                                                                    <h6 class="ms-2 border-collapse font-size-collapse" id="verNoExt">@*s/n*@</h6>
+                                                                </div>
+                                                                <div class="d-inline-flex justify-content-between mb-2">
+                                                                    <h6 class="fw-bold font-size-collapse">Colonia</h6>
+                                                                    <h6 class="ms-2 border-collapse font-size-collapse" id="verColonia">@*Paseos del encant*@o</h6>
+                                                                    <h6 class="fw-bold ms-3 font-size-collapse">Municipio</h6>
+                                                                    <h6 class="ms-2 border-collapse font-size-collapse" id="verMunicipio">@*Cuautitlan Izcalli*@</h6>
+                                                                </div>
+                                                                <div class="d-inline-flex justify-content-between">
+                                                                    <h6 class="fw-bold font-size-collapse">C.P</h6>
+                                                                    <h6 class="ms-2 border-collapse font-size-collapse" id="verCP">@*54719*@</h6>
+                                                                    <h6 class="fw-bold ms-5 font-size-collapse">País</h6>
+                                                                    <h6 class="ms-2 font-size-collapse border-collapse" id="verPais">@*México*@</h6>
+                                                                </div>
+                                                                <div class="input-group mt-3" id="map2" style="height:350px"></div>
+                                                                @*<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10916.449587943387!2d-99.2249285760683!3d19.69816725849793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d21f85437b93e3%3A0xb5c4a4fcb8e92765!2sMercado%20Libre%20Cuautitl%C3%A1n%20Izcalli!5e0!3m2!1ses-419!2smx!4v1665273885123!5m2!1ses-419!2smx"
+                                                                width="95%" height="100%" style="border:0;margin-bottom:100px;" allowfullscreen=""
+                                                                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>*@
+                                                            </div>
+                                                            <br />
+                                                            <a class="collapsible2 mt-2 mb-2 me-2">Características </a>
+                                                            <div class="content ms-2">
+                                                                <div class="accordion-body row row-cols-2 mt-4">
+                                                                    <div class="font-size-collapse">
+                                                                        <h6 class="">Generales</h6>
+                                                                        <ul>
+                                                                            <li id="verAD">@*Acceso discapacitados*@</li>
+                                                                            <li id="verAL">@*Alberca*@</li>
+                                                                            <li id="verAM">@*Amueblado*@</li>
+                                                                            <li id="verCA">@*Caseta de guardia*@</li>
+                                                                            <li id="verCH">@*Chimenea*@</li>
+                                                                            <li id="verCO">@*Cocina integral*@</li>
+                                                                            <li id="verCU">@*Cuartos de servicio*@</li>
+                                                                            <li id="verES">@*Escuelas cercana*@s</li>
+                                                                            <li id="verFR">@*Frente a parque*@</li>
+                                                                            <li id="verJA">@*Jacuzzi*@</li>
+                                                                            <li id="verMA">@*Mascotas*@</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="font-size-collapse">
+                                                                        <h6 class="">Servicios</h6>
+                                                                        <ul>
+                                                                            <li id="verAI">@*Aire acondicionad*@o</li>
+                                                                            <li id="verAR">@*Área de juegos infantiles*@</li>
+                                                                            <li id="verCAL">@*Calefacción*@</li>
+                                                                            <li id="verGI">@*Gimnasio*@</li>
+                                                                            <li id="verSE">@*Seguridad*@</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="font-size-collapse">
+                                                                        <h6 class="">Adicionales</h6>
+                                                                        <ul>
+                                                                            <li id="verBodegas">@*Bodega(s)*@</li>
+                                                                            <li id="verClosets">@*Closets*@</li>
+                                                                            <li id="verElevadores">@*Elevadore*@</li>
+                                                                        </ul>
+                                                                    </div>
+
+
+                                                                    <div class="font-size-collapse">
+                                                                        <h6 class="">Ambientes</h6>
+                                                                        <ul>
+                                                                            <li id="verTV">@*Cuarto de TV*@</li>
+                                                                            <li id="verEST">@*Estudio*@</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="font-size-collapse">
+                                                                        <h6 class="">Exteriores</h6>
+                                                                        <ul>
+                                                                            <li id="verASA">@*Asador*@</li>
+                                                                            <li id="verCANS">@*Cancha de squash*@</li>
+                                                                            <li id="verCANT">@*Cancha de teni*@s</li>
+                                                                            <li id="verJAR">@*Jardón privado*@</li>
+                                                                        </ul>
+                                                                    </div>
+
+
+
+                                                                </div>
+                                                            </div>
+                                                            <br />
+                                                            <a class="collapsible2 mt-4 me-2">Superficie</a>
+                                                            <div class="content">
+                                                                <div class="accordion-body d-flex justify-content-center mt-4">
+                                                                    <div class="d-block mx-auto">
+                                                                        <h6 class="label-orange text-center">Terreno</h6>
+                                                                        <h6 class="text-center d-flex justify-content-center">
+                                                                            <i class="fa-solid fa-maximize color_orange me-1"></i><p id="verSuperficie2"></p>@*10000m2*@
+                                                                        </h6>
+                                                                    </div>
+                                                                    <div class="d-block mx-auto">
+                                                                        <h6 class="label-orange text-center">Construcción</h6>
+                                                                        <h6 class="text-center d-flex justify-content-center">
+                                                                            <i class="fa-solid fa-maximize color_orange me-1"></i><p id="verConstruccion"></p>@*50m2*@
+                                                                        </h6>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <br>
+
+                                                            <div class=" d-flex justify-content-center mt-2 mb-5">
+                                                                <button type="button" class="btn btn_s me-2">
+                                                                    <h6 class=" mt-2 d-flex">Agendar visita</h6>
+                                                                </button>
+
+                                                                <a target="_blank" href="https://api.whatsapp.com/" class="style-whatsapp text-orange">
+                                                                    <i class="fa-brands fa-whatsapp fa-2x  ms-1 mt-2"></i>
+                                                                </a>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+
+
+
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                    <input type='submit' class='btn btn-finish btn-fill btn-warning border-r btn-wd' name='finalizar'
+                                           value='Publicar'
+                                           style="position: absolute; right: 2%;" />
+                                </div>
+                            </div>
+                            <div class="wizard-footer">
+                                <div class="pull-right d-flex justify-content-between">
+                                    <input type='button' class='btn btn-previous btn-fill btn-dark-blue border-r btn-wd' name='Regresar'
+                                           value='Regresar' />
+                                    <input type='button' class='btn btn-next btn-fill btn-warning border-r btn-wd' name='siguiente'
+                                           value='Siguiente' />
+
+                                </div>
+
+                                <div class="pull-right d-flex justify-content-end">
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div> <!-- wizard container -->
+                @*</form>*@
+            </div>
+
+        </div><!-- fin del row -->
+    </div>
+
+
+
+
+
+
+
+
+</div>
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("activee");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+
+    var coll = document.getElementsByClassName("collapsible2");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("activee");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+<script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAX6kLcesEBAk5K_5oBh-dRbTxWeKjMXgc&libraries=places">
+</script>
+<script src="~/js/googleMaps.js"></script>
+
+
+@section scripts {
+
+    <script>
+        $(document).ready(function() {
+            $("#TipoPropiedadID").change(function() {
+                $.get("/Propiedades/ObtSubtipoProp", { TipoP: $("#TipoPropiedadID").val() }, function(data) {
+                    // VACIAMOS EL DropDownList
+                    $("#SubTipoPropiedadID").empty();
+                    $("#SubTipoPropiedadID").append("<option value> -- Subtipo --</option>")
+                    // CONSTRUIMOS EL DropDownList A PARTIR DEL RESULTADO Json (data)
+                    $.each(data, function(index, row) {
+                        console.log(data);
+                        $("#SubTipoPropiedadID").append("<option value='" + row.iDsubtipoP + "'>" + row.subtipo + "</option>")
+                    });
+                });
+            });
+        });
+
+        $(function() {
+            $("#c.p, #n_calle, #n_interior, #n_exterior, #colonia, #estado, #alc-muni, #pais").on('change', function() {
+                initMap(document.getElementById("txtLat").value, document.getElementById("txtLng").value);
+            })
+        });
+
+        $(document).on("change", "#add-new-photo", function() {
+
+            //console.log(this.files);
+            var filesImg = this.files;
+            var element;
+            var activo;
+            var supportedImages = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+            var seEncontraronElementoNoValidos = false;
+
+            // Limpiando y borrando, por si se agregan nuevas imagenes
+            document.getElementById("listaImagenes").innerHTML = '';
+            document.getElementById("lista_imgMini").innerHTML = '';
+            for (var i = 0; i < filesImg.length; i++) {
+                //if (i < 3) {
+                //    document.getElementById("imgPrevisualizacion" + i).removeAttribute("src");
+                //}
+                if (i < 2) {
+                    document.getElementById("imgDespuesCarousel" + i).removeAttribute("src");
+                }
+            }
+
+            // Creacion de elementos para el MiniCarousel
+            if (filesImg.length < 3) {
+                for (var e = 0; e < filesImg.length; e++) {
+                    if (e == 0) {
+                        activo = 'active';
+                    } else {
+                        activo = '';
+                    }
+                    var respaldo = document.getElementById("lista_imgMini").innerHTML;
+                    document.getElementById("lista_imgMini").innerHTML = respaldo + ['<div class="carousel-item image-contain adaptar-car ', activo, '"> <img class="d-block vista-border-r size-v-image " id="carouselImgProp', e, '"> </div>'].join('');
+                }
+            } else {
+                for (var e = 0; e < 3; e++) {
+                    if (e == 0) {
+                        activo = 'active';
+                    } else {
+                        activo = '';
+                    }
+                    var respaldo = document.getElementById("lista_imgMini").innerHTML;
+                    document.getElementById("lista_imgMini").innerHTML = respaldo + ['<div class="carousel-item image-contain adaptar-car ', activo, '"><img class="img-size-mp img-fluid d-block " alt="..." id="imgPrevisualizacion', e, '"> </div>'].join('');
+                }
+            }
+
+            // Creacion de elementos para el Carousel
+            for (var j = 2; j < filesImg.length; j++) {
+
+                if (j == 2) {
+                    activo = 'active';
+                } else {
+                    activo = '';
+                }
+                var respaldo = document.getElementById("listaImagenes").innerHTML;
+                document.getElementById("listaImagenes").innerHTML = respaldo + ['<div class="carousel-item image-contain ejemploooooo ', activo, '"> <img class="d-block vista-border-r size-v-image " id="carouselImgProp', j, '"> </div>'].join('');
+            }
+
+
+            // Agregando las imagenes en los elementos
+            for (var i = 0; i < filesImg.length; i++) {
+                element = filesImg[i];
+                const objectURL = URL.createObjectURL(element);
+
+                if (i == 0) {
+                    activo = 'active';
+                } else {
+                    activo = '';
+                }
+
+
+                if (i < 2) {
+                    document.getElementById("imgDespuesCarousel" + i).src = objectURL;
+                }
+                if (i < 3) {
+                    document.getElementById("imgPrevisualizacion" + i).src = objectURL;
+                }
+
+                if (i > 1 && i < filesImg.length) {
+                    document.getElementById("carouselImgProp" + i).src = objectURL;
+                }
+            }
+        });
+
+
+        $(function() {
+            $("#nombre_propiedad, #TipoPropiedadID, #precioProp, #IDMoneda, #descripcion, #c.p, #n_calle, #n_interior, #n_exterior, #colonia, #estado, #alc-muni, #pais, #Superficieval, #UnidadSuperficie, #SuperficieContruccion, #UnidadConstruccion, #banosval, #recamarasval, #estacionamientoval, #add-new-photo, #5, #6, #7, #8, #9, #10, #11, #12, #13, #14, #15, #16, #17, #18, #19, #20, #21, #22, #23, #24, #25, #26, #valBodegas, #valClosets, #valElevadores").on('change', function() {
+                visualizar();
+            })
+        });
+        function visualizar() {
+
+            // Datos
+            var verNombreProp = document.getElementById('nombre_propiedad').value;
+            var verTipoProp = document.getElementById('TipoPropiedadID').value;
+            var valPrecio = document.getElementById('precioProp').value;
+            var valMoneda = document.getElementById('IDMoneda').value;
+            var valDescripcion = document.getElementById('descripcion').value;
+
+            var valCalle = document.getElementById('n_calle').value;
+            var valNoInt = document.getElementById('n_interior').value;
+            var valNoExt = document.getElementById('n_exterior').value;
+            var valColonia = document.getElementById('colonia').value;
+            var valMunicipio = document.getElementById('alc-muni').value;
+            var valCP = document.getElementById('c.p').value;
+            var valEstado = document.getElementById('estado').value;
+            var valPais = document.getElementById('pais').value;
+
+            var valSuperficie = document.getElementById('Superficieval').value;
+            var valUnidadSuperficie = document.getElementById('UnidadSuperficie').value;
+            var valConstruccion = document.getElementById('SuperficieContruccion').value;
+            var valUnidadConstruccion = document.getElementById('UnidadConstruccion').value;
+
+            var valBanos = document.getElementById('banosval').value;
+            var valRecamaras = document.getElementById('recamarasval').value;
+            var valEstacionamiento = document.getElementById('estacionamientoval').value;
+
+
+
+
+            // Variables para la obtencion de imagenes
+            var imgPropiedad = document.querySelector("#add-new-photo");
+            var imagenPrevisualizacion = document.querySelector("#imgPrevisualizacion");
+
+            //var verNombreProp = $("#nombre_propiedad").val();
+            //var verTipoProp = $("#TipoPropiedadID").val();
+            //var valPrecio = $("#precioProp").val();
+            //var valColonia = $("#colonia").val();
+            //var valMunicipio = $("#alc-muni").val();
+            //var valEstado = $("#estado").val();
+
+
+            //console.log(verNombreProp, verTipoProp, valPrecio, valColonia, valvalMunicipio, valEstado);
+
+            var valAccesoDiscapacitados = document.getElementById('5');
+            var verAD = document.getElementById('verAD');
+
+            if (valAccesoDiscapacitados.checked) {
+                verAD.innerHTML = 'Acceso discapacitados';
+                verAD.style.visibility = 'visible';
+                verAD.style.overflow = 'visible';
+                verAD.style.position = 'static';
+            } else {
+                verAD.style.visibility = 'hidden';
+                verAD.style.overflow = 'hidden';
+                verAD.style.position = 'absolute';
+            }
+
+            var valAlberca = document.getElementById('6');
+            var verAL = document.getElementById('verAL');
+
+            if (valAlberca.checked) {
+                verAL.innerHTML = 'Alberca';
+                verAL.style.visibility = 'visible';
+                verAL.style.overflow = 'visible';
+                verAL.style.position = 'static';
+            } else {
+                verAL.style.visibility = 'hidden';
+                verAL.style.overflow = 'hidden';
+                verAL.style.position = 'absolute';
+            }
+
+            var valAmueblado = document.getElementById('7');
+            var verAM = document.getElementById('verAM');
+
+            if (valAmueblado.checked) {
+                verAM.innerHTML = 'Amueblado';
+                verAM.style.visibility = 'visible';
+                verAM.style.overflow = 'visible';
+                verAM.style.position = 'static';
+            } else {
+                verAM.style.visibility = 'hidden';
+                verAM.style.overflow = 'hidden';
+                verAM.style.position = 'absolute';
+            }
+
+            var valCaseta = document.getElementById('8');
+            var verCA = document.getElementById('verCA');
+
+            if (valCaseta.checked) {
+                verCA.innerHTML = 'Caseta de guardia';
+                verCA.style.visibility = 'visible';
+                verCA.style.overflow = 'visible';
+                verCA.style.position = 'static';
+            } else {
+                verCA.style.visibility = 'hidden';
+                verCA.style.overflow = 'hidden';
+                verCA.style.position = 'absolute';
+            }
+
+            var valChimenea = document.getElementById('9');
+            var verCH = document.getElementById('verCH');
+
+            if (valChimenea.checked) {
+                verCH.innerHTML = 'Chimenea';
+                verCH.style.visibility = 'visible';
+                verCH.style.overflow = 'visible';
+                verCH.style.position = 'static';
+            } else {
+                verCH.style.visibility = 'hidden';
+                verCH.style.overflow = 'hidden';
+                verCH.style.position = 'absolute';
+            }
+
+            var valCocinaInt = document.getElementById('10');
+            var verCO = document.getElementById('verCO');
+
+            if (valCocinaInt.checked) {
+                verCO.innerHTML = 'Cocina integral';
+                verCO.style.visibility = 'visible';
+                verCO.style.overflow = 'visible';
+                verCO.style.position = 'static';
+            } else {
+                verCO.style.visibility = 'hidden';
+                verCO.style.overflow = 'hidden';
+                verCO.style.position = 'absolute';
+            }
+
+            var valCuartosSer = document.getElementById('11');
+            var verCU = document.getElementById('verCU');
+
+            if (valCuartosSer.checked) {
+                verCU.innerHTML = 'Cuartos de servicio';
+                verCU.style.visibility = 'visible';
+                verCU.style.overflow = 'visible';
+                verCU.style.position = 'static';
+            } else {
+                verCU.style.visibility = 'hidden';
+                verCU.style.overflow = 'hidden';
+                verCU.style.position = 'absolute';
+            }
+
+            var valEscuelas = document.getElementById('12');
+            var verES = document.getElementById('verES');
+
+            if (valEscuelas.checked) {
+                verES.innerHTML = 'Escuelas cercanas';
+                verES.style.visibility = 'visible';
+                verES.style.overflow = 'visible';
+                verES.style.position = 'static';
+            } else {
+                verES.style.visibility = 'hidden';
+                verES.style.overflow = 'hidden';
+                verES.style.position = 'absolute';
+            }
+
+
+            var valFrente = document.getElementById('13');
+            var verFR = document.getElementById('verFR');
+
+            if (valFrente.checked) {
+                verFR.innerHTML = 'Frente a parque';
+                verFR.style.visibility = 'visible';
+                verFR.style.overflow = 'visible';
+                verFR.style.position = 'static';
+            } else {
+                verFR.style.visibility = 'hidden';
+                verFR.style.overflow = 'hidden';
+                verFR.style.position = 'absolute';
+            }
+
+            var valJacuzzi = document.getElementById('14');
+            var verJA = document.getElementById('verJA');
+
+            if (valJacuzzi.checked) {
+                verJA.innerHTML = 'Jacuzzi';
+                verJA.style.visibility = 'visible';
+                verJA.style.overflow = 'visible';
+                verJA.style.position = 'static';
+            } else {
+                verJA.style.visibility = 'hidden';
+                verJA.style.overflow = 'hidden';
+                verJA.style.position = 'absolute';
+            }
+
+            var valMascotas = document.getElementById('15');
+            var verMA = document.getElementById('verMA');
+
+            if (valMascotas.checked) {
+                verMA.innerHTML = 'Mascotas';
+                verMA.style.visibility = 'visible';
+                verMA.style.overflow = 'visible';
+                verMA.style.position = 'static';
+            } else {
+                verMA.style.visibility = 'hidden';
+                verMA.style.overflow = 'hidden';
+                verMA.style.position = 'absolute';
+            }
+
+            var valAireAcondicionado = document.getElementById('16');
+            var verAI = document.getElementById('verAI');
+
+            if (valAireAcondicionado.checked) {
+                verAI.innerHTML = 'Aire acondicionado';
+                verAI.style.visibility = 'visible';
+                verAI.style.overflow = 'visible';
+                verAI.style.position = 'static';
+            } else {
+                verAI.style.visibility = 'hidden';
+                verAI.style.overflow = 'hidden';
+                verAI.style.position = 'absolute';
+            }
+
+            var valAreaJuegos = document.getElementById('17');
+            var verAR = document.getElementById('verAR');
+
+            if (valAreaJuegos.checked) {
+                verAR.innerHTML = 'Área de juegos infantiles';
+                verAR.style.visibility = 'visible';
+                verAR.style.overflow = 'visible';
+                verAR.style.position = 'static';
+            } else {
+                verAR.style.visibility = 'hidden';
+                verAR.style.overflow = 'hidden';
+                verAR.style.position = 'absolute';
+            }
+
+            var valCalefaccion = document.getElementById('18');
+            var verCAL = document.getElementById('verCAL');
+
+            if (valCalefaccion.checked) {
+                verCAL.innerHTML = 'Calefacción';
+                verCAL.style.visibility = 'visible';
+                verCAL.style.overflow = 'visible';
+                verCAL.style.position = 'static';
+            } else {
+                verCAL.style.visibility = 'hidden';
+                verCAL.style.overflow = 'hidden';
+                verCAL.style.position = 'absolute';
+            }
+
+            var valGim = document.getElementById('19');
+            var verGI = document.getElementById('verGI');
+
+            if (valGim.checked) {
+                verGI.innerHTML = 'Gimnasio';
+                verGI.style.visibility = 'visible';
+                verGI.style.overflow = 'visible';
+                verGI.style.position = 'static';
+            } else {
+                verGI.style.visibility = 'hidden';
+                verGI.style.overflow = 'hidden';
+                verGI.style.position = 'absolute';
+            }
+
+            var valSeguridad = document.getElementById('20');
+            var verSE = document.getElementById('verSE');
+
+            if (valSeguridad.checked) {
+                verSE.innerHTML = 'Seguridad';
+                verSE.style.visibility = 'visible';
+                verSE.style.overflow = 'visible';
+                verSE.style.position = 'static';
+            } else {
+                verSE.style.visibility = 'hidden';
+                verSE.style.overflow = 'hidden';
+                verSE.style.position = 'absolute';
+            }
+
+            var valAsador = document.getElementById('21');
+            var verASA = document.getElementById('verASA');
+
+            if (valAsador.checked) {
+                verASA.innerHTML = 'Asador';
+                verASA.style.visibility = 'visible';
+                verASA.style.overflow = 'visible';
+                verASA.style.position = 'static';
+            } else {
+                verASA.style.visibility = 'hidden';
+                verASA.style.overflow = 'hidden';
+                verASA.style.position = 'absolute';
+            }
+
+            var valCanchaS = document.getElementById('22');
+            var verCANS = document.getElementById('verCANS');
+
+            if (valCanchaS.checked) {
+                verCANS.innerHTML = 'Cancha de squash';
+                verCANS.style.visibility = 'visible';
+                verCANS.style.overflow = 'visible';
+                verCANS.style.position = 'static';
+            } else {
+                verCANS.style.visibility = 'hidden';
+                verCANS.style.overflow = 'hidden';
+                verCANS.style.position = 'absolute';
+            }
+
+            var valCanchaT = document.getElementById('23');
+            var verCANT = document.getElementById('verCANT');
+
+            if (valCanchaT.checked) {
+                verCANT.innerHTML = 'Cancha de tenis';
+                verCANT.style.visibility = 'visible';
+                verCANT.style.overflow = 'visible';
+                verCANT.style.position = 'static';
+            } else {
+                verCANT.style.visibility = 'hidden';
+                verCANT.style.overflow = 'hidden';
+                verCANT.style.position = 'absolute';
+            }
+
+
+            var valJardin = document.getElementById('24');
+            var verJAR = document.getElementById('verJAR');
+
+            if (valJardin.checked) {
+                verJAR.innerHTML = 'Jardón privado';
+                verJAR.style.visibility = 'visible';
+                verJAR.style.overflow = 'visible';
+                verJAR.style.position = 'static';
+            } else {
+                verJAR.style.visibility = 'hidden';
+                verJAR.style.overflow = 'hidden';
+                verJAR.style.position = 'absolute';
+            }
+
+            var valCuartoTV = document.getElementById('25');
+            var verTV = document.getElementById('verTV');
+
+            if (valCuartoTV.checked) {
+                verTV.innerHTML = 'Cuarto de TV';
+                verTV.style.visibility = 'visible';
+                verTV.style.overflow = 'visible';
+                verTV.style.position = 'static';
+            } else {
+                verTV.style.visibility = 'hidden';
+                verTV.style.overflow = 'hidden';
+                verTV.style.position = 'absolute';
+            }
+
+            var valEstudio = document.getElementById('26');
+            var verEST = document.getElementById('verEST');
+
+            if (valEstudio.checked) {
+                verEST.innerHTML = 'Estudio';
+                verEST.style.visibility = 'visible';
+                verEST.style.overflow = 'visible';
+                verEST.style.position = 'static';
+            } else {
+                verEST.style.visibility = 'hidden';
+                verEST.style.overflow = 'hidden';
+                verEST.style.position = 'absolute';
+            }
+
+
+            var valBodegas = document.getElementById('valBodegas').value;
+            var verBodegas = document.getElementById('verBodegas');
+            var txtBodegas = '';
+
+
+            if (valBodegas == 1) {
+                txtBodegas = ' Bodega';
+            } else {
+                txtBodegas = ' Bodegas';
+            }
+
+            if (valBodegas == 0) {
+                verBodegas.innerHTML = '';
+                verBodegas.style.visibility = 'hidden';
+                verBodegas.style.overflow = 'hidden';
+                verBodegas.style.position = 'absolute';
+            }
+            else {
+                verBodegas.innerHTML = valBodegas + txtBodegas;
+                verBodegas.style.visibility = 'visible';
+                verBodegas.style.overflow = 'visible';
+                verBodegas.style.position = 'static';
+            }
+
+
+            var valClosets = document.getElementById('valClosets').value;
+            var verClosets = document.getElementById('verClosets');
+            var txtClosets = '';
+
+
+            if (valClosets == 1) {
+                txtClosets = ' Closet';
+            } else {
+                txtClosets = ' Closets';
+            }
+
+            if (valClosets == 0) {
+                verClosets.innerHTML = '';
+                verClosets.style.visibility = 'hidden';
+                verClosets.style.overflow = 'hidden';
+                verClosets.style.position = 'absolute';
+            }
+            else {
+                verClosets.innerHTML = valClosets + txtClosets;
+                verClosets.style.visibility = 'visible';
+                verClosets.style.overflow = 'visible';
+                verClosets.style.position = 'static';
+            }
+
+
+            var valElevadores = document.getElementById('valElevadores').value;
+            var verElevadores = document.getElementById('verElevadores');
+            var txtElevadores = '';
+
+
+            if (valClosets == 1) {
+                txtElevadores = ' Elevador';
+            } else {
+                txtElevadores = ' Elevadores';
+            }
+
+            if (valElevadores == 0) {
+                verElevadores.innerHTML = '';
+                verElevadores.style.visibility = 'hidden';
+                verElevadores.style.overflow = 'hidden';
+                verElevadores.style.position = 'absolute';
+            }
+            else {
+                verElevadores.innerHTML = valElevadores + txtElevadores;
+                verElevadores.style.visibility = 'visible';
+                verElevadores.style.overflow = 'visible';
+                verElevadores.style.position = 'static';
+            }
+
+
+            // Agregando nombre de la propiedad en vista
+            document.getElementById('verNombre').innerHTML = verNombreProp;
+            document.getElementById('verNombre2').innerHTML = verNombreProp;
+
+            // Agregnado Tipo Propiedad en vista
+            var verAbrevTipo = '';
+            var verTxtProp = '';
+            if (verTipoProp == 1) {
+                verAbrevTipo = 'Depto';
+                verTxtProp = 'Departamento';
+            }
+            if (verTipoProp == 2) {
+                verAbrevTipo = 'Bodega';
+                verTxtProp = 'Bodega';
+            }
+            if (verTipoProp == 3) {
+                verAbrevTipo = 'Casa';
+                verTxtProp = 'Casa';
+            }
+            if (verTipoProp == 4) {
+                verAbrevTipo = 'Edif';
+                verTxtProp = 'Edificio';
+            }
+            if (verTipoProp == 5) {
+                verAbrevTipo = 'Huerta';
+                verTxtProp = 'Huerta';
+            }
+            if (verTipoProp == 6) {
+                verAbrevTipo = 'Local';
+                verTxtProp = 'Local comercial';
+            }
+            if (verTipoProp == 7) {
+                verAbrevTipo = 'Nave';
+                verTxtProp = 'Nave industrial';
+            }
+            if (verTipoProp == 8) {
+                verAbrevTipo = 'Ofic';
+                verTxtProp = 'Oficina';
+            }
+            if (verTipoProp == 9) {
+                verAbrevTipo = 'Quinta';
+                verTxtProp = 'Quinta';
+            }
+            if (verTipoProp == 10) {
+                verAbrevTipo = 'Rancho';
+                verTxtProp = 'Rancho';
+            }
+            if (verTipoProp == 11) {
+                verAbrevTipo = 'Terreno';
+                verTxtProp = 'Terreno/Lote';
+            }
+            if (verTipoProp == 12) {
+                verAbrevTipo = 'Villa';
+                verTxtProp = 'Villa';
+            }
+            if (verTipoProp == 13) {
+                verAbrevTipo = 'Hosp.';
+                verTxtProp = 'Hospital';
+            }
+            if (verTipoProp == 14) {
+                verAbrevTipo = 'Esc.';
+                verTxtProp = 'Escuela';
+            }
+
+
+
+            document.getElementById('verTipoProp').innerHTML = verAbrevTipo;
+            document.getElementById('verTipoProp2').innerHTML = verTxtProp;
+
+            // Agregar ver Precio
+
+            var verAbrevMoneda = '';
+            if (valMoneda == 1) {
+                verAbrevMoneda = 'MXN';
+            } if (valMoneda == 2) {
+                verAbrevMoneda = 'USD';
+            }
+
+            document.getElementById('verPrecio').innerHTML = valPrecio;
+            document.getElementById('verPrecio2').innerHTML = '$' + valPrecio + verAbrevMoneda;
+
+            // Agregar ver Ubicacion
+
+            document.getElementById('verUbicacion').innerHTML = valColonia;
+            document.getElementById('verEstado').innerHTML = valEstado;
+
+            document.getElementById('verCalle').innerHTML = valCalle;
+            document.getElementById('verNoInt').innerHTML = valNoInt;
+            document.getElementById('verNoExt').innerHTML = valNoExt;
+            document.getElementById('verColonia').innerHTML = valColonia;
+            document.getElementById('verCP').innerHTML = valCP;
+            document.getElementById('verMunicipio').innerHTML = valMunicipio;
+            document.getElementById('verPais').innerHTML = valPais;
+
+            // Agregar Superficie
+
+            var Unidad = '';
+            if (valUnidadSuperficie == 1) {
+                Unidad = 'm2';
+            } if (valUnidadSuperficie == 2) {
+                Unidad = 'ha';
+            }
+
+            var UnidadCons = '';
+            if (valUnidadConstruccion == 1) {
+                UnidadCons = 'm2';
+            } if (valUnidadConstruccion == 2) {
+                UnidadCons = 'ha';
+            }
+
+            document.getElementById('verSuperficie').innerHTML = valSuperficie + Unidad;
+            document.getElementById('verSuperficie2').innerHTML = valSuperficie + Unidad;
+
+            document.getElementById('verConstruccion').innerHTML = valConstruccion + UnidadCons;
+
+            // Agregando datos de caracteristicas
+            var txtBanos = ' Baño';
+            var txtEstacionamiento = ' Estacionamiento';
+            var txtRecamaras = ' Recamara';
+            if (valBanos > 1) {
+                txtBanos = ' Baños';
+            } if (valEstacionamiento > 1) {
+                txtEstacionamiento = ' Estacionamientos';
+            }
+            if (valRecamaras > 1) {
+                txtRecamaras = ' Recamaras';
+            }
+
+            document.getElementById('verBanos').innerHTML = valBanos;
+            document.getElementById('verBanos2').innerHTML = valBanos + txtBanos;
+
+            document.getElementById('verEstacionamiento').innerHTML = valEstacionamiento;
+            document.getElementById('verEstacionamiento2').innerHTML = valEstacionamiento + txtEstacionamiento;
+
+            document.getElementById('verRecamaras').innerHTML = valRecamaras;
+            document.getElementById('verRecamaras2').innerHTML = valRecamaras + txtRecamaras;
+
+            // Agregnado Descipcion
+            document.getElementById('verDescripcion').innerHTML = valDescripcion;
+
+        }
+
+    </script>
+
+}

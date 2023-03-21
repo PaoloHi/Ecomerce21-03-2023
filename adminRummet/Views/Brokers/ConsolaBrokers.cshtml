@@ -1,0 +1,599 @@
+﻿@{
+    Layout = "_NavUsuarios";
+}
+
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Proyecto_administracion</title>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="~/img/imagen-logo/logo_oficial.png">
+    <link rel="stylesheet" href="~/css/styleGeneral.css" />
+    <link rel="stylesheet" href="~/css/estilosGenerales.css" />
+
+    <link rel="stylesheet" href="~/css/style_tablero_brokers.css">
+    <script src="https://kit.fontawesome.com/e43b4d35fb.js" crossorigin="anonymous"></script>
+</head>
+
+<!--indicadores-->
+<div class="container-fluid indicadores_Container" style="width:fit-content;">
+    <div class="row tab margin-tablinks mx-auto">
+
+        <div class="col px-0">
+            <button type="button" class="border-0 d-flex mx-auto">
+                <div class="caja-a-b mb-2 mb-xl-0  ">
+                    <div class="card-main col-12 d-flex align-items-center">
+                        <div class="col-6 mt-2 d-flex justify-content-center">
+
+
+                            <div class="d-flex mt-1">
+                                <i class="fa-solid fa-user-check fa-2x" style="color: #18CB2A; font-size: 37px;"></i>
+                            </div>
+                        </div>
+                        <div class="col-6 d-flex justify-content-center">
+                            <div class="text-cards d-flex mt-2 indicator-active">
+                                <h6 class="mx-auto text-white my-auto size-number-indicator">100</h6>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="">
+                        <div class=" d-flex justify-content-center">
+                            <p class="size-letter-cards-first ms-2 mt-2">Afiliados</p>
+                        </div>
+                    </div>
+                </div>
+            </button>
+        </div>
+        <div class="col px-0">
+            <button type="button" class="border-0 d-flex mx-auto">
+                <div class="caja-a-b mb-xl-0 ">
+                    <div class="card-main col-12 d-flex align-items-center">
+                        <div class="col-6 mt-2 justify-content-center d-flex">
+
+
+                            <div class="d-flex mt-1">
+                                <i class="fa-solid fa-user-large " style="color:rgb(129, 129, 129); font-size: 37px;"></i>
+                            </div>
+                        </div>
+                        <div class="col-6 d-flex justify-content-center">
+                            <div class="text-cards d-flex mt-2  indicator-inactive">
+                                <h6 class="mx-auto text-white my-auto size-number-indicator ">10,000</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class=" d-flex justify-content-center">
+                            <p class="size-letter-cards-first ms-2 mt-1">Inactivos</p>
+                        </div>
+                    </div>
+                </div>
+            </button>
+        </div>
+        <div class="col px-0">
+            <button type="button" class="border-0 d-flex mx-auto">
+                <div class="caja-a-b mx-auto mb-2 mb-xl-0">
+                    <div class="card-main col-12 d-flex align-items-center">
+                        <div class="col-6 mt-1 justify-content-center d-flex ">
+
+
+                            <div class="d-flex mt-1">
+                                <i class="fa-solid fa-user-xmark fa-2x" style="color: rgb(255, 0, 0); font-size: 37px;"></i>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center col-6">
+                            <div class="text-cards d-flex mt-2 indicator-cancel">
+                                <h6 class="mx-auto text-white my-auto size-number-indicator">30</h6>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="col">
+                        <div class=" d-flex justify-content-center">
+                            <p class="size-letter-cards-first mt-1">Cancelados</p>
+                        </div>
+                    </div>
+                </div>
+            </button>
+        </div>
+        <div class="col px-0">
+            <button type="button" class="border-0 d-flex mx-auto">
+                <div class="caja-a-b mx-auto mb-2 mb-xl-0">
+                    <div class="card-main col-12 d-flex align-items-center">
+                        <div class="col-6 mt-3 justify-content-center d-flex">
+
+
+                            <div class="d-flex  ">
+                                <i class="fa-solid fa-user-slash fa-2x" style="font-size: 37px"></i>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center col-6">
+                            <div class="text-cards d-flex mt-2 indicator-block">
+                                <h6 class="mx-auto text-white my-auto size-number-indicator">5</h6>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="col">
+                        <div class=" d-flex d-block justify-content-center">
+                            <p class="size-letter-cards-first ms-2 mt-1">Bloqueados</p>
+                        </div>
+                    </div>
+                </div>
+            </button>
+        </div>
+
+    </div>
+</div>
+
+
+<!--Aqui empieza la barra de busqueda-->
+
+<form class="container-fluid mt-3">
+
+    <div class="row row-cols-lg-2 row-cols-sm-1 mt-1 responsiveExtraSmall px-1 d-inline-flex w-100">
+
+
+        <!--barra de busqueda y boton-->
+        <div class="col d-inline-flex  col-sm-12 ms-1 " style="width: 66%;">
+
+            <!--boton de nueva propiedad-->
+            <div class="d-flex col-2 px-0">
+                <a class="btn-nueva-prop text-center d-flex justify-content-center align-items-center" data-toggle="tooltip" data-placement="bottom"
+                   title="Añadir nuevo broker" asp-controller="Administracion" asp-action="EdicionUsuarioMBroker">
+                    <i class="fa-solid fa-user-plus"></i>
+                </a>
+            </div>
+            <div class="d-flex px-0 " style="width:66%;">
+                <input class="form-control inputs size-search " type="search" placeholder="Buscar"
+                       aria-label="Search" style="font-size:0.8rem">
+            </div>
+            <div class="d-flex col-2 px-0">
+                <button class="btn-s  text-light d-inline-flex justify-content-center align-items-center
+                           size-icons-t-b ms-lg-1" data-toggle="tooltip" data-placement="bottom" title="Buscar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="col flex-item d-inline-flex w-25 justify-content-end">
+
+            <select class="form-select inputFiltros" aria-label="Default select example"
+                    style="font-size:0.8rem">
+                <option disabled selected>Filtros</option>
+                <option value="1">Zonas</option>
+                <option value="2">Antigüedad</option>ss
+            </select>
+
+
+            <button id="tablaExcel" class="btn-s ms-1" data-toggle="tooltip" data-placement="bottom"
+                    title="Descargar datos a excel" onclick="exportTableToExcel('tablaExcel')">
+
+                <i class="fa-solid  fa-file-excel"></i>
+            </button>
+
+
+        </div>
+
+    </div>
+
+</form>
+
+
+
+
+
+<!--Contenedor principal donde se en encuentras las tarjetas y la tabla-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <!--Botones de visualización para ver las tarjetas o la tabla-->
+            <div class="tab ms-5 rounded">
+                <button class="tablinks" onclick="openCity(event, 'Tarjetas')"
+                        id="defaultOpen" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        data-bs-title="Vista tarjeta">
+                    <svg class="size-icons-table" fill="none" stroke="currentColor"
+                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2">
+                        </path>
+                    </svg>
+                </button>
+
+                <button class="tablinks" onclick="openCity(event, 'Tabla')"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        data-bs-title="Vista tabla">
+                    <i class="fa-solid fa-table mt-1" style="font-size:20px; color: rgb(71, 71, 71);"></i>
+                </button>
+            </div>
+
+
+            <!--Aqui termina los botones de visualización-->
+            <div id="Tarjetas" class="tabcontent">
+
+                <div class="container-lg shadow">
+                    <div class=" row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 m-auto responsiveExtraSmall">
+
+                        <div class="mt-2 col mx-auto mb-2 ">
+
+                            <div class="caja-a-b-t mx-auto mb-2 h-auto fw-bold p-1">
+
+                                <div class="card-center-1  d-flex justify-content-end">
+
+
+                                    <div class="title-cards-b-t back-indicator-green size-letter-card-t">
+                                        <p>Afiliado</p>
+                                    </div>
+
+                                </div>
+
+                                <div class="card-main col-12  d-flex mt-1  mx-auto color-letter-cards align-items-center row row-cols-1">
+                                    <!--fila de la informacon prinipal de la tarjeta-->
+                                    <div class="row d-inline-flex mx-auto">
+
+                                        <div class="col-3">
+                                            <img src="~/img/Imagenes-tab-brockers/Recurso.danilo.jpeg" alt="" class="img-size-t d-flex mx-auto ">
+                                        </div>
+                                        <div class="col-9 text-cards ">
+                                            <div class=" size-letter-card-t color-icons-cards">
+                                                <h6 class="size-letter-card-t fw-light"><i class="fa-solid fa-user me-2"></i>Danilo sarrelangue </h6>
+                                                <h6 class="size-letter-card-t fw-light"><i class="fa-solid fa-phone me-2"></i>5567793849</h6>
+                                                <h6 class="size-letter-card-t fw-light"><i class="fa-solid fa-envelope me-2"></i>danilo.sarrelange@cvo.mx</h6>
+                                                <h6 class="size-letter-card-t fw-light"><i class="fa-solid fa-map-location-dot me-2"></i>CDMX,EdoMex,Sonora</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--fila de los iconos-->
+                                    <div class="row d-flex justify-content-end col-7 row row-cols-4 ms-auto">
+                                        <a class=" btn-vermas d-flex " asp-controller="Administracion" asp-action="EdicionUsuarioBroker">
+                                            <i class="fa-sharp fa-solid fa-eye color-icons-cards size-letter-card-t"></i>
+                                        </a>
+                                        <button class="size-letter-card-t border-0 bg-transparent d-flex color-icons-cards"><i class="fa-solid fa-key"></i></button>
+                                        <button class="size-letter-card-t border-0 bg-transparent d-flex color-icons-cards"><i class="fa-solid fa-pen-to-square"></i></button>
+                                        <button class="size-letter-card-t border-0 bg-transparent d-flex color-icons-cards"><i class="fa-solid fa-trash-can"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-2 col mx-auto mb-2">
+
+                            <div class="caja-a-b-t mx-auto h-auto mb-2 mb-xl-0 fw-light ">
+
+                                <div class="card-center-1  d-flex justify-content-end">
+
+
+                                    <div class="title-cards-b-t back-indicator-gray size-letter-card-t">
+                                        <p>Inactivo</p>
+                                    </div>
+
+                                </div>
+
+                                <div class="card-main col-12  d-flex mt-1 p-1 mx-auto color-letter-cards align-items-center row row-cols-1">
+                                    <!--fila de la informacon prinipal de la tarjeta-->
+                                    <div class="row d-inline-flex mx-auto">
+
+                                        <div class="col-3">
+                                            <img src="~/img/Imagenes-tab-brockers/Recurso.danilo.jpeg" alt="" class="img-size-t d-flex mx-auto ">
+                                        </div>
+                                        <div class="col-9 text-cards ">
+                                            <div class=" size-letter-card-t color-icons-cards">
+                                                <h6 class="size-letter-card-t fw-light"><i class="fa-solid fa-user me-2"></i>Danilo sarrelangue </h6>
+                                                <h6 class="size-letter-card-t fw-light"><i class="fa-solid fa-phone me-2"></i>5567793849</h6>
+                                                <h6 class="size-letter-card-t fw-light"><i class="fa-solid fa-envelope me-2"></i>danilo.sarrelange@cvo.mx</h6>
+                                                <h6 class="size-letter-card-t fw-light"><i class="fa-solid fa-map-location-dot me-2"></i>CDMX,EdoMex,Sonora</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--fila de los iconos-->
+                                    <div class="row d-flex justify-content-end col-7 row row-cols-4 ms-auto">
+                                        <a class=" btn-vermas d-flex " asp-controller="Administracion" asp-action="EdicionUsuarioBroker">
+                                            <i class="fa-sharp fa-solid fa-eye color-icons-cards size-letter-card-t"></i>
+                                        </a>
+                                        <button class="size-letter-card-t border-0 bg-transparent d-flex color-icons-cards"><i class="fa-solid fa-key"></i></button>
+                                        <button class="size-letter-card-t border-0 bg-transparent d-flex color-icons-cards"><i class="fa-solid fa-pen-to-square"></i></button>
+                                        <button class="size-letter-card-t border-0 bg-transparent d-flex color-icons-cards"><i class="fa-solid fa-trash-can"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-2 col mx-auto mb-2">
+
+                            <div class="caja-a-b-t mx-auto h-auto mb-2 mb-xl-0 fw-light ">
+
+                                <div class="card-center-1  d-flex justify-content-end">
+
+
+                                    <div class="title-cards-b-t back-indicator-red size-letter-card-t">
+                                        <p>Cancelado</p>
+                                    </div>
+
+                                </div>
+                                <div class="card-main col-12  d-flex mt-1 p-1 mx-auto color-letter-cards align-items-center row row-cols-1">
+                                    <!--fila de la informacon prinipal de la tarjeta-->
+                                    <div class="row d-inline-flex mx-auto">
+
+                                        <div class="col-3">
+                                            <img src="~/img/Imagenes-tab-brockers/Recurso.danilo.jpeg" alt="" class="img-size-t d-flex mx-auto ">
+                                        </div>
+                                        <div class="col-9 text-cards ">
+                                            <div class=" size-letter-card-t color-icons-cards">
+                                                <h6 class="size-letter-card-t fw-light"><i class="fa-solid fa-user me-2"></i>Danilo sarrelangue </h6>
+                                                <h6 class="size-letter-card-t fw-light"><i class="fa-solid fa-phone me-2"></i>5567793849</h6>
+                                                <h6 class="size-letter-card-t fw-light"><i class="fa-solid fa-envelope me-2"></i>danilo.sarrelange@cvo.mx</h6>
+                                                <h6 class="size-letter-card-t fw-light"><i class="fa-solid fa-map-location-dot me-2"></i>CDMX,EdoMex,Sonora</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--fila de los iconos-->
+                                    <div class="row d-flex justify-content-end col-7 row row-cols-4 ms-auto">
+                                        <a class=" btn-vermas d-flex " asp-controller="Administracion" asp-action="EdicionUsuarioBroker">
+                                            <i class="fa-sharp fa-solid fa-eye color-icons-cards size-letter-card-t"></i>
+                                        </a>
+                                        <button class="size-letter-card-t border-0 bg-transparent d-flex color-icons-cards"><i class="fa-solid fa-key"></i></button>
+                                        <button class="size-letter-card-t border-0 bg-transparent d-flex color-icons-cards"><i class="fa-solid fa-pen-to-square"></i></button>
+                                        <button class="size-letter-card-t border-0 bg-transparent d-flex color-icons-cards"><i class="fa-solid fa-trash-can"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-2 col mx-auto mb-2">
+
+                            <div class="caja-a-b-t mx-auto h-auto mb-2 mb-xl-0 fw-light">
+
+                                <div class="card-center-1  d-flex justify-content-end">
+
+
+                                    <div class="title-cards-b-t back-indicator-black size-letter-card-t">
+                                        <p>Bloqueado</p>
+                                    </div>
+
+                                </div>
+                                <div class="card-main col-12  d-flex mt-1 p-1  mx-auto color-letter-cards align-items-center row row-cols-1">
+                                    <!--fila de la informacon prinipal de la tarjeta-->
+                                    <div class="row d-inline-flex mx-auto">
+
+                                        <div class="col-3">
+                                            <img src="~/img/Imagenes-tab-brockers/Recurso.danilo.jpeg" alt="" class="img-size-t d-flex mx-auto ">
+                                        </div>
+                                        <div class="col-9 text-cards ">
+                                            <div class=" size-letter-card-t color-icons-cards">
+                                                <h6 class="size-letter-card-t fw-light"><i class="fa-solid fa-user me-2"></i>Danilo sarrelangue </h6>
+                                                <h6 class="size-letter-card-t fw-light"><i class="fa-solid fa-phone me-2"></i>5567793849</h6>
+                                                <h6 class="size-letter-card-t fw-light"><i class="fa-solid fa-envelope me-2"></i>danilo.sarrelange@cvo.mx</h6>
+                                                <h6 class="size-letter-card-t fw-light"><i class="fa-solid fa-map-location-dot me-2"></i>CDMX,EdoMex,Sonora</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--fila de los iconos-->
+                                    <div class="row d-flex justify-content-end col-7 row row-cols-4 ms-auto">
+                                        <a class=" btn-vermas d-flex " asp-controller="Administracion" asp-action="EdicionUsuarioBroker">
+                                            <i class="fa-sharp fa-solid fa-eye color-icons-cards size-letter-card-t"></i>
+                                        </a>
+                                        <button class="size-letter-card-t border-0 bg-transparent d-flex color-icons-cards"><i class="fa-solid fa-key"></i></button>
+                                        <button class="size-letter-card-t border-0 bg-transparent d-flex color-icons-cards"><i class="fa-solid fa-pen-to-square"></i></button>
+                                        <button class="size-letter-card-t border-0 bg-transparent d-flex color-icons-cards"><i class="fa-solid fa-trash-can"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <footer class="d-flex mx-auto">
+                            <nav aria-label="" class="mt-4">
+                                <ul class="pagination justify-content-lg-center justify-content-center">
+                                    <li class="page-item disabled">
+                                        <a class="page-link me-1" href="#" tabindex="-1" aria-disabled="true">
+                                            <i class="fa-solid fa-chevron-left"></i>
+                                        </a>
+                                    </li>
+                                    <li class="page-item active me-1" aria-current="page"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item me-1">
+                                        <a class="page-link" href="#">2</a>
+                                    </li>
+                                    <li class="page-item me-1"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">
+                                            <i class="fa-solid fa-chevron-right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </footer>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="Tabla" class="tabcontent">
+                <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive mt-2 bg-light rounded table-bordered shadow">
+                    <table class="table table-hover ">
+                        <thead class="backgr-gray-head">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">A.paterno</th>
+                                <th scope="col">A.materno</th>
+                                <th scope="col" class="text-center">Teléfono</th>
+                                <th scope="col" class="text-center">Correo</th>
+                                <th scope="col">Antigüedad</th>
+                                <th scope="col">Estatus</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <!--Back-End team: cuando hagan el ciclo por favor tomen en cuenta solamente la primmera columna de la tabla
+                                ya que hay se encuentran todos los cambios que he hecho-->
+
+                            <tr class="tabla-hover">
+                                <th scope="row">1</th>
+                                <td>Danilo</td>
+                                <td>Sarrelange</td>
+                                <td>Sarrelange</td>
+                                <td class="text-center">5567793849</td>
+                                <td class="text-center">danilo12345_s@live.com</td>
+                                <td class="text-center">2 años</td>
+                                <td class="text-center">
+                                    <!--esto hay que conectarlo solamente es de prueba-->
+                                    @{
+                                        var statusBroker = "Afiliado";
+                                        var colorStatusBroker = "";
+                                        if (statusBroker == "Afiliado")
+                                        {
+                                            colorStatusBroker = "bg-status-green";
+                                        }
+                                        else if (statusBroker == "Inactivo")
+                                        {
+                                            colorStatusBroker = "bg-status-grey";
+                                        }
+                                        else if (statusBroker == "Cancelado")
+                                        {
+                                            colorStatusBroker = "bg-status-red";
+                                        }
+                                        else
+                                        {
+                                            colorStatusBroker = "bg-status-black";
+                                        }
+                                    }
+
+                                    <p class="@colorStatusBroker text-white">Afiliado</p>
+                                </td>
+                                <td>
+                                    <div class=" d-flex justify-content-between ">
+                                        <a href="#" class="style-vermas2">
+                                            <i class="fa-sharp fa-solid fa-eye"></i>
+                                        </a>
+                                        <button class="border-0 bg-transparent"><i class="fa-solid fa-pen-to-square style-vermas2"></i></button>
+                                        <button class="border-0 bg-transparent"><i class="fa-solid fa-key style-vermas2"></i></button>
+                                        <button class="border-0 bg-transparent"><i class="fa-solid fa-trash-can style-vermas2"></i></button>
+                                    </div>
+                                </td>
+                            </tr><!-- <== o sea... esta -->
+
+                            <tr class="tabla-hover">
+                                <th scope="row">2</th>
+                                <td>Danilo</td>
+                                <td>Sarrelange</td>
+                                <td>Sarrelange</td>
+                                <td class="text-center">5567793849</td>
+                                <td class="text-center">danilo12345_s@live.com</td>
+                                <td class="text-center">2 años</td>
+                                <td class="text-center"> <p class="bg-status-black">Bloqueado</p></td>
+                                <td>
+                                    <div class=" d-flex justify-content-between">
+                                        <a href="#" class="btn-vermas">
+                                            <i class="fa-sharp fa-solid fa-eye"></i>
+                                        </a>
+                                        <button class="border-0 bg-transparent"><i class="fa-solid fa-pen-to-square style-vermas2"></i></button>
+                                        <button class="border-0 bg-transparent"><i class="fa-solid fa-key"></i></button>
+                                        <button class="border-0 bg-transparent"><i class="fa-solid fa-trash-can style-vermas2"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="tabla-hover">
+                                <th scope="row">3</th>
+                                <td>Danilo</td>
+                                <td>Sarrelange</td>
+                                <td>Sarrelange</td>
+                                <td class="text-center">5567793849</td>
+                                <td class="text-center">danilo12345_s@live.com</td>
+                                <td class="text-center">2 años</td>
+                                <td class="text-center"><p class="bg-status-grey">Inactivo</p></td>
+                                <td>
+                                    <div class=" d-flex justify-content-between">
+                                        <a href="#" class="btn-vermas">
+                                            <i class="fa-sharp fa-solid fa-eye"></i>
+                                        </a>
+                                        <button class="border-0 bg-transparent"><i class="fa-solid fa-pen-to-square style-vermas2"></i></button>
+                                        <button class="border-0 bg-transparent"><i class="fa-solid fa-key"></i></button>
+                                        <button class="border-0 bg-transparent"><i class="fa-solid fa-trash-can style-vermas2"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="tabla-hover">
+                                <th scope="row">4</th>
+                                <td>Danilo</td>
+                                <td>Sarrelange</td>
+                                <td>Sarrelange</td>
+                                <td class="text-center">5567793849</td>
+                                <td class="text-center">danilo12345_s@live.com</td>
+                                <td class="text-center">2 años</td>
+                                <td class="text-center"><p class="bg-status-red">Cancelado</p></td>
+                                <td>
+                                    <div class=" d-flex justify-content-between">
+                                        <a href="#" class="btn-vermas">
+                                            <i class="fa-sharp fa-solid fa-eye"></i>
+                                        </a>
+                                        <button class="border-0 bg-transparent"><i class="fa-solid fa-pen-to-square style-vermas2"></i></button>
+                                        <button class="border-0 bg-transparent"><i class="fa-solid fa-key"></i></button>
+                                        <button class="border-0 bg-transparent"><i class="fa-solid fa-trash-can style-vermas2"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <nav aria-label="" class="mt-4">
+                    <ul class="pagination justify-content-lg-center justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link me-1" href="#" tabindex="-1" aria-disabled="true">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </a>
+                        </li>
+                        <li class="page-item active me-1" aria-current="page"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item me-1">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item me-1"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!--Scripts-->
+<script>
+    // Script para tab de tablero de brokers
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>
+
+<script src="~/js/script.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

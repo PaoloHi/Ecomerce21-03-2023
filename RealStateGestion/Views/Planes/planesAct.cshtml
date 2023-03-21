@@ -1,0 +1,139 @@
+﻿@model PlanesModel;
+
+<link rel="stylesheet" href="~/css/styles_edit_config_planes.css" asp-append-version="true" />
+
+<ul class="circles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<br />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+
+            <form action="#" class="form">
+
+
+
+                <label for=""><h5>Configuración de planes</h5></label>
+                <div class="input-group justify-content-between  d-lg-inline-flex mt-2 mb-3">
+                    <div class=" d-lg-inline-block col-lg-4 mt-lg-3 mt-ms-4 ms-5 ">
+                        <label for="t_propiedad" class="text-start fw-bold color_letter">Tipo de propiedad</label>
+                  
+                        @Html.DropDownListFor(model => model.IDPlan, new SelectList(Model.planesG,"IDplanEcomm","nombrePlan"), "-- Selecciona --",new {@class="border-labels rounded text-center mt-lg-2"})
+
+                    </div>
+
+                    <div class=" d-lg-inline-block mt-lg-2 mb-3 ps-1 ">
+                        <label for="nombre" class="text-start mb-3 fw-bold color_letter size-text">Nombre</label>
+                        <input type="text" name="nombre" class="mt-lg-2" />
+                    </div>
+                    <div class=" d-lg-inline-block">
+                        <label for="precio" class="text-start  fw-bold color_letter size-text">Precio</label>
+                        <input type="text" id="value1" readonly class="value_s mt-lg-2">
+                    </div>
+                </div>
+                <div class="input-group justify-content-start  d-lg-inline-flex mt-2 mb-3">
+                    <div class=" d-lg-inline-flex  mb-3 ps-1 ">
+                        <label for="nombre" class="text-start  fw-bold color_letter size-text">¿Hasta cuántas propiedades?</label>
+                        <input type="number" name="propiedades" class="" />
+                    </div>
+                </div>
+                <hr>
+                <label for=""><h5>Caracteristicas</h5></label>
+
+
+
+                <div class="input-group d-lg-inline-flex justify-content-between mt-lg-3 align-content-between ">
+
+
+
+                    <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive col-12">
+                        <table class="table table-hover border">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Selecciona</th>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Caracteristicas</th>
+                                    <th scope="col">Principales</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @for (var i = 0; i < Model.planesCaractG.Count; ++i)
+                                {
+                                    bool seleccionada=false;
+
+                                    foreach (var ite in Model.planesCaractIndv)
+                                    {
+                                        if (ite.IDcatCaractPlanEcommRel == Model.planesCaractG[i].IDcatPlan)
+                                        {
+                                            seleccionada = true;
+                                        }
+                                    }
+                                    <tr>
+                                        <th scope="row">
+                                            @if (seleccionada)
+                                            {
+                                                @Html.CheckBoxFor(model => model.planesCaractG[i].isSelected, new {@class = "form-check-input mt-0 border-check", @id=Model.IDcatPlan})
+                                            }
+                                            else
+
+                                            {
+                                                @Html.CheckBoxFor(model => model.planesCaractG[i].isnotSelected, new {@class = "form-check-input mt-0 border-check"})
+                                            }
+                                        </th>
+                                         
+                                        <td>@Html.DisplayFor(model => model.planesCaractG[i].IDcatPlan)</td>
+                                        <td>@Html.DisplayFor(model => model.planesCaractG[i].caractPlanEcomm)</td>
+                                        <td><input class="form-check-input mt-0 border-check" type="checkbox" value="" aria-label="Checkbox for following text input"></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+                <div class="input-group d-lg-inline-flex justify-content-between mb-5 align-content-between">
+                    <div class="">
+                        <label for="">Precio</label>
+                        <input type="number" name="precio" id="num">
+                    </div>
+                    <div class="">
+                        <label for="">Promoción %</label>
+                        <input type="number" name="promocion" id="percent">
+                    </div>
+                    <div class="mt-lg-4">
+                        <input type="button" onclick="percentage_1()" value="Aplicar" class="btn btn-primary border-bottom-0"></input>
+                    </div>
+                    <div class="">
+                        <label for="">Inicio</label>
+                        <input type="date" name="" id="">
+                    </div>
+                    <div class=" me-2">
+                        <label for="">Termina</label>
+                        <input type="date" name="" id="">
+                    </div>
+
+                </div>
+
+                <div class="justify-content-end d-flex">
+                    <button type="submit" class=" btn btn-orange circle-btn   ml-auto"><i class="fa-solid fa-check text-light"></i></button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>

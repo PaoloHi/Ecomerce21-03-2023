@@ -1,0 +1,197 @@
+﻿@model PlanesModel
+
+<link rel="stylesheet" href="~/css/config_planes_style.css" asp-append-version="true" />
+
+<form action="">
+    <div class="carousel-inner">
+        <div class="row  my-5 d-flex justify-content-center">
+
+            <div class="col-lg-3">
+                <div class="caja-3 mx-auto shadow-lg mb-3 zoom">
+                    @foreach (var item in Model.planesG)
+                    {
+                        @if (@item.IDplanEcomm == 1)
+                        {
+
+                            <div class="card-center-1">
+
+                                <div class="title-cards-1 col-5">
+                                    <h5>@item.nombrePlan</h5>
+                                </div>
+
+                                <div class="prize-house col-5  d-inline-flex my-2">
+                                    <img src="~/img/Bronce.png" alt="" class=" casa-3">
+                                    <div class="my-3 text-light col-lg-2 col-3  ms-2  d-flex ">
+                                        @{
+                                            double precio = Convert.ToDouble(@item.precioTotal);
+                                            var precioTotal = precio.ToString("N0", new System.Globalization.CultureInfo("en-US"));
+                                        }
+                                        <h1 class="justify-content-center fw-bold ">$@precioTotal</h1>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="body-card  d-flex">
+                                <div class="col-11 mx-auto  text-dark">
+                                    <h6 class="letter_space ">Hasta @item.propiedades propiedades</h6>
+                                    @{
+                                        var x = 1;
+                                    }
+                                    @foreach (var itemcaract1 in Model.planesCaract)
+                                    {
+                                        x = x + 1;
+                                        @if (@itemcaract1.IDPlan == 1)
+                                        {
+                                            <h6 class="letter_size ">@itemcaract1.caractPlanEcomm</h6>
+                                        }
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="body-card">
+                                <div class="col-5 mx-auto text-light  justify-content-center d-flex  my-2 text-center">
+                                    <a href="edit_config_planes.html">
+                                       <a class="btn btn_s ps-3 my-4" asp-controller="Planes" asp-action="planesAct" asp-route-plan="@item.IDplanEcomm">
+                                        <i class="fa-solid fa-pencil fa-1x d-flex me-1"></i>
+                                    </a>
+                                    </a>
+
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+
+                <ul class='circles'>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+
+            </div>
+            <div class="col-lg-3">
+                <div class="caja-3 mx-auto shadow-lg mb-3 zoom">
+
+                    @foreach (var item2 in Model.planesG)
+                    {
+                        @if (@item2.IDplanEcomm == 2)
+                        {
+                            <div class="card-center-2">
+
+                                <div class="title-cards-2 col-5">
+                                    <h5>@item2.nombrePlan</h5>
+                                </div>
+
+                                <div class="prize-house col-5  d-inline-flex my-2">
+                                    <img src="~/img/plata.png" alt="" class=" casa-3">
+                                    <div class="my-3 text-light col-lg-2 col-3  ms-2  d-flex ">
+                                        @{
+                                            double precio = Convert.ToDouble(@item2.precioTotal);
+                                            var precioTotal2 = precio.ToString("N0", new System.Globalization.CultureInfo("en-US"));
+                                        }
+                                        <h1 class="  justify-content-center fw-bold ">$@precioTotal2</h1>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="body-card  d-flex">
+                                <div class="col-11 mx-auto  text-dark">
+                                    <h6 class="letter_space">Hasta @item2.propiedades propiedades</h6>
+                                    @{
+                                        var x = 1;
+                                    }
+                                    @foreach (var itemcaract1 in Model.planesCaract)
+                                    {
+                                        x = x + 1;
+                                        @if (@itemcaract1.IDPlan == 2)
+                                        {
+                                            <h6 class="letter_size ">@itemcaract1.caractPlanEcomm</h6>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                            <div class="body-card">
+                                <div class="col-5 mx-auto   text-light  justify-content-center  text-center">
+                                    <a class="btn btn_s ps-3 my-4" asp-controller="Planes" asp-action="planesAct" asp-route-plan="@item2.IDplanEcomm">
+                                        <i class="fa-solid fa-pencil fa-1x d-flex me-1"></i>
+                                    </a>
+                                                                     
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+
+
+            </div>
+
+            <div class="col-lg-3">
+                <div class="caja-3 mx-auto shadow-lg mb-3 zoom">
+                    @foreach (var item3 in Model.planesG)
+                    {
+                        @if (@item3.IDplanEcomm == 3)
+                        {
+                            <div class="card-center-3">
+
+                                <div class="title-cards-1 col-5">
+                                    <h5>@item3.nombrePlan</h5>
+                                </div>
+
+                                <div class="prize-house col-5  d-inline-flex my-2">
+                                    <img src="~/img/oro.png" alt="" class=" casa-3">
+                                    <div class="my-3 text-light col-lg-2 col-3  ms-2  d-flex ">
+                                        @{
+                                            double precio = Convert.ToDouble(@item3.precioTotal);
+                                            var precioTotal3 = precio.ToString("N0", new System.Globalization.CultureInfo("en-US"));
+                                        }
+                                        <h1 class="  justify-content-center fw-bold ">$@precioTotal3</h1>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="body-card  d-flex">
+                                <div class="col-11 mx-auto  text-dark">
+                                    <h6 class="letter_space">Hasta @item3.propiedades propiedades</h6>
+                                    @{
+                                        var x = 1;
+                                    }
+                                    @foreach (var itemcaract3 in Model.planesCaract)
+                                    {
+
+                                        x = x + 1;
+                                        @if (@itemcaract3.IDPlan == 3)
+                                        {
+                                            <h6 class="letter_size ">@itemcaract3.caractPlanEcomm</h6>
+                                        }
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="body-card  d-flex">
+                                <div class="col-5 mx-auto text-light  justify-content-center  text-center">
+                                     <a class="btn btn_s ps-3 my-4" asp-controller="Planes" asp-action="planesAct" asp-route-plan="@item3.IDplanEcomm">
+                                        <i class="fa-solid fa-pencil fa-1x d-flex me-1"></i>
+                                    </a>
+
+
+
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

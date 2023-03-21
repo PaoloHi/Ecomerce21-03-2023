@@ -1,0 +1,136 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = EcommerceRealCVO
+build_property.RootNamespace = EcommerceRealCVO
+build_property.ProjectDir = C:\Proyecto CoreDemo\EcommerceRealCVO\EcommerceRealCVO\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = C:\Proyecto CoreDemo\EcommerceRealCVO\EcommerceRealCVO
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Alex/AlexVista.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxleFxBbGV4VmlzdGEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Cuentas/Acceso.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhc1xBY2Nlc28uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Cuentas/AlertaProvisional.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhc1xBbGVydGFQcm92aXNpb25hbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Cuentas/ConfirmacionOlvidoPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhc1xDb25maXJtYWNpb25PbHZpZG9QYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Cuentas/ConfirmacionRecuperaPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhc1xDb25maXJtYWNpb25SZWN1cGVyYVBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Cuentas/ConfirmarEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhc1xDb25maXJtYXJFbWFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Cuentas/Error_codigo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhc1xFcnJvcl9jb2RpZ28uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Cuentas/OlvidoPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhc1xPbHZpZG9QYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Cuentas/Registro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhc1xSZWdpc3Ryby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Cuentas/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhc1xSZXNldFBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Ecommerce/Alertaprovicional.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWNvbW1lcmNlXEFsZXJ0YXByb3ZpY2lvbmFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Ecommerce/Contacto.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWNvbW1lcmNlXENvbnRhY3RvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Ecommerce/PlanesEcommerce.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWNvbW1lcmNlXFBsYW5lc0Vjb21tZXJjZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Ecommerce/Propiedades.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWNvbW1lcmNlXFByb3BpZWRhZGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Ecommerce/PropiedadesVerMas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWNvbW1lcmNlXFByb3BpZWRhZGVzVmVyTWFzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Shared/_EcommerceG.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9FY29tbWVyY2VHLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Shared/_NavAndFooter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXZBbmRGb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Shared/_NotificationPanel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb25QYW5lbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Shared/_OnlyNav.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Pbmx5TmF2LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Shared/_OnlyNav2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Pbmx5TmF2Mi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Shared/_OnlyNav3.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Pbmx5TmF2My5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Shared/_paginador.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9wYWdpbmFkb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Shared/_VistaParcial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WaXN0YVBhcmNpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto CoreDemo/EcommerceRealCVO/EcommerceRealCVO/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-2ytpfb9fh4

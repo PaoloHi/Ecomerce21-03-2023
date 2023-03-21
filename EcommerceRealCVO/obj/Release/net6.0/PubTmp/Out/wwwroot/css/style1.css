@@ -1,0 +1,631 @@
+﻿:root {
+--orange:#EB7029;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Gotham';
+}
+
+@font-face {
+    font-family: Gotham;
+    src: url("../fonts/Gotham-Light.otf");
+}
+
+
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+
+body {
+    
+    margin-bottom: 110px !important;
+}
+
+
+/*Estilos para el footer*/
+
+/*Fin de los estilos footer*/
+
+.navbar {
+    background-color: #012845 !important;
+    font-size: 15px;
+    position: sticky;
+}
+
+.navbar_2 {
+    background-color: #ffff !important;
+}
+
+
+/*navbar buton styles*/
+.afiliarmeBtn {
+    background-color: var(--orange);
+    border-radius: 5px !important;
+    height: 30px;
+    width: 6em;
+}
+
+    .afiliarmeBtn:hover {
+    background-color:white;
+    border:2px solid darkorange;
+    }
+.afiliarmeH6 {
+color:white;
+}
+
+.afiliarmeH6:hover {
+    color: darkorange !important;
+}
+
+
+        .backgr {
+            background-color: #012845;
+        }
+
+
+.btn_2 {
+    background-color: none;
+    border-radius: 100%;
+}
+
+.shadow_ {
+    border: 5px;
+    box-shadow: 5px 3px 3px 3px #ccc !important;
+}
+
+.icon {
+    color: #fff;
+}
+
+.border_radius_header {
+    border-radius: 10px 15px 70px 70px;
+    width: 130px;
+}
+
+.backgr_orange {
+    background-color: rgb(235, 112, 41);
+}
+
+
+.body-cards {
+    box-shadow: 7px 10px 3px #ccc;
+}
+
+
+.card {
+    position: relative;
+    align-items: center;
+    color: #02427a;
+    border: none !important;
+    overflow: hidden;
+}
+
+.border_radius_numbers {
+    border-radius: 5px;
+    background-color: var(--orange);
+    color: #fff;
+    padding: 3px;
+    font-size: 20px;
+    width: 100px;
+    text-align: center;
+    margin: 0 17px;
+}
+
+.bg {
+    background-image: url("../img/imagenes__e-commerce/Recurso49.png");
+    background-size: 105%;
+    background-repeat: no-repeat;
+    background-position-x: -50px;
+    background-position-y: -50px;
+    animation: fadeIn 3s;
+}
+
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0%;
+        filter: blur(3px);
+    }
+}
+
+.main_backg {
+    background-color: #132c45;
+}
+
+.backgr-first {
+    background: url('../img/imagenes__e-commerce/Recurso 112.png') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 1290px 585px;
+}
+
+@media only screen and (max-width: 1500px) {
+    .backgr-first {
+        background: url('../img/imagenes__e-commerce/Recurso 113.png') no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: 1275px 585px;
+    }
+    .bg {
+        background-image: url("../img/imagenes__e-commerce/Recurso49.png");
+        background-size: 105%;
+        background-repeat: no-repeat;
+        background-position-x: -50px;
+        background-position-y: -50px;
+        animation: fadeIn 3s;
+    }
+}
+
+@media (min-width: 1290px) and (max-width: 1899px) {
+    .backgr-first {
+        background: url('../img/imagenes__e-commerce/Recurso 113.png') no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: 1898px 607px;
+    }
+
+    .bg {
+        background-image: url("../img/imagenes__e-commerce/Recurso49.png");
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position-x: 50px;
+        background-position-y: -50px;
+        animation: fadeIn 3s;
+    }
+}
+
+@media (min-width: 1900px) and (max-width: 2000px) {
+    .backgr-first {
+        background: url('../img/imagenes__e-commerce/Recurso 113.png') no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: 1985px 607px;
+    }
+
+    .bg {
+        background-image: url("../img/imagenes__e-commerce/Recurso49.png");
+        background-size: 80%;
+        background-repeat: no-repeat;
+        background-position-x: 50px;
+        background-position-y: -50px;
+        animation: fadeIn 3s;
+    }
+}
+
+@media (min-width: 2000px) and (max-width: 4000px) {
+    .backgr-first {
+        background: url('../img/imagenes__e-commerce/Recurso 113.png') no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: 100% 507px;
+    }
+
+    .bg {
+        background-image: url("../img/imagenes__e-commerce/Recurso49.png");
+        background-size: 60%;
+        background-repeat: no-repeat;
+        background-position-x: 50px;
+        background-position-y: -70px;
+        animation: fadeIn 3s;
+    }
+}
+
+
+
+
+@media only screen and (max-width: 400px) {
+    .backgr-first {
+        background-color:#fff;
+       
+    }
+}
+
+.backgr-second {
+    background: url('../img/imagenes__e-commerce/Recurso 53.png') no-repeat center center;
+    background-size: 750px 160px;
+    /*
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;*/
+}
+
+.size-select {
+    width: 180px;
+    padding-right: 5px;
+    border-radius: 10px;
+    margin-left: 130px !important;
+}
+
+.size-search {
+    width: 500px;
+}
+
+.color_circle_orange {
+    color: rgb(235, 112, 41);
+}
+
+    .color_circle_orange:hover {
+        color: rgb(239, 143, 88);
+    }
+
+.backgr-search {
+    background-color: lightsalmon;
+}
+
+@media only screen and (max-width: 400px) {
+    .size-search {
+        width: 200px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .size-search {
+        width: 200px;
+    }
+
+    .size-select {
+        width: 100px;
+        padding-right: 0px;
+        border-radius: 10px;
+        margin-left: 50px !important;
+        display: inline-flex;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .size-select {
+        width: 90px;
+        padding-right: 0px;
+        border-radius: 10px;
+        margin-left: 50px !important;
+        display: inline-flex;
+    }
+}
+
+.size-indicator {
+    width: 15px !important;
+    height: 15px;
+    background-color: rgba(204, 204, 204, 0.438) !important;
+    border: none !important;
+    padding: 5px;
+    border-radius: 50px;
+}
+
+    .size-indicator:hover {
+        width: 15px !important;
+        height: 15px;
+        background-color: black !important;
+        border: none !important;
+        padding: 5px;
+        border-radius: 50px;
+    }
+
+
+.btn-outline-light:hover {
+    color: #fff !important;
+    background-color: rgb(235, 112, 41) !important;
+    border-color: #f8f9fa !important;
+}
+
+.btn-outline-light:disabled, .btn-outline-light.disabled {
+    color: #fff !important;
+    background-color: rgb(4, 4, 4) !important;
+}
+
+.btn-light {
+    color: #fff !important;
+    background-color: #fff !important;
+}
+
+.btn-check:checked + .btn-outline-light, .btn-check:active + .btn-outline-light, .btn-outline-light:active, .btn-outline-light.active, .btn-outline-light.dropdown-toggle.show {
+    color: #fff !important;
+    background-color: rgb(235, 112, 41) !important;
+}
+
+.btn-check:focus + .btn-outline-light, .btn-outline-light:focus {
+    box-shadow: 0 0 0 0.25rem rgb(239, 143, 88) !important;
+}
+
+.card_first {
+    align-items: center;
+    position: relative;
+    width: 90%;
+    height: 310px;
+}
+
+    .card_first .face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: .5s;
+    }
+
+    .card_first .front {
+        transform: perspective(600px) rotateY(0deg);
+        box-shadow: 0 5px 10px rgb(82, 79, 79);
+    }
+
+        .card_first .front img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card_first .front h3 {
+            position: absolute;
+            bottom: -8px;
+            width: 100%;
+            height: 45px;
+            line-height: 45px;
+            color: #fff;
+            background: rgba(0, 0, 0, .4);
+            text-align: center;
+            text-shadow: 2px 2px 2px black
+        }
+
+    .card_first .back {
+        transform: perspective(600px) rotateY(180deg);
+        background: rgb(3, 35, 54);
+        padding: 15px;
+        color: #f3f3f3;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+        box-shadow: 0 5px 10px #000;
+    }
+
+        .card_first .back .link {
+            border-top: solid 1px #f3f3f3;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .card_first .back link a {
+            color: #f3f3f3;
+        }
+
+        .card_first .back h3 {
+            font-size: 30px;
+            margin-top: 20px;
+            letter-spacing: 2px;
+        }
+
+        .card_first .back p {
+            letter-spacing: 1px;
+        }
+
+    .card_first:hover .front {
+        transform: perspective(600px) rotateY(180deg);
+    }
+
+    .card_first:hover .back {
+        transform: perspective(600px) rotateY(360deg);
+    }
+
+.image-size {
+    width: 50px;
+    height: 55px;
+}
+
+.navbar-brand {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 25px 20px 10px;
+    text-align: center;
+    background: #012845;
+    border-radius: 0px 0px 30px 30px;
+    box-shadow: 0px 0px 25px 3px rgba(4, 35, 51, 0.25);
+    border-radius: 20px 10px 30px 30px;
+    transition: all .5s;
+}
+
+.scroll_navbar-brand {
+    position: absolute;
+    top: 5px;
+    left: 0%;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.4);
+    transition-duration: 0.6s;
+    background: #f8f9fa;
+}
+
+/*Iconos de la  navbar*/
+
+.size-icon-navbar {
+    font-size: 23px;
+}
+
+/*Estilos a links*/
+a:link {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #fff;
+}
+/*Fin de los estilos a links*/
+
+
+/*estilos del texto ¿Que te gustaria hacer? */
+#titleInicio {
+font-weight:800;
+}
+
+#subPagPrincipal {
+    text-shadow:1px 2px red;
+}
+/*Tamaño de letra del footer*/
+.size-text-footer {
+    font-size: 12px;
+}
+
+.size-text-footer-copyr {
+    font-size: 10px;
+}
+
+/*Fin de estilos del tamaño de letra del footer*/
+
+/*Estilos de tamaño de los iconos*/
+
+.size-icons-footer {
+    font-size: 15px;
+}
+
+.size-icons-footer-2 {
+    font-size: 9px;
+}
+
+
+/*Fin de los estilos del tamaño de los iconos*/
+
+/*Estilos de del link del footer */
+.color-link-footer {
+    color: #fff;
+}
+
+/*Estilos para border cirular*/
+.icon-background {
+    color: #012845;
+    background: #fff;
+    padding: 0 9px;
+    line-height: 30px;
+    border-radius: 20px;
+}
+
+.slick-prev,
+.slick-next {
+    display: none !important;
+}
+
+
+/*Estilos para iconos de del inventario que son mas grandes*/
+
+.size-ico-inventario {
+    width: 138px;
+    height: 138px;
+}
+        
+/*Tamaño de letra de las tarjetas de las propiedades destacadas*/
+
+.size-letter-main-properties{
+    font-size:10.5px;
+}
+
+.size-letter-link-properties{
+    font-size:13px;
+    text-decoration:underline;
+}
+
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+}
+
+.margin-modal {
+    width: 90% !important;
+    padding: 4px !important;
+    border: none !important;
+    border-bottom: 1px solid rgb(235, 112, 41) ;
+    outline: none !important;
+}
+
+.modal-backgr-orange {
+    background-color: var(--orange);
+    border: none;
+    color:white;
+}
+
+.modal-backgr-orange:hover {
+    background-color: white;
+    border: 1px solid var(--orange);
+    color:var(--orange);
+}
+
+
+/*textos del footer*/
+/*textos del footer*/
+.footer_elements {
+    font-size: 11px !important;
+    color: white !important;
+}
+
+    .footer_elements:hover {
+        color: darkorange !important;
+        cursor: pointer !important;
+    }
+
+
+.index-texts-shadows {
+text-shadow:3px 4px 5px darkgray ;
+}
+
+.modal_footer {
+margin-top:15px !important;
+}
+
+
+/* estilos de la cara trasera de las trajetas de propiedades en la pagina de inicio
+*/
+.face_back_tilte {
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.face_back_footer {
+    text-decoration:none;
+}
+
+.face_back_footer:hover {
+    text-decoration:underline !important;
+    }
+
+    /*estilos de el filtrad de hasta abajo de la pagina de inicio (INVENTARIO)*/
+
+.card-body-inventario {
+    padding: 1rem;
+    display: grid;
+    gap: 0.5rem;
+}
+
+.estilazo {
+width:29px;
+height:27px;
+}
+
+.btn-close {
+    box-sizing: content-box;
+    width: 1em;
+    height: 1em;
+    padding: 0.25em 0.25em;
+    color: #000;
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+    border: 0;
+    border-radius: 0.25rem;
+    opacity: 0.5;
+}   

@@ -1,0 +1,189 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = adminRummet
+build_property.RootNamespace = adminRummet
+build_property.ProjectDir = C:\Users\pflores\Documents\EcommerceRealCVO\adminRummet\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = C:\Users\pflores\Documents\EcommerceRealCVO\adminRummet
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Accesos/Acceso.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNvc1xBY2Nlc28uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Accesos/Bienvenida.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNvc1xCaWVudmVuaWRhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Accesos/CambiarPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNvc1xDYW1iaWFyUGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Accesos/ConfirmacionCambioPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNvc1xDb25maXJtYWNpb25DYW1iaW9QYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Accesos/Denegado.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNvc1xEZW5lZ2Fkby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Brokers/ConsolaBrokers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJva2Vyc1xDb25zb2xhQnJva2Vycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Brokers/EdicionBroker.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJva2Vyc1xFZGljaW9uQnJva2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Brokers/NuevoBroker.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJva2Vyc1xOdWV2b0Jyb2tlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Brokers/TableroBroker.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJva2Vyc1xUYWJsZXJvQnJva2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Contact/TabContactCenter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxUYWJDb250YWN0Q2VudGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/MesaControl/TabMesaControl.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzYUNvbnRyb2xcVGFiTWVzYUNvbnRyb2wuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Propiedades/DetallesHead.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGllZGFkZXNcRGV0YWxsZXNIZWFkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Propiedades/DetallesPropiedad.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGllZGFkZXNcRGV0YWxsZXNQcm9waWVkYWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Propiedades/DetallesPropiedadNP.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGllZGFkZXNcRGV0YWxsZXNQcm9waWVkYWROUC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Propiedades/DetallesPropiedadPP.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGllZGFkZXNcRGV0YWxsZXNQcm9waWVkYWRQUC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Propiedades/EditarPropiedad.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGllZGFkZXNcRWRpdGFyUHJvcGllZGFkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Propiedades/NuevaPropiedad.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGllZGFkZXNcTnVldmFQcm9waWVkYWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Propiedades/PropiedadesTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGllZGFkZXNcUHJvcGllZGFkZXNUYWIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Propiedades/_DetallesPancita.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGllZGFkZXNcX0RldGFsbGVzUGFuY2l0YS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Propiedades/_DocPropiedad.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGllZGFkZXNcX0RvY1Byb3BpZWRhZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Propietarios/PDetallesPropiedadEP.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9zXFBEZXRhbGxlc1Byb3BpZWRhZEVQLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Propietarios/PDetallesPropiedadNP.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9zXFBEZXRhbGxlc1Byb3BpZWRhZE5QLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Propietarios/PDetallesPropiedadPP.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9zXFBEZXRhbGxlc1Byb3BpZWRhZFBQLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Propietarios/PerfilPropietario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9zXFBlcmZpbFByb3BpZXRhcmlvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Propietarios/TableroPropietario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9zXFRhYmxlcm9Qcm9waWV0YXJpby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Shared/_AccesoLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BY2Nlc29MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Shared/_NavDetallesPropiedad.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXZEZXRhbGxlc1Byb3BpZWRhZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Shared/_NavEditConfigPlanes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXZFZGl0Q29uZmlnUGxhbmVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Shared/_NavFormNuevoUsuario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXZGb3JtTnVldm9Vc3VhcmlvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Shared/_NavMbd.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXZNYmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Shared/_NavMesaControl.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXZNZXNhQ29udHJvbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Shared/_NavOnlyWizard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXZPbmx5V2l6YXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Shared/_NavUsuarios.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXZVc3Vhcmlvcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Usuarios/ConsolaUsuarios.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcQ29uc29sYVVzdWFyaW9zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Usuarios/NuevoUsuario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcTnVldm9Vc3VhcmlvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pflores/Documents/EcommerceRealCVO/adminRummet/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-o7kmu2eipy

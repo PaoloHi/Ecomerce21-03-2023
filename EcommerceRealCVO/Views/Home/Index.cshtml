@@ -1,0 +1,346 @@
+﻿@model EcommerceModel;
+@{
+    ViewData["Title"] = "Ecommerce";
+}
+
+
+<!--AQUI EMPIEZA EL BUSCADOR-->
+<div class="container-fluid backgr-first">
+    <div class="row">
+        <div class="col">
+            <div class="text-center text-light mt-5">
+                <br>
+                <br>
+                <br>
+                <br>
+                <h3 id="titleInicio" class="fw-bold text-light  mt-5">¿Qué te gustaría hacer?</h3>
+            </div>
+
+            <!--Aqui Inicia el Formulario-->
+
+            <form method="post" asp-controller="Ecommerce" asp-action="Prueba">
+                <section>
+                    <div class="mb-3 text-primary backgr-search rounded ml-2 ml-xl-5 d-sm-inline-flex p-1 mt-3">
+                        <input type="radio" class="btn-check" asp-for="Accion" value="Comprar" id="comprar"
+                               autocomplete="off" checked>
+                        <label class="btn btn-outline-light" for="comprar">Comprar</label>
+
+                        <input type="radio" class="btn-check" asp-for="Accion" value="Rentar" id="danger-outlined"
+                               autocomplete="off">
+                        <label class="btn btn-outline-light ml-1" for="danger-outlined">Renta</label>
+
+                        @Html.DropDownListFor(model => model.Tpropiedad, new
+                        SelectList(Model.TPropiedadL,"Tipo","Tipo"), "-- Selecciona --",new
+                        {@class="form-select size-select d-inline", @id="TipoPropiedadID"})
+
+                    </div>
+                    <div class="mb-3 d-inline-flex ml-5">
+                        <input class="form-control me-2 size-search sm-w-50" type="search" asp-for="UbiCarct" id="input-principal"
+                               placeholder="Buscar por ubicación, características o más..." aria-label="Search">
+                               <input type="hidden" asp-for="Colonia">
+                               <input type="hidden" asp-for="Municipio">
+                               <input type="hidden" asp-for="CE">
+                        <button class="btn btn-outline text-light mx-1 backgr_orange">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+
+
+                    <div class="">
+
+                        <br><br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </section>
+            </form>
+
+        </div>
+
+        <div class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl">
+        </div>
+
+
+    </div>
+</div>
+
+
+<!--AQUI TERMINA EL BUSCADOR CON LA IMAGEN DE LA CASA-->
+<!--AQUI COMIENZA MI CARRUSEL DE TARJETAS-->
+<section class="pt-5 pb-5">
+    <div class="d-flex justify-content-center mb-5">
+
+        <h2 class="col-lg-6 text-center my-auto index-texts-shadows">Propiedades destacadas</h2><br>
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+
+                        <div class="carousel-item active">
+                            <div class="row">
+
+                                <!-- PROPIEDAD DESTACADA -->
+                                @foreach (var destacada in Model.LPropiedadesDestacadas)
+                                {
+                                    <div class="col-md-4 col-lg-3 mb-3 ml-lg-5 ml-3 ml-md-0">
+                                        <div class="card_first ml-lg-5 ml-3">
+                                            <div class="face front">
+                                                @foreach (var img64 in Model.LImagenBase64)
+                                                {
+                                                    if (destacada.IDpropiedad == img64.IDpropiedadBase64)
+                                                    {
+                                                        <img class="" alt="100%x280" src="@img64.txtBase64">
+                                                    }
+                                                }
+                                                <h3>@destacada.Tipo</h3>
+                                            </div>
+                                            <div class="face back">
+                                                <h6 class="fade_back_tilte"> @destacada.Nombre</h6>
+                                                <p class="size-letter-main-properties" style="text-align:justify;">
+                                                    @destacada.Descripcion.Substring(0,100)...
+                                                </p>
+                                                <div class="link size-letter-link-properties face_back_footer">
+                                                    <a asp-action="PropiedadesVerMas" asp-controller="Ecommerce" asp-route-Propiedad="@destacada.IDpropiedadG">Más información</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                <!-- FIN DE PROPIEDAD DESTACADA -->
+
+
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<!--AQUI TERMINA LA PRIMERA SECCION -->
+<!--AQUI EMPIEZA LA SECICON DEL INVENTARIO-->
+
+<div class=" d-flex justify-content-center backgr-second mb-5">
+    <br>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2 class=" col-lg-2 text-center my-auto mt-5 index-texts-shadows">Inventario</h2><br>
+</div>
+<!--SEGUNDO CARRUSEL-->
+<!--Slick-->
+<div class="slideshow">
+
+
+    @foreach (var existente in Model.LPropiedadesExistentes)
+    {
+
+        if (existente.Tipo == "Casa")
+        {
+            <div class="border d-inline-flex card">
+                <div class="card">
+                    <a class="card-body-inventario" asp-action="Propiedades" asp-controller="Ecommerce" asp-route-Propiedad="@existente.Tipo">
+                        <img class="card-image img-fluid"
+                     src="~/img/imagenes__e-commerce/Recurso 41.png" />
+                        <div class="card-title text-center">
+                            <h5 class="fw-bold" style="color:black">Casas</h5>
+                        </div>
+                        <div class="card-description  border_radius_numbers">
+                            @existente.Cantidad
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        }
+
+        if (existente.Tipo == "Edificio")
+        {
+            <div class="border d-inline-flex card">
+                <div class="card">
+                    <a class="card-body-inventario" asp-action="Propiedades" asp-controller="Ecommerce" asp-route-Propiedad="@existente.Tipo">
+                        <img class="card-image img-fluid"
+                     src="~/img/imagenes__e-commerce/Recurso 42.png" />
+                        <div class="card-title text-center">
+
+                            <h5 class="fw-bold" style="color:black">Edificios</h5>
+                        </div>
+                        <div class="card-description  border_radius_numbers">
+                            @existente.Cantidad
+                        </div>
+                    </a>
+                </div>
+            </div>
+        }
+
+        if (existente.Tipo == "Departamento")
+        {
+
+            <div class="border d-inline-flex card">
+                <div class="card">
+                      <a class="card-body-inventario" asp-action="Propiedades" asp-controller="Ecommerce" asp-route-Propiedad="@existente.Tipo">
+                    <img class="card-image img-fluid"
+                 src="~/img/imagenes__e-commerce/Recurso 43.png" />
+                    <div class="card-title text-center">
+                                             <h5 class="fw-bold" style="color:black">Departamentos</h5>
+                    </div>
+                    <div class="card-description  border_radius_numbers">
+                        @existente.Cantidad
+                    </div>
+                     </a>
+                </div>
+            </div>
+
+        }
+
+        if (existente.Tipo == "Bodega")
+        { }
+
+        if (existente.Tipo == "Huerta")
+        {
+
+            <div class="card border d-inline-flex mx-auto">
+                <div class="card mx-auto">
+                     <a class="card-body-inventario" asp-action="Propiedades" asp-controller="Ecommerce" asp-route-Propiedad="@existente.Tipo">
+                    <img class="card-image img-fluid size-ico-inventario"
+                 src="~/img/imagenes__e-commerce/Recurso 37.png" />
+                    <div class="card-title text-center">
+                        <h5 class="fw-bold" style="color:black">Huerta</h5>
+                    </div>
+                    <div class="card-description  border_radius_numbers">
+                        @existente.Cantidad
+                    </div>
+                    </a>
+                </div>
+            </div>
+        }
+        if (existente.Tipo == "Local comercial")
+        {
+        }
+        if (existente.Tipo == "Nave industrial")
+        {
+            <div class="card border d-inline-flex mx-auto">
+                <div class="card mx-auto">
+                    <a class="card-body-inventario" asp-action="Propiedades" asp-controller="Ecommerce" asp-route-Propiedad="@existente.Tipo">
+                    <img class="card-image img-fluid size-ico-inventario"
+                 src="~/img/imagenes__e-commerce/Recurso 38.png" />
+                    <div class="card-title text-center">
+                    
+                        <h5 class="fw-bold" style="color:black">Nave</h5>
+                    </div>
+                    <div class="card-description  border_radius_numbers">
+                        @existente.Cantidad
+                    </div>
+                        </a>
+                </div>
+            </div>
+        }
+        if (existente.Tipo == "Oficina")
+        {
+            <div class="card border d-inline-flex mx-auto">
+                <div class="card mx-auto">
+                    <a class="card-body-inventario" asp-action="Propiedades" asp-controller="Ecommerce" asp-route-Propiedad="@existente.Tipo">
+                        <img class="card-image img-fluid"
+                     src="~/img/imagenes__e-commerce/Recurso 45.png" />
+                        <div class="card-title text-center">
+                            <h5 class="fw-bold" style="color:black">Oficinas</h5>
+                        </div>
+                        <div class="card-description  border_radius_numbers">
+                            @existente.Cantidad
+                        </div>
+                    </a>
+                </div>
+            </div>
+        }
+
+        if (existente.Tipo == "Quinta")
+        { }
+        if (existente.Tipo == "Rancho")
+        { }
+        if (existente.Tipo == "Terreno/Lote")
+        {
+            <div class="card border d-inline-flex mx-auto">
+                <div class="card mx-auto">
+                    <a class="card-body-inventario" asp-action="Propiedades" asp-controller="Ecommerce" asp-route-Propiedad="@existente.Tipo">
+                        <img class="card-image img-fluid"
+                     src="~/img/imagenes__e-commerce/Recurso 44.png" />
+                        <div class="card-title text-center">
+
+                            <h5 class="fw-bold" style="color:black">Terrenos</h5>
+                        </div>
+                        <div class="card-description  border_radius_numbers">
+                            @existente.Cantidad
+                        </div>
+                    </a>
+                </div>
+            </div>
+        }
+        if (existente.Tipo == "Villa")
+        { }
+        if (existente.Tipo == "Hospital")
+        {
+
+            <div class="card border d-inline-flex mx-auto">
+                <div class="card mx-auto">
+                    <img class="card-image img-fluid size-ico-inventario"
+                 src="~/img/imagenes__e-commerce/Recurso 32.png" />
+                    <div class="card-title text-center">
+                        <a class="card-body-inventario" asp-action="Propiedades" asp-controller="Ecommerce" asp-route-Propiedad="@existente.Tipo">Hospital</a>
+                        <h5 class="fw-bold" style="color:black">Hospital</h5>
+                    </div>
+                    <div class="card-description  border_radius_numbers">
+                        @existente.Cantidad
+                    </div>
+                </div>
+            </div>
+        }
+        if (existente.Tipo == "Escuela")
+        { }
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<!--Slick-->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+

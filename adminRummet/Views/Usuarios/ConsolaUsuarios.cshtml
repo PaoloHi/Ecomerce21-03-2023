@@ -1,0 +1,401 @@
+﻿@model List<UsuariosModel>
+
+@{
+    Layout = "_NavUsuarios";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/styleGeneral.css" />
+    <link rel="stylesheet" href="~/css/estilosGenerales.css" />
+</head>
+
+<!--BARRA DE BUSQUEDA-->
+<form class="container-fluid " style="margin-top:6rem;">
+
+    <div class="row row-cols-lg-2 row-cols-sm-1 mt-1 responsiveExtraSmall px-1 d-inline-flex w-100">
+
+
+        <!--barra de busqueda y boton-->
+        <div class="col d-inline-flex  col-sm-12 ms-1 " style="width: 66%;">
+
+            <!--boton de nueva propiedad-->
+            <div class="d-flex col-2 px-0">
+                <a class="btn-nueva-prop text-center d-flex justify-content-center align-items-center" data-toggle="tooltip" data-placement="bottom" title="Añadir nuevo usuario"
+                asp-controller="Usuarios" asp-action="NuevoUsuario">
+                    <i class="fa-solid fa-user-plus"></i>
+                </a>
+            </div>
+            <div class="d-flex px-0 " style="width:66%;">
+                <input class="form-control inputs size-search " type="search" placeholder="Buscar" aria-label="Search" style="font-size:0.8rem">
+            </div>
+            <div class="d-flex col-2 px-0">
+                <button class="btn-s  text-light d-inline-flex justify-content-center align-items-center
+                           size-icons-t-b ms-lg-1" data-toggle="tooltip" data-placement="bottom" title="Buscar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="col flex-item d-inline-flex w-25 justify-content-end">
+
+            <select class="form-select inputFiltros" aria-label="Default select example" style="font-size:0.8rem">
+                <option disabled="" selected="">Filtros</option>
+                <option value="1">Zonas</option>
+                <option value="2">Antigüedad</option>ss
+            </select>
+
+
+            <button id="tablaExcel" class="btn-s ms-1" data-toggle="tooltip" data-placement="bottom" title="Descargar datos a excel" onclick="exportTableToExcel('tablaExcel')">
+
+                <i class="fa-solid  fa-file-excel"></i>
+            </button>
+
+
+        </div>
+
+    </div>
+
+</form>
+
+<!--Botones de visualización para ver las tarjetas o la tabla-->
+<div class="tab ms-5 rounded">
+    <div clas="rounded">
+        <button class="tablinks" onclick="openCity(event, 'Tarjetas')" id="defaultOpen"
+                data-toggle="tooltip" data-placement="bottom" title="Vista tarjetas">
+            <i class="fa-solid fa-id-card"></i>
+        </button>
+        <button class="tablinks" onclick="openCity(event, 'Tabla')"
+                data-toggle="tooltip" data-placement="bottom" title="Vista tabla">
+            <i class="fa-solid fa-table mt-1 "></i>
+        </button>
+    </div>
+
+</div>
+
+
+
+<!--Aqui empiezan las targetas de visualizacion -->
+
+<div id="Tarjetas" class="tabcontent">
+    <div class="container-lg shadow">
+        <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 m-auto responsiveExtraSmall">
+            <!--dentro de este div es donde hirian las tarjetas para qe se acomoden-->
+            <!--Aqui empieza la primer tarjeta -->
+             @foreach (var item in Model)
+        {
+            <div class="col mx-auto mb-2 ">
+                <div class="caja-a mx-auto mb-2 mt- shadow">
+
+                    <div class="card-center-1  d-flex justify-content-end">
+
+                        <div class="title-cards-1 rol-admin-ti size-letter-card-user">
+                            <p>@item.RolS</p>
+                        </div>
+
+                    </div>
+
+                    <div class="card-main col   d-flex mt-2">
+                        <div class="col-3 ">
+                            <img src="~/img/Imagenes-tab-usuarios/pug.jpeg" alt="" class="img-size d-flex mx-auto ">
+                        </div>
+                        <div class="col-9 text-cards ">
+                            <div class=" mt-1">
+                                <h6 class="size-letter-card-usuarios">@item.Nombre @item.ApellidoP</h6>
+                                <h6 class="size-letter-card-usuarios ">@item.Correo</h6>
+                                <h6 class="size-letter-card-usuarios">@item.Tel</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-card">
+                        <div class="col-12 d-flex  justify-content-center position-relative ">
+                            <button class="btn" data-toggle=" tooltip" data-placement="bottom" title="editar">
+                                <i class="fa-solid fa-pen-to-square me-1 mb-4 text-orange"></i>
+                            </button>
+
+                            <button class="btn" onclick="showDialogWithPassingParams()"
+                                    data-toggle="tooltip" data-placement="bottom" title="Eliminar">
+                                <i class="fa-solid fa-trash-can text-orange mb-4"></i>
+                            </button>
+                            <div class="form-check form-switch ms-2 mt-1 pos"
+                                 data-toggle="tooltip" data-placement="bottom" title="Activar / Desactivar">
+                                <input class="form-check-input mar_t" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                            <div class="datos">
+                                <a class="text-orange btn-vermas justify-content-center position-relative pos-ver-mas"
+                                   asp-controller="Administracion" asp-action="EdicionUsuario"
+                                   data-toggle="tooltip" data-placement="bottom" title="Ver detalles">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            }
+
+
+            <!--BACK-END TEAM .... el etiquetado de las tarjetas las categorias son
+                .Admin Ti
+                .C.center
+                .Comercial
+                .Broker
+                .Finanzas
+                .Legal
+            -->
+
+        </div>
+        <footer>
+            <nav aria-label="" class="p-2">
+                <ul class="pagination justify-content-lg-center justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link me-1" href="#">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </a>
+
+
+                    </li>
+                    <li class="page-item active me-1" aria-current="page"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item me-1">
+                        <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item me-1"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </footer>
+
+    </div>
+</div>
+
+
+
+<!--Aqui empieza la tabla de visualizacion -->
+<div class="container-fluid">
+    <div id="Tabla" class="tabcontent shadow">
+        <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive mt-4 shadow bg-light rounded table-bordered size-text-table">
+            <table class="table ">
+                <thead class="">
+                <th scope="col">#</th>
+                <th scope="col" class="text-center">Nombre</th>
+                <th scope="col" class="text-center">A.paterno</th>
+                <th scope="col" class="text-center">A.materno</th>
+                <th scope="col" class="text-center">Teléfono</th>
+                <th scope="col" class="text-center">Correo</th>
+                <th scope="col" class="text-center">Estatus</th>
+                <th scope="col" class="text-center">Acciones</th>
+                </thead>
+                </tr>
+                <tbody>
+                    <tr class="tabla-hover">
+                        <td scope="row">1</td>
+                        <td class="fw-light text-center">Bucky</td>
+                        <td class="fw-light text-center">Vega</td>
+                        <td class="fw-light text-center">Vega</td>
+                        <td class="fw-light text-center">5567793849</td>
+                        <td class="fw-light text-center">bucky.bingo_vega@cvo.mx</td>
+                        <td class=" text-center"><p class="bg-status-green">Activo</p></td>
+                        <td>
+                            <div class=" d-flex justify-content-between">
+                                <a class=" btn-vermas" asp-controller="Administracion" asp-action="EdicionUsuario">
+                                    <ion-icon name="ellipsis-horizontal-circle" class="size-mp-icons-vermas style-vermas2 mt-2 position-icon"></ion-icon>
+                                </a>
+                                <button class="border-0 bg-transparent" data-toggle="tooltip" data-placement="bottom"
+                                        title="Editar">
+                                    <i class="fa-solid fa-pen-to-square style-vermas2"></i>
+                                </button>
+
+                                <button class="border-0 bg-transparent" data-toggle="tooltip" data-placement="bottom"
+                                        title="Eliminar">
+                                    <i class="fa-solid fa-trash-can style-vermas2"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="tabla-hover">
+                        <td scope="row">2</td>
+                        <td class="fw-light text-center">Bucky</td>
+                        <td class="fw-light text-center">Vega</td>
+                        <td class="fw-light text-center">Vega</td>
+                        <td class="fw-light text-center">5567793849</td>
+                        <td class="fw-light text-center">bucky.bingo_vega@cvo.mx</td>
+                        <td class=" text-center"><p class="bg-status-green">Activo</p></td>
+                        <td>
+                            <div class=" d-flex justify-content-between">
+                                <a class=" btn-vermas" asp-controller="Administracion" asp-action="EdicionUsuario"><ion-icon name="ellipsis-horizontal-circle" class="size-mp-icons-vermas style-vermas2 mt-2 position-icon"></ion-icon></a>
+                                <button class="border-0 bg-transparent"><i class="fa-solid fa-pen-to-square style-vermas2"></i></button>
+                                <button class="border-0 bg-transparent"><i class="fa-solid fa-trash-can style-vermas2"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="tabla-hover">
+                        <td scope="row">3</td>
+                        <td class="fw-light text-center">Bucky</td>
+                        <td class="fw-light text-center">Vega</td>
+                        <td class="fw-light text-center">Vega</td>
+                        <td class="fw-light text-center">5567793849</td>
+                        <td class="fw-light text-center">bucky.bingo_vega@cvo.mx</td>
+                        <td class=" text-center"><p class="bg-status-red">Inactivo</p></td>
+                        <td>
+                            <div class=" d-flex justify-content-between">
+                                <a class=" btn-vermas" asp-controller="Administracion" asp-action="EdicionUsuarioBroker"><ion-icon name="ellipsis-horizontal-circle" class="size-mp-icons-vermas style-vermas2 mt-2 position-icon"></ion-icon></a>
+                                <button class="border-0 bg-transparent"><i class="fa-solid fa-pen-to-square style-vermas2"></i></button>
+                                <button class="border-0 bg-transparent"><i class="fa-solid fa-trash-can style-vermas2"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="tabla-hover">
+                        <td scope="row">4</td>
+                        <td class="fw-light text-center">Bucky</td>
+                        <td class="fw-light text-center">Vega</td>
+                        <td class="fw-light text-center">Vega</td>
+                        <td class="fw-light text-center">5567793849</td>
+                        <td class="fw-light text-center">bucky.bingo_vega@cvo.mx</td>
+                        <td class=" text-center"><p class="bg-status-green">Activo</p></td>
+                        <td>
+                            <div class=" d-flex justify-content-between">
+                                <a class=" btn-vermas" asp-controller="Administracion" asp-action="EdicionUsuario"><ion-icon name="ellipsis-horizontal-circle" class="size-mp-icons-vermas style-vermas2 mt-2 position-icon"></ion-icon></a>
+                                <button class="border-0 bg-transparent"><i class="fa-solid fa-pen-to-square style-vermas2"></i></button>
+                                <button class="border-0 bg-transparent"><i class="fa-solid fa-trash-can style-vermas2"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="tabla-hover">
+                        <td scope="row">5</td>
+                        <td class="fw-light text-center">Bucky</td>
+                        <td class="fw-light text-center">Vega</td>
+                        <td class="fw-light text-center">Vega</td>
+                        <td class="fw-light text-center">5567793849</td>
+                        <td class="fw-light text-center">bucky.bingo_vega@cvo.mx</td>
+                        <td class=" text-center"><p class="bg-status-red">Inactivo</p></td>
+                        <td>
+                            <div class=" d-flex justify-content-between">
+                                <a class=" btn-vermas" asp-controller="Administracion" asp-action="EdicionUsuario"><ion-icon name="ellipsis-horizontal-circle" class="size-mp-icons-vermas style-vermas2 mt-2 position-icon"></ion-icon></a>
+                                <button class="border-0 bg-transparent"><i class="fa-solid fa-pen-to-square style-vermas2"></i></button>
+                                <button class="border-0 bg-transparent"><i class="fa-solid fa-trash-can style-vermas2"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="tabla-hover">
+                        <td scope="row">6</td>
+                        <td class="fw-light text-center">Bucky</td>
+                        <td class="fw-light text-center">Vega</td>
+                        <td class="fw-light text-center">Vega</td>
+                        <td class="fw-light text-center">5567793849</td>
+                        <td class="fw-light text-center">bucky.bingo_vega@cvo.mx</td>
+                        <td class=" text-center"><p class="bg-status-green">Activo</p></td>
+                        <td>
+                            <div class=" d-flex justify-content-between">
+                                <a class="style-vermas2" asp-controller="Administracion" asp-action=""><ion-icon name="ellipsis-horizontal-circle" class="size-mp-icons-vermas style-vermas2 mt-2 position-icon"></ion-icon></a>
+                                <button class="border-0 bg-transparent"><i class="fa-solid fa-pen-to-square style-vermas2"></i></button>
+                                <button class="border-0 bg-transparent"><i class="fa-solid fa-trash-can style-vermas2"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="tabla-hover">
+                        <td scope="row">7</td>
+                        <td class="fw-light text-center">Bucky</td>
+                        <td class="fw-light text-center">Vega</td>
+                        <td class="fw-light text-center">Vega</td>
+                        <td class="fw-light text-center">5567793849</td>
+                        <td class="fw-light text-center">bucky.bingo_vega@cvo.mx</td>
+                        <td class=" text-center"><p class="bg-status-green">Activo</p></td>
+                        <td>
+                            <div class=" d-flex justify-content-between">
+                                <a class="style-vermas2" asp-controller="Administracion" asp-action=""><ion-icon name="ellipsis-horizontal-circle" class="size-mp-icons-vermas style-vermas2 mt-2 position-icon"></ion-icon></a>
+                                <button class="border-0 bg-transparent"><i class="fa-solid fa-pen-to-square style-vermas2"></i></button>
+                                <button class="border-0 bg-transparent"><i class="fa-solid fa-trash-can style-vermas2"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                </thead>
+            </table>
+        </div>
+        <nav aria-label="" class="mt-4">
+            <ul class="pagination justify-content-lg-center justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link me-1" href="#" tabindex="-1" aria-disabled="true">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </a>
+                </li>
+                <li class="page-item active me-1" aria-current="page"><a class="page-link" href="#">1</a></li>
+                <li class="page-item me-1">
+                    <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item me-1"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+
+
+
+
+<!--Scripts-->
+<script>
+
+    // Script para tab de tablero de brokers
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>
+
+<!--funcion para exportar datos a excel-->
+<script>
+    function exportTableToExcel(tableID, filename = '') {
+        var downloadLink;
+        var dataType = 'application/vnd.ms-excel';
+        var tableSelect = document.getElementById(tableID);
+        var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+        // Specify file name
+        filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+        // Create download link element
+        downloadLink = document.createElement("a");
+
+        document.body.appendChild(downloadLink);
+
+        if (navigator.msSaveOrOpenBlob) {
+            var blob = new Blob(['ufeff', tableHTML], {
+                type: dataType
+            });
+            navigator.msSaveOrOpenBlob(blob, filename);
+        } else {
+            // Create a link to the file
+            downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+            // Setting the file name
+            downloadLink.download = filename;
+
+            //triggering the function
+            downloadLink.click();
+        }
+    }
+
+</script>

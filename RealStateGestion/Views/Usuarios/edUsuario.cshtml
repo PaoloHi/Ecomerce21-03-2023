@@ -1,0 +1,421 @@
+﻿@using Grpc.Core
+@model UsuariosModel
+
+<link rel="stylesheet" href="~/css/style_form_nuevo_usuario.css" asp-append-version="true" />
+
+<title>Editar usuario</title>
+<!-- INICIO DE FORMULARIO -->
+<!-- Progress bar -->
+<div class="area">
+     <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <!-- Progress bar -->
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-lg-8 col-11 mx-auto">
+                <div class="progressbar mx-auto my-5">
+
+                    <div class="progress rounded border" id="progress"></a></div>
+                    <div class="progress-step progress-step-active" data-title="Datos generales"><i class="fa-solid fa-user ico_bar fa-2x"></i></div>
+                    <div class="progress-step " data-title="Datos personales"><i class="fa-solid fa-user-shield ico_bar fa-2x"></i></div>
+                    <div class="progress-step" data-title="Documentación"><i class="fa-solid fa-folder-open ico_bar fa-2x"></i></div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-lg">
+        <div class="row">
+            <div class="col">
+                <!-- Inicio del formulario -->
+                <form asp-controller="Usuarios" asp-action="edUsuario" class="form  border" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="IDusuario" class="form-control">
+                    <!-- Steps -->
+                    <div class="form-step form-step-active" id="Datos">
+                        <label for="">
+                            <h5>Datos generales</h5>
+                        </label>
+                        <div class="input-group justify-content-between  d-lg-inline-flex mt-2 ">
+                            <div class="mt-1 ms-2">
+                                <label for="t_operacion" class=" align-content-start fw-bold color_letter mb-3">
+                                    Tipo de
+                                    usuario
+                                </label>
+                                <select class="border-labels rounded text-center " asp-for="IDrol" aria-label="Default select example">
+                                    <option disabled selected>Roles</option>
+                                    <option value="1">Admin ROOT</option>
+                                    <option value="2">Admin general</option>
+                                    <option value="3">Admin TI</option>
+                                    <option value="4">Admin propiedades</option>
+                                    <option value="5">Admin brokers</option>
+
+                                </select>
+                            </div>
+                            <div class=" d-lg-inline-block   p-1 ">
+                                <label for="n_propiedad" class="text-start  fw-bold color_letter size-text">Nombre(s)</label>
+                                <input type="text" asp-for="nombreUsuario" required class="mt-2" />
+                            </div>
+                            <div class=" d-lg-inline-block   p-1">
+                                <label for="" class="text-start  fw-bold color_letter size-text">Apellido paterno</label>
+                                <input type="text" asp-for="apellidoP" required class="mt-2" />
+                            </div>
+                            <div class="d-lg-inline-block  me-lg-2 p-1">
+                                <div class=" d-inline ">
+                                    <label for="" class="text-start  fw-bold color_letter size-text">Apellido materno</label>
+                                    <input type="text" asp-for="apellidoM" class=" size_input mt-2" required>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="input-group d-lg-inline-flex justify-content-end mt-lg-5 mb-lg-2 ms-lg-2 align-content-between ">
+                            <div class=" d-lg-inline-block me-lg-4  p-1 ">
+                                <label for="n_propiedad" class="text-start  fw-bold color_letter size-text">Correo electrónico</label>
+                                <input type="text" asp-for="email" equired class="mt-2" />
+                            </div>
+                            <div class=" d-lg-inline-block ms-lg-4 me-lg-5  p-1 ">
+                                <label for="n_propiedad" class="text-start  fw-bold color_letter size-text">Teléfono</label>
+                                <input type="text" asp-for="tel" required class="mt-2" />
+                            </div>
+
+                            <div class=" d-lg-inline-block  me-lg-2 p-1 ">
+                                <label for="n_propiedad" class="text-start  fw-bold color_letter size-text">Celular</label>
+                                <input type="text" asp-for="cel" required class="mt-2" />
+                            </div>
+
+                        </div>
+
+                        <hr>
+
+                        <label for="">
+                            <h5>Zona</h5>
+                        </label>
+
+                        <div class="input-group justify-content-between d-lg-inline-flex mt-2">
+                            <div class="mt-1 ms-2 col">
+                                <label for="t_operacion" class=" align-content-start fw-bold color_letter mb-3">Selecciona tus zonas</label>
+                                <ul class="lista-estados">
+                                    <li><input name="checks[]" type="checkbox" value="Aguascalientes" class="form-check-input" /> Aguascalientes</li>
+                                    <li><input name="checks[]" type="checkbox" value="Baja California" class="form-check-input" /> Baja California</li>
+                                    <li><input name="checks[]" type="checkbox" value="Baja California Sur" class="form-check-input" /> Baja California Sur </li>
+                                    <li><input name="checks[]" type="checkbox" value="Campeche" class="form-check-input" />Campeche</li>
+                                    <li><input name="checks[]" type="checkbox" value="Chiapas" class="form-check-input" />Chiapas</li>
+                                    <li><input name="checks[]" type="checkbox" value="Chihuahua" class="form-check-input" />Chihuahua</li>
+                                    <li><input name="checks[]" type="checkbox" value="Ciudad de México" class="form-check-input" />Ciudad de México</li>
+                                    <li><input name="checks[]" type="checkbox" value="Coahuila" class="form-check-input" />Coahuila</li>
+                                </ul>
+                            </div>
+                            <div class="col mt-3 ms-2">
+                                <ul class="lista-estados">
+                                    <br>
+                                    <li><input name="checks[]" type="checkbox" value="Colima" class="form-check-input" /> Colima</li>
+                                    <li><input name="checks[]" type="checkbox" value="Durango" class="form-check-input" /> Durango</li>
+                                    <li><input name="checks[]" type="checkbox" value="Estado de México" class="form-check-input" /> Estado de México</li>
+                                    <li><input name="checks[]" type="checkbox" value="Guanajuato" class="form-check-input" /> Guanajuato</li>
+                                    <li><input name="checks[]" type="checkbox" value="Guerrero" class="form-check-input" /> Guerrero</li>
+                                    <li><input name="checks[]" type="checkbox" value="Hidalgo" class="form-check-input" /> Hidalgo</li>
+                                    <li><input name="checks[]" type="checkbox" value="Jalisco" class="form-check-input" /> Jalisco</li>
+                                    <li><input name="checks[]" type="checkbox" value="Michoacan" class="form-check-input" /> Michoacan</li>
+                                </ul>
+                            </div>
+                            <div class="col mt-3 ms-2">
+                                <ul class="lista-estados">
+                                    <br>
+                                    <li><input name="checks[]" type="checkbox" value="Morelos" class="form-check-input" /> Morelos</li>
+                                    <li><input name="checks[]" type="checkbox" value="Nayarit" class="form-check-input" /> Nayarit</li>
+                                    <li><input name="checks[]" type="checkbox" value="Nuevo_León" class="form-check-input" /> Nuevo León</li>
+                                    <li><input name="checks[]" type="checkbox" value="Oaxaca" class="form-check-input" /> Oaxaca</li>
+                                    <li><input name="checks[]" type="checkbox" value="Puebla" class="form-check-input" /> Puebla</li>
+                                    <li><input name="checks[]" type="checkbox" value="Queretaro" class="form-check-input" /> Queretaro</li>
+                                    <li><input name="checks[]" type="checkbox" value="Quintana_Roo" class="form-check-input" /> Quintana Roo</li>
+                                    <li><input name="checks[]" type="checkbox" value="San_Luis_Potosi" class="form-check-input" /> San Luis Potosi</li>
+                                </ul>
+                            </div>
+                            <div class="col mt-3 ms-2">
+                                <ul class="lista-estados">
+                                    <br>
+                                    <li><input name="checks[]" type="checkbox" value="Sinaloa" class="form-check-input" /> Sinaloa</li>
+                                    <li><input name="checks[]" type="checkbox" value="Sonora" class="form-check-input" /> Sonora</li>
+                                    <li><input name="checks[]" type="checkbox" value="Tabasco" class="form-check-input" /> Tabasco</li>
+                                    <li><input name="checks[]" type="checkbox" value="Tamaulipas" class="form-check-input" /> Tamaulipas</li>
+                                    <li><input name="checks[]" type="checkbox" value="Tlaxcala" class="form-check-input" /> Tlaxcala</li>
+                                    <li><input name="checks[]" type="checkbox" value="Veracruz" class="form-check-input" /> Veracruz</li>
+                                    <li><input name="checks[]" type="checkbox" value="Yucatán" class="form-check-input" /> Yucatán</li>
+                                    <li><input name="checks[]" type="checkbox" value="Zacatecas" class="form-check-input" /> Zacatecas</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>Zonas seleccionadas: <span id="str"></span></div>
+
+                        <div class="btns-group d-flex justify-content-end mt-4 me-3">
+                            <a href="#" class="btn btn-orange circle-btn btn-next  ml-auto  ">
+                                <i class="fa-solid fa-arrow-right-long text-light fa-1x"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="form-step" id="Datos personales">
+                        <label for="datos_personales" class="fw-bold ms-lg-2">
+                            <h5>Datos personales</h5>
+                        </label>
+                        <div class="input-group justify-content-between  d-lg-inline-flex mt-2 ">
+                            <div class="mt-1 ms-2">
+                                <label for="t_operacion" class=" align-content-start fw-bold color_letter mb-3">
+                                    Selecciona tu imagen
+                                    de perfil
+                                </label>
+                                <div class="input-group mt-3 fileContainer text-center">
+                                    <input type="file" id="archivo" name="archivo" class="">
+                                
+                                    <img src="@Model.imgPerfilRuta" id="preview" alt="" class="profile_picture rounded-circle">
+                                    <label for="" class="text-center btn-orange text-light mt-1 size_text_profile">
+                                        Dale click
+                                        aquí
+                                    </label>
+                                </div>
+                            </div>
+                            <div class=" d-lg-inline-block  p-1 ms-lg-5">
+                                <label for="rfc" class="text-start  fw-bold color_letter size-text">RFC</label>
+                                <input type="text" asp-for="rfc" required class="mt-2" />
+                            </div>
+                            <div class=" d-lg-inline-block   p-1 me-lg-5">
+                                <label for="curp" class="text-start  fw-bold color_letter size-text">CURP</label>
+                                <input type="text" asp-for="curp" required class="mt-2" />
+                            </div>
+
+                        </div>
+                        <div class="input-group justify-content-between  d-lg-inline-flex mt-2 ">
+                            <div class="mt-1 ms-2">
+                                <label for="d_bancarios" class=" align-content-start fw-bold  pe-lg-5 mb-3 size-text">
+                                    <h5>Datos bancarios</h5>
+                                </label>
+
+                            </div>
+                            <div class=" d-lg-inline-block  mt-4 p-1 ms-lg-4">
+                                <label for="clabe_inter" class="text-start  fw-bold color_letter size-text">
+                                    Clabe
+                                    interbancaria
+                                </label>
+                                <input type="text" asp-for="clabe" required class="mt-2" />
+                            </div>
+                            <div class=" d-lg-inline-block  mt-4 p-1 me-lg-5">
+                                <label for="banco" class="text-start  fw-bold color_letter size-text">Banco</label>
+                               
+
+                                <select class="border-labels rounded text-center " asp-for="banco" aria-label="Default select example">
+                                    <option disabled selected>Banco</option>
+                                    <option value="1">Banamex</option>
+                                    <option value="2" >Bancomer</option>
+                                    <option value="3">Santander</option>
+                                    <option value="4">Banbajio</option>
+                                    <option value="5">Banmifel</option>
+
+                                </select>
+                            </div>
+
+                        </div>
+
+
+                        <div class="btns-group d-flex justify-content-end">
+                            <div class="btns-group mt-4 me-3">
+                                <a href="#" class="btn btn-orange circle-btn btn-prev me-4  ">
+                                    <i class="fa-solid fa-arrow-left-long text-light fa-1x"></i>
+                                </a>
+                                <a href="#" class="btn btn-orange circle-btn btn-next">
+                                    <i class="fa-solid fa-arrow-right-long text-light fa-1x"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-step">
+                        <label for="documentos" class="fw-bold color_letter ms-lg-2">
+                            <h5>Documentos</h5>
+                        </label>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td colspan="2">Comprobante de domicilio</td>
+                                                <td>
+                                                    <div class="fileContainer2 input-group">
+                                                        <input type="file" asp-for="archivo1" id="archivoInput" class=" me-5"
+                                                               onchange="return validarExt()">
+                                                        <i class="fa-solid fa-file-arrow-up size-icon ms-3 "></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="fileContainer3  input-group">
+                                                        <input type="button" name="d_archivo" id="archivoInput_delete" class="eliminarprueba me-3">
+                                                        <i class="fa-solid fa-trash-can size-icon me-5"></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="fileContainer3 input-group">
+                                                        <input type="button" name="v_archivo4" id="" onclick="visorExt()" class=" me-3">
+                                                        <i class="fa-solid fa-eye size-icon me-5"></i></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="fileContainer3 input-group me-4">
+                                                        <input type="button" name="p_archivo1" id="" class="ms-3">
+                                                        <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                        <h6>proceso</h6>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td colspan="2">Estado de cuenta bancario (carátula)</td>
+                                                <td>
+                                                    <div class="fileContainer2 input-group">
+                                                        <input type="file" asp-for="archivo2" id="archivoInput2" class="me-5"
+                                                               onchange="return validarExt2()">
+                                                        <i class="fa-solid fa-file-arrow-up size-icon ms-3 size-icon "></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="fileContainer3 input-group">
+                                                        <input type="button" name="d_archivo2" id="archivoInput_delete2" class="eliminarprueba me-3">
+                                                        <i class="fa-solid fa-trash-can me-5 size-icon"></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="fileContainer3 input-group">
+                                                        <input type="button" name="v_archivo4" id="" onclick="visorExt2()" class=" me-3">
+                                                        <i class="fa-solid fa-eye me-5 size-icon"></i></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="fileContainer3 input-group me-4">
+                                                        <input type="button" name="p_archivo2" id="" class="ms-3">
+                                                        <i class="fa-solid fa-arrow-rotate-right  ms-3 size-icon"></i>
+                                                        <h6>proceso</h6>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td colspan="2">Constancia fiscal</td>
+                                                <td>
+                                                    <div class="fileContainer2 input-group">
+                                                        <input type="file" asp-for="archivo3" id="archivoInput3" class="me-5"
+                                                               onchange="return validarExt3()">
+                                                        <i class="fa-solid fa-file-arrow-up ms-3 size-icon"></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="fileContainer3 input-group">
+                                                        <input type="button" name="d_archivo3" id="archivoInput_delete3" class="eliminarprueba me-3">
+                                                        <i class="fa-solid fa-trash-can me-3 size-icon"></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="fileContainer3 input-group ">
+                                                        <input type="button" name="v_archivo4" id="" onclick="visorExt3()" class=" me-3">
+                                                        <i class="fa-solid fa-eye me-5 size-icon"></i></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="fileContainer3 input-group me-4">
+                                                        <input type="button" name="p_archivo3" id="" class="ms-3">
+                                                        <i class="fa-solid fa-arrow-rotate-right  ms-3 size-icon"></i>
+                                                        <h6>proceso</h6>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">4</th>
+                                                <td colspan="2">Identificación oficial</td>
+                                                <td>
+                                                    <div class="fileContainer2 input-group">
+                                                        <input type="file" asp-for="archivo4" id="archivoInput4" class="me-5"
+                                                               onchange="return validarExt4()">
+                                                        <i class="fa-solid fa-file-arrow-up size-icon ms-3 "></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="fileContainer3 input-group">
+                                                        <input type="button" name="d_archivo4" id="archivoInput_delete4" class="eliminarprueba me-3">
+                                                        <i class="fa-solid fa-trash-can size-icon me-5"></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="fileContainer3 input-group">
+                                                        <input type="button" name="v_archivo4" id="" onclick="visorExt4()" class=" me-3">
+                                                        <i class="fa-solid fa-eye size-icon me-5"></i></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="fileContainer3 input-group me-4">
+                                                        <input type="button" name="p_archivo4" id="" class="ms-3">
+                                                        <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                        <h6>proceso</h6>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div class="input-group d-flex justify-content-start">
+                                </div>
+                            </div>
+                            <div class="col border">
+                                <div class="input-group d-flex">
+                                    <div id="visorArchivo" class="size-file d-flex justify-content-center">
+                                        <h5>Visualizador</h5>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+
+                        <div class="btns-group d-flex justify-content-between">
+                            <div class="btns-group mt-5 me-3">
+                                <a href="#" class="btn btn-orange circle-btn btn-prev  ml-auto me-4 justify-content-start ">
+                                    <i class="fa-solid fa-arrow-left-long text-light fa-1x"></i>
+                                </a>
+                                <button type="submit" class=" btn btn-orange circle-btn   ml-auto"><i class="fa-solid fa-check text-light"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    </center>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="~/js/script-step.js"></script>
+
+
+
+<script>
+    console.log("Que onda " + '@Model.nombreUsuario')
+  console.log("Esta es la ruta " + '@Model.imgPerfilRuta')
+</script>

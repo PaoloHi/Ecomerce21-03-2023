@@ -1,0 +1,356 @@
+﻿@model PlanesModel
+@{
+    Layout = "_OnlyNav2";
+    ViewData["Title"] = "Planes";
+}
+
+<main>
+    <br>
+    <div class="container-lg">
+        <div class="carousel-inner">
+            <div class="row  my-5 d-flex justify-content-center">
+                <div class="col-lg-3">
+                    <div class="caja-3 mx-auto shadow-lg mb-3 zoom">
+                        @foreach (var item in Model.planesG)
+                        {
+                            @if (@item.IDplanEcomm == 1)
+                            {
+                                <div class="card-center-1">
+
+                                    <div class="title-cards-1 col-5">
+                                        <h5>@item.nombrePlan</h5>
+                                    </div>
+
+                                    <div class="prize-house col-5  d-inline-flex my-2">
+                                        <img src="~/img/ImagenesPlanes/Bronce.png" alt="" class=" casa-3">
+                                        <div class="my-3 text-light col-lg-2 col-3  ms-2  d-flex ">
+                                            @{
+                                                double precio = Convert.ToDouble(@item.precioTotal);
+                                                var precioTotal = precio.ToString("N0", new System.Globalization.CultureInfo("en-US"));
+                                            }
+                                            <h1 class="  justify-content-center fw-bold ">$@precioTotal</h1>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="body-card ">
+                                    <div class="col-11 mt-2 ms-2 ">
+                                        <h6 class="letter_space ">Hasta @item.propiedades propiedades</h6>
+                                        @{
+                                            var x = 1;
+                                        }
+                                        @foreach (var itemcaract1 in Model.planesCaract)
+                                        {
+                                            x = x + 1;
+                                            @if (@itemcaract1.IDPlan == 1)
+                                            {
+                                                <h6 class="letter_size ">@itemcaract1.caractPlanEcomm</h6>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                                <div class="body-card position-relative">
+                                    <div class="col-5 mx-auto">
+                                        <button type="button" class="btn btn_s position-ab" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal" onclick="PlanSeleccionado('@item.nombrePlan')">
+                                            <h6>Contratar</h6>
+                                        </button>
+
+
+                                    </div>
+                                </div>
+
+                            }
+                        }
+                    </div>
+
+                    <ul class='circles'>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+
+                </div>
+                <div class="col-lg-3">
+                    <div class="caja-3 mx-auto shadow-lg mb-3 zoom">
+                        @foreach (var item2 in Model.planesG)
+                        {
+                            @if (@item2.IDplanEcomm == 2)
+                            {
+                                <div class="card-center-2">
+
+                                    <div class="title-cards-2 col-5">
+                                        <h5>@item2.nombrePlan</h5>
+                                    </div>
+
+                                    <div class="prize-house col-5  d-inline-flex my-2">
+                                        <img src="~/img/ImagenesPlanes/plata.png" alt="" class=" casa-3">
+                                        <div class="my-3 text-light col-lg-2 col-3  ms-2  d-flex ">
+                                            @{
+                                                double precio = Convert.ToDouble(@item2.precioTotal);
+                                                var precioTotal2 = precio.ToString("N0", new System.Globalization.CultureInfo("en-US"));
+                                            }
+
+                                            <h1 class="  justify-content-center fw-bold ">$@precioTotal2</h1>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="body-card  d-flex">
+                                    <div class="col-11 mx-auto mt-2">
+                                        <h6 class="letter_space">Hasta @item2.propiedades propiedades</h6>
+                                        @{
+                                            var x = 1;
+                                        }
+                                        @foreach (var itemcaract1 in Model.planesCaract)
+                                        {
+                                            x = x + 1;
+                                            @if (@itemcaract1.IDPlan == 2)
+                                            {
+                                                <h6 class="letter_size">@itemcaract1.caractPlanEcomm</h6>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                                <div class="body-card">
+                                    <div class="col-5 mx-auto position-relative">
+                                        <button type="button" class="btn btn_s position-ab" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal" onclick="PlanSeleccionado('@item2.nombrePlan')">
+                                            <h6>Contratar</h6>
+                                        </button>
+
+
+                                    </div>
+                                </div>
+
+                            }
+                        }
+                    </div>
+
+
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="caja-3 mx-auto shadow-lg mb-3 zoom">
+                        @foreach (var item3 in Model.planesG)
+                        {
+                            @if (@item3.IDplanEcomm == 3)
+                            {
+                                <div class="card-center-3">
+
+
+                                    <div class="title-cards-1 col-5">
+                                        <h5>@item3.nombrePlan</h5>
+                                    </div>
+
+                                    <div class="prize-house col-5  d-inline-flex my-2">
+                                        <img src="~/img/ImagenesPlanes/oro.png" alt="" class=" casa-3">
+                                        <div class="my-3 text-light col-lg-2 col-3  ms-2  d-flex ">
+                                            @{
+                                                double precio = Convert.ToDouble(@item3.precioTotal);
+                                                var precioTotal3 = precio.ToString("N0", new System.Globalization.CultureInfo("en-US"));
+                                            }
+                                            <h1 class="  justify-content-center fw-bold ">$@precioTotal3</h1>
+                                        </div>
+
+                                    </div>
+
+
+
+                                </div>
+                                <div class="body-card  d-flex">
+                                    <div class="col-11 mx-auto mt-2">
+                                        <h6 class="letter_space ">Hasta @item3.propiedades propiedades</h6>
+                                        @{
+                                            var x = 1;
+                                        }
+                                        @foreach (var itemcaract3 in Model.planesCaract)
+                                        {
+
+                                            x = x + 1;
+                                            @if (@itemcaract3.IDPlan == 3)
+                                            {
+                                                <h6 class="letter_size ">@itemcaract3.caractPlanEcomm</h6>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                                <div class="body-card  d-flex position-relative">
+                                    <div class="col-5 mx-auto ">
+                                        <button type="button" class="btn btn_s position-ab" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal" onclick="PlanSeleccionado('@item3.nombrePlan')">
+                                            <h6>Contratar</h6>
+                                        </button>
+
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+
+                </div>
+
+
+                <div class=" col-sm-5 col-lg-5 mx-auto   text-light  justify-content-center my-1 text-center">
+                    <button type="button" class="btn btn_s" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal-2">
+                        <h6>Quiero saber mas</h6>
+                    </button>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal para obtener información-->
+    <div class="modal fade" id="exampleModal-2" tabindex="-1"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form asp-controller="Cuentas" asp-action="QuieroSaberMas" method="POST" enctype="multipart/form-data">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-black" id="exampleModalLabel">Unirme ahora</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-2 ">
+                            <label for="" class="form-label text-black d-flex justify-content-start"><h6>Completa tu registro para agendar tu llamada y saber más</h6></label>
+                            <label for="" class="form-label text-black d-flex justify-content-start"><h6 class="fw-bold size_letter_modal">Nombre(s)</h6></label>
+                            <input type="text" class="form-control size_input input-bott" asp-for="NombreQS" required>
+                        </div>
+                        <div class="mb-2 d-inline-flex">
+                            <div class=" d-inline me-3">
+                                <label for="" class="form-label text-black"><h6 class="letter_size fw-bold">Apellido paterno</h6></label>
+                                <input type="text" class="form-control size_input input-bott" asp-for="APaternoQS" required>
+                            </div>
+                            <div class=" d-inline">
+                                <label for="" class="form-label text-black"><h6 class="letter_size fw-bold">Apellido materno</h6></label>
+                                <input type="text" class="form-control size_input input-bott" asp-for="AMaternoQS" required>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label for="" class="form-label text-black d-flex justify-content-start"><h6 class="letter_size fw-bold">Número telefónico</h6></label>
+                            <input type="tel" class="form-control input-bott" asp-for="TelefonoQS" min="0" required>
+                        </div>
+                        <div class="mb-2">
+                            <label for="" class="form-label text-black d-flex justify-content-start"><h6 class="letter_size fw-bold">Correo electrónico</h6></label>
+                            <input type="email" class="form-control input-bott" asp-for="EmailQS">
+                        </div>
+                        <div class="mb-2">
+                            <label for="" class="form text-black d-flex justify-content-start"><h6 class="letter_size fw-bold">Mensaje</h6></label>
+                            <textarea asp-for="MensajeQS" class="textinput input-bott"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label for="" class="form label text-black d-flex justify-content-start"><h6 class="letter_size fw-bold">¿Cuándo quieres que te llamemos?</h6></label>
+                            <input type="datetime-local" class="form-control input-bott" asp-for="FechaContactoQS">
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn_s my-1 d-flex justify-content-end" ><h6>Enviar</h6></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal para el registro del plan -->
+    <div class="modal fade" id="exampleModal" tabindex="-1"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form asp-controller="Cuentas" asp-action="RegistroLBC" method="POST" enctype="multipart/form-data">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-black" id="exampleModalLabel">Unirme ahora</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="" class="form-label text-black d-flex justify-content-start"><h6>Completa tu registro para continuar con el pago</h6></label>
+                            <label for="" class="form-label text-black d-flex justify-content-start"><h6 class="letter_size fw-bold">Nombre(s)</h6></label>
+                            <input type="text" class="form-control" asp-for="NombreQS" required>
+                        </div>
+                        <div class="mb-2 d-inline-flex">
+                            <div class=" d-inline me-3">
+                                <label for="" class="form-label text-black d-flex justify-content-start"><h6 class="letter_size fw-bold">Apellido paterno</h6></label>
+                                <input type="text" class="form-control size_input" asp-for="APaternoQS" required>
+                            </div>
+                            <div class=" d-inline">
+                                <label for="" class="form-label text-black d-flex justify-content-start"><h6 class="letter_size fw-bold">Apellido materno</h6></label>
+                                <input type="text" class="form-control size_input" asp-for="AMaternoQS">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label text-black d-flex justify-content-start"><h6 class="letter_size fw-bold">Número telefónico</h6></label>
+                            <input type="tel" class="form-control" min="0" asp-for="TelefonoQS" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label text-black d-flex justify-content-start"><h6 class="letter_size fw-bold">Correo electrónico</h6></label>
+                            <input type="email" required class="form-control" asp-for="EmailQS" value="nada@nada.com">
+                            <input asp-for="nombrePlan" type="hidden" value="" />
+                        </div>
+                        <button type="submit" class="btn btn_s my-1"><h6>Enviar</h6></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+</main>
+
+<script>
+
+    function PlanSeleccionado(nombrePlan) {
+        document.getElementById("nombrePlan").value = nombrePlan;
+    }
+
+</script>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+
+    <script>
+        var strValue = "@((string)ViewBag.mssg)";
+        var strValueE = "@((string)ViewBag.mssgE)";
+
+
+        if (strValue !== null && strValue !== "") {
+
+            Swal.fire(
+                'Registro exitoso',
+                strValue,
+                'success'
+            )
+
+        }
+
+        if (strValueE !== null && strValueE !== "") {
+
+            Swal.fire(
+                'Error',
+                strValueE,
+                'error'
+            )
+
+        }
+    </script>
+    }

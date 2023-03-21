@@ -1,0 +1,901 @@
+﻿@model PropiedadSeleccionada
+@{
+    Layout = "_OnlyNav3";
+    ViewData["Title"] = "Rummet Ver más";
+}
+<!--Sección de Titulo principal de propiedades-->
+<div class="container-fluid">
+    <div class="shadow vista-border-r mt-5 backgr-contain">
+        <div class="row">
+            <div class="col-lg-7 position-relative ">
+                @{
+                                                var classAbrev = "";
+                                                switch (Model.Abrev)
+                                                {
+                                                    case "Depto":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Bodega":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Casa":
+                                                        classAbrev = "title-cards-mp-casa";
+                                                        break;
+                                                    case "Edif":
+                                                        classAbrev = "title-cards-mp-edificio";
+                                                        break;
+                                                    case "Huerta":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Local":
+                                                        classAbrev = "title-cards-mp-local";
+                                                        break;
+                                                    case "Nave":
+                                                        classAbrev = "title-cards-mp-nave";
+                                                        break;
+                                                    case "Ofic":
+                                                        classAbrev = "title-cards-mp-oficina";
+                                                        break;
+                                                    case "Quinta":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Rancho":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Terreno":
+                                                        classAbrev = "title-cards-mp-terreno";
+                                                        break;
+                                                    case "Villa":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Hosp.":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    case "Esc.":
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                    default:
+                                                        classAbrev = "title-cards-mp-depto";
+                                                        break;
+                                                }
+                                            }
+
+                <div class="shadow d-flex @classAbrev">
+                    <h6 class="size-mp-cards mx-auto my-auto">@Model.Tipo</h6>
+                </div>
+
+                <div class="">
+
+                    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                        <div class="carousel-inner margin-t-imagen-s ms-3 mb-2">
+
+                            @{
+                                var cont = 0;
+                                var clase = "";
+                            }
+
+                            @foreach (var img64 in Model.LImagenBase64S)
+                            {
+                                cont = cont + 1;
+                                if (cont == 1)
+                                {
+                                    clase = "carousel-item active";
+                                }
+                                else
+                                {
+                                    clase = "carousel-item";
+                                }
+
+                                <div class="image-contain  carousel-arreglo @clase" style="background-image:url(@img64.txtBase64);"></div>
+                            }
+
+
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+
+
+                </div>
+                <div class="d-inline-flex ms-3 mt-1 size-v-second-image">
+                    @foreach (var img642 in Model.LImagenBase64S2)
+                    {
+                        <img src="@img642.txtBase64" alt="" class="mt-1 size-v-second-image me-3 mb-3">
+                    }
+
+                </div>
+            </div>
+            <div class="col">
+                <div class=" d-flex justify-content-end mt-3">
+
+                    <div class="d-flex price-indicator shadow">
+                        <h4 class="mx-auto my-auto fw-bold">
+
+                            @{
+                                double precio = Convert.ToDouble(@Model.Precio);
+                                var precioTotal = precio.ToString("N0", new System.Globalization.CultureInfo("en-US"));
+                            }
+                            @precioTotal @Model.ISO
+                        </h4>
+                    </div>
+                </div>
+                <div class=" d-flex color_orange">
+                    <div class="mt-3">
+                        <h4 class="">@Model.Titulo</h4>
+                    </div>
+
+                </div>
+                <div class="d-flex align-items-end">
+                    @{
+                        var elementos = "";
+                    }
+                    @foreach (var propiedadesCaract in Model.CaracteristicasBas)
+                    {
+                        if (propiedadesCaract.Caracteristica == "Baños")
+                        {
+                            if (propiedadesCaract.NoElementos > 1)
+                            {
+                                elementos = "Baños";
+                            }
+                            else
+                            {
+                                elementos = "Baño";
+                            }
+                            <div class="side-2-header"><i class="fa-solid fa-toilet color_orange ms-1"></i><label for="" class="ms-2 me-1">@propiedadesCaract.NoElementos @elementos</label></div>
+                        }
+                        if (propiedadesCaract.Caracteristica == "Estacionamientos")
+                        {
+                            if (propiedadesCaract.NoElementos > 1)
+                            {
+                                elementos = "Esacionamientos";
+                            }
+                            else
+                            {
+                                elementos = "Estacionamiento";
+                            }
+                            <div><i class="fa-solid fa-car-side ms-2  color_orange"></i> <label for="" class="ms-2 me-1">@propiedadesCaract.NoElementos @elementos </label></div>
+                        }
+                        if (propiedadesCaract.Caracteristica == "Recamaras")
+                        {
+                            if (propiedadesCaract.NoElementos > 1)
+                            {
+                                elementos = "Récamaras";
+                            }
+                            else
+                            {
+                                elementos = "Récamara";
+                            }
+                            <div><i class="fa-solid fa-bed ms-2 color_orange"></i><label for="" class="ms-2 me-1">@propiedadesCaract.NoElementos @elementos</label></div>
+                        }
+                    }
+                </div>
+
+
+                <hr>
+
+                <!--start here -->
+                <div class="row">
+
+
+                    <!--primer elemento del accordeon-->
+                    <div id="accordion " class="accordion">
+                        <div class="card m-b-0">
+
+                            <div class="card-header collapsed collapsible2" data-toggle="collapse"
+                                 data-patent="#accordion" href="#collapseOne">
+                                <a class="card-title ">
+                                    Descripción
+                                </a>
+                            </div>
+
+                            <div class="card-block collapse text-aling-left fs-8" id="collapseOne">
+                                <p class="accordion-Decription fSizeDireciones" id="verDescripcion">
+                                    @Model.Descripcion
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!--segundo elemento del accordeon-->
+                    <div id="accordion" class="accordion">
+                        <div class="card m-b-0">
+                            <div class="card-header collapsed collapsible2" data-toggle="collapse" data-patent="#accordion" href="#collapseTwo">
+                                <a class="card-title ">
+                                    Dirección
+                                </a>
+                            </div>
+
+                            <div class="card-block collapse" id="collapseTwo">
+                                <p id="verDescripcion ">
+                                    <div class=" card-deck contenedorDirecionAcordion">
+                                        <div class="row row-cols-3">
+                                            <div class="d-flex">
+                                                <h6 style="width:50px" class="fw-bold fSizeDireciones">Calle :</h6>
+                                                <h6 class="ms-2 fSizeDireciones text-decoration-underline">@Model.Calle</h6>
+                                            </div>
+                                            <div class="d-flex" style="margin-left:91px">
+                                                <h6 class="fw-bold fSizeDireciones ">No.Ext:</h6>
+                                                <h6 class="ms-2 fSizeDireciones text-decoration-underline">@Model.NoExt</h6>
+                                            </div>
+
+                                            <div class="d-flex" style="position:absolute; margin-left:22rem;">
+                                                <div class="d-flex">
+                                                    <h6 class="fw-bold fSizeDireciones">No.Int :</h6>
+                                                    <h6 class="fSizeDireciones text-decoration-underline">@Model.NoInt</h6>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row row-cols-2 ">
+                                            <div class="d-flex">
+
+                                                <h6 style="width:inherit" class="fw-bold fSizeDireciones">Colonia :</h6>
+                                                <h6 style="margin-left:-25px" class="fSizeDireciones text-decoration-underline">@Model.Colonia</h6>
+                                            </div>
+                                            <div class="d-block">
+                                                <div class="d-flex" style="width: 252px;">
+
+                                                    <h6 class="fw-bold fSizeDireciones">&nbsp Municipio :</h6>
+                                                    <h6 class="ms-2 fSizeDireciones text-decoration-underline">@Model.Municipio</h6>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row row-cols-2">
+                                            <div class="d-flex ">
+                                                <h6 class="fw-bold fSizeDireciones">C.P : </h6>
+                                                <h6 class="ms-2 fSizeDireciones text-decoration-underline">@Model.CP</h6>
+                                            </div>
+                                            <div class="d-flex">
+                                                <h6 class="fw-bold fSizeDireciones ms-2">País : </h6>
+                                                <h6 class="ms-2 fSizeDireciones text-decoration-underline">@Model.Pais</h6>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div>
+                                        <div id="mapa" style="height:150px">
+                                            Cargando mapa...
+                                        </div>
+                                    </div>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!--tercer elemento del accordeon-->
+                    <div id="accordion" class="accordion">
+                        <div class="card m-b-0">
+                            <div class="card-header collapsed collapsible2 " data-toggle="collapse" data-patent="#accordion" href="#collapseThree">
+                                <a class="card-title">
+                                    Características
+                                </a>
+                            </div>
+
+                            <div class="card-block collapse fSizeDireciones" id="collapseThree">
+                                <p id="verDescripcion ">
+                                    <div class="container ">
+
+                                        <div class="row row-cols-2 card-deck ">
+                                            <!--todo lo que este dentro de este div se acomodara dinamica mente-->
+                                            @if (Model.CaracteristicasGen.Any(x => x.TipoCaract == "Generales"))
+                                            {
+                                                <div class="">
+                                                    <h6 class="fw-bolder">Generales</h6>
+                                                    <ul class="">
+                                                        @foreach (var propiedadesCaractG in Model.CaracteristicasGen)
+                                                        {
+                                                            @if (propiedadesCaractG.TipoCaract == "Generales")
+                                                            {
+                                                                <li>@propiedadesCaractG.Caracteristica</li>
+                                                            }
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            }
+                                            @if (Model.CaracteristicasGen.Any(x => x.TipoCaract == "Servicios"))
+                                            {
+                                                <div class="">
+                                                    <h6 class="fw-bolder">Servicios</h6>
+                                                    <ul>
+                                                       @foreach (var propiedadesCaractG in Model.CaracteristicasGen)
+                                                        {
+                                                            @if (propiedadesCaractG.TipoCaract == "Servicios")
+                                                            {
+                                                                <li>@propiedadesCaractG.Caracteristica</li>
+                                                            }
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            }
+                                            @if (Model.CaracteristicasBasA.Any(x => x.TipoCaract == "Ambientes "))
+                                            {
+                                                <div class="">
+                                                    <h6 class="fw-bolder">Adicionales</h6>
+                                                    <ul>
+                                                        @foreach (var propiedadesCaractA in Model.CaracteristicasBasA)
+                                                        {
+                                                            @if (propiedadesCaractA.TipoCaract == "Ambientes ")
+                                                            {
+                                                                <li>@propiedadesCaractA.Caracteristica - @propiedadesCaractA.NoElementos</li>
+                                                            }
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            }
+                                          
+                                            @if (Model.CaracteristicasGen.Any(x => x.TipoCaract == "Exteriores"))
+                                            {
+                                                <div class="">
+                                                    <h6 class="fw-bolder">Exteriores</h6>
+                                                    <ul>
+                                                        @foreach (var propiedadesCaractG in Model.CaracteristicasGen)
+                                                        {
+                                                            @if (propiedadesCaractG.TipoCaract == "Exteriores")
+                                                            {
+                                                                <li>@propiedadesCaractG.Caracteristica</li>
+                                                            }
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            }
+                                            <!--hasta aqui el dinamismo-->
+                                        </div>
+
+
+
+
+
+
+                                    </div>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!--cuarto elemento del accordeon-->
+                    <div id="accordion" class="accordion">
+                        <div class="card">
+                            <div class="card-header collapsed collapsible2" data-toggle="collapse" data-patent="#accordion" href="#collapseFour">
+                                <a class="card-title">
+                                    Superficie
+                                </a>
+                            </div>
+
+                            <div class="card-block collapse" id="collapseFour">
+                                <div class="d-flex mt-3 mb-3">
+                                    <div class="item1">
+                                        <h6 class="label-orange text-center">Terreno</h6>
+                                        <h6 class="text-center"><i class="fa-solid fa-maximize color_orange me-1"></i>@Model.Superficie @Model.UM</h6>
+                                    </div>
+                                    <div class="">
+                                        <h6 class="label-orange text-center">Construcción</h6>
+                                        <h6 class="text-center"><i class="fa-solid fa-maximize color_orange me-1"></i>@Model.SuperficieC @Model.UMC</h6>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <!--end here-->
+
+                <div class=" d-flex justify-content-center  mt-2 mb-4">
+                    <button type="button" class="btn btn_s me-2 mt-2 btn-sugerencias-agendar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <h6>Agendar visita</h6>
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal" id="staticBackdrop" data-bs-backdrop="static"
+                         data-bs-keyboard="false" tabindex="-1"
+                         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <h6 class="modal-title text-black fw-bold"
+                                        id="staticBackdropLabel">
+                                        Agenda una visita
+                                    </h6>
+                                    <button type="button" class="btn-close"
+                                            data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="mb-3">
+
+                                        <label for="" class="form-label text-black d-flex justify-content-start letter_size fw-normal"><h6 class="letter_size fw-normal">Nombre(s)</h6></label>
+                                        <input type="text" class="form-control" id="">
+                                    </div>
+                                    <div class="mb-2 d-inline-flex">
+                                        <div class=" d-inline me-3">
+                                            <label for="" class="form-label text-black d-flex justify-content-start"><h6 class="letter_size fw-normal">Apellido paterno</h6></label>
+                                            <input type="text" class="form-control size_input" id="" required>
+                                        </div>
+                                        <div class=" d-inline">
+                                            <label for="" class="form-label text-black d-flex justify-content-start"><h6 class="letter_size fw-normal">Apellido materno</h6></label>
+                                            <input type="text" class="form-control size_input" id="" required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label text-black d-flex justify-content-start"><h6 class="letter_size fw-normal">Número telefónico</h6></label>
+                                        <input type="tel" class="form-control" id="" min="0" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label text-black d-flex justify-content-start"><h6 class="letter_size fw-normal">Correo electrónico</h6></label>
+                                        <input type="email" required class="form-control" id="">
+                                    </div>
+                                    <div class="mb-3 calendar">
+                                        <label for="" class="form-label text-black fw-normal">Agendar visita</label>
+                                        <input type="datetime-local" name="" id="" class="form-control">
+                                    </div>
+
+                                </div>
+                                <!--terminos y condiciones / condiciones de privacidad -->
+                                <div class="d-inline-flex justify-content-start ms-3">
+                                    <input type="checkbox" id="checkaviso2" class="size-color-checkbox-modal" required>
+                                    <button class=" btn fw-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop-3">Aviso de privacidad</button>
+                                    <br />
+                                    <input type="checkbox" id="checkterminos2" class="size-color-checkbox-modal" required>
+                                    <button type="button" class="btn fw-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop-4">
+                                        Terminos y condiciones
+                                    </button>
+
+
+                                </div>
+
+                                <!--BTNS WHATSAP Y AGENDAR VISITA-->
+
+                                <div class="modal-footer">
+                                    <button type="button"
+                                            class="btn btn_orange-mp justify-items-center"
+                                            style="height:30px"
+                                            data-bs-dismiss="modal">
+                                        Enviar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <div class="modalTelefonoVM" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Solicita más información">
+                            <!-- Button trigger modal -->
+
+                            <a class="btn-llamar" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i class="fa-solid fa-circle-info"></i>
+                            </a>
+
+
+
+                            <!-- Modal -->
+                            <div class="modal" id="exampleModal" tabindex="-1"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+                                                Para solicitar más información
+                                            </h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="d-flex">
+                                                <h6 class="d-flex">Registra tus datos.....o comunícate via whatsapp 👉</h6>
+                                                <div class="d-flex whatsappIcon whatsappIcon">
+                                                    <a target="_blank" href="https://api.whatsapp.com/" class="style-whatsapp ">
+                                                        <i class="fa-brands fa-whatsapp fa-2x  ms-1 mt-2 btn-wtsp"></i>
+                                                    </a>
+                                                </div>
+
+                                            </div>
+
+
+                                            <div>
+                                                <div class="mb-3">
+
+                                                    <label for="" class="form-label text-black d-flex justify-content-start letter_size fw-normal"><h6 class="letter_size fw-normal">Nombre(s)</h6></label>
+                                                    <input type="text" class="form-control" id="">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label text-black d-flex justify-content-start"><h6 class="letter_size fw-normal">Número telefónico</h6></label>
+                                                    <input type="tel" class="form-control" id="" min="0" required="">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label text-black d-flex justify-content-start"><h6 class="letter_size fw-normal">Correo electrónico</h6></label>
+                                                    <input type="email" required="" class="form-control" id="">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn_s btnEnviarContacto" data-bs-dismiss="modal">Enviar datos</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!--Fin modal-->
+                    <!-- Modal para aviso de privacidad-->
+                    <div class="modal fade" id="staticBackdrop-3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Aviso de privacidad</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body" style="font-size:15px;">
+                                    <p style="text-align:justify; padding:0 15px;">
+                                        El presente contrato describe los términos y condiciones aplicables al uso del contenido, productos y/o servicios del sitio web Rummet. Para hacer uso del contenido, productos y/o servicios del sitio web el usuario deberá sujetarse a los presentes términos y condiciones.
+
+                                        I. OBJETO.
+
+                                        El titular se reserva el derecho de realizar cualquier tipo de modificación en el sitio web en cualquier momento y sin previo aviso, el usuario acepta dichas modificaciones.
+
+                                        El acceso al sitio web por parte del usuario es libre y gratuito, la utilización del contenido, productos y/o servicios implica un costo de suscripción para el usuario.
+
+                                        El sitio web solo admite el acceso a personas mayores de edad y no se hace responsable por el incumplimiento de esto.
+
+                                        El sitio web está dirigido a usuarios residentes en México y cumple con la legislación establecida en dicho país, si el usuario reside en otro país y decide acceder al sitio web lo hará bajo su responsabilidad.
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary modal-backgr-orange" data-bs-dismiss="modal">Entendido</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal para Terminos y condiciones-->
+                    <div class="modal fade" id="staticBackdrop-4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Terminos y condiciones</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body" style="font-size:15px;">
+                                    <p style="text-align:justify; padding:0 15px;">
+                                        El 5 de Julio del 2010, se publica en el Diario oficial de la federación (DOF) la Ley Federal de Protección de Datos Personales en posesión de los particulares (LFPDPPP). Esta Ley regula a los particulares, sean personas físicas o morales de carácter privado, que lleven acabo el tratamiento de “Datos Personales” con fines comerciales o de divulgación, a efecto de que generen un “Aviso de Privacidad” que tutele la garantía constitucional de Privacidad, que fuera consignada por reforma al artículo 16 de nuestra Carta Magna publicada en el DOF el 1 de junio de 2009, y la consiguiente reforma al artículo 73 Constitucional en materia de datos personales, publicada en el DOF el 30 de abril de 2009, que faculta a la Federación para legislar en materia de datos personales en posesión de los particulares.
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary modal-backgr-orange" data-bs-dismiss="modal">Entendido</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>
+
+
+
+
+<!-- SECTION_SUGERENCIAS-->
+<h3 class="ms-3 mt-3">Sugerencias</h3>
+
+
+<div class="container-fluid">
+
+    <div class="row position-relative">
+        <!--TARJETAS DE SUGERENCIAS -->
+        @{
+            var countAS = 0;
+            var idCaruselS = "";
+            var countS = 0;
+            var activaS = "";
+            foreach (var propiedad in Model.PropiedadesSL)
+            {
+                countAS = countAS + 1;
+                idCaruselS = "carouselExampleFade" + countAS;
+                countS = 0;
+
+                <div class="col mb-3 col-lg-0 ">
+                    <div class="caja-a-mp mb-3 mt-3  mx-auto shadow ">
+
+                        <div class="card-main col-12  d-flex  ms-1">
+                            <div class="col-6 mt-4 ms-1">
+                                <div id="@idCaruselS" class="carousel slide carousel-fade"
+                                 data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        @foreach (var propiedadesImg in Model.LImagenBase64Sugerida)
+                                        {
+                                            countS = countS + 1;
+
+                                            if (countS == 1)
+                                            {
+                                                activaS = "carousel-item active";
+                                            }
+                                            else
+                                            {
+
+                                                activaS = "carousel-item";
+                                            }
+
+                                            if (propiedadesImg.IDpropiedadBase64 == propiedad.IDPropiedad)
+                                            {
+                                                <div class="@activaS image-contain adaptar-car" style="background-image:url(@propiedadesImg.txtBase64)"></div>
+
+                                            }
+                                            if (propiedadesImg.IDpropiedadBase64 != propiedad.IDPropiedad)
+                                            {
+                                                countS = 0;
+                                            }
+
+                                        }
+                                    </div>
+                                    <button class="carousel-control-prev" type="button"
+                                        data-bs-target="#@idCaruselS" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button"
+                                        data-bs-target="#@idCaruselS" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                                <!--iconos-->
+                                <div class="d-flex justify-content-center mt-1 size-mp-name-main-house ">
+                                    @foreach (var propiedadesCaract in Model.CaracteristicasBas)
+                                    {
+                                        if (propiedadesCaract.Caracteristica == "Baños")
+                                        {
+                                            <div class="side-2-header d-inline-flex me-2">
+                                                <i class="fa-solid fa-toilet me-1 mt-1 text-orange size-mp-icons"></i>
+                                                <h6 for="" class=" me-1 size-mp-name-icons">@propiedadesCaract.NoElementos</h6>
+                                            </div>
+                                        }
+                                        if (propiedadesCaract.Caracteristica == "Estacionamientos")
+                                        {
+                                            <div class="side-2-header d-inline-flex me-1">
+                                                <i class="fa-solid fa-car-side ms-1 mt-1 me-1 text-orange size-mp-icons"></i>
+                                                <h6 for="" class="ms-1 me-1 size-mp-name-icons">@propiedadesCaract.NoElementos</h6>
+                                            </div>
+                                        }
+                                        if (propiedadesCaract.Caracteristica == "Recamaras")
+                                        {
+                                            <div class="side-2-header d-inline-flex">
+                                                <i class="fa-solid fa-bed ms-1 mt-1 me-1 text-orange size-mp-icons"></i>
+
+                                                <h6 for="" class="ms-1 me-1 size-mp-name-icons">@propiedadesCaract.NoElementos</h6>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                                <!--fin iconos-->
+                                <div class=" d-flex  justify-content-center  size-mp-icons">
+                                    <button type="button" class="btn btn_orange-mp me-1 mt-2 "
+                                        data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                        <i class="fa-solid fa-calendar size-icons-footer-2"></i>
+                                        <h6 class="mt-2 size-mp-text mx-auto ms-1">Agendar visita</h6>
+                                    </button>
+
+
+
+
+                                </div>
+
+                            </div>
+
+                            @{
+                                var classAbrev2 = "";
+                                switch (@propiedad.Abrev)
+                                {
+                                    case "Depto":
+                                        classAbrev2 = "title-cards-mp-depto";
+                                        break;
+                                    case "Bodega":
+                                        classAbrev2 = "title-cards-mp-depto";
+                                        break;
+                                    case "Casa":
+                                        classAbrev2 = "title-cards-mp-casa";
+                                        break;
+                                    case "Edif":
+                                        classAbrev2 = "title-cards-mp-edificio";
+                                        break;
+                                    case "Huerta":
+                                        classAbrev2 = "title-cards-mp-depto";
+                                        break;
+                                    case "Local":
+                                        classAbrev2 = "title-cards-mp-local";
+                                        break;
+                                    case "Nave":
+                                        classAbrev2 = "title-cards-mp-nave";
+                                        break;
+                                    case "Ofic":
+                                        classAbrev2 = "title-cards-mp-oficina";
+                                        break;
+                                    case "Quinta":
+                                        classAbrev2 = "title-cards-mp-depto";
+                                        break;
+                                    case "Rancho":
+                                        classAbrev2 = "title-cards-mp-depto";
+                                        break;
+                                    case "Terreno":
+                                        classAbrev2 = "title-cards-mp-terreno";
+                                        break;
+                                    case "Villa":
+                                        classAbrev2 = "title-cards-mp-depto";
+                                        break;
+                                    case "Hosp.":
+                                        classAbrev2 = "title-cards-mp-depto";
+                                        break;
+                                    case "Esc.":
+                                        classAbrev2 = "title-cards-mp-depto";
+                                        break;
+                                    default:
+                                        classAbrev2 = "title-cards-mp-depto";
+                                        break;
+                                }
+                            }
+
+                            <!-- INORMACIÓN DE LA TARJETA DE PROPIEDADES -->
+                            <div class="col-5 text-cards ms-2 mt-2 position-relative">
+                                <div class="d-inline-flex justify-content-between @classAbrev2">
+                                    <h6 class="size-mp-cards mt-1 ms-1"> @propiedad.Abrev  </h6>
+
+                                    <h6 class=" size-mp-cards me-1">
+                                        <i class="fa-solid fa-maximize size-mp-cards mt-1 "></i> @propiedad.Superficie @propiedad.UM
+                                    </h6>
+
+                                </div>
+                                <div class="mt-4 position-relative">
+                                    <div class="d-flex pos-vermas ms-2">
+                                        <button type="button" class="btn btn_white-mp  btn_white-mpA ">
+                                            <a class="btn_white-mpA color-letter-links-vermas" asp-action="PropiedadesVerMas" asp-controller="Ecommerce" asp-route-Propiedad="@propiedad.IDPropiedadG">
+                                                <h6 class="my-auto  size-mp-text">Ver más</h6>
+                                            </a>
+                                        </button>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="modalTelefono" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Solicita más información">
+                                            <!-- Button trigger modal -->
+
+                                            <a class="btn-llamar" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <i class="fa-solid fa-circle-info"></i>
+                                            </a>
+
+
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Para solicitar más información</h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="d-flex">
+                                                                <h6 class="d-flex fs-6">Registra tus datos.....o comunícate via whatsapp 👉</h6>
+                                                                <div class="d-flex whatsappIcon whatsappIcon">
+                                                                    <a style="color: darkorange;" target="_blank" href="https://api.whatsapp.com/" class="style-whatsapp ">
+                                                                        <i class="fa-brands fa-whatsapp fa-2x  ms-1 mt-2"></i>
+                                                                    </a>
+                                                                </div>
+
+                                                            </div>
+
+
+                                                            <div>
+                                                                <div class="mb-3">
+
+                                                                    <label for="" class="form-label text-black d-flex justify-content-start letter_size fw-normal">Nombre(s)</label>
+                                                                    <input type="text" class="form-control" id="">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="" class="form-label text-black d-flex justify-content-start"><h6 class="letter_size fw-normal">Número telefónico</h6></label>
+                                                                    <input type="tel" class="form-control" id="" min="0" required="">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="" class="form-label text-black d-flex justify-content-start"><h6 class="letter_size fw-normal">Correo electrónico</h6></label>
+                                                                    <input type="email" required="" class="form-control" id="">
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn_s btnEnviarContacto">Enviar datos</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <h6 class="fw-bold ms-2 text-orange ">
+                                        @{
+                                            double precio2 = Convert.ToDouble(@propiedad.Precio);
+                                            var precioTotal2 = precio2.ToString("N0", new System.Globalization.CultureInfo("en-US"));
+                                        }
+                                        @precioTotal2 @propiedad.ISO
+                                    </h6>
+
+                                    <h6 class="size-mp-name-main-house fw-bold ms-2 ">
+                                        @propiedad.Titulo
+                                    </h6>
+                                    <h6 class="size-mp-name-house ms-2 mb-1"> @propiedad.Direccion </h6>
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                            <!-- FIN DE LA INORMACIÓN DE LA TARJETA DE PROPIEDADES -->
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+        }
+        <!-- FIN DE LAS TARJETAS DE SUGERENCIAS -->
+
+
+    </div>
+
+</div>
+
+
+
+
+<script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAX6kLcesEBAk5K_5oBh-dRbTxWeKjMXgc&libraries=places&callback=mapaPropiedad">
+</script>
+
+<script>
+    function mapaPropiedad() {
+        var map;
+
+        var lati = @Model.Latitud;
+        var long = @Model.Longitud;
+
+
+        map = new google.maps.Map(document.getElementById('mapa'), {
+
+            center: { lat: lati, lng: long },
+            zoom: 16,
+        });
+        var marker = new google.maps.Marker({
+            position: { lat: lati, lng: long },
+            map: map,
+            title: 'Tu propiedad está aquí'
+        });
+    }
+
+
+</script>

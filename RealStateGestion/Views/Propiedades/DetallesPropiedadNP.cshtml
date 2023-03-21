@@ -1,0 +1,733 @@
+﻿@{
+    Layout = "_NavDetallesPropiedad";
+}
+
+<div class="container-lg">
+    <div class="row">
+        <div class="col">
+            <div class="bg-light rounded mb-3">
+                <div class="d-inline-flex mt-2">
+                    <h6 class="ms-3">Estatus</h6>
+                    <h6 class="ms-2 color-estatus-no-publi  text-center">No publicada</h6>
+                </div>
+                <div class="d-flex mt-2">
+                    <h6 class="ms-3 ">Tipo de operación</h6>
+                    <h6 class="ms-2 text-center  color-tipo-oper-venta ">Venta</h6>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn backgr-cale" id="btn-modal" data-bs-toggle="modal" data-bs-target="#exampleModalcale">
+                        <h6 class=" size-text-cale"><i class="fa-solid fa-calendar-days"></i></h6>
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="container-modal" id="cont-modal">
+
+                        <div class="header-modal">
+                            <label id="close-modal" for="evento-click">X</label>
+                        </div>
+
+                        <div class="body-modal">
+                            <h1 class="title-modal">Calendario</h1>
+                            <div id="calendar"></div>
+
+                        </div>
+
+                    </div>
+                    <button class="btn "><i class="fa-solid fa-file-pdf backgr-pdf"></i></button>
+                    <a href="#" class="me-2 mt-2 "><i class="fa-solid fa-pen-to-square backgr-edit text-center align-item-center"></i></a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="container-lg ">
+    <div class="row">
+
+        <div class="col-lg-5 col ">
+
+            <div class="botones-modal  d-flex justify-content-between bg-light p-3 rounded position-relative ">
+                <div class="icon-warning d-block">
+
+                    <i class="fa-solid fa-triangle-exclamation icon-style-warning size-icon-warning"></i>
+
+
+                </div>
+                <!-- BOTON MODAL 1 DOCUMENTOS -->
+                <button type="button" class="btn btn-modals" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Documentos
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                 <label for="documentos" class="fw-bold color_letter ms-lg-2">
+                                        Documentos
+                                    </label>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+
+
+                                   
+                                    <br>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive table-height">
+                                                <table class="table table-hover border-gray h-100">
+                                                    <thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">1</th>
+                                                            <td colspan="2"><h6 class="font-size-visualizador">Comprobante de domicilio</h6> </td>
+                                                            <td>
+                                                                <div class="fileContainer2 input-group">
+                                                                    <input type="file" name="s_archivo" id="archivoInput" class=""
+                                                                           onchange="return validarExt()">
+                                                                    <i class="fa-solid fa-file-arrow-up size-icon ms-3 "></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3  input-group">
+                                                                    <input type="button" name="d_archivo" id="archivoInput_delete" class="eliminarprueba me-3">
+                                                                    <i class="fa-solid fa-trash-can size-icon me-5"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group">
+                                                                    <input type="button" name="v_archivo4" id="" onclick="visorExt()" class=" me-3">
+                                                                    <i class="fa-solid fa-eye size-icon me-5"></i></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group me-4">
+                                                                    <input type="button" name="p_archivo1" id="" class="ms-3">
+                                                                    <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                    <h6 class="font-size-visualizador">proceso</h6>
+                                                                </div><div class="fileContainer3 d-none input-group me-4">
+                                                                    <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                    <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                    <h6 class="font-size-visualizador">aprobado</h6>
+                                                                </div> <div class="fileContainer3 d-none input-group me-4">
+                                                                    <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                    <i class="fa-solid fa-xmark size-icon ms-3 text-center d-flex"></i>
+                                                                    <h6 class="font-size-visualizador">rechazado</h6>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">2</th>
+                                                            <td colspan="2"><h6 class="font-size-visualizador">Estado de cuenta bancario (carátula)</h6></td>
+                                                            <td>
+                                                                <div class="fileContainer2 input-group">
+                                                                    <input type="file" name="s_archivo2" id="archivoInput2" class="me-5"
+                                                                           onchange="return validarExt2()">
+                                                                    <i class="fa-solid fa-file-arrow-up size-icon ms-3 size-icon "></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group">
+                                                                    <input type="button" name="d_archivo2" id="archivoInput_delete2" class="eliminarprueba me-3">
+                                                                    <i class="fa-solid fa-trash-can me-5 size-icon"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group">
+                                                                    <input type="button" name="v_archivo4" id="" onclick="visorExt2()" class=" me-3">
+                                                                    <i class="fa-solid fa-eye me-5 size-icon"></i></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group me-4">
+                                                                    <input type="button" name="p_archivo2" id="" class="ms-3">
+                                                                    <i class="fa-solid fa-arrow-rotate-right  ms-3 size-icon"></i>
+                                                                    <h6 class="font-size-visualizador">proceso</h6>
+                                                                </div><div class="fileContainer3 d-none input-group me-4">
+                                                                    <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                    <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                    <h6 class="font-size-visualizador">aprobado</h6>
+                                                                </div> <div class="fileContainer3 d-none input-group me-4">
+                                                                    <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                    <i class="fa-solid fa-xmark size-icon ms-3 text-center d-flex"></i>
+                                                                    <h6 class="font-size-visualizador">rechazado</h6>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">3</th>
+                                                            <td colspan="2"><h6 class="font-size-visualizador">Constancia fiscal</h6></td>
+                                                            <td>
+                                                                <div class="fileContainer2 input-group">
+                                                                    <input type="file" name="s_archivo" id="archivoInput3" class="me-5"
+                                                                           onchange="return validarExt3()">
+                                                                    <i class="fa-solid fa-file-arrow-up ms-3 size-icon"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group">
+                                                                    <input type="button" name="d_archivo3" id="archivoInput_delete3" class="eliminarprueba me-3">
+                                                                    <i class="fa-solid fa-trash-can me-3 size-icon"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group ">
+                                                                    <input type="button" name="v_archivo4" id="" onclick="visorExt3()" class=" me-3">
+                                                                    <i class="fa-solid fa-eye me-5 size-icon"></i></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group me-4">
+                                                                    <input type="button" name="p_archivo3" id="" class="ms-3">
+                                                                    <i class="fa-solid fa-arrow-rotate-right  ms-3 size-icon"></i>
+                                                                    <h6 class="font-size-visualizador">proceso</h6>
+                                                                </div><div class="fileContainer3 d-none input-group me-4">
+                                                                    <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                    <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                    <h6 class="font-size-visualizador">aprobado</h6>
+                                                                </div> <div class="fileContainer3 d-none input-group me-4">
+                                                                    <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                    <i class="fa-solid fa-xmark size-icon ms-3 text-center d-flex"></i>
+                                                                    <h6 class="font-size-visualizador">rechazado</h6>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">4</th>
+                                                            <td colspan="2"><h6 class="font-size-visualizador">Identificación oficial</h6></td>
+                                                            <td>
+                                                                <div class="fileContainer2 input-group">
+                                                                    <input type="file" name="s_archivo" id="archivoInput4" class="me-5"
+                                                                           onchange="return validarExt4()">
+                                                                    <i class="fa-solid fa-file-arrow-up size-icon ms-3 "></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group">
+                                                                    <input type="button" name="d_archivo4" id="archivoInput_delete4" class="eliminarprueba me-3">
+                                                                    <i class="fa-solid fa-trash-can size-icon me-5"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group">
+                                                                    <input type="button" name="v_archivo4" id="" onclick="visorExt4()" class=" me-3">
+                                                                    <i class="fa-solid fa-eye size-icon me-5"></i></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="fileContainer3 input-group me-4">
+                                                                    <input type="button" name="p_archivo4" id="" class="ms-3">
+                                                                    <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                    <h6 class="font-size-visualizador">proceso</h6>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    </thead>
+                                                </table>
+
+                                            </div>
+                                            <div class="input-group d-flex justify-content-start">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group d-flex justify-content-center">
+                                                <div id="visorArchivo" class="size-file d-flex ">
+                                                    <h5 class="text-center">Visualizador de archivos</h5>
+
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-modals">Guardar cambios</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--BOTON MODAL 2 FOTOS -->
+                <button type="button" class="btn btn-modals" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                    Fotos
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <label for="documentos" class=" color_letter2 ms-lg-2">
+                                    Por favor adjunta hasta 15 fotografías
+                                </label>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel2"></h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                               
+                                <div class="container-fluid d-flex mt-2 justify-content-center">
+                                    <section id="Images" class="images-cards">
+                                        <div class="row">
+                                            <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-xs-12 " id="add-photo-container">
+                                                <div class="add-new-photo first" id="add-photo">
+                                                    <i class="fa-solid fa-file-image ms-5 mt-4"></i>
+
+                                                    <br>
+                                                    <div class="">
+                                                        <h6 class=" size-text-add-photo  text-center">Sube tus fotografías</h6>
+                                                    </div>
+
+                                                </div>
+                                                <input type="file" multiple id="add-new-photo" name="images[]">
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-modals">Guardar cambios</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--BOTON MODAL 3 CONTRATOS-->
+                <button type="button" class="btn btn-modals" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                    Contratos
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <label for="documentos" class="fw-bold color_letter ms-lg-2">
+                                    Documentos
+                                </label>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel3"></h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              
+                                <br>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive table-height">
+                                            <table class="table table-hover border-gray h-100">
+                                                <thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">1</th>
+                                                        <td colspan="2"><h6 class="font-size-visualizador">Contrato intermediación</h6> </td>
+                                                        <td>
+                                                            <div class="fileContainer2 input-group">
+                                                                <input type="file" name="s_archivo" id="archivoInput5" class=""
+                                                                       onchange="return validarExt5()">
+                                                                <i class="fa-solid fa-file-arrow-up size-icon ms-3 "></i>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="fileContainer3 input-group">
+                                                                <input type="button" name="v_archivo5" id="" onclick="visorExt5()" class=" me-3">
+                                                                <i class="fa-solid fa-eye size-icon me-5"></i></i>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="fileContainer3 input-group me-4">
+                                                                <input type="button" name="p_archivo5" id="" class="ms-3">
+                                                                <i class="fa-solid fa-paper-plane ms-3 size-icon"></i>
+                                                                <h6 class="font-size-visualizador">enviado</h6>
+                                                            </div><div class="fileContainer3 d-none input-group me-4">
+                                                                <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                <h6 class="font-size-visualizador">aprobado</h6>
+                                                            </div> <div class="fileContainer3 d-none input-group me-4">
+                                                                <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                <i class="fa-solid fa-xmark size-icon ms-3 text-center d-flex"></i>
+                                                                <h6 class="font-size-visualizador">rechazado</h6>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">2</th>
+                                                        <td colspan="2"><h6 class="font-size-visualizador">Contrato promesa</h6></td>
+                                                        <td>
+                                                            <div class="fileContainer2 input-group">
+                                                                <input type="file" name="s_archivo6" id="archivoInput6" class="me-5"
+                                                                       onchange="return validarExt6()">
+                                                                <i class="fa-solid fa-file-arrow-up size-icon ms-3 size-icon "></i>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="fileContainer3 input-group">
+                                                                <input type="button" name="v_archivo6" id="" onclick="visorExt6()" class=" me-3">
+                                                                <i class="fa-solid fa-eye me-5 size-icon"></i></i>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="fileContainer3 input-group me-4">
+                                                                <input type="button" name="p_archivo2" id="" class="ms-3">
+                                                                <i class="fa-solid fa-paper-plane ms-3 size-icon"></i>
+                                                                <h6 class="font-size-visualizador">enviado</h6>
+                                                            </div><div class="fileContainer3 d-none input-group me-4">
+                                                                <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                <i class="fa-solid fa-arrow-rotate-right size-icon ms-3"></i>
+                                                                <h6 class="font-size-visualizador">aprobado</h6>
+                                                            </div> <div class="fileContainer3 d-none input-group me-4">
+                                                                <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                <i class="fa-solid fa-xmark size-icon ms-3 text-center d-flex"></i>
+                                                                <h6 class="font-size-visualizador">rechazado</h6>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">3</th>
+                                                        <td colspan="2"><h6 class="font-size-visualizador">Contrato venta</h6></td>
+                                                        <td>
+                                                            <div class="fileContainer2 input-group">
+                                                                <input type="file" name="s_archivo" id="archivoInput7" class="me-5"
+                                                                       onchange="return validarExt7()">
+                                                                <i class="fa-solid fa-file-arrow-up ms-3 size-icon"></i>
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="fileContainer3 input-group ">
+                                                                <input type="button" name="v_archivo7" id="" onclick="visorExt7()" class=" me-3">
+                                                                <i class="fa-solid fa-eye me-5 size-icon"></i></i>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="fileContainer3 input-group me-4">
+                                                                <input type="button" name="p_archivo3" id="" class="ms-3">
+                                                                <i class="fa-solid fa-paper-plane ms-3 size-icon"></i>
+                                                                <h6 class="font-size-visualizador">enviado</h6>
+                                                            </div><div class="fileContainer3 d-none input-group me-4">
+                                                                <input type="button" name="a_archivo1" id="" class="ms-3">
+                                                                <i class="fa-solid fa-check ms-3 size-icon"></i>
+                                                                <h6 class="font-size-visualizador">firmado</h6>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">4</th>
+                                                        <td colspan="2"><h6 class="font-size-visualizador">*****</h6></td>
+                                                        <td>
+                                                            <div class="fileContainer2 input-group">
+                                                                <input type="file" name="s_archivo" id="archivoInput8" class="me-5"
+                                                                       onchange="return validarExt8()">
+                                                                <i class="fa-solid fa-file-arrow-up size-icon ms-3 "></i>
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="fileContainer3 input-group">
+                                                                <input type="button" name="v_archivo8" id="" onclick="visorExt8()" class=" me-3">
+                                                                <i class="fa-solid fa-eye size-icon me-5"></i></i>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="fileContainer3 input-group me-4">
+                                                                <input type="button" name="p_archivo8" id="" class="ms-3">
+                                                                <i class="fa-solid fa-paper-plane ms-3 size-icon"></i>
+                                                                <h6 class="font-size-visualizador">enviado</h6>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                        <div class="input-group d-flex justify-content-start">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="input-group d-flex justify-content-center">
+                                            <div id="visorArchivo2" class="size-file d-flex ">
+                                                <h5 class="text-center">Visualizador de archivos</h5>
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-modals">Guardar cambios</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Aquí empieza la seccion del propietario-->
+            <div class="seccion-propietario bg-light mt-2 rounded pt-2 pb-3">
+                <h5 class="ms-3  ">Propietario</h5>
+                <br>
+                <div class="d-inline-flex mb-1">
+                    <label class="ms-3">Nombre completo</label><input type="text" disabled class="ms-2 w-n-completo">
+                </div>
+                <div class="d-inline-flex mt-2 mb-1">
+                    <label class="ms-3">Apellido paterno</label><input type="text" disabled class="ms-2">
+                </div>
+                <div class="d-inline-flex mt-2 mb-1">
+                    <label class="ms-3">Apellido materno</label><input type="text" disabled class="ms-2">
+                </div>
+                <div class="d-inline-flex mt-2 mb-1">
+                    <label class="ms-3">Correo</label><input type="text" disabled class="ms-2 w-correo">
+                </div>
+                <div class="d-inline-flex mt-2 mb-2">
+                    <label class="ms-3">Teléfono</label><input type="text" disabled class="ms-2">
+                </div>
+
+            </div>
+
+            <div class="seccion-fecha-publicacion bg-light mt-2 pt-2 mb-2 rounded">
+                <div class="fecha-publi p-1 mt-1">
+                    <h5 class=" mx-auto text-center label-orange-3">Fecha de publicación</h5>
+                    <p class="text-center">10/08/2022</p>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+
+
+        <div class="col-lg-7 col">
+            <div class="datos-casa bg-light rounded p-2 ">
+                <h5 class="ms-2">Datos de la propiedad</h5>
+                <div class="position-relative">
+                    <div class="shadow d-flex  t-de-inmueble-casa">
+                        <h6 class=" mx-auto my-auto">Casa</h6>
+                    </div>
+                </div>
+                <div class="d-inline-flex mb-3 mt-1 pt-4">
+                    <label class="ms-2    me-2">Titulo</label> <input type="text" class="w-titulo" disabled name="" id="">
+                </div>
+                <br>
+                <div class="d-inline-flex mt-2">
+                    <label class="ms-2 me-2">Precio</label> <input type="text" disabled name="" id="">
+                </div>
+                <div class="seccion-construccion mt-3">
+                    <h6 class="ms-2">Construcción</h6>
+                    <div class="d-flex justify-content-center">
+                        <div class="d-block me-4">
+                            <h6 class="label-orange text-center">Terreno</h6>
+                            <h6 class="text-center"><i class="fa-solid fa-maximize color_orange me-1"></i>100m2</h6>
+                        </div>
+                        <div class="d-block ">
+                            <h6 class="label-orange text-center">Construcción</h6>
+                            <h6 class="text-center"><i class="fa-solid fa-maximize color_orange me-1"></i>50m2</h6>
+                        </div>
+                    </div>
+
+                    <h6 class="ms-2 mt-3">Caracteristicas principales</h6>
+                    <div class="d-flex align-items-end justify-content-center pb-2">
+                        <div class="side-2-header"><i class="fa-solid fa-toilet color_orange ms-1"></i><label for="" class="ms-2 me-1">1 Baño</label></div>
+                        <div><i class="fa-solid fa-car-side ms-2  color_orange"></i> <label for="" class="ms-2 me-1">2 Estacionamientos</label></div>
+                        <div><i class="fa-solid fa-bed ms-2 color_orange"></i><label for="" class="ms-2 me-1">4 Recámaras</label></div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="indicadores-propiedad bg-light rounded d-flex justify-content-center mt-3 p-2  ">
+                 <div class="caja-a-b mb-2 mb-xl-3 mt-2 me-3 shadow ">
+                     <div class="card-main col-12 d-flex align-items-center">
+                         <div class="col-6 mt-3 d-flex justify-content-center">
+
+
+                             <div class="d-flex mt-1">
+                                <img src="./img/logo_oficial.png" style="height: 40px;" alt="">
+                             </div>
+                         </div>
+                         <div class="col-5 d-flex justify-content-center">
+                             <div class="text-cards d-flex mt-3">
+                                 <h6 class="mx-auto  my-auto">20000</h6>
+                             </div>
+                         </div>
+
+
+
+                     </div>
+                     <div class="">
+                         <div class=" d-flex justify-content-center">
+                             <p class="size-letter-cards-first ms-2 mt-2">Vistas</p>
+                         </div>
+                     </div>
+                 </div>
+
+                     <div class="caja-a-b mb-2 mb-xl-3 shadow mt-2">
+                         <div class="card-main col-12 d-flex align-items-center">
+                             <div class="col-6 mt-3 d-flex justify-content-center">
+
+
+                                 <div class="d-flex mt-1">
+                                     <i class="fa-solid fa-building fa-2x" style="color: #ff7f40; font-size: 40px;"></i>
+                                 </div>
+                             </div>
+                             <div class="col-5 d-flex justify-content-center">
+                                 <div class="text-cards d-flex mt-3">
+                                     <h6 class="mx-auto  my-auto">10000</h6>
+                                 </div>
+                             </div>
+
+
+
+                         </div>
+                         <div class="">
+                             <div class=" d-flex justify-content-center">
+                                 <p class="size-letter-cards-first ms-2 mt-2">Visitas</p>
+                             </div>
+                         </div>
+                     </div>
+
+             </div>-->
+
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+        </div>
+    </div>
+</div>
+
+<script>
+   modal()
+    function modal() {
+        const btnModal = document.getElementById('btn-modal'); // boton de calendario
+        btnCloseModal = document.getElementById('close-modal'); // boton de cerrar calendario
+
+        const contModal = document.getElementById('cont-modal'); // Contenido del calendario
+
+
+        // LLamado de FullCalendar
+        var initialLocaleCode = 'es';
+        var localeSelectorEl = document.getElementById('locale-selector');
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+            },
+            initialDate: '2020-09-12',
+            locale: initialLocaleCode,
+            theme: true,
+            editable: true,
+            buttonIcons: false, // show the prev/next text
+            // weekNumbers: true,
+            navLinks: true, // can click day/week names to navigate views
+            editable: true,
+            dayMaxEvents: true, // allow "more" link when too many events
+            events: [
+                {
+                    title: 'All Day Event',
+                    start: '2020-09-01'
+                },
+                {
+                    title: 'Long Event',
+                    start: '2020-09-07',
+                    end: '2020-09-10'
+                },
+                {
+                    groupId: 999,
+                    title: 'Repeating Event',
+                    start: '2020-09-09T16:00:00'
+                },
+                {
+                    groupId: 999,
+                    title: 'Repeating Event',
+                    start: '2020-09-16T16:00:00'
+                },
+                {
+                    title: 'Conference',
+                    start: '2020-09-11',
+                    end: '2020-09-13'
+                },
+                {
+                    title: 'Meeting',
+                    start: '2020-09-12T10:30:00',
+                    end: '2020-09-12T12:30:00'
+                },
+                {
+                    title: 'Lunch',
+                    start: '2020-09-12T12:00:00'
+                },
+                {
+                    title: 'Meeting',
+                    start: '2020-09-12T14:30:00'
+                },
+                {
+                    title: 'Happy Hour',
+                    start: '2020-09-12T17:30:00'
+                },
+                {
+                    title: 'Dinner',
+                    start: '2020-09-12T20:00:00'
+                },
+                {
+                    title: 'Birthday Party',
+                    start: '2020-09-13T07:00:00'
+                },
+                {
+                    title: 'Click for Google',
+                    url: 'http://google.com/',
+                    start: '2020-09-28'
+                }
+            ]
+        });
+
+        btnModal.onclick = function () { // Funcion al precionar el boton de calendario
+            contModal.classList.add('active')
+
+            calendar.render();
+
+            // build the locale selector's options
+            calendar.getAvailableLocaleCodes().forEach(function (localeCode) {
+                var optionEl = document.createElement('option');
+                optionEl.value = localeCode;
+                optionEl.selected = localeCode == initialLocaleCode;
+                optionEl.innerText = localeCode;
+                localeSelectorEl.appendChild(optionEl);
+            });
+
+            // when the selected option changes, dynamically change the calendar option
+            localeSelectorEl.addEventListener('change', function () {
+                if (this.value) {
+                    calendar.setOption('locale', this.value);
+                }
+            });
+
+        }
+
+        btnCloseModal.onclick = function () { // boton de cerrar calendario
+            contModal.classList.remove('active')
+        }
+
+
+    }
+</script>
